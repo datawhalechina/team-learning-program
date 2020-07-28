@@ -3,6 +3,7 @@
 主要包括：
 
 - [Python编程语言](https://github.com/datawhalechina/team-learning-program/tree/master/Python-Language)
+- [编程实践（Pandas）](https://github.com/datawhalechina/joyful-pandas)
 - 数据结构与算法
 
 
