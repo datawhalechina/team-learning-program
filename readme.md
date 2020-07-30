@@ -1,10 +1,28 @@
-本项目主要存储Datawhale组队学习中“编程语言与数据结构”方向的资料。
+
+# 简介
+
+本项目主要存储Datawhale组队学习中“编程、数据结构与算法”方向的资料。
 
 主要包括：
 
 - [Python编程语言](https://github.com/datawhalechina/team-learning-program/tree/master/Python-Language)
-- [编程实践（Pandas）](https://github.com/datawhalechina/joyful-pandas)
 - 数据结构与算法
+- [编程实践（Pandas）](https://github.com/datawhalechina/joyful-pandas)
+- [编程实践（LeetCode 分类练习）]()
+- [编程实践（LeetCode 腾讯精选练习50）]()
+- [编程实践（Python 爬虫）]()
+
+
+# 备注
+
+有关组队学习的开源内容
+
+- [team-learning](https://github.com/datawhalechina/team-learning)：主要展示Datawhale的组队学习计划。
+- [team-learning-program](https://github.com/datawhalechina/team-learning-program)：主要存储Datawhale组队学习中“编程、数据结构与算法”方向的资料。
+- [team-learning-data-mining](https://github.com/datawhalechina/team-learning-data-mining)：主要存储Datawhale组队学习中“数据挖掘/机器学习”方向的资料。
+- [team-learning-nlp](https://github.com/datawhalechina/team-learning-nlp)：主要存储Datawhale组队学习中“自然语言处理”方向的资料。
+- [team-learning-cv](https://github.com/datawhalechina/team-learning-cv)：主要存储Datawhale组队学习中“计算机视觉”方向的资料。
+
 
 
 
