@@ -10,7 +10,7 @@
 - [编程实践（Pandas）](https://github.com/datawhalechina/joyful-pandas)
 - [编程实践（LeetCode 分类练习）](https://github.com/datawhalechina/team-learning-program/tree/master/LeetCodeClassification)
 - [编程实践（LeetCode 腾讯精选练习50）](https://github.com/datawhalechina/team-learning-program/tree/master/LeetCodeTencent)
-- [编程实践（Python 爬虫）]()
+- [编程实践（Python 爬虫）](https://github.com/datawhalechina/team-learning-program/tree/master/WebSpider)
 
 
 # 备注
