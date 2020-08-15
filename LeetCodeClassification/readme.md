@@ -9,6 +9,9 @@
     - github：https://github.com/ditingdapeng
 - 张楚：中科大、服务端研发工程师
     - Github：https://github.com/YaxeZhang
+- 马燕鹏：华北电力大学
+    - 微信公众号：LSGO软件技术团队
+    - CSDN：https://lsgogroup.blog.csdn.net/
 - 韩绘锦：华北电力大学
     - CSDN：https://blog.csdn.net/weixin_45569785
 - 姚行志：华北电力大学
