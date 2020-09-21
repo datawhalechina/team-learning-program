@@ -30,6 +30,18 @@
 解释: 从右向左读, 为 01 。因此它不是一个回文数。
 ```
 
+**填写代码**
+
+```c
+public class Solution 
+{
+    public bool IsPalindrome(int x) 
+    {
+
+    }
+}
+```
+
 <b>进阶</b>:
 
 你能不将整数转为字符串来解决这个问题吗？
