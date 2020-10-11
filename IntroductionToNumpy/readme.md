@@ -1,9 +1,5 @@
 ﻿# 编程实践（Numpy）上
 
-开源学习内容：https://github.com/datawhalechina/team-learning-program/tree/master/IntroductionToNumpy
-
-
-
 ## 基本信息
 - 贡献人员：韩绘锦、左秉文、王彦淳
 - 学习周期：13天，每天平均花费时间3小时-5小时不等，根据个人学习接受能力强弱有所浮动。
