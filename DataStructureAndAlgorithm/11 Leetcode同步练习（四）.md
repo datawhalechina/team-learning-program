@@ -1169,8 +1169,3 @@ public class Solution {
     }
 }
 ```
-
----
-<p style="text-align:center;">
-<img src="https://img-blog.csdnimg.cn/20200727174102237.png">
-</p>
