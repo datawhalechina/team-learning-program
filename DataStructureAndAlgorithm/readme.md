@@ -355,6 +355,6 @@ https://leetcode-cn.com/problems/replace-the-substring-for-balanced-string/
 
 姓名 | 博客|备注
 ---|---|---
-马燕鹏|[CSDN](https://lsgogroup.blog.csdn.net/)|华北电力大学
+马燕鹏|[CSDN](https://lsgogroup.blog.csdn.net/)<br>微信公众号：LSGO软件技术团队|华北电力大学
 苏鹏||
 高永伟||
