@@ -172,8 +172,9 @@
 
 姓名 | 博客|备注
 ---|---|---
-马燕鹏|[CSDN](https://lsgogroup.blog.csdn.net/)|华北电力大学
+马燕鹏|[CSDN](https://lsgogroup.blog.csdn.net/)<br>微信公众号：LSGO软件技术团队|华北电力大学
 徐韬|[CSDN](https://blog.csdn.net/qq_45019698)|华北电力大学
 韩绘锦|[CSDN](https://blog.csdn.net/weixin_45569785)|华北电力大学
 任帅|[CSDN](https://blog.csdn.net/qq_45556599)|华北电力大学
 何煊||华北电力大学
+皮钱超|[Github](https://github.com/pidada)|厦门大学
