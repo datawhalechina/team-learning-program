@@ -1,6 +1,4 @@
-﻿
-
-## 简介
+﻿## 简介
 
 本项目主要存储Datawhale组队学习中“编程、数据结构与算法”方向的资料。
 
@@ -13,6 +11,7 @@
 - [编程实践（LeetCode 分类练习）](https://github.com/datawhalechina/team-learning-program/tree/master/LeetCodeClassification)
 - [编程实践（LeetCode 腾讯精选练习50）](https://github.com/datawhalechina/team-learning-program/tree/master/LeetCodeTencent)
 - [编程实践（Python 爬虫）](https://github.com/datawhalechina/team-learning-program/tree/master/WebSpider)
+- [编程实践（Python综合）](https://github.com/datawhalechina/team-learning-program/tree/master/ProjectPractice)
 
 
 ## 备注
@@ -26,7 +25,3 @@
 - [team-learning-cv](https://github.com/datawhalechina/team-learning-cv)：主要存储Datawhale组队学习中“计算机视觉”方向的资料。
 - [team-learning-rs](https://github.com/datawhalechina/team-learning-rs)：主要存储Datawhale组队学习中“推荐系统”方向的资料。
 - [team-learning-rl](https://github.com/datawhalechina/team-learning-rl)：主要存储Datawhale组队学习中“强化学习”方向的资料。
-
-
-
-
