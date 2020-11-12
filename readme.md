@@ -12,6 +12,7 @@
 - [编程实践（LeetCode 腾讯精选练习50）](https://github.com/datawhalechina/team-learning-program/tree/master/LeetCodeTencent)
 - [编程实践（Python 爬虫）](https://github.com/datawhalechina/team-learning-program/tree/master/WebSpider)
 - [编程实践（Python综合）](https://github.com/datawhalechina/team-learning-program/tree/master/ProjectPractice)
+- [编程实践（设计模式）](https://github.com/datawhalechina/team-learning-program/tree/master/DesignPattern)
 
 
 ## 备注
