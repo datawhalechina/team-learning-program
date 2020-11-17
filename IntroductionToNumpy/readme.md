@@ -1,7 +1,9 @@
-﻿# 编程实践（Numpy）上
+﻿
+
+# 编程实践（Numpy）上
 
 ## 基本信息
-- 贡献人员：韩绘锦、左秉文、王彦淳
+
 - 学习周期：13天，每天平均花费时间3小时-5小时不等，根据个人学习接受能力强弱有所浮动。
 - 学习形式：理论学习 + 练习
 - 人群定位：有一定python编程的基础。
@@ -42,14 +44,18 @@
 - 掌握numpy中排序搜索计数的相关函数。
 - 掌握numpy中关于集合的操作，比如：如何构建集合，集合的交并差集及异或操作等。
 
-## 备注
 
-有关组队学习的开源内容
 
-- [team-learning](https://github.com/datawhalechina/team-learning)：主要展示Datawhale的组队学习计划。
-- [team-learning-program](https://github.com/datawhalechina/team-learning-program)：主要存储Datawhale组队学习中“编程、数据结构与算法”方向的资料。
-- [team-learning-data-mining](https://github.com/datawhalechina/team-learning-data-mining)：主要存储Datawhale组队学习中“数据挖掘/机器学习”方向的资料。
-- [team-learning-nlp](https://github.com/datawhalechina/team-learning-nlp)：主要存储Datawhale组队学习中“自然语言处理”方向的资料。
-- [team-learning-cv](https://github.com/datawhalechina/team-learning-cv)：主要存储Datawhale组队学习中“计算机视觉”方向的资料。
-- [team-learning-rs](https://github.com/datawhalechina/team-learning-rs)：主要存储Datawhale组队学习中“推荐系统”方向的资料。
-- [team-learning-rl](https://github.com/datawhalechina/team-learning-rl)：主要存储Datawhale组队学习中“强化学习”方向的资料。
+
+---
+# 贡献人员
+
+
+姓名 | 博客|备注
+---|---|---
+马燕鹏|[CSDN](https://lsgogroup.blog.csdn.net/)<br>微信公众号：LSGO软件技术团队|华北电力大学
+韩绘锦|[CSDN](https://blog.csdn.net/weixin_45569785)|华北电力大学
+左秉文|[CSDN](https://me.csdn.net/blog/weixin_45568353)|华北电力大学
+王彦淳||华北电力大学
+刘雯静|[Github](https://github.com/evenson5)|理商双学士，曾任职基金研究员，高级分析师
+
