@@ -50,7 +50,7 @@
 
 ## 基本信息
 
-- 学习周期：9天，每天平均花费时间3小时-5小时不等，根据个人学习接受能力强弱有所浮动。
+- 学习周期：11天，每天平均花费时间3小时-5小时不等，根据个人学习接受能力强弱有所浮动。
 - 学习形式：理论学习 + 练习
 - 人群定位：有一定python编程的基础。
 - 先修内容：[Python编程语言](https://github.com/datawhalechina/team-learning-program/tree/master/PythonLanguage)
@@ -95,6 +95,11 @@
 - 熟悉 Numpy 如何处理矩阵的各种分解，如SVD、QR、Cholesky分解
 - 熟悉 Numyp 如何处理矩阵的范数、行列式和秩
 - 熟悉 Numpy 如何处理逆矩阵和线性方程组求解
+
+
+
+### Task05 : 实践大作业（2天）
+- 完成大作业的任务
 
 
 
