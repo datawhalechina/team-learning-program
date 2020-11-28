@@ -370,10 +370,6 @@ np.random.seed(2002)
 rand_arr = np.random.random([5,3])
 ```
 
-
-
-
-
 **（2）将numpy数组a中打印的项数限制为最多6个元素。**
 
 【知识点：输入和输出】
