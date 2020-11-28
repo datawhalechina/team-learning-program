@@ -381,8 +381,6 @@ import numpy as np
 a = np.arange(15)
 ```
 
-
-
 **（3）打印完整的numpy数组a而不中断。**
 
 【知识点：输入和输出】
