@@ -13,6 +13,7 @@
 - [编程实践（Python 爬虫）](https://github.com/datawhalechina/team-learning-program/tree/master/WebSpider)
 - [编程实践（Python综合）](https://github.com/datawhalechina/team-learning-program/tree/master/ProjectPractice)
 - [编程实践（设计模式）](https://github.com/datawhalechina/team-learning-program/tree/master/DesignPattern)
+- [编程实践（欢欢喜喜情人节）](https://github.com/datawhalechina/team-learning-program/tree/master/ValentineDay)
 
 
 ## 备注
