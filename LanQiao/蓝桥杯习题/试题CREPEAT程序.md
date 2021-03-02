@@ -1,0 +1,1034 @@
+## 试题 C: REPEAT 程序
+
+本题总分：10 分
+
+**【问题描述】**
+
+附件 prog.txt 中是一个用某种语言写的程序。
+其中 REPEAT k 表示一个次数为 k 的循环。循环控制的范围由缩进表达，
+从次行开始连续的缩进比该行多的（前面的空白更长的）为循环包含的内容。
+例如如下片段：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20201014223501241.png#pic_center)
+
+
+该片段中从 A = A + 4 所在的行到 A = A + 8 所在的行都在第一行的
+循环两次中。
+
+		REPEAT 6: 所在的行到 A = A + 7 所在的行都在 REPEAT 5: 循环中。
+		A = A + 5 实际总共的循环次数是 2 × 5 × 6 = 60 次。
+		请问该程序执行完毕之后，A 的值是多少？
+
+**【答案提交】**
+
+这是一道结果填空题，你只需要算出结果后提交即可。本题的结果为一个
+整数，在提交答案时只填写这个整数，填写多余的内容将无法得分。
+### 在txt里面对循环哪里简单做个替换就ok了
+
+
+
+```
+A = 0
+for i in range( 2):
+    A = A + 4
+    for i in range( 5):
+        for i in range( 6):
+            A = A + 5
+        A = A + 7
+    for i in range( 6):
+        A = A + 7
+        for i in range( 4):
+            A = A + 2
+            A = A + 7
+        A = A + 2
+    for i in range( 7):
+        for i in range( 4):
+            A = A + 8
+            A = A + 7
+            A = A + 4
+            A = A + 5
+        A = A + 8
+    for i in range( 8):
+        A = A + 5
+        for i in range( 1):
+            A = A + 2
+        for i in range( 7):
+            A = A + 5
+        A = A + 5
+    for i in range( 2):
+        for i in range( 3):
+            A = A + 1
+        A = A + 1
+    for i in range( 5):
+        A = A + 1
+    for i in range( 9):
+        for i in range( 6):
+            A = A + 5
+            A = A + 1
+        for i in range( 6):
+            A = A + 2
+            A = A + 8
+            A = A + 3
+        for i in range( 2):
+            A = A + 5
+        for i in range( 3):
+            A = A + 9
+        for i in range( 1):
+            A = A + 4
+        for i in range( 2):
+            A = A + 9
+        for i in range( 1):
+            A = A + 6
+            A = A + 6
+            A = A + 4
+        for i in range( 3):
+            A = A + 7
+        A = A + 1
+        for i in range( 2):
+            A = A + 3
+        for i in range( 5):
+            A = A + 2
+            A = A + 5
+            A = A + 2
+        A = A + 4
+    A = A + 3
+for i in range( 4):
+    A = A + 4
+    A = A + 3
+    A = A + 7
+    for i in range( 5):
+        for i in range( 4):
+            A = A + 5
+            A = A + 7
+        for i in range( 5):
+            A = A + 3
+        for i in range( 3):
+            A = A + 3
+            A = A + 1
+        A = A + 8
+        A = A + 2
+        for i in range( 9):
+            A = A + 5
+        for i in range( 1):
+            A = A + 5
+        A = A + 2
+    A = A + 8
+A = A + 6
+for i in range( 3):
+    for i in range( 4):
+        A = A + 9
+        for i in range( 5):
+            A = A + 2
+        A = A + 1
+    for i in range( 9):
+        A = A + 9
+        A = A + 2
+        for i in range( 1):
+            A = A + 6
+            A = A + 8
+        for i in range( 2):
+            A = A + 9
+            A = A + 4
+        A = A + 7
+    for i in range( 2):
+        for i in range( 7):
+            A = A + 3
+            A = A + 5
+        for i in range( 3):
+            A = A + 5
+            A = A + 3
+            A = A + 6
+            A = A + 4
+        for i in range( 9):
+            A = A + 2
+            A = A + 8
+            A = A + 2
+        A = A + 3
+    for i in range( 2):
+        for i in range( 8):
+            A = A + 5
+            A = A + 1
+        A = A + 6
+        A = A + 1
+    A = A + 2
+    for i in range( 6):
+        for i in range( 1):
+            A = A + 3
+        for i in range( 1):
+            A = A + 2
+        for i in range( 4):
+            A = A + 7
+            A = A + 1
+        A = A + 8
+        for i in range( 6):
+            A = A + 5
+        for i in range( 6):
+            A = A + 3
+        for i in range( 2):
+            A = A + 2
+            A = A + 9
+        A = A + 7
+    for i in range( 9):
+        A = A + 8
+        for i in range( 9):
+            A = A + 8
+            A = A + 9
+            A = A + 3
+        A = A + 2
+        for i in range( 6):
+            A = A + 3
+        for i in range( 9):
+            A = A + 1
+        A = A + 9
+        A = A + 5
+        for i in range( 2):
+            A = A + 4
+            A = A + 9
+        A = A + 8
+        for i in range( 5):
+            A = A + 6
+            A = A + 9
+        A = A + 1
+    for i in range( 1):
+        A = A + 4
+    A = A + 2
+    for i in range( 9):
+        for i in range( 3):
+            A = A + 4
+        for i in range( 7):
+            A = A + 8
+            A = A + 3
+        for i in range( 5):
+            A = A + 9
+        for i in range( 8):
+            A = A + 9
+            A = A + 8
+        for i in range( 4):
+            A = A + 7
+        A = A + 7
+    A = A + 3
+A = A + 5
+for i in range( 6):
+    A = A + 7
+for i in range( 7):
+    A = A + 2
+    A = A + 2
+A = A + 1
+for i in range( 8):
+    for i in range( 1):
+        for i in range( 4):
+            A = A + 6
+            A = A + 6
+            A = A + 2
+        for i in range( 5):
+            A = A + 4
+            A = A + 8
+            A = A + 4
+        for i in range( 1):
+            A = A + 5
+        for i in range( 7):
+            A = A + 8
+        for i in range( 6):
+            A = A + 4
+        A = A + 4
+        A = A + 8
+        for i in range( 4):
+            A = A + 2
+        for i in range( 2):
+            A = A + 4
+        for i in range( 2):
+            A = A + 3
+        for i in range( 1):
+            A = A + 2
+        A = A + 8
+        for i in range( 2):
+            A = A + 7
+        for i in range( 8):
+            A = A + 6
+            A = A + 1
+        A = A + 7
+    for i in range( 8):
+        A = A + 2
+    for i in range( 8):
+        for i in range( 6):
+            A = A + 1
+            A = A + 6
+        for i in range( 2):
+            A = A + 4
+            A = A + 1
+        A = A + 7
+    A = A + 4
+for i in range( 4):
+    for i in range( 9):
+        A = A + 2
+    for i in range( 1):
+        A = A + 2
+    A = A + 5
+for i in range( 8):
+    for i in range( 6):
+        A = A + 3
+    for i in range( 4):
+        A = A + 1
+        A = A + 6
+        A = A + 1
+    for i in range( 7):
+        A = A + 7
+        for i in range( 7):
+            A = A + 3
+            A = A + 9
+            A = A + 1
+            A = A + 9
+        for i in range( 3):
+            A = A + 5
+        A = A + 5
+        A = A + 6
+        A = A + 2
+    for i in range( 1):
+        A = A + 4
+    for i in range( 2):
+        A = A + 7
+    for i in range( 1):
+        A = A + 7
+        for i in range( 4):
+            A = A + 7
+        A = A + 2
+        for i in range( 5):
+            A = A + 9
+            A = A + 1
+            A = A + 9
+            A = A + 5
+            A = A + 9
+        for i in range( 5):
+            A = A + 5
+        for i in range( 1):
+            A = A + 6
+        for i in range( 2):
+            A = A + 3
+            A = A + 2
+            A = A + 6
+            A = A + 8
+            A = A + 8
+            A = A + 7
+        A = A + 5
+    A = A + 5
+for i in range( 2):
+    A = A + 1
+    A = A + 7
+A = A + 3
+for i in range( 2):
+    A = A + 7
+A = A + 1
+A = A + 4
+for i in range( 1):
+    for i in range( 7):
+        for i in range( 2):
+            A = A + 3
+            A = A + 5
+            A = A + 2
+        A = A + 6
+    A = A + 1
+A = A + 2
+A = A + 4
+A = A + 9
+for i in range( 1):
+    A = A + 8
+for i in range( 8):
+    for i in range( 4):
+        for i in range( 8):
+            A = A + 4
+        for i in range( 3):
+            A = A + 1
+            A = A + 8
+        for i in range( 7):
+            A = A + 8
+        for i in range( 7):
+            A = A + 7
+        A = A + 7
+        for i in range( 7):
+            A = A + 6
+        for i in range( 5):
+            A = A + 9
+        A = A + 3
+        for i in range( 4):
+            A = A + 5
+        A = A + 5
+    A = A + 4
+    for i in range( 9):
+        for i in range( 3):
+            A = A + 4
+            A = A + 3
+            A = A + 6
+        for i in range( 1):
+            A = A + 3
+            A = A + 3
+            A = A + 6
+        for i in range( 6):
+            A = A + 7
+            A = A + 7
+            A = A + 5
+            A = A + 5
+            A = A + 1
+            A = A + 2
+        A = A + 6
+        A = A + 6
+    for i in range( 9):
+        A = A + 6
+    for i in range( 1):
+        for i in range( 2):
+            A = A + 4
+            A = A + 7
+        for i in range( 3):
+            A = A + 6
+        for i in range( 5):
+            A = A + 3
+        A = A + 6
+        for i in range( 9):
+            A = A + 3
+        A = A + 6
+    for i in range( 5):
+        A = A + 8
+        A = A + 8
+        for i in range( 3):
+            A = A + 7
+            A = A + 9
+            A = A + 8
+            A = A + 3
+        A = A + 3
+    A = A + 9
+for i in range( 6):
+    A = A + 9
+A = A + 1
+for i in range( 4):
+    for i in range( 1):
+        A = A + 7
+    for i in range( 9):
+        A = A + 2
+        A = A + 9
+    A = A + 1
+A = A + 2
+A = A + 8
+A = A + 7
+A = A + 9
+A = A + 6
+for i in range( 4):
+    for i in range( 2):
+        A = A + 3
+    for i in range( 3):
+        A = A + 4
+    A = A + 4
+for i in range( 6):
+    A = A + 6
+A = A + 1
+A = A + 5
+A = A + 8
+for i in range( 2):
+    A = A + 6
+    for i in range( 1):
+        for i in range( 2):
+            A = A + 2
+        for i in range( 3):
+            A = A + 1
+        for i in range( 1):
+            A = A + 8
+            A = A + 7
+            A = A + 4
+            A = A + 2
+            A = A + 8
+        A = A + 4
+    for i in range( 5):
+        for i in range( 6):
+            A = A + 8
+        for i in range( 9):
+            A = A + 5
+        A = A + 5
+    for i in range( 5):
+        A = A + 5
+    for i in range( 3):
+        for i in range( 5):
+            A = A + 4
+        for i in range( 4):
+            A = A + 6
+            A = A + 3
+        for i in range( 7):
+            A = A + 3
+            A = A + 3
+            A = A + 1
+            A = A + 7
+            A = A + 7
+            A = A + 6
+            A = A + 5
+            A = A + 5
+        A = A + 6
+    for i in range( 1):
+        A = A + 9
+    A = A + 3
+    for i in range( 1):
+        for i in range( 1):
+            A = A + 1
+        for i in range( 8):
+            A = A + 5
+        for i in range( 8):
+            A = A + 6
+        for i in range( 4):
+            A = A + 9
+        A = A + 4
+    for i in range( 2):
+        A = A + 3
+        A = A + 7
+        for i in range( 5):
+            A = A + 7
+            A = A + 5
+            A = A + 8
+        A = A + 7
+        A = A + 8
+    A = A + 5
+    for i in range( 2):
+        A = A + 5
+    A = A + 7
+    A = A + 8
+A = A + 5
+A = A + 9
+for i in range( 2):
+    for i in range( 6):
+        A = A + 9
+        A = A + 1
+        A = A + 8
+        A = A + 7
+        A = A + 1
+        A = A + 5
+    for i in range( 3):
+        A = A + 3
+        A = A + 9
+        A = A + 7
+    for i in range( 3):
+        A = A + 9
+    A = A + 1
+    for i in range( 6):
+        A = A + 1
+    for i in range( 9):
+        for i in range( 7):
+            A = A + 3
+        for i in range( 5):
+            A = A + 5
+            A = A + 8
+            A = A + 8
+            A = A + 1
+            A = A + 2
+        for i in range( 4):
+            A = A + 6
+        for i in range( 3):
+            A = A + 3
+        A = A + 7
+    for i in range( 8):
+        for i in range( 1):
+            A = A + 7
+        A = A + 8
+        A = A + 3
+    A = A + 1
+A = A + 2
+A = A + 4
+A = A + 7
+for i in range( 1):
+    for i in range( 1):
+        for i in range( 1):
+            A = A + 4
+            A = A + 6
+        for i in range( 1):
+            A = A + 3
+            A = A + 9
+            A = A + 6
+        for i in range( 9):
+            A = A + 1
+            A = A + 6
+        for i in range( 5):
+            A = A + 3
+            A = A + 9
+        A = A + 5
+        A = A + 5
+    A = A + 7
+    A = A + 2
+    for i in range( 2):
+        A = A + 7
+    A = A + 7
+    for i in range( 7):
+        for i in range( 4):
+            A = A + 6
+        A = A + 8
+        for i in range( 6):
+            A = A + 6
+        for i in range( 2):
+            A = A + 1
+        A = A + 7
+        A = A + 6
+    A = A + 7
+    for i in range( 4):
+        for i in range( 7):
+            A = A + 1
+        for i in range( 2):
+            A = A + 2
+            A = A + 5
+        A = A + 8
+    A = A + 2
+A = A + 1
+A = A + 4
+for i in range( 8):
+    A = A + 5
+A = A + 6
+for i in range( 7):
+    for i in range( 6):
+        for i in range( 9):
+            A = A + 7
+            A = A + 8
+        for i in range( 4):
+            A = A + 6
+            A = A + 4
+            A = A + 3
+            A = A + 6
+        for i in range( 9):
+            A = A + 3
+        for i in range( 9):
+            A = A + 2
+        A = A + 7
+    A = A + 5
+    A = A + 2
+for i in range( 7):
+    for i in range( 8):
+        for i in range( 6):
+            A = A + 4
+            A = A + 9
+            A = A + 5
+            A = A + 3
+        A = A + 9
+    for i in range( 4):
+        for i in range( 1):
+            A = A + 6
+            A = A + 8
+        for i in range( 1):
+            A = A + 6
+        A = A + 4
+        A = A + 6
+    for i in range( 3):
+        A = A + 7
+        for i in range( 3):
+            A = A + 4
+            A = A + 4
+            A = A + 2
+        A = A + 3
+        A = A + 7
+    for i in range( 5):
+        A = A + 6
+        A = A + 5
+    for i in range( 1):
+        for i in range( 8):
+            A = A + 5
+        for i in range( 3):
+            A = A + 6
+        for i in range( 9):
+            A = A + 4
+        A = A + 3
+    for i in range( 6):
+        for i in range( 2):
+            A = A + 1
+        A = A + 5
+    A = A + 2
+A = A + 2
+A = A + 7
+for i in range( 4):
+    A = A + 7
+A = A + 9
+A = A + 2
+for i in range( 8):
+    A = A + 9
+    for i in range( 9):
+        for i in range( 2):
+            A = A + 3
+            A = A + 2
+            A = A + 1
+            A = A + 5
+        for i in range( 9):
+            A = A + 1
+            A = A + 3
+        A = A + 9
+        for i in range( 7):
+            A = A + 2
+        for i in range( 5):
+            A = A + 9
+            A = A + 3
+        for i in range( 2):
+            A = A + 4
+        for i in range( 8):
+            A = A + 9
+        for i in range( 5):
+            A = A + 5
+            A = A + 4
+        A = A + 2
+    A = A + 4
+    for i in range( 6):
+        A = A + 2
+        for i in range( 5):
+            A = A + 7
+            A = A + 7
+            A = A + 8
+            A = A + 3
+        for i in range( 8):
+            A = A + 2
+            A = A + 5
+        for i in range( 1):
+            A = A + 8
+            A = A + 5
+            A = A + 1
+            A = A + 1
+        A = A + 5
+        for i in range( 2):
+            A = A + 6
+        for i in range( 6):
+            A = A + 9
+            A = A + 2
+        A = A + 5
+        for i in range( 4):
+            A = A + 7
+        A = A + 1
+        for i in range( 6):
+            A = A + 8
+        A = A + 4
+    for i in range( 3):
+        for i in range( 2):
+            A = A + 1
+            A = A + 5
+        for i in range( 2):
+            A = A + 7
+        for i in range( 9):
+            A = A + 6
+            A = A + 8
+            A = A + 9
+        A = A + 5
+    for i in range( 9):
+        for i in range( 3):
+            A = A + 7
+            A = A + 7
+        A = A + 9
+        A = A + 7
+        for i in range( 5):
+            A = A + 7
+            A = A + 2
+        A = A + 1
+    A = A + 8
+    A = A + 3
+    A = A + 5
+A = A + 1
+for i in range( 8):
+    A = A + 4
+A = A + 2
+A = A + 2
+A = A + 8
+for i in range( 4):
+    for i in range( 4):
+        A = A + 8
+        for i in range( 7):
+            A = A + 5
+            A = A + 2
+        for i in range( 2):
+            A = A + 6
+        for i in range( 4):
+            A = A + 8
+            A = A + 6
+        A = A + 1
+    A = A + 3
+A = A + 2
+A = A + 7
+A = A + 4
+for i in range( 8):
+    A = A + 2
+    A = A + 4
+for i in range( 5):
+    for i in range( 3):
+        for i in range( 6):
+            A = A + 8
+            A = A + 1
+        A = A + 6
+    A = A + 5
+    A = A + 9
+for i in range( 8):
+    A = A + 7
+for i in range( 6):
+    A = A + 4
+A = A + 5
+for i in range( 3):
+    A = A + 1
+    for i in range( 1):
+        for i in range( 5):
+            A = A + 6
+        A = A + 2
+    for i in range( 9):
+        for i in range( 5):
+            A = A + 9
+            A = A + 3
+        for i in range( 9):
+            A = A + 9
+        A = A + 8
+    for i in range( 8):
+        for i in range( 5):
+            A = A + 9
+            A = A + 4
+        for i in range( 9):
+            A = A + 3
+        A = A + 4
+    A = A + 5
+for i in range( 9):
+    for i in range( 7):
+        A = A + 5
+    for i in range( 3):
+        A = A + 7
+    for i in range( 9):
+        for i in range( 6):
+            A = A + 4
+        A = A + 6
+    for i in range( 5):
+        for i in range( 6):
+            A = A + 5
+            A = A + 3
+        A = A + 3
+    A = A + 3
+    A = A + 5
+    for i in range( 7):
+        A = A + 5
+        for i in range( 2):
+            A = A + 5
+            A = A + 6
+        for i in range( 2):
+            A = A + 2
+        A = A + 5
+    A = A + 3
+A = A + 5
+A = A + 5
+for i in range( 4):
+    A = A + 2
+    A = A + 1
+    for i in range( 9):
+        A = A + 9
+        A = A + 5
+        A = A + 6
+        A = A + 2
+        A = A + 2
+        A = A + 5
+    for i in range( 9):
+        A = A + 5
+    A = A + 4
+    for i in range( 4):
+        for i in range( 4):
+            A = A + 1
+            A = A + 2
+        for i in range( 6):
+            A = A + 9
+            A = A + 3
+        for i in range( 2):
+            A = A + 5
+            A = A + 1
+            A = A + 1
+            A = A + 3
+        A = A + 8
+        for i in range( 7):
+            A = A + 4
+        for i in range( 6):
+            A = A + 9
+        for i in range( 5):
+            A = A + 9
+            A = A + 8
+            A = A + 3
+        A = A + 9
+        A = A + 4
+    A = A + 6
+for i in range( 7):
+    A = A + 9
+for i in range( 9):
+    A = A + 4
+    A = A + 9
+    A = A + 1
+    A = A + 3
+    for i in range( 5):
+        for i in range( 1):
+            A = A + 4
+            A = A + 4
+        for i in range( 8):
+            A = A + 9
+            A = A + 6
+            A = A + 2
+        for i in range( 3):
+            A = A + 4
+            A = A + 4
+        for i in range( 3):
+            A = A + 5
+            A = A + 2
+            A = A + 8
+            A = A + 3
+            A = A + 6
+            A = A + 4
+            A = A + 9
+            A = A + 1
+        A = A + 9
+        A = A + 5
+        A = A + 3
+        for i in range( 3):
+            A = A + 2
+            A = A + 5
+            A = A + 8
+            A = A + 2
+        A = A + 5
+    for i in range( 8):
+        for i in range( 2):
+            A = A + 6
+        A = A + 7
+    A = A + 6
+    A = A + 9
+    A = A + 2
+for i in range( 2):
+    A = A + 3
+    for i in range( 8):
+        A = A + 7
+        A = A + 2
+        A = A + 1
+        A = A + 4
+        A = A + 1
+        A = A + 5
+    A = A + 2
+    A = A + 1
+    for i in range( 1):
+        A = A + 1
+    for i in range( 6):
+        A = A + 4
+        A = A + 3
+    A = A + 3
+    for i in range( 5):
+        A = A + 3
+    for i in range( 6):
+        for i in range( 1):
+            A = A + 5
+            A = A + 7
+            A = A + 7
+            A = A + 7
+        for i in range( 5):
+            A = A + 9
+        A = A + 7
+        for i in range( 5):
+            A = A + 9
+            A = A + 1
+            A = A + 9
+        A = A + 8
+        for i in range( 1):
+            A = A + 2
+        for i in range( 5):
+            A = A + 8
+        for i in range( 3):
+            A = A + 2
+            A = A + 9
+        A = A + 6
+        A = A + 3
+    for i in range( 5):
+        for i in range( 6):
+            A = A + 5
+            A = A + 5
+        for i in range( 4):
+            A = A + 5
+        A = A + 4
+        for i in range( 8):
+            A = A + 9
+            A = A + 1
+        for i in range( 8):
+            A = A + 8
+            A = A + 1
+        A = A + 4
+        for i in range( 6):
+            A = A + 6
+        for i in range( 2):
+            A = A + 3
+            A = A + 9
+            A = A + 6
+            A = A + 9
+        for i in range( 1):
+            A = A + 4
+        for i in range( 3):
+            A = A + 3
+            A = A + 4
+            A = A + 2
+            A = A + 8
+        for i in range( 2):
+            A = A + 4
+        A = A + 1
+        for i in range( 9):
+            A = A + 2
+        A = A + 9
+    A = A + 7
+for i in range( 7):
+    for i in range( 7):
+        for i in range( 5):
+            A = A + 7
+        for i in range( 5):
+            A = A + 1
+        A = A + 1
+    for i in range( 5):
+        A = A + 6
+        for i in range( 1):
+            A = A + 4
+        for i in range( 9):
+            A = A + 4
+        A = A + 1
+    for i in range( 6):
+        A = A + 8
+        A = A + 5
+        for i in range( 1):
+            A = A + 4
+        for i in range( 5):
+            A = A + 8
+            A = A + 7
+        A = A + 2
+    for i in range( 3):
+        A = A + 3
+    for i in range( 8):
+        for i in range( 8):
+            A = A + 4
+        A = A + 7
+        for i in range( 5):
+            A = A + 1
+        for i in range( 8):
+            A = A + 7
+            A = A + 8
+            A = A + 4
+        A = A + 7
+        A = A + 6
+    A = A + 9
+    A = A + 5
+for i in range( 3):
+    A = A + 5
+    for i in range( 9):
+        A = A + 1
+    A = A + 7
+for i in range( 1):
+    A = A + 8
+A = A + 4
+for i in range( 8):
+    for i in range( 7):
+        A = A + 2
+        for i in range( 4):
+            A = A + 6
+        A = A + 6
+    for i in range( 1):
+        A = A + 7
+    A = A + 1
+for i in range( 9):
+    for i in range( 5):
+        A = A + 6
+        A = A + 5
+        for i in range( 7):
+            A = A + 3
+            A = A + 6
+        A = A + 8
+    for i in range( 2):
+        A = A + 7
+    A = A + 1
+    A = A + 9
+    for i in range( 3):
+        for i in range( 3):
+            A = A + 5
+print(A)
+```
+
+    241830
