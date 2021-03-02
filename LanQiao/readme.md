@@ -4,7 +4,7 @@
 
 ## 基本信息
 
-- 学习周期：30天，每天平均花费时间2小时-5小时不等，根据个人学习接受能力强弱有所浮动。
+- 学习周期：12天，每天平均花费时间2小时-5小时不等，根据个人学习接受能力强弱有所浮动。
 - 学习形式：练习
 - 人群定位：有一定编程基础，对学习算法有需求的学员。
 - 先修内容：[Python编程语言](https://github.com/datawhalechina/team-learning-program/tree/master/PythonLanguage)、[数据结构与算法](https://github.com/datawhalechina/team-learning-program/tree/master/DataStructureAndAlgorithm)、[编程实践（LeetCode 分类练习）](https://github.com/datawhalechina/team-learning-program/tree/master/LeetCodeClassification)
@@ -19,10 +19,8 @@
 ## 任务安排
 
 ### Task00：熟悉规则（1天）
-
 - 组队、修改群昵称
 - 熟悉打卡规则
-
 ### Task01：热身练习（2天）
 - 完成热身练习文件夹中的7道题目
 - 熟悉基本输入输出及蓝桥杯的练习系统的使用方法。
