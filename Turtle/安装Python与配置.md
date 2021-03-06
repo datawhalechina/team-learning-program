@@ -124,7 +124,7 @@ Anaconda 是一个工具包，将 Python 和许多与科学计算相关的库捆
 
 此处先介绍实际学习过程中常用的功能。
 
-### （1）cell类型选择
+### 2.3.1 cell类型选择
 
 在 Jupyter 中，每个 cell 除了代码以外，还可以使用 Markdown 语法输入文本内容，以及尚未确定格式的草稿。
 - 选定一个 cell 后，选择 code 则是代码内容；
@@ -143,7 +143,7 @@ Anaconda 是一个工具包，将 Python 和许多与科学计算相关的库捆
 
 可以看出，jupyter 还是个不错的笔记工具，同时，也非常适合编写数据分析报告。
 
-### （2）cell不同模式及快捷键
+### 2.3.2 cell不同模式及快捷键
 
 cell 有两种不同模式，选中 cell 时是 **command（命令）** 模式，而单击 cell 内，出现光标闪烁时，则是进入了 cell 内容的 **edit（编辑）** 模式，在编辑模式下，可以进行内容输入，而在命令模式下，则可使用一些 cell 快捷键对其进行操作。
 
@@ -157,20 +157,20 @@ y | 转为code模式 | r | 转为raw模式
 z | 撤销操作 | 双击d | 删除该cell
 
 
-### （3）JupyterLab 文件管理系统
+### 2.3.3 JupyterLab 文件管理系统
 
 相比 Notebook，JupyterLab 拥有非常便捷的文件管理系统，我们前面已经尝试，当创建一个新的`ipy`文件时，左侧文件栏将出现对应文件。JupyterLab 左侧就是其文件管理界面，在其中，我们可以进行文件创建、文件夹创建、文件上传等操作。
 
 ![文件管理系统](https://img-blog.csdnimg.cn/20210116230936963.png)
 
 
-### （4）JupyterLab 文件系统主目录及修改方式
+### 2.3.4 JupyterLab 文件系统主目录及修改方式
 
 那么，我们创建的`ipy`文件存在哪呢？<br>
 在 Anaconda 中，一般系统会默认 Jupyter 的主目录就是系统的文档目录。但文档目录在 C 盘下，如果是首次安装 Jupyter，并希望单独设置一个文件夹作为默认主目录，可以按照如下步骤进行操作：
 
 
-**在 Anaconda 中打开 CMD.exe Prompt，进入命令行界面**
+**（1）在 Anaconda 中打开 CMD.exe Prompt，进入命令行界面**
 
 ![CMD.exe Launch](https://img-blog.csdnimg.cn/20210116231238985.png)
 
@@ -181,7 +181,7 @@ z | 撤销操作 | 双击d | 删除该cell
 ![console](https://img-blog.csdnimg.cn/20210116231701231.png)
 
 
-**生成 Jupyter 配置文件**
+**（2）生成 Jupyter 配置文件**
 
 在命令行中，输入
 
@@ -195,7 +195,7 @@ jupyter notebook --generate-config
 
 ![生成Jupyter配置文件](https://img-blog.csdnimg.cn/20210116232619111.png)
 
-**修改主目录配置**
+**（3）修改主目录配置**
 
 接下来，按照命令行中提示的配置文件路径，找到配置文件。
 
@@ -212,7 +212,7 @@ jupyter notebook --generate-config
 将对应位置的#号删除，使其配置生效，并在等号后面输入新的主目录文件夹位置（自行选择文件位置），保存退出，并在**重启Jupyter后生效**。
 
 
-**查看新的主目录**
+**（4）查看新的主目录**
 
 进入对应文件夹位置，查看文件夹内文件和 JupyterLab 内显示文件是否一致。
 
@@ -224,7 +224,7 @@ jupyter notebook --generate-config
 
 > 不难发现，Jupyter文件系统主目录就类似于其他编程语言的操作空间概念。
 
-### （5）停止`ipy`进程
+### 2.3.5 停止`ipy`进程
 
 由于 Python 代码在运行过程中，对象都存储在内存中，因此，为了合理控制内存，在必要的情况下需要手动终止 Jupyter 进程。此时可以使用左侧栏的 KERNEL SESSIONS 功能，进行操作。
 
