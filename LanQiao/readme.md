@@ -12,7 +12,7 @@
 
 ## 学习目标
 
-每天刷三道题，利用30天对于蓝桥杯这个比赛有一个初步的了解，掌握基本的蓝桥杯赛题解法。
+每天刷三道题，利用12天对于蓝桥杯这个比赛有一个初步的了解，掌握基本的蓝桥杯赛题解法。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210302103259975.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTU2OTc4NQ==,size_16,color_FFFFFF,t_70)
 
@@ -39,4 +39,6 @@
 - CSDN：https://blog.csdn.net/weixin_45569785
 
 黄建国：华北电力大学
+
+荆宝加：华北电力大学
 
