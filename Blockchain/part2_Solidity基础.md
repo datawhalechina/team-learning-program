@@ -984,7 +984,7 @@ contract C {
 
 ## 四、练习题
 
-### 4.1`将固定长度字节数组转化为`string类型
+### 4.1 将固定长度字节数组转化为`string`类型
 
 ```javascript
 pragma solidity ^0.4.0;
@@ -998,7 +998,8 @@ contract bytes32tostring{
 }
 ```
 
-### 4.2 
+### 4.2 实现一个带有简单逻辑判断及多种数学运算的Solidity程序
+
 
 
 **参考自：**
