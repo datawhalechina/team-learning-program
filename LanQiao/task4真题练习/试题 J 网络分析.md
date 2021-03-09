@@ -56,7 +56,7 @@
 >
 > 对于所有评测用例，1 ≤ n ≤ 10000，1 ≤ m ≤ 100000，1 ≤ t ≤ 100。
 
-
+参考答案：
 
 ```
 n,m=map(int,input().strip().split())
@@ -76,7 +76,6 @@ re=[0 for i in range(n)]
 def f(map_,a,b,re,visited):
     for i in range(n):
         if map_[a-1][i]==1:
-##            print(visited)
             if i not in visited:
                 f(map_,i+1,b,re,visited|{i})
             else:
@@ -91,15 +90,12 @@ for or1_2,a,b in  message1:
     if or1_2=='1':
         map_[a-1][b-1]=1
         map_[b-1][a-1]=1
-##        print('a',a,'b',b)
-##        print('map',map_)
     else:
         temp=[0 for i in range(n)]
         f(map_,a,b,temp,{a-1})
 
         for i in range(len(re)):
             re[i]+=temp[i]
-##        print('re',re)
         
 for i in re:
     print(i)

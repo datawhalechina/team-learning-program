@@ -1,8 +1,17 @@
-Huffuman树
+# Huffuman树
+
+
+
+
 
 时间限制: 1Sec 内存限制: 128MB 提交: 1316 解决: 750
 
+提交地址：
+
+https://www.dotcpp.com/oj/problem1462.html
+
 **题目描述**
+
 ```
 Huffman树在编码中有着广泛的应用。在这里，我们只关心Huffman树的构造过程。
 

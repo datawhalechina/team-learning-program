@@ -61,6 +61,8 @@
 >
 > 对于所有评测用例，1 ≤ n ≤ 100000，1 ≤ wi ≤ 1000。
 
+参考答案：
+
 
 ```
 n=int(input())
@@ -96,204 +98,26 @@ print(res)
 
 
 
-```
-
-```
-
-
-```
-
-```
-
-
-```
-def multiply( num1, num2):
-    numDict = {'0':0, '1':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9}
-    l1 = list(num1)
-    l2 = list(num2)
-    n1 = 0
-    n2 = 0
-    bit1 = len(num1) - 1
-    bit2 = len(num2) - 1
-    for i in l1:
-        for key in numDict.keys():
-            if i == key:
-                n1 += numDict[key] * 10**bit1
-                bit1 -= 1
-    for j in l2:
-        for key in numDict.keys():
-            if j == key:
-                n2 += numDict[key] * 10**bit2
-                bit2 -= 1
-    return str(n1*n2)
-def multiply( num1, num2):
-    """
-    :type num1: str
-    :type num2: str
-    :rtype: str
-    """
-    if num1=='0' or num2=='0':
-        return '0'
-    res = [0]*(len(num1)+len(num2))
-    for index1,i in enumerate(num1[::-1]):
-        for index2,j in enumerate(num2[::-1]):
-            tmp = res[index1+index2] + int(i)*int(j)
-            res[index1+index2] = tmp%10
-            res[index1+index2+1] += tmp//10
-                     
-    result = ''
-        
-    for i in res[::-1]:
-        result+=str(i)
-        
-                
-    return result.lstrip('0')
-def sum_(num_lis):
-    sum_='1'
-    for string in num_lis:
-        sum_=multiply(sum_,string)
-    return sum_
-def run(num_lis):
-    print('Input list',num_lis)
-    print('The sum is',int(sum_(num_lis)))
-def main(num_lis):
-    run(num_lis)
-main(['61431','1002'])
-
-```
-
-    Input list ['61431', '1002']
-    The sum is 61553862
-
-
-
-```
-61431*1002
-```
 
 
 
 
-    61553862
 
 
 
 
-```
-def add_(num1,num2):
-    a=list(map(int,list(num1)))
-    b=list(map(int,list(num2)))
-    a=a[::-1]
-    b=b[::-1]
-    a_point=0
-    b_point=0
-    carry=0
-    re=[]
-    while a_point<len(a) or b_point<len(b):
-        if a_point<len(a):
-            t1=a[a_point]
-        else:
-            t1=0
-        if b_point<len(b):
-            t2=b[b_point]
-        else:
-            t2=0
-        t=t1+t2+carry
-        re.append(str(t%10))
-        carry=t//10
-        a_point+=1
-        b_point+=1
-    if carry !=0:
-        re.append('1')
-    return ''.join(re[::-1])
-def sum_(num_lis):
-    sum_='0'
-    for string in num_lis:
-        sum_=add_(sum_,string)
-    return sum_
-def run(num_lis):
-    print('Input list',num_lis)
-    print('The sum is',int(sum_(num_lis)))
-def main(num_lis):
-    run(num_lis)
-main(['61431','1002'])
-```
-
-    Input list ['61431', '1002']
-    The sum is 62433
 
 
 
-```
-
-```
-
-
-```
-def main(num_lis):
-    print('Input list',num_lis)
-    print('The sum is',sum(map(int,num_lis)))
-main(['61431','1002'])
-```
-
-    Input list ['61431', '1002']
-    The sum is 62433
 
 
 
-```
-
-```
 
 
-```
-import random 
-alpha_x=random.randint(0,9)
-alpha_y=random.randint(0,9)
-print(alpha_x)
-print(alpha_y)
-star_set=set()
-while len(star_set)<8:
-    x=random.randint(0,9)
-    y=random.randint(0,9)
-    if x==alpha_x and y==alpha_y:
-        continue
-    else:
-        star_set.add((x,y))
-print(' ',end='')
-for i in range(10):
-    print(' ',i,sep='',end='')
-print()
-for x in range(10):
-    print(x,end='')
-    for y in range(9):
-        if x==alpha_x and y==alpha_y:
-            print(' ','X',sep='',end='')
-        
-        elif (x,y) in star_set:
-            print(' ','*',sep='',end='')
-        else:
-            print('  ',end='')
-    if x==alpha_x and 9==alpha_y:
-        print(' ',X,sep='')
-    elif (x,9)in star_set:
-        print(' ','*',sep='')
-    else:
-        print('  ')
-            
-        
-```
 
-    5
-    2
-      0 1 2 3 4 5 6 7 8 9
-    0             *      
-    1           *        
-    2     *              
-    3                    
-    4                    
-    5     X              
-    6       *            
-    7       *           *
-    8           *       *
-    9                    
+
+
+
+
+
+
