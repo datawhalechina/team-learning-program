@@ -133,7 +133,7 @@
 
 姓名 | 博客|备注
 ---|---|---
-马燕鹏|CSDN：https://lsgogroup.blog.csdn.net/<br>微信公众号：LSGO软件技术团队|华北电力大学
+马燕鹏|CSDN：https://lsgogroup.blog.csdn.net/<br>微信公众号：组队学习
 韩绘锦|CSDN：https://blog.csdn.net/weixin_45569785|华北电力大学
 姚行志|CSDN：https://blog.csdn.net/soulmate______|华北电力大学
 徐韬||华北电力大学
