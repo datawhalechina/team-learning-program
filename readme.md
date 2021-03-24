@@ -8,8 +8,6 @@
 - [SQL编程语言](https://github.com/datawhalechina/team-learning-sql)
 - [Python编程语言](https://github.com/datawhalechina/team-learning-program/tree/master/PythonLanguage)
 - [数据结构与算法](https://github.com/datawhalechina/team-learning-program/tree/master/DataStructureAndAlgorithm)
-- [编程实践（Scratch）](https://github.com/datawhalechina/team-learning-program/tree/master/Scratch)
-- [编程实践（Turtle）](https://github.com/datawhalechina/team-learning-program/tree/master/Turtle)
 - [编程实践（Numpy）](https://github.com/datawhalechina/team-learning-program/tree/master/IntroductionToNumpy)
 - [编程实践（Pandas）](https://github.com/datawhalechina/team-learning-program/tree/master/IntroductionToPandas)
 - [编程实践（LeetCode 分类练习）](https://github.com/datawhalechina/team-learning-program/tree/master/LeetCodeClassification)
@@ -19,6 +17,8 @@
 - [编程实践（区块链）](https://github.com/datawhalechina/team-learning-program/tree/master/Blockchain)
 - [编程实践（设计模式）](https://github.com/datawhalechina/team-learning-program/tree/master/DesignPattern)
 - [编程实践（数据可视化）](https://github.com/datawhalechina/fantastic-matplotlib)
+- [青少年编程（Scratch）](https://github.com/datawhalechina/team-learning-program/tree/master/Scratch)
+- [青少年编程（Turtle）](https://github.com/datawhalechina/team-learning-program/tree/master/Turtle)
 
 
 ## 备注
