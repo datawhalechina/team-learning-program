@@ -60,7 +60,6 @@ $ docker volume inspect datawhale
 ```bash
 $ docker run -d -P \
     --name web \
-    # -v my-vol:/usr/share/nginx/html \
     --mount source=datawhale,target=/usr/share/nginx/html \
     nginx:alpine
 ```
@@ -118,7 +117,6 @@ $ docker volume prune
 ```bash
 $ docker run -d -P \
     --name web \
-    # -v /src/webapp:/usr/share/nginx/html \
     --mount type=bind,source=/src/webapp,target=/usr/share/nginx/html \
     nginx:alpine
 ```
@@ -172,7 +170,6 @@ $ docker inspect web
 
 ```bash
 $ docker run --rm -it \
-   # -v $HOME/.bash_history:/root/.bash_history \
    --mount type=bind,source=$HOME/.bash_history,target=/root/.bash_history \
    ubuntu:18.04 \
    bash
