@@ -6,7 +6,7 @@
 
 关于docker compose的安装请移步[docker compose安装与卸载](https://vuepress.mirror.docker-practice.com/compose/install/)或根据[docker官网](https://docs.docker.com/compose/install/)进行安装。
 
-> 对于docker compose的学习推荐大家多看看一些项目的docker-compose.yml文件是怎么写的，慢慢模仿着去写很多就越来越熟练清晰了。在[Compose文件夹]()下也在网上收集了一些docker-compose.yml文件，欢迎大家一起来补充。
+> 对于docker compose的学习推荐大家多看看一些项目的docker-compose.yml文件是怎么写的，慢慢模仿着去写很多就越来越熟练清晰了。在[Compose文件夹](https://github.com/datawhalechina/team-learning-program/tree/master/Docker/Compose)下也在网上收集了一些docker-compose.yml文件，欢迎大家一起来补充。
 
 ## 内容大纲
 
