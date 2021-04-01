@@ -1,0 +1,29 @@
+```yaml
+version: "3"
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:management
+    hostname: myrabbitmq
+    ports: 
+        - "5672:5672"
+        - "15672:15672"
+    volumes: 
+        - rabbitmq-data:/var/lib/rabbitmq
+        
+volumes:
+    rabbitmq-data: 
+```
+
+查看服务状态
+
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp4gxru51ij31tm07e0ur.jpg)
+
+确定服务正常启动后在浏览器输入网址[http://localhost:15672](http://localhost:15672/#/)，进入RabbitMQ的登陆界面
+
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp4gy2a0irj309604cglp.jpg)
+
+默认用户名密码都是guest。登陆之后就可以进入到主界面了
+
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp4gyc2xe8j312m0j3whd.jpg)

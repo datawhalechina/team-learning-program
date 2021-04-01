@@ -4,6 +4,8 @@
 
 主要包括：
 
+- [Go编程语言](https://github.com/datawhalechina/go-talent)
+- [SQL编程语言](https://github.com/datawhalechina/team-learning-sql)
 - [Python编程语言](https://github.com/datawhalechina/team-learning-program/tree/master/PythonLanguage)
 - [数据结构与算法](https://github.com/datawhalechina/team-learning-program/tree/master/DataStructureAndAlgorithm)
 - [编程实践（Numpy）](https://github.com/datawhalechina/team-learning-program/tree/master/IntroductionToNumpy)
@@ -11,11 +13,12 @@
 - [编程实践（LeetCode 分类练习）](https://github.com/datawhalechina/team-learning-program/tree/master/LeetCodeClassification)
 - [编程实践（LeetCode 腾讯精选练习50）](https://github.com/datawhalechina/team-learning-program/tree/master/LeetCodeTencent)
 - [编程实践（Python 爬虫）](https://github.com/datawhalechina/team-learning-program/tree/master/WebSpider)
-- [编程实践（Python综合）](https://github.com/datawhalechina/team-learning-program/tree/master/ProjectPractice)
+- [编程实践（Python 综合）](https://github.com/datawhalechina/team-learning-program/tree/master/ProjectPractice)
+- [编程实践（区块链）](https://github.com/datawhalechina/team-learning-program/tree/master/Blockchain)
 - [编程实践（设计模式）](https://github.com/datawhalechina/team-learning-program/tree/master/DesignPattern)
-- [编程实践（欢欢喜喜情人节）](https://github.com/datawhalechina/team-learning-program/tree/master/ValentineDay)
-- [编程实践（青少年编程Turtle）](https://github.com/datawhalechina/team-learning-program/tree/master/Turtle)
-
+- [编程实践（数据可视化）](https://github.com/datawhalechina/fantastic-matplotlib)
+- [青少年编程（Scratch）](https://github.com/datawhalechina/team-learning-program/tree/master/Scratch)
+- [青少年编程（Turtle）](https://github.com/datawhalechina/team-learning-program/tree/master/Turtle)
 
 
 ## 备注

@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+
+  redis:
+    image: redis
+
+  redis-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      REDIS_HOST: redis
