@@ -8,6 +8,19 @@
 
 > 对于docker compose的学习推荐大家多看看一些项目的docker-compose.yml文件是怎么写的，慢慢模仿着去写很多就越来越熟练清晰了。在[Compose文件夹]()下也在网上收集了一些docker-compose.yml文件，欢迎大家一起来补充。
 
+## 内容大纲
+
+- 什么是docker compose
+- 如何使用docker compose
+- docker compose基本使用
+  - 启动服务
+  - 查看服务状态
+  - 停止或删除服务
+  - 进入服务
+  - 查看服务输出日志
+- Compose模板文件
+- Compose命令
+
 ## 什么是docker compose
 
 通过之前的介绍，我们知道使用一个 `Dockerfile` 模板文件，可以让用户很方便的定义一个单独的应用容器。然而，在日常工作中，经常会碰到需要多个容器相互配合来完成某项任务的情况。例如要实现一个 Web 项目，除了 Web 服务容器本身，往往还需要再加上后端的数据库服务容器，甚至还包括负载均衡容器等。
@@ -141,7 +154,7 @@ docker-compose down
 
 其中stop是直接停止services，而down则会停止并删除创建的service，volume和network。
 
-### 进入容器
+### 进入服务
 
 有些情况下我们还需要进入容器来执行一些命令，可以通过如下方式进入容器
 

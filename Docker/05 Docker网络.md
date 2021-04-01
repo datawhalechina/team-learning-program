@@ -776,8 +776,6 @@ $ sudo ip netns exec 3004 ip route add 10.1.1.1/32 dev B
 
 利用类似的办法，可以创建一个只跟主机通信的容器。但是一般情况下，更推荐使用 `--icc=false` 来关闭容器之间的通信。
 
-
-
 ### 参考文献
 
 - Docker 网络模式详解及容器间网络通信：https://juejin.cn/post/6868086876751085581

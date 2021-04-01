@@ -7,18 +7,45 @@
 ## 目录
 
 0. 开篇词
+
 1. docker简介
+
 2. docker安装
+
 3. docker容器与镜像
+
 4. docker数据管理
+
 5. docker网络
+   5.1.  Docker 基础网络介绍
+      - 外部访问容器
+      - 容器互联
+      - 配置DNS
+   
+   5.2. Docker的网络模式
+      - Bridge 模式
+      - Host 模式
+      - None 模式
+      - Container 模式
+   
+   5.3. Docker高级网络配置
+      - 快速配置指南
+      - 容器访问控制
+      - 端口映射实现
+      - 配置docker0网桥
+      - 自定义网桥
+      - 工具和示例
+      - 编辑网络配置文件
+      - 实例：创建一个点到点连接
+
 6. docker compose
-   1. 什么是docker compose
-   2. 如何使用docker compose
-   3. docker compose基本使用
-   4. Compose模板文件
-   5. Compose命令
-   6. [常见服务的docker-compose.yml集合]()
+   6.1. 什么是docker compose
+   6.2. 如何使用docker compose
+   6.3. docker compose基本使用
+   6.4. Compose模板文件
+   6.5. Compose命令
+   6.6. [常见服务的docker-compose.yml集合]()
+
 7. 综合实践
 
 ## 贡献人员
@@ -41,7 +68,16 @@
   </tr>
   </tbody>
 </table> 
+## 项目贡献情况
 
+- 项目构建与整合：苏鹏
+- 第一章：陈安东（校对：乔石）
+- 第二章：陈安东（校对：乔石）
+- 第三章：陈长沙，乔石（校对：于鸿飞，苏鹏）
+- 第四章：丁一超（校对：陈长沙）
+- 第五章：刘雯静（校对：丁一超）
+- 第六章：苏鹏（校对：刘雯静）
+- 第七章：于鸿飞（校对：苏鹏）
 
 ## 特别鸣谢
 特别鸣谢《docker从入门到实践》的作者[Baohua Yang](https://github.com/yeasy)对本次组队学习的支持，希望大家未来也能将自己的内容进行整理并开源出来帮助更多的人。
