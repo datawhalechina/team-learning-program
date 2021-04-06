@@ -1,9 +1,16 @@
 # Chapter 4 Docker 数据管理
 
-这一章介绍如何在 Docker 内部以及容器之间管理数据，在容器中管理数据主要有两种方式：
+## 目录
 
 * 数据卷
+  * 创建数据卷
+  * 启动一个挂载数据卷的容器
+  * 查看数据卷的具体信息
+  * 删除数据卷
 * 挂载主机目录
+  * 挂载一个主机目录作为数据卷
+  * 查看数据卷的具体信息
+  * 挂载一个本地主机文件作为数据卷
 
 
 ## 数据卷
@@ -174,3 +181,7 @@ $ docker run --rm -it \
    ubuntu:18.04 \
    bash
 ```
+
+## 参考文献
+
+- [Docker数据管理](https://vuepress.mirror.docker-practice.com/data_management/)

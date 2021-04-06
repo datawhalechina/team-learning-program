@@ -12,6 +12,7 @@
 
 - 什么是docker compose
 - 如何使用docker compose
+  - web应用
 - docker compose基本使用
   - 启动服务
   - 查看服务状态
@@ -19,7 +20,20 @@
   - 进入服务
   - 查看服务输出日志
 - Compose模板文件
+  - build
+  - depends_on
+  - environment
+  - expose
+  - ports
+  - secrets
+  - image
+  - labels
+  - network_mode
+  - networks
+  - volumes
 - Compose命令
+  - 命令对象与格式
+  - 命令选项
 
 ## 什么是docker compose
 
@@ -419,7 +433,7 @@ volumes:
 docker-compose [-f=<arg>...] [options] [COMMAND] [ARGS...]
 ```
 
-### 命令选项命令选项
+### 命令选项
 
 - `-f, --file FILE` 指定使用的 Compose 模板文件，默认为 `docker-compose.yml`，可以多次指定。
 - `-p, --project-name NAME` 指定项目名称，默认将使用所在目录名称作为项目名。
@@ -603,3 +617,7 @@ $ docker-compose kill -s SIGINT
 格式为 `docker-compose version`。
 
 打印版本信息。
+
+## 参考文献
+
+- [Docker Compose项目](https://vuepress.mirror.docker-practice.com/compose/)
