@@ -136,8 +136,34 @@
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">Datawhale成员</td>
     <td><a href="https://github.com/Jeffding">Github</a></td>
   </tr>
+  <tr>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">陈安东</span></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">中央民族大学，Datawhale成员</td>
+    <td><a href="https://www.zhihu.com/people/wang-ya-fei-48">知乎主页</a></td>
+  </tr>
+  <tr>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">陈长沙</span></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">重庆邮电大学，Datawhale成员</td>
+    <td><a href="https://blog.csdn.net/sinat_26566137?t=1">CSDN</a></td>
+  </tr>
+  <tr>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">刘雯静</span></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none"></td>
+    <td><a href="https://blog.csdn.net/sinat_26566137?t=1"></a></td>
+  </tr>
+  <tr>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">乔石</span></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none"></td>
+    <td><a href="https://blog.csdn.net/sinat_26566137?t=1"></a></td>
+  </tr>
+  <tr>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">于鸿飞</span></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none"></td>
+    <td><a href="https://blog.csdn.net/sinat_26566137?t=1"></a></td>
+  </tr>
   </tbody>
 </table> 
+
 
 ## 项目贡献情况
 

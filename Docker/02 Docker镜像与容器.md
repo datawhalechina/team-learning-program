@@ -335,6 +335,8 @@ Sending build context to Docker daemon 2.048 kB
 
 当然，一般大家习惯性的会使用默认的文件名 `Dockerfile`，以及会将其置于镜像构建上下文目录中。
 
+> 更多关于Dockerfile的内容可以移步：[Dockerfile详解](https://vuepress.mirror.docker-practice.com/image/dockerfile/)，不过更多的内容还是大家在实践中逐渐熟悉，这样才能更了解里面的含义。
+
 ### 跨平台构建镜像
 
 在日常的工作中，我们常常有需求将一个程序运行在不同架构CPU的设备上，尤其在嵌入式领域，我们常常接触的各种开发板、路由器往往都是使用ARM架构的芯片，而我们日常开发的设备都是在x86平台。我们在x86平台写的程序需要运行在使用ARM芯片的开发板上，这时候就需要跨CPU构建程序。总的来说跨平台构建程序有以下几种方式。

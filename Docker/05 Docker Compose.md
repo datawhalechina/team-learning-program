@@ -6,9 +6,9 @@
 
 关于docker compose的安装请移步[docker compose安装与卸载](https://vuepress.mirror.docker-practice.com/compose/install/)或根据[docker官网](https://docs.docker.com/compose/install/)进行安装。
 
-> 对于docker compose的学习推荐大家多看看一些项目的docker-compose.yml文件是怎么写的，慢慢模仿着去写很多就越来越熟练清晰了。在[Compose文件夹](https://github.com/datawhalechina/team-learning-program/tree/master/Docker/Compose)下也在网上收集了一些docker-compose.yml文件，欢迎大家一起来补充。
+> 对于docker compose的学习推荐大家多看看一些项目的docker-compose.yml文件是怎么写的，慢慢模仿着去写很多就越来越熟练清晰了。在[Compose文件夹](https://github.com/datawhalechina/team-learning-program/tree/master/Docker/Compose)下也在网上收集了一些docker-compose.yml文件，欢迎大家一起补充。
 
-## 内容大纲
+## 目录
 
 - 什么是docker compose
 - 如何使用docker compose
@@ -190,7 +190,7 @@ docker-compose logs
 
 ## Compose模板文件
 
-模板文件是使用 `Compose` 的核心，涉及到的指令关键字也比较多。但大家不用担心，这里面大部分指令跟 `docker run` 相关参数的含义都是类似的。
+**模板文件是使用 `Compose` 的核心**，涉及到的指令关键字也比较多。但大家不用担心，这里面大部分指令跟 `docker run` 相关参数的含义都是类似的。
 
 *注：这里仅介绍一些较为常用的指令，更多指令请见：[Compose模板文件](https://vuepress.mirror.docker-practice.com/compose/compose_file/#cap-add-cap-drop)*
 
