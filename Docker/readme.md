@@ -9,7 +9,9 @@
 0. 开篇词
 
 1. docker简介与安装
+  
    1.1. Docker简介
+   
    1.2. Docker三大基本概念
    
       - Docker镜像
@@ -56,6 +58,7 @@
       - 挂载一个本地主机文件作为数据卷
 
 4. docker网络
+  
    4.1.  Docker 基础网络介绍
       - 外部访问容器
       - 容器互联
@@ -108,7 +111,7 @@
       - 命令对象与格式
       - 命令选项
    
-   5.6. [常见服务的docker-compose.yml集合](https://github.com/datawhalechina/team-learning-program/tree/master/Docker/Compose/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1)
+   5.6. [常见服务的docker-compose.yml集合](https://github.com/datawhalechina/team-learning-program/tree/master/Docker/Compose/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1)、[awesome-compose](https://github.com/docker/awesome-compose)
    
 6. 综合实践
 
