@@ -101,7 +101,7 @@ docker                      latest              cf693ec9b5c7        3 weeks ago 
 nginx                       latest              e43d811ce2f4        5 weeks ago         181.5 MB
 ```
 
-我们可以用镜像的完整 ID，也称为 `长 ID`，来删除镜像。使用脚本的时候可能会用长 ID，但是人工输入就太累了，所以更多的时候是用 `短 ID` 来删除镜像。`docker image ls` 默认列出的就已经是短 ID 了，一般取前3个字符以上，只要足够区分于别的镜像就可以了。
+我们可以用镜像的完整 ID，也称为 `长ID`，来删除镜像。使用脚本的时候可能会用长 ID，但是人工输入就太累了，所以更多的时候是用 `短ID` 来删除镜像。`docker image ls` 默认列出的就已经是短 ID 了，一般取前3个字符以上，只要足够区分于别的镜像就可以了。
 
 比如这里，如果我们要删除 `redis:alpine` 镜像，可以执行：
 
@@ -533,7 +533,7 @@ bin boot dev etc home lib lib64 media mnt opt proc root run sbin srv sys tmp usr
 
 当利用 `docker run` 来创建容器时，Docker 在后台运行的标准操作包括：
 
-* 检查本地是否存在指定的镜像，不存在就从 [registry](../repository/README.md) 下载
+* 检查本地是否存在指定的镜像，不存在就从registry下载
 * 利用镜像创建并启动一个容器
 * 分配一个文件系统，并在只读的镜像层外面挂载一层可读写层
 * 从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去
@@ -559,9 +559,7 @@ root@ba267838cc1b:/# ps
 
 ###停止容器
 
-docker stop可以停止运行的容器。
-理解：容器在docker host中实际上是一个进程，docker stop命令本质上是向该进程发送一个SIGTERM信号。如果
-想要快速停止容器，可使用docker kill命令，其作用是向容器进程发送SIGKILL信号。
+docker stop可以停止运行的容器。理解：容器在docker host中实际上是一个进程，docker stop命令本质上是向该进程发送一个SIGTERM信号。如果想要快速停止容器，可使用docker kill命令，其作用是向容器进程发送SIGKILL信号。
 
 ```bash
         $ docker ps
@@ -576,13 +574,13 @@ docker stop可以停止运行的容器。
   
 ```
 
-备注：docker ps 列出容器，默认列出只在运行的容器；加-a可以显示所有的容器，包括未运行的（例如异常退出（Exited）状态的容器）。
+*备注：docker ps 列出容器，默认列出只在运行的容器；加-a可以显示所有的容器，包括未运行的（例如异常退出（Exited）状态的容器）。*
 
 ```bash
-    $ docker ps -a
+$ docker ps
     CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
     bdf593fda8be        ubuntu:15.10        "/bin/bash"         18 minutes ago      Up 6 minutes                            cranky_mclaren
-    $ docker ps -a
+$ docker ps -a
     CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                    PORTS               NAMES
     2a545c90e593        ubuntu:15.10        "/bin/echo -d 'Hello…"   1 second ago        Exited (0) 1 second ago                       blissful_leakey
     bdf593fda8be        ubuntu:15.10        "/bin/bash"              18 minutes ago      Up 6 minutes                                  cranky_mclaren
@@ -594,18 +592,14 @@ docker stop可以停止运行的容器。
 对于已经处于停止状态的容器，可以通过docker start重新启动。
 
 ```bash
-       $ docker start bdf593fda8be
-            bdf593fda8be
-       $ docker ps
+$ docker start bdf593fda8be
+bdf593fda8be
+$ docker ps
             CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
             bdf593fda8be        ubuntu:15.10        "/bin/bash"         11 minutes ago      Up 2 seconds                            cranky_mclaren
 ```
 
-docker start会保留容器的第一次启动时的所有参数。
-docker restart可以重启容器，其作用就是依次执行docker stop和docker start。
-容器可能因某种错误而停止运行。对于服务类容器，通常希望它能够自动重启。启动容器时设置--restart就可以达到效果。
-
---restart=always意味着无论容器因何种原因退出（包括正常退出），都立即重启；
+docker start会保留容器的第一次启动时的所有参数。docker restart可以重启容器，其作用就是依次执行docker stop和docker start。容器可能因某种错误而停止运行。对于服务类容器，通常希望它能够自动重启。启动容器时设置--restart就可以达到效果。--restart=always意味着无论容器因何种原因退出（包括正常退出），都立即重启；
 
 ```bash
 $ docker run -it ubuntu:15.10 /bin/echo --restart=always -d "Hello world"
@@ -620,11 +614,9 @@ bdf593fda8be        ubuntu:15.10        "/bin/bash"              25 minutes ago 
 
 ### 后台运行容器
 
-更多的时候，需要让 Docker 在后台运行而不是直接把执行命令的结果输出在当前宿主机下。此时，可以通过添加 `-d` 参数来实现。
+更多的时候，需要让 Docker 在后台运行而不是直接把执行命令的结果输出在当前宿主机下。此时，可以通过添加 `-d` 参数来实现。下面举两个例子来说明一下。
 
-下面举两个例子来说明一下。
-
-如果不使用 `-d` 参数运行容器。
+**如果不使用 `-d` 参数运行容器。**
 
 ```bash
 $ docker run ubuntu:18.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
@@ -636,7 +628,7 @@ hello world
 
 容器会把输出的结果 (STDOUT) 打印到宿主机上面
 
-如果使用了 `-d` 参数运行容器。
+**如果使用了 `-d` 参数运行容器。**
 
 ```bash
 $ docker run -d ubuntu:18.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
@@ -645,9 +637,7 @@ $ docker run -d ubuntu:18.04 /bin/sh -c "while true; do echo hello world; sleep 
 
 此时容器会在后台运行并不会把输出的结果 (STDOUT) 打印到宿主机上面(输出结果可以用 `docker logs` 查看)。
 
-
-**注：** 容器是否会长久运行，是和 `docker run` 指定的命令有关，和 `-d` 参数无关，只要命令不结束，容器也就不会退出。
-上述命令中，while语句不会让bash退出，因此该容器就不会退出。
+**注：** 容器是否会长久运行，是和 `docker run` 指定的命令有关，和 `-d` 参数无关，只要命令不结束，容器也就不会退出。上述命令中，while语句不会让bash退出，因此该容器就不会退出。
 
 使用 `-d` 参数启动后会返回一个唯一的 id，也可以通过 `docker container ls` 命令来查看容器信息。
 
@@ -669,9 +659,7 @@ hello world
 
 ### 进入容器
 
-在使用 `-d` 参数时，容器启动后会进入后台，启动完容器之后会停在host端；
-
-某些时候需要进入容器进行操作，包括使用 `docker attach` 命令或 `docker exec` 命令，推荐大家使用 `docker exec` 命令，原因会在下面说明。
+在使用 `-d` 参数时，容器启动后会进入后台，启动完容器之后会停在host端；某些时候需要进入容器进行操作，包括使用 `docker attach` 命令或 `docker exec` 命令，推荐大家使用 `docker exec` 命令，原因会在下面说明。
 
 #### `attach` 命令
 
