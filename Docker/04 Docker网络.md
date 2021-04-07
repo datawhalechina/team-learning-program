@@ -3,31 +3,27 @@
 ## 目录
 
 - Docker 基础网络介绍
-   - [外部访问容器](#<span id="jump">外部访问容器</span>)
-   - [容器互联](#<span id="jump">容器互联</span>)
-   - [配置DNS](#<span id="jump">配置DNS</span>)
+   - 外部访问容器
+   - 容器互联
+   - 配置DNS
 
 - Docker的网络模式
-   - [Bridge 模式](#<span id="jump">Bridge模式</span>)
-   - [Host 模式](#<span id="jump">Host 模式</span>)
-   - [None 模式](#<span id="jump">None模式</span>)
-   - [Container 模式](#<span id="jump">Container 模式</span>)
+   - Bridge 模式
+   - Host 模式
+   - None 模式
+   - Container 模式
 
 - Docker高级网络配置
-   - [快速配置指南](#<span id="jump">快速配置指南</span>)
-   - [容器访问控制](#<span id="jump">容器访问控制</span>)
-   - [端口映射实现](#<span id="jump">端口映射实现</span>)
-   - [配置docker0网桥](#<span id="jump">配置 docker0 网桥</span>)
-   - [自定义网桥](#<span id="jump">自定义网桥</span>)
-   - [工具和示例](#<span id="jump">工具和示例</span>)
-   - [编辑网络配置文件](#<span id="jump">编辑网络配置文件</span>)
-  - [实例：创建一个点到点连接](#<span id="jump">实例：创建一个点到点连接</span>)
+   - 快速配置指南
+   - 容器访问控制
+   - 端口映射实现
+   - 配置docker0网桥
+   - 自定义网桥
+   - 工具和示例
+   - 编辑网络配置文件
+  - 实例：创建一个点到点连接
 
 #  Docker 基础网络介绍
-
- - [外部访问容器](#<span id="jump">外部访问容器</span>)
- - [容器互联](#<span id="jump">容器互联</span>)
- - [配置DNS](#<span id="jump">配置DNS</span>)
 
 ## <span id="jump">外部访问容器</span>
 
@@ -217,11 +213,6 @@ nameserver 8.8.8.8
 
 # Docker的网络模式
 
-- [Bridge 模式](#<span id="jump">Bridge模式</span>)
-- [Host 模式](#<span id="jump">Host 模式</span>)
-- [None 模式](#<span id="jump">None模式</span>)
-- [Container 模式](#<span id="jump">Container 模式</span>)
-
 可以通过`docker network ls`查看网络，默认创建三种网络。
 
 ```
@@ -249,35 +240,31 @@ f4f1b3cf1b7f        none                null                local
 
 > busybox 被称为嵌入式 Linux 的瑞士军刀，整合了很多小的 unix 下的通用功能到一个小的可执行文件中。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/20207760dbf44b608539ed29b9f0365e~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9yisxf2hj30o8089go6.jpg)
 
 然后宿主机通过 `ip addr` 查看信息如下：
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/be67589037c246c48c2be2af63072976~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9yj3hqloj30zs0gbtek.jpg)
 
 　　通过以上的比较可以发现，证实了之前所说的：守护进程会创建一对对等虚拟设备接口 `veth pair`，将其中一个接口设置为容器的 `eth0` 接口（容器的网卡），另一个接口放置在宿主机的命名空间中，以类似 `vethxxx` 这样的名字命名。
 
 　　同时，守护进程还会从网桥 `docker0` 的私有地址空间中分配一个 IP 地址和子网给该容器，并设置 docker0 的 IP 地址为容器的默认网关。也可以安装 `yum install -y bridge-utils` 以后，通过 `brctl show` 命令查看网桥信息。
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5c7acd76f39f4901b2aa74842065109a~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9yjciu52j30zt0it45e.jpg)
 
 　　对于每个容器的 IP 地址和 Gateway 信息，可以通过 `docker inspect 容器名称|ID` 进行查看，在 `NetworkSettings` 节点中可以看到详细信息。
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/529902ce85a140cea8043970053c3cd3~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9yjjize3j30o20lsady.jpg)
 
 　　可以通过 `docker network inspect bridge` 查看所有 `bridge` 网络模式下的容器，在 `Containers` 节点中可以看到容器名称。
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9df1ce538e964fe6980b19785def99f6~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9yjquu1yj30mf0myq6g.jpg)
 
-> 　　关于 `bridge` 网络模式的使用，只需要在创建容器时通过参数 `--net bridge` 或者 `--network bridge` 指定即可，当然这也是创建容器默认使用的网络模式，也就是说这个参数是可以省略的。
+> 　　关于 `bridge` 网络模式的使用，只需要在创建容器时通过参数 `--net bridge` 或者 `--network bridge` 指定即可，当然这也是创建容器默认使用的网络模式，也就是说这个参数是可以省略的。　　
 
-　　
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9yjzonksj30s50e1myt.jpg)
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4f5206a75a884cc2968ceb1f6c14acb6~tplv-k3u1fbpfcp-zoom-1.image)
-
-bridge模式是 `docker `的默认网络模式，不写`–net`参数，就是bridge模式。使用`docker run -p`时，`docker `实际是在`iptables`做了`DNAT`规则，实现端口转发功能。可以使用`iptables -t nat -vnL`查看。`bridge`模式如下图所示：
-![bridge模式图](C:\Users\MUJI\Desktop\Docker网络\bridge模式图.jpg)
- 演示：
+bridge模式是 `docker `的默认网络模式，不写`–net`参数，就是bridge模式。使用`docker run -p`时，`docker `实际是在`iptables`做了`DNAT`规则，实现端口转发功能。可以使用`iptables -t nat -vnL`查看。演示：
 
  ```
 $ docker run -tid --net=bridge --name docker_bri1 \
@@ -299,25 +286,23 @@ $ route –n
 - 采用 host 网络模式的 Docker Container，可以直接使用宿主机的 IP 地址与外界进行通信，若宿主机的 eth0 是一个公有 IP，那么容器也拥有这个公有 IP。同时容器内服务的端口也可以使用宿主机的端口，无需额外进行 NAT 转换；
 - host 网络模式可以让容器共享宿主机网络栈，这样的好处是外部主机与容器直接通信，但是容器的网络缺少隔离性。
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/32ab62e6be9d4b4dbe9280ca3b9206f9~tplv-k3u1fbpfcp-zoom-1.image)
+![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/32ab62e6be9d4b4dbe9280ca3b9206f9~tplv-k3u1fbpfcp-zoom-1.image)
 
 　　
 
 　　比如基于 `host` 网络模式创建了一个基于 `busybox` 镜像构建的容器 `bbox02`，查看 `ip addr`：
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ff4a5f7151a143c99878964833332e38~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9ykedxwpj30p40exgq7.jpg)
 
 　　然后宿主机通过 `ip addr` 查看信息如下：
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b756f89bbcb045b4b4b180eddd307e8e~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9yklkpxyj30w30dktd8.jpg)
 
 　　对，你没有看错，返回信息一模一样，也可以肯定没有截错图，不信接着往下看。可以通过 `docker network inspect host` 查看所有 `host` 网络模式下的容器，在 `Containers` 节点中可以看到容器名称。
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c11969f9c87a46f088280d50263cffa7~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9yktmta0j30ru0mkjun.jpg)
 
-如果启动容器的时候使用`host`模式，那么这个容器将不会获得一个独立的`Network Namespace`，而是和宿主机共用一个`Network Namespace`。容器将不会虚拟出自己的网卡，配置自己的`IP`等，而是使用宿主机的`IP`和端口。但是，容器的其他方面，如文件系统、进程列表等还是和宿主机隔离的。 `Host`模式如下图所示：
-![Host模式](C:\Users\MUJI\Desktop\Docker网络\Host模式.jpg)
-演示：
+如果启动容器的时候使用`host`模式，那么这个容器将不会获得一个独立的`Network Namespace`，而是和宿主机共用一个`Network Namespace`。容器将不会虚拟出自己的网卡，配置自己的`IP`等，而是使用宿主机的`IP`和端口。但是，容器的其他方面，如文件系统、进程列表等还是和宿主机隔离的。 演示：
 
 ```
 $ docker run -tid --net=host --name docker_host1 ubuntu-base:v3
@@ -335,19 +320,15 @@ $ route –n
 - none 网络模式是指禁用网络功能，只有 lo 接口 local 的简写，代表 127.0.0.1，即 localhost 本地环回接口。在创建容器时通过参数 `--net none` 或者 `--network none` 指定；
 - none 网络模式即不为 Docker Container 创建任何的网络环境，容器内部就只能使用 loopback 网络设备，不会再有其他的网络资源。可以说 none 模式为 Docke Container 做了极少的网络设定，但是俗话说得好“少即是多”，在没有网络配置的情况下，作为 Docker 开发者，才能在这基础做其他无限多可能的网络定制开发。这也恰巧体现了 Docker 设计理念的开放。
 
-　　
+　比如基于 `none` 网络模式创建了一个基于 `busybox` 镜像构建的容器 `bbox03`，查看 `ip addr`：
 
-　　比如基于 `none` 网络模式创建了一个基于 `busybox` 镜像构建的容器 `bbox03`，查看 `ip addr`：
-
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8c55e1e006db44edacbe76f4a66d7d5c~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9yl6dza2j30le05lta3.jpg)
 
 　　可以通过 `docker network inspect none` 查看所有 `none` 网络模式下的容器，在 `Containers` 节点中可以看到容器名称。
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ed2060f2dbd04d07a5f4c6926d96a271~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9ylcuw30j30rt0mjwhr.jpg)
 
-使用`none`模式，`Docker` 容器拥有自己的 `Network Namespace`，但是，并不为`Docker` 容器进行任何网络配置。也就是说，这个 `Docker` 容器没有网卡、IP、路由等信息。需要自己为 `Docker` 容器添加网卡、配置 IP 等。 `None`模式示意图:
-![None模式](C:\Users\MUJI\Desktop\Docker网络\None模式.jpg)
- 演示：
+使用`none`模式，`Docker` 容器拥有自己的 `Network Namespace`，但是，并不为`Docker` 容器进行任何网络配置。也就是说，这个 `Docker` 容器没有网卡、IP、路由等信息。需要自己为 `Docker` 容器添加网卡、配置 IP 等。演示：
 
 ```
 $ docker run -tid --net=none --name \
@@ -364,35 +345,33 @@ $ route -n
 - Container 网络模式是 Docker 中一种较为特别的网络的模式。在创建容器时通过参数 `--net container:已运行的容器名称|ID` 或者 `--network container:已运行的容器名称|ID` 指定；
 - 处于这个模式下的 Docker 容器会共享一个网络栈，这样两个容器之间可以使用 localhost 高效快速通信。
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/905bc296603243ad8ee09e13b651e5ba~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9ylkvrb8j30or0d50u7.jpg)
 
 　　**Container 网络模式即新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等**。同样两个容器除了网络方面相同之外，其他的如文件系统、进程列表等还是隔离的。
 
 　　比如基于容器 `bbox01` 创建了 `container` 网络模式的容器 `bbox04`，查看 `ip addr`：
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d73dd522f2b2426980c16f8bf6c208f0~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9ylvw4l3j30p3086ju3.jpg)
 
 　　容器 `bbox01` 的 `ip addr` 信息如下：
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4096c75836e2470f8b1554fadf32309e~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9ym5pqzqj30o506vgns.jpg)
 
 　　宿主机的 `ip addr` 信息如下：
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9c01adabe22947ac94c460f0f31ae3b7~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9ymfqy5cj30zt0g3tf6.jpg)
 
 　　通过以上测试可以发现，Docker 守护进程只创建了一对对等虚拟设备接口用于连接 bbox01 容器和宿主机，而 bbox04 容器则直接使用了 bbox01 容器的网卡信息。
 
 　　这个时候如果将 bbox01 容器停止，会发现 bbox04 容器就只剩下 lo 接口了。
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f2ad30a92fc479a91163483880ccd62~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9ymnpkruj30k704t757.jpg)
 
 　　然后 bbox01 容器重启以后，bbox04 容器也重启一下，就又可以获取到网卡信息了。
 
-![ ](https:////p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ff5616d7bf9841d4a739a3934267db98~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gp9ymvszr7j30ot084wh1.jpg)
 
-这个模式指定新创建的容器和已经存在的一个容器共享一个`Network Namespace`，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的`IP`，而是和一个指定的容器共享`IP`、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过lo网卡设备通信。 `Container`模式示意图： 
-![container模式](C:\Users\MUJI\Desktop\Docker网络\container模式.jpg)
-演示：
+这个模式指定新创建的容器和已经存在的一个容器共享一个`Network Namespace`，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的`IP`，而是和一个指定的容器共享`IP`、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过lo网卡设备通信。 演示：
 
 ```
 $ docker run -tid --net=container:docker_bri1 \
@@ -408,15 +387,6 @@ $ route -n
 
 
 # 高级网络配置
-
-- [快速配置指南](#<span id="jump">快速配置指南</span>)
-- [容器访问控制](#<span id="jump">容器访问控制</span>)
-- [端口映射实现](#<span id="jump">端口映射实现</span>)
-- [配置docker0网桥](#<span id="jump">配置 docker0 网桥</span>)
-- [自定义网桥](#<span id="jump">自定义网桥</span>)
-- [工具和示例](#<span id="jump">工具和示例</span>)
-- [编辑网络配置文件](#<span id="jump">编辑网络配置文件</span>)
-- [实例：创建一个点到点连接](#<span id="jump">实例：创建一个点到点连接</span>)
 
 ## <span id="jump">快速配置指南</span>
 
@@ -446,8 +416,6 @@ $ route -n
  - `-P or --publish-all=true|false` 映射容器所有端口到宿主主机
 
 
-
-
 ## <span id="jump">容器访问控制</span>
 
 容器的访问控制，主要通过 Linux 上的 `iptables` 防火墙来进行管理和实现。`iptables` 是 Linux 上默认的防火墙软件，在大部分发行版中都自带。
@@ -456,16 +424,12 @@ $ route -n
 
 容器要想访问外部网络，需要本地系统的转发支持。在Linux 系统中，检查转发是否打开。
 
-
-
 ```
 $sysctl net.ipv4.ip_forward
 net.ipv4.ip_forward = 1
 ```
 
 如果为 0，说明没有开启转发，则需要手动打开。
-
-
 
 ```
 $sysctl -w net.ipv4.ip_forward=1
@@ -494,8 +458,6 @@ $sysctl -w net.ipv4.ip_forward=1
 
 此时，系统中的 `iptables` 规则可能是类似
 
-
-
 ```
 $ sudo iptables -nL
 ...
@@ -509,8 +471,6 @@ DROP       all  --  0.0.0.0/0            0.0.0.0/0
 
 当添加了 `--link=CONTAINER_NAME:ALIAS` 选项后，添加了 `iptables` 规则。
 
-
-
 ```
 $ sudo iptables -nL
 ...
@@ -522,8 +482,6 @@ DROP       all  --  0.0.0.0/0            0.0.0.0/0
 ```
 
 **注意**：`--link=CONTAINER_NAME:ALIAS` 中的 `CONTAINER_NAME` 目前必须是 Docker 分配的名字，或使用 `--name` 参数指定的名字。主机名则不会被识别。
-
-
 
 ## <span id="jump">端口映射实现</span>
 
@@ -556,8 +514,6 @@ MASQUERADE  all  --  172.17.0.0/16       !172.17.0.0/16
 
 使用 `-P` 时：
 
-
-
 ```
 $ iptables -t nat -nL
 ...
@@ -567,8 +523,6 @@ DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:49153 to:1
 ```
 
 使用 `-p 80:80` 时：
-
-
 
 ```
 $ iptables -t nat -nL
@@ -582,15 +536,11 @@ DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80 to:172.
 - 这里的规则映射了 `0.0.0.0`，意味着将接受主机来自所有接口的流量。用户可以通过 `-p IP:host_port:container_port` 或 `-p IP::port` 来指定允许访问容器的主机上的 IP、接口等，以制定更严格的规则。
 - 如果希望永久绑定到某个固定的 IP 地址，可以在 Docker 配置文件 `/etc/docker/daemon.json` 中添加如下内容。
 
-
-
 ```
 {
   "ip": "0.0.0.0"
 }
 ```
-
-
 
 ## <span id="jump">配置 docker0 网桥</span>
 
@@ -605,8 +555,6 @@ Docker 默认指定了 `docker0` 接口 的 IP 地址和子网掩码，让主机
 
 由于目前 Docker 网桥是 Linux 网桥，用户可以使用 `brctl show` 来查看网桥和端口连接信息。
 
-
-
 ```
 $ sudo brctl show
 bridge name     bridge id               STP enabled     interfaces
@@ -617,8 +565,6 @@ docker0         8000.3a1d7362b4ee       no              veth65f9
 **注**：`brctl` 命令在 Debian、Ubuntu 中可以使用 `sudo apt-get install bridge-utils` 来安装。
 
 每次创建一个新容器的时候，Docker 从可用的地址段中选择一个空闲的 IP 地址分配给容器的 eth0 端口。使用本地主机上 `docker0` 接口的 IP 作为所有容器的默认网关。
-
-
 
 ```
 $ sudo docker run -i -t --rm base /bin/bash
@@ -634,8 +580,6 @@ default via 172.17.42.1 dev eth0
 172.17.0.0/16 dev eth0  proto kernel  scope link  src 172.17.0.3
 ```
 
-
-
 ## <span id="jump">自定义网桥</span>
 
 除了默认的 `docker0` 网桥，用户也可以指定网桥来连接各个容器。
@@ -643,8 +587,6 @@ default via 172.17.42.1 dev eth0
 在启动 Docker 服务的时候，使用 `-b BRIDGE`或`--bridge=BRIDGE` 来指定使用的网桥。
 
 如果服务已经运行，那需要先停止服务，并删除旧的网桥。
-
-
 
 ```
 $ sudo systemctl stop docker
@@ -654,8 +596,6 @@ $ sudo brctl delbr docker0
 
 然后创建一个网桥 `bridge0`。
 
-
-
 ```
 $ sudo brctl addbr bridge0
 $ sudo ip addr add 192.168.5.1/24 dev bridge0
@@ -663,8 +603,6 @@ $ sudo ip link set dev bridge0 up
 ```
 
 查看确认网桥创建并启动。
-
-
 
 ```
 $ ip addr show bridge0
@@ -675,8 +613,6 @@ $ ip addr show bridge0
 ```
 
 在 Docker 配置文件 `/etc/docker/daemon.json` 中添加如下内容，即可将 Docker 默认桥接到创建的网桥上。
-
-
 
 ```
 {
@@ -689,8 +625,6 @@ $ ip addr show bridge0
 新建一个容器，可以看到它已经桥接到了 `bridge0` 上。
 
 可以继续用 `brctl show` 命令查看桥接的信息。另外，在容器中可以使用 `ip addr` 和 `ip route` 命令来查看 IP 地址配置和路由信息。
-
-
 
 ## <span id="jump">工具和示例</span>
 

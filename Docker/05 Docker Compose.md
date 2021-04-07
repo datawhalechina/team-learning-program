@@ -6,7 +6,7 @@
 
 关于docker compose的安装请移步[docker compose安装与卸载](https://vuepress.mirror.docker-practice.com/compose/install/)或根据[docker官网](https://docs.docker.com/compose/install/)进行安装。
 
-> 对于docker compose的学习推荐大家多看看一些项目的docker-compose.yml文件是怎么写的，慢慢模仿着去写很多就越来越熟练清晰了。在[Compose文件夹](https://github.com/datawhalechina/team-learning-program/tree/master/Docker/Compose)下也在网上收集了一些docker-compose.yml文件，欢迎大家一起补充。
+> 对于docker compose的学习推荐大家多看看一些项目的docker-compose.yml文件是怎么写的，慢慢模仿着去写很多就越来越熟练清晰了。在[Compose文件夹](https://github.com/datawhalechina/team-learning-program/tree/master/Docker/Compose)下也在网上收集了一些docker-compose.yml文件，还有**[awesome-compose](https://github.com/docker/awesome-compose)**这个项目也非常推荐。
 
 ## 目录
 
@@ -127,13 +127,13 @@ $ docker-compose up -d
 
 在创建好`docker-compose.yml`文件后，可以通过下面这个命令将文件中定义的容器都启动起来，在docker compose中我们更习惯于将每一个容器叫做service。
 
-```
+```bash
 docker-compose up
 ```
 
 命令后会自动接一个默认值`-f docker-compose.yml`，也就是默认是使用docker-compose.yml文件的。我们也可以给文件起名为`docke-test.yml`，这样在使用时指定文件名，但是为了符合规范，还是统一为`docker-compose.yml`。
 
-```
+```bash
 docker-compose up -f docer-test.yml
 ```
 

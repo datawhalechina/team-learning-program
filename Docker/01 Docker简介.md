@@ -1,5 +1,7 @@
 # Chapter 1 Docker简介与安装
 
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gpaus0df5fj31lq0s218y.jpg)
+
 ## 目录
 
 - Docker简介
@@ -30,6 +32,10 @@
 ![传统虚拟化](https://vuepress.mirror.docker-practice.com/assets/img/virtualization.bfc621ce.png)
 
 ![Docker](https://vuepress.mirror.docker-practice.com/assets/img/docker.20496661.png)
+
+从上面的图中可以看到，**虚拟机**在宿主机(host)中的OS上面是hypervisor(hypervisor)，然后依次建立虚拟机，虚拟化的仓库，然后安装程序。但是对于**Docker**来说，在宿主机(host)中的OS上面是Docker Engine，然后直接在Doker Engine安装应用。
+
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gpauta9hchj31hi0qegvt.jpg)
 
 ## Docker三大基本概念
 
