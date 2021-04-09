@@ -109,7 +109,7 @@ Docker Registry 公开服务是开放给用户使用、允许用户管理镜像�
 
 ## Docker安装
 
-关于Docker安装可以移步：[Docker安装](https://vuepress.mirror.docker-practice.com/install/)
+关于Docker安装可以移步：[Docker安装](https://vuepress.mirror.docker-practice.com/install/)或者参见教程[Docker安装](./pdf/Docker安装.pdf)
 
 ## 参考文献
 
