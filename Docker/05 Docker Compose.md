@@ -34,6 +34,7 @@
 - Compose命令
   - 命令对象与格式
   - 命令选项
+- 扩缩容
 
 ## 什么是docker compose
 
@@ -54,7 +55,7 @@
 
 `Compose`的默认管理对象是项目，也就是通过docker-compose.yml定义的一组服务集合，通过一些命令来对项目中的一组容器进行便捷地生命周期管理。
 
-下面我们来看一个真实的场景，在该场景下我们是通过Python来写一个能够记录页面访问次数的 web 网站。完整代码：[计数器](./Compose/计数器)
+下面我们来看一个真实的场景，在该场景下我们是通过Python来写一个能够记录页面访问次数的 web 网站。完整代码：[counter](./Compose/counter)
 
 ### web 应用
 
@@ -109,6 +110,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
     environment:
       REDIS_HOST: redis
 ```
@@ -120,6 +123,8 @@ $ docker-compose up -d
 ```
 
 此时访问本地 `5000` 端口，每次刷新页面，计数就会加 1。
+
+![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpmf301dcvj30hv00ut8n.jpg)
 
 ## docker compose基本使用
 
@@ -617,6 +622,30 @@ $ docker-compose kill -s SIGINT
 格式为 `docker-compose version`。
 
 打印版本信息。
+
+## 扩缩容
+
+还记得我们之前创建的那个web应用吗？现在因为访问的人数太多了，我们需要拓展几个容器来同时对外提供服务，来平衡单个容器的访问压力，也就是常说的负载均衡，那么通过docker-compose如何实现这个需求呢？
+
+我们先来看一下现在的情况
+
+![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpmf3x2h5yj30kf02pmxb.jpg)
+
+Docker Compose有一个scale参数，通过这个参数可以实现容器的水平拓展。
+
+```
+docker-compose up --scale web=3 -d
+```
+
+![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpmf8mi0qoj30po0b276k.jpg)
+
+我们再通过命令查看一下现在的容器状态
+
+![image-20210417081128169](/Users/super/Library/Application Support/typora-user-images/image-20210417081128169.png)
+
+现在可以看到我们有了三个web服务，理想情况下这三个web会同时对外提供服务，以减轻访问单个容器的压力。但是我们在上面也看到了因为大家都是绑定的5000端口，这样端口就冲突了，导致新创建的两个web服务都是Exit的状态，对于这个问题我们可以通过HAProxy来解决。
+
+具体怎么解决这里先不给大家一个答案，我在Compose文件夹下开放了一个文件夹[solution](./Compose/solution)，大家解决之后可以把方案通过PR的形式提交上来(大家在solution下创建新的文件夹，文件夹名称是自己的微信昵称就好)，欢迎大家踊跃尝试。
 
 ## 参考文献
 

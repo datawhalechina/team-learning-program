@@ -113,6 +113,8 @@
    
    5.6. [常见服务的docker-compose.yml集合](https://github.com/datawhalechina/team-learning-program/tree/master/Docker/Compose/%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1)、[awesome-compose](https://github.com/docker/awesome-compose)
    
+   5.7. 扩缩容
+   
 6. 综合实践
 
    6.1. 挂载部署

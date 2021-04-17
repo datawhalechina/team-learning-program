@@ -5,9 +5,11 @@ services:
   redis:
     image: redis
 
-  redis-web:
+  web:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
     environment:
       REDIS_HOST: redis

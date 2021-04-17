@@ -477,7 +477,7 @@ $ vim /etc/docker/daemon.json
 
 ####  System 下创建配置文件
 
-+ 在 /etc/systemd/system/docker.service.d 目录下创建一个 Drop-In 文件 docker.conf，默认 docker.service.d 文件夹不存在，必须先创建它。创建 Drop-In 文件的原因，是我们希望 Docker服务使用 docker.conf 文件中提到的特定参数，将默认服务所使用的位于 /lib/systemd/system/docker.service 文件中的参数进行覆盖。
++ 在 /etc/systemd/system/docker.service.d 目录下创建一个 Drop-In 文件 docker.conf，默认 docker.service.d 文件夹不存在，必须先创建它。创建 Drop-In 文件的原因，是我们希望 Docker服务使用 docker.conf 文件中提到的特定参数，将默认服务所使用的位于 /lib/systemd/system/docker.service 文件中的参数进行覆盖。(对于目录不一致的问题请见[issues#4](https://github.com/datawhalechina/team-learning-program/issues/4)）
 
 ```
 # 定义新的存储位置
