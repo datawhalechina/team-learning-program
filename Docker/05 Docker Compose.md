@@ -122,7 +122,7 @@ services:
 $ docker-compose up -d
 ```
 
-此时访问本地 `5000` 端口，每次刷新页面，计数就会加 1。
+此时访问本地 `5000` 端口[http://localhost:5000](http://localhost:5000)，每次刷新页面，计数就会加 1。
 
 ![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpmf301dcvj30hv00ut8n.jpg)
 
