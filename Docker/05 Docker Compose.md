@@ -641,7 +641,7 @@ docker-compose up --scale web=3 -d
 
 我们再通过命令查看一下现在的容器状态
 
-![image-20210417081128169](/Users/super/Library/Application Support/typora-user-images/image-20210417081128169.png)
+![](https://tva1.sinaimg.cn/large/008eGmZEly1gpq1rqq8brj30la03p0t9.jpg)
 
 现在可以看到我们有了三个web服务，理想情况下这三个web会同时对外提供服务，以减轻访问单个容器的压力。但是我们在上面也看到了因为大家都是绑定的5000端口，这样端口就冲突了，导致新创建的两个web服务都是Exit的状态，对于这个问题我们可以通过HAProxy来解决。
 
