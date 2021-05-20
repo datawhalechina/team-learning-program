@@ -8,21 +8,27 @@
 - 难度系数：⭐⭐
 
 课程大纲
+
 Task00：熟悉规则（1天）
 - 组队、修改群昵称。
 - 熟悉打卡规则。
+- 
 Task01 文件自动化处理&邮件批量处理 （3天）
 - 文件路径识别、处理、文件夹的操作理论学习
 - 文件自动化处理实践
 - 邮件自动发送理论学习，使用python发送邮件附带excel附件
+
 Task02 python与excel （2天）
 - 暂无
+
 Task03 python与word （2天）
 - python与word相关的理论知识学习
 - 使用python进行邀请函批量生成实践
+
 Task04  python与pdf（3天）
 - python与pdf相关的理论知识学习
 - 使用python进行pdf操作实践
+
 Task05  爬虫入门与综合应用（3天）
 - requests库的理论与实践
 - HTML页面解析与提取方法
