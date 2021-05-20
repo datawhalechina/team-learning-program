@@ -4,7 +4,7 @@
 
 主要包括：
 
-- [设计模式](https://github.com/datawhalechina/team-learning-program/tree/master/DesignPattern)
+
 - [Linux教程](https://github.com/datawhalechina/team-learning-program/tree/master/Linux)
 - [Docker教程](https://github.com/datawhalechina/team-learning-program/tree/master/Docker)
 - [Web开发入门教程](https://github.com/datawhalechina/whale-web)
