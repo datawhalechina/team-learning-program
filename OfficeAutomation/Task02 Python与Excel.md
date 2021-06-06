@@ -21,10 +21,10 @@
 1. 打开已经存在的Excel表格
 
 ```
-from openpyxl imporg load_workbook
+from openpyxl import load_workbook
 
 exl = load_workbook(filename = 'test.xlsx')
-print(elx.sheetnames)
+print(exl.sheetnames)
 ```
 
 2. 根据名称或去表格
@@ -35,10 +35,10 @@ from openpyxl import load_workbook
 exl_1 = load_workbook(filename = 'test.xlsx')
 print(exl_1.sheetnames)
 
-sheet = elx_1['work']
+sheet = exl_1['work']
 
 '若只有一张表则：'
-sheet = elx_1.active
+sheet = exl_1.active
 ```
 
 3. 获取Excel 内容占据的大小
@@ -251,7 +251,7 @@ from openpyxl import load_workbook
 
 workbook = Workbook()
 sheet = workbook.active
-workbook.save(filename = 'newtest.xlsx')
+workbook.save(filename = 'new_test.xlsx')
 ```
 
 
@@ -364,6 +364,8 @@ sheet.unmerge_cells(start_row=1, start_column=3,
 
 #### 练习题
 
+​	打开test文件，找出文件中购买数量`buy_mount`超过5的行，并对其标红、加粗、附上边框。
+
 ```
 from openpyxl import load_workbook
 from openpyxl.styles import Font, Side, Border 
@@ -387,10 +389,3 @@ for row in row_lst:
 		cell.border = border
 workbook.save('new_test'.xlsx')
 ```
-
-
-
-
-
-
-
