@@ -62,7 +62,7 @@ print(cell_1.value)
 2. 获取单元格对应的行、列和坐标
 
 ```
-print(cell_1.row, cell_column, cell.coordinate)
+print(cell_1.row, cell_1.column, cell.coordinate)
 ```
 
 #### 读取多个格子的值
