@@ -146,20 +146,28 @@ exl.save(filename = 'test.xlsx') #存入原Excel表中，若创建新文件则�
 1. 写入一行数据并保存
 
 ```
-import wlwt
-# 应用write中的参数，对应 行, 列, 值
-sheet.write(1,0, label = 'this is test')
+import xlwt
+workbook = xlwt.Workbook(encoding = 'utf-8')
+# 创建一个sheet
+sheet = workbook.add_sheet('My Worksheet')
+
+# 写入excel
+# 参数对应 行, 列, 值
+sheet.write(1,0,label = 'this is test')
+
+# 保存
+workbook.save('new_test.xls')
 ```
 
 2. 写入多行数据并保存
 
 ```
-#应用sheet.append()
 data = [['hello',22,'hi'],
 		['hell',23,'h'],
 		['he',25,'him']]
-for i in data:
-	sheet.append(i)
+for i in range(len(data)):
+    for j in range(len(data[i])):
+        worksheet.write(i,j,data[i][j])
 exl.save(filename = 'test.xlsx')
 ```
 
@@ -364,7 +372,7 @@ sheet.unmerge_cells(start_row=1, start_column=3,
 
 #### 练习题
 
-​	打开test文件，找出文件中购买数量`buy_mount`超过5的行，并对其标红、加粗、附上边框。
+打开test文件，找出文件中购买数量`buy_mount`超过5的行，并对其标红、加粗、附上边框。
 
 ```
 from openpyxl import load_workbook
@@ -389,3 +397,7 @@ for row in row_lst:
 		cell.border = border
 workbook.save('new_test'.xlsx')
 ```
+
+
+
+
