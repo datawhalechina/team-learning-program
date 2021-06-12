@@ -44,3 +44,7 @@ Mac ：
 https://code.visualstudio.com/
 
 > 根据自己操作系统进行选择
+
+### 5. 向日葵
+https://sunlogin.oray.com/download/
+> 根据自己操作系统进行选择
