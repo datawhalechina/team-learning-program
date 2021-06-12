@@ -48,3 +48,7 @@ https://code.visualstudio.com/
 ### 5. 向日葵
 https://sunlogin.oray.com/download/
 > 根据自己操作系统进行选择
+
+
+## 直播回放
+https://www.bilibili.com/video/BV1w5411u7kc/
