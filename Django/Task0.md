@@ -55,3 +55,9 @@ https://www.bilibili.com/video/BV1w5411u7kc/
 
 我要提问题：
 https://forms.office.com/r/5birUUEZxx
+
+
+## 课程笔记内容
+### 1. Ubuntu虚拟机的安装与配置
+<img src="https://github.com/datawhalechina/team-learning-program/blob/master/Django/img/Snipaste_2021-06-13_19-59-24.png?raw=true" />
+选择默认即可
