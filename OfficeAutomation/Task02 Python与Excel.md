@@ -109,7 +109,7 @@ for col in sheet.iter_cols(min_row = 1, max_row = 5,
 
 #### 练习题
 
-找出text_1.xlsx中sheet1表中空着的格子，并输出这些格子的坐标
+找出test_1.xlsx中sheet1表中空着的格子，并输出这些格子的坐标
 
 ```
 from openpyxl import load_workbook
