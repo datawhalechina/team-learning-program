@@ -299,7 +299,7 @@ workbook.save(filename = 'new_test.xlsx')
    workbook.save(filename='new_test')
    ```
 
-#### 设置对其样式
+#### 设置对齐样式
 
 水平对齐：`distributed, justify, center, left, fill, centerContinuous, right, general`
 
