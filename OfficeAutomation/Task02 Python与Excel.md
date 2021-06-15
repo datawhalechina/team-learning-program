@@ -27,7 +27,7 @@ exl = load_workbook(filename = 'test.xlsx')
 print(exl.sheetnames)
 ```
 
-2. 根据名称或去表格
+2. 根据名称获取表格
 
 ```
 from openpyxl import load_workbook
