@@ -135,9 +135,9 @@ from openpyxl import load_workbook
 
 exl = load_workbook(filename = 'test.xlsx')
 sheet = exl.active
-sheet['A1'] = 'hello word'       
+sheet['A1'] = 'hello world'       
 #或者cell = sheet['A1'] 
-#cell.value = 'hello word'
+#cell.value = 'hello world'
 exl.save(filename = 'test.xlsx') #存入原Excel表中，若创建新文件则可命名为不同名称
 ```
 
