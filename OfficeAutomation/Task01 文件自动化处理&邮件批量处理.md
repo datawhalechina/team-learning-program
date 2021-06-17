@@ -87,7 +87,7 @@ caFilePath.split(os.path.sep)   #['D:', 'Datawhale', 'python办公自动化', 'p
 ```
 
 ### 1.1.3.3 路径有效性检查
-如果提供的路径不存在，很多Python函数就会崩溃并报错。`os.path`模块提供了一些函数，用于检测给定的路径是否存在，以及判定是文件还是文件。
+如果提供的路径不存在，很多Python函数就会崩溃并报错。`os.path`模块提供了一些函数，用于检测给定的路径是否存在，以及判定是文件还是文件夹。
 
 `os.path.exists(path)`：如果path参数所指的文件或文件夹存在，则返回True,否则返回False。
 
