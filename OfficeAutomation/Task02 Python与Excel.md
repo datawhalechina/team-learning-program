@@ -37,7 +37,7 @@ print(exl_1.sheetnames)
 
 sheet = exl_1['work']
 
-'若只有一张表则：'
+'可改为如果表中只有一个sheet可以直接用active:'
 sheet = exl_1.active
 ```
 
@@ -162,19 +162,23 @@ workbook.save('new_test.xls')
 2. 写入多行数据并保存
 
 ```
+import xlwt
+exl=xlwt.Workbook(encoding='utf-8')
+worksheet=exl.add_sheet('My Worksheet')
+
 data = [['hello',22,'hi'],
 		['hell',23,'h'],
 		['he',25,'him']]
 for i in range(len(data)):
     for j in range(len(data[i])):
         worksheet.write(i,j,data[i][j])
-exl.save(filename = 'test.xlsx')
+exl.save(filename = 'test1.xlsx')
 ```
 
 #### 将公式写入单元格保存
 
 ```
-sheet['A2'] = 'SUM(A1:D1)'
+sheet[‘A2’] = '=SUM(A1:D1)'
 exl.save(filename='test.xlsx')
 ```
 
@@ -199,9 +203,9 @@ sheet.insert_cols(idx=2, amount=5)
 
 ```
 #插入一行
-sheet.insert_cols(idx=2)
+sheet.insert_rows(idx=2)
 #插入多行
-sheet.insert_cols(idx=2, amount=5)
+sheet.insert_rows(idx=2, amount=5)
 ```
 
 #### 删除
@@ -223,7 +227,7 @@ sheet.delete_rows(idx=2, amount=5)
 当数字为正即向下或向右，为负即为向上或向左
 
 ```
-sheet.move_range('C5:F10', row=2, cols=-3)
+sheet.move_range('C5:F10', rows=2, cols=-3)
 ```
 
 #### Sheet表操作
@@ -231,10 +235,11 @@ sheet.move_range('C5:F10', row=2, cols=-3)
 1. 创建新的sheet
 
 ```
-from openpyxl import load_workbook
+from openpyxl import Workbook
 
-exl = load_workbook(filename = 'test.xlsx')
-print(exl.sheetnames)
+workbook=Workbook()
+sheet=workbook.active
+workbook.save(filename='new_test.xlsx')
 
 exl.create_sheet('new_sheet')
 ```
