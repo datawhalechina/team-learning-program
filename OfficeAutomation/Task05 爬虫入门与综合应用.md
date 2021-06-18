@@ -1,6 +1,6 @@
 # 爬虫入门与综合应用
 
-- [Task5 爬虫入门与综合应用](#task5-爬虫入门与综合应用)
+- [爬虫入门与综合应用](#爬虫入门与综合应用)
   - [0.前言](#0前言)
   - [1.Requests简介](#1requests简介)
     - [1.1访问百度](#11访问百度)
@@ -23,13 +23,13 @@ Requests是一款目前非常流行的http请求库，使用python编写，能�
 
 安装方法：
 
-```
+``` python
 pip install requests
 或者conda安装
 conda install requests
 ```
 
-```
+``` python
 re.status_code 响应的HTTP状态码
 re.text 响应内容的字符串形式
 rs.content 响应内容的二进制形式
@@ -134,7 +134,7 @@ print(res.text)
 
 想对html有根据深入的了解，可以html菜鸟教程
 
-https://www.runoob.com/html/html-tutorial.html
+<https://www.runoob.com/html/html-tutorial.html>
 
 那么我们如何解析html页面呢？
 
@@ -144,7 +144,7 @@ https://www.runoob.com/html/html-tutorial.html
 
 安装方法：
 
-```
+``` python
 pip install bs4
 或
 conda install bs4
@@ -152,7 +152,7 @@ conda install bs4
 
 我们来解析豆瓣读书 Top250 
 
-它的网址是：https://book.douban.com/top250
+它的网址是：<https://book.douban.com/top250>
 
 项目难度：⭐⭐
 
@@ -258,7 +258,7 @@ HTML定位方法：https://www.cnblogs.com/bosslv/p/8992410.html
 
 因此你有了思路，通过访问自如公寓的网站，获取每个房间后面的数字号 然后通过数字号访问房屋的直接信息，然后抓取房屋的信息保存在excel中
 
-于是你访问了房屋的网页：https://wh.ziroom.com/x/741955798.html
+于是你访问了房屋的网页：<https://wh.ziroom.com/x/741955798.html>
 
 通过观察房屋的网页，你发现是这些信息是你需要的
 
@@ -514,19 +514,19 @@ python爬虫-->通过邮件A发送-->服务器--->通过邮件B接收
 
 因此我们本节的内容就是爬取36kr的信息然后通过邮件发送
 
-36kr官网：https://36kr.com/newsflashes
+36kr官网：<https://36kr.com/newsflashes>
 
 通过python发送邮件需要获得pop3的授权码
 
 具体获取方式可参考：
 
-https://blog.csdn.net/wateryouyo/article/details/51766345
+<https://blog.csdn.net/wateryouyo/article/details/51766345>
 
 接下来就爬取36Kr的网站
 
 通过观察我们发现 消息的标签为
 
-```
+```javascript
 <a class="item-title" rel="noopener noreferrer" target="_blank" href="/newsflashes/1218249313424001" sensors_operation_list="page_flow">中国平安：推动新方正集团聚集医疗健康等核心业务发展</a>
 ```
 
