@@ -1,5 +1,9 @@
 # Python自动化之Excel
 
+[TOC]
+
+## 0.包的安装
+
 方法一：应用pip执行命令
 
 安装**openpyxl**模块`pip install openpyxl`
@@ -14,9 +18,9 @@
 
 ![](./图片/Excel.png)
 
-### Excel读取
+## 1.Excel读取
 
-#### 读取对应表格
+### 1.1读取对应表格
 
 1. 打开已经存在的Excel表格
 
@@ -47,7 +51,7 @@ sheet = exl_1.active
 print(sheet.dimensions)
 ```
 
-#### 读取单元格
+### 1.2读取单元格
 
 1. 获取某个单元格的具体内容
 
@@ -65,7 +69,7 @@ print(cell_1.value)
 print(cell_1.row, cell_1.column, cell.coordinate)
 ```
 
-#### 读取多个格子的值
+### 1.3读取多个格子的值
 
 1. 指定坐标范围
 
@@ -107,7 +111,7 @@ for col in sheet.iter_cols(min_row = 1, max_row = 5,
 		print(cell.value)
 ```
 
-#### 练习题
+### 1.4练习题
 
 找出test_1.xlsx中sheet1表中空着的格子，并输出这些格子的坐标
 
@@ -126,9 +130,9 @@ for row in sheet.iter_rows(min_row = 1, max_row = 29972,
 
 
 
-### Excel写入
+## 2.Excel写入
 
-#### 写入单元格并保存
+### 2.1写入单元格并保存
 
 ```
 from openpyxl import load_workbook
@@ -141,7 +145,7 @@ sheet['A1'] = 'hello world'
 exl.save(filename = 'test.xlsx') #存入原Excel表中，若创建新文件则可命名为不同名称
 ```
 
-#### 写入行数据并保存
+### 2.2写入行数据并保存
 
 1. 写入一行数据并保存
 
@@ -175,14 +179,14 @@ for i in range(len(data)):
 exl.save(filename = 'test1.xlsx')
 ```
 
-#### 将公式写入单元格保存
+### 2.3将公式写入单元格保存
 
 ```
 sheet[‘A2’] = '=SUM(A1:D1)'
 exl.save(filename='test.xlsx')
 ```
 
-#### 插入列数据
+### 2.4插入列数据
 
 1. 插入一列
 
@@ -197,7 +201,7 @@ sheet.insert_cols(idx=2) #idx=2第2列，第2列前插入一列
 sheet.insert_cols(idx=2, amount=5)
 ```
 
-#### 插入行数据
+### 2.5插入行数据
 
 第2行前上面插入一行(或多行)
 
@@ -208,7 +212,7 @@ sheet.insert_rows(idx=2)
 sheet.insert_rows(idx=2, amount=5)
 ```
 
-#### 删除
+### 2.6删除
 
 1. 删除多列
 
@@ -222,7 +226,7 @@ sheet.delete_cols(idx=5, amount=2) #第5列前删除2列
 sheet.delete_rows(idx=2, amount=5)
 ```
 
-#### 移动
+### 2.7移动
 
 当数字为正即向下或向右，为负即为向上或向左
 
@@ -230,7 +234,7 @@ sheet.delete_rows(idx=2, amount=5)
 sheet.move_range('C5:F10', rows=2, cols=-3)
 ```
 
-#### Sheet表操作
+### 2.8Sheet表操作
 
 1. 创建新的sheet
 
@@ -257,7 +261,7 @@ sheet = exl.active
 sheet.title = 'newname'
 ```
 
-#### 创建新的Excel表
+### 2.9创建新的Excel表
 
 ```
 from openpyxl import load_workbook
@@ -269,9 +273,9 @@ workbook.save(filename = 'new_test.xlsx')
 
 
 
-### Excel 样式
+## 3.Excel 样式
 
-#### 设置字体样式
+### 3.1设置字体样式
 
 1. 设置字体样式
 
@@ -304,7 +308,7 @@ workbook.save(filename = 'new_test.xlsx')
    workbook.save(filename='new_test')
    ```
 
-#### 设置对齐样式
+### 3.2设置对齐样式
 
 水平对齐：`distributed, justify, center, left, fill, centerContinuous, right, general`
 
@@ -352,7 +356,7 @@ cell2.fill = gradient_fill
 workbook.save(filename='new_test')
 ```
 
-#### 设置行高与列宽
+### 3.3设置行高与列宽
 
 ```
 from openpyxl import Workbook 
@@ -363,7 +367,7 @@ sheet.row_dimensions[1].height = 50
 sheet.column_dimensions['C'].width = 20 workbook.save(filename='new_test')
 ```
 
-#### 合并、取消合并单元格
+### 3.4合并、取消合并单元格
 
 ```
 sheet.merge_cells('A1:B2')
@@ -375,7 +379,7 @@ sheet.unmerge_cells(start_row=1, start_column=3,
 				    end_row=2, end_column=4)
 ```
 
-#### 练习题
+### 3.5练习题
 
 打开test文件，找出文件中购买数量`buy_mount`超过5的行，并对其标红、加粗、附上边框。
 

@@ -9,6 +9,8 @@
 
 ```pyhton
 pip3 install python-docx
+或
+conda install python-doc
 ```
 
 > 或在pycharm的setting操作安装（示意如下）：
@@ -26,7 +28,7 @@ pip3 install python-docx
 
 
 
-### 2.1预热：初步认识docx
+### 2.1初步认识docx
 
  相信同学们都进行过word的操作。话不多说，直接上python对word简单操作的代码，先有个直观的感觉，然后再系统学习！
 
@@ -69,7 +71,7 @@ doc_1.save('doc_1.docx')
 
 
 
-### 2.2正式：python自动化之word操作
+### 2.2python自动化之word操作
 
 上节只是小试牛刀一下，接下来我们系统地学习python自动化之word操作。
 
@@ -439,6 +441,7 @@ for row in sheet.rows:
     n = n + 1
 ```
 
-### 4.总结
+### 4.后记
 
-> 本案例也可适用于批量生产固定格式的word，如工资条，通知单等
+> 本案例也可适用于批量生产固定格式的word，如工资条，通知单等，面对这种相似且重复的任务，python的自动化运行能大幅提升当前的工作效率。
+
