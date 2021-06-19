@@ -23,7 +23,7 @@
 ```pyhton
 pip3 install python-docx
 或
-conda install python-doc
+conda install python-docx
 ```
 
 > 或在pycharm的setting操作安装（示意如下）：
