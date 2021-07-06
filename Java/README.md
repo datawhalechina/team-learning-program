@@ -7,7 +7,7 @@
 | 赖桂彬 | 广州城市理工学院                |                                 |
 | 梁家晖 | 广州城市理工学院，Datawhale成员 | https://github.com/leungkafai   |
 | 陈玉林 | 广州城市理工学院                |                                 |
-| 潘梓琪 |                                 |                                 |
+| 潘梓琪 | 广州城市理工学院                |                                 |
 | 周思阳 | 武汉理工大学，物流管理硕士      | https://github.com/suifengyougu |
 
 
