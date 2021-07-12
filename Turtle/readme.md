@@ -3,7 +3,7 @@
 开源内容：https://github.com/datawhalechina/team-learning-program/tree/master/Turtle
 
 ## 基本信息
-- 贡献人员：王思齐、马燕鹏、王皓月、杨煜、舒敏、赵可
+- 贡献人员：王思齐、马燕鹏
 - 学习周期：9天
 - 学习形式：练习
 - 人群定位：Turtle初学者
