@@ -1,31 +1,33 @@
-# 1、坐标
+﻿# Day06：乾坤大挪移 -- 坐标
 
-地瓜：土豆土豆，我是地瓜，我现在已经被敌人包围了，请求支援。
+## 1、坐标
 
-土豆：地瓜地瓜，我是土豆，请立刻告诉我你的坐标。
+**地瓜**：土豆土豆，我是地瓜，我现在已经被敌人包围了，请求支援。
 
-![](https://uploader.shimo.im/f/DhnYpoXEg77ElkYm.png!thumbnail?fileGuid=886kd3qYgXXTyTTW)
+**土豆**：地瓜地瓜，我是土豆，请立刻告诉我你的坐标。
+
+![01](https://img-blog.csdnimg.cn/20210712183121187.png)
 
 什么是坐标呢？<br>
 读完上面这个对话你肯定有点感觉了吧，坐标就是一个物体在空间中的位置，比如上面飞机在天空中的位置，只有告诉友军他的位置，友军才能前去营救。
 
 又比如说下面这个图，就是一个平面空间，我们在上面画了两根轴来帮助大家记录坐标，这两根轴就叫做坐标轴，两根轴交叉的位置记为坐标(0，0)，那么怎么来读取坐标呢？其实非常简单，看【图图】对应坐标轴上的数字就可以了。
 
-![](https://uploader.shimo.im/f/LfrVWDN6OYr0pq3K.png!thumbnail?fileGuid=886kd3qYgXXTyTTW)
+![02](https://img-blog.csdnimg.cn/20210712183149566.png)
 
 就比如这样，图图的位置分别对应横轴的1和纵轴的3，所以它的坐标是(1,3)：
 
-![](https://uploader.shimo.im/f/nzm1q3NzzoM7nfT6.png!thumbnail?fileGuid=886kd3qYgXXTyTTW)
+![03](https://img-blog.csdnimg.cn/20210712183214345.png)
 
-## 🚀挑战1
+### 🚀挑战1
 
 题目描述：请你写出图图在下图中的位置：
 
 （对应横轴和纵轴来看哦~）
 
-![](https://uploader.shimo.im/f/6fneCP2r8lbCmYYO.png!thumbnail?fileGuid=886kd3qYgXXTyTTW)
+![04](https://img-blog.csdnimg.cn/2021071218323935.png)
 
-# 2、goto功能
+## 2、goto功能
 
 那么，怎么才能帮图图到指定的坐标呢？<br>
 这就要使用到一个有趣的功能goto，它可以帮助图图去到指定的坐标位置，但是在使用之前需要记住两个重要秘诀：
@@ -46,7 +48,7 @@ t.goto(80,80)
 ```
 出现了下面的图像，原因是我们让图图去坐标(80,80)的位置，所以图图就直接移动过去了，不过使用goto语句，图图的朝向是不会改变的哦！
 
-![](https://uploader.shimo.im/f/axsrooNYe9fh63Tm.png!thumbnail?fileGuid=886kd3qYgXXTyTTW)
+![05](https://img-blog.csdnimg.cn/20210712183306565.png)
 
 那么，如果我想让图图**瞬间移动**过去要怎么办呢，这时候就要看秘诀2了。
 
@@ -57,19 +59,19 @@ t.up()
 t.goto(x,y)    # 比如t.goto(80,80)
 t.down()
 ```
-## 🚀挑战2
+### 🚀挑战2
 
 请你将图图**瞬间移动**到坐标为(100,100)的地方，如下图：
 
 （提示：下图中的红色圆圈只是示意图图的初始位置，忽略就可以）
 
-![](https://uploader.shimo.im/f/wlX5I63zyyaerDvy.png!thumbnail?fileGuid=886kd3qYgXXTyTTW)
+![06](https://img-blog.csdnimg.cn/20210712183330768.png)
 
-# 3、乾坤大挪移
+## 3、乾坤大挪移
 
 有小伙伴儿会问：“乾坤大挪移是什么？”，很简单，就是让图图进行各种移动，各种来考你的题目，hiahiahiahia~
 
-## 🚀挑战3
+### 🚀挑战3
 
 还记得小时候用过的钉板吗？我们通过钉板制作各种各样的图形，比如下面这种。
 
@@ -77,9 +79,9 @@ t.down()
 
 （备注：如果画出来的图形很小，可以把坐标都放大10倍哦，比如把(1,1)改成(10,10)，把(5,1)改成(50,10)）
 
-![](https://uploader.shimo.im/f/ycPBUneY6Y07aVXG.png!thumbnail?fileGuid=886kd3qYgXXTyTTW)
+![07](https://img-blog.csdnimg.cn/20210712183353474.png)
 
-## 🚀挑战4
+### 🚀挑战4
 
 看来你已经简单了解了坐标和使用坐标的方式，那么，再来考考你吧。
 
@@ -87,7 +89,6 @@ t.down()
 
 （备注：五角星的每个角都是36°，其它角的参数参考下图2）
 
-![](https://uploader.shimo.im/f/seYOykeuVza9t1nj.png!thumbnail?fileGuid=886kd3qYgXXTyTTW)
+![08](https://img-blog.csdnimg.cn/20210712183413657.png)
 
-![](https://uploader.shimo.im/f/rOfsXoJcBrUmCx93.png!thumbnail?fileGuid=886kd3qYgXXTyTTW)
-
+![09](https://img-blog.csdnimg.cn/20210712183445749.png)
