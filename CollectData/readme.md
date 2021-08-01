@@ -54,6 +54,7 @@
 - 微博个人信息数据抓取
 
 **致谢**
+感谢以下成员对项目推进作出的贡献（排名不分先后）：
 
 <table align="center" style="width:80%;">
   <caption><b>内容贡献者名单</b></caption>
@@ -67,7 +68,7 @@
 <tbody>
   <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">聂雄伟（牧小熊）</span></td>
-    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">Datawhale成员，项目负责人，内容构建 </td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">Datawhale成员，Datawhale原创作者，项目负责人，内容构建 </td>
     <td><a href="https://www.zhihu.com/people/muxiaoxiong">知乎</a></td>
   </tr>
 </tbody>
