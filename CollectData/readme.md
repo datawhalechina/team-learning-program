@@ -78,7 +78,7 @@
     </tr>
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">李云龙</span></td>
-    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">中国科大研究生，课程测评 </td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">中国科学技术大学研究生，课程测评 </td>
     <td><a href="https://blog.csdn.net/li_kin?type=blog">CSDN</a></td>
   </tr>
 </tbody>
