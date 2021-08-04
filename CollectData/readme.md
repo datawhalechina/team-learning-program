@@ -70,6 +70,11 @@
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">Datawhale成员，Datawhale原创作者，项目负责人，内容构建 </td>
     <td><a href="https://www.zhihu.com/people/muxiaoxiong">知乎</a></td>
   </tr>
+    <tr>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">杨石雄</span></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">电子科技大学研究生，课程测评 </td>
+    <td><a href="https://blog.csdn.net/Eric___Young?spm=1011.2124.3001.5343">CSDN</a></td>
+  </tr>
 </tbody>
 </table> 
 
