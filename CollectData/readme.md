@@ -75,6 +75,12 @@
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">电子科技大学研究生，课程测评 </td>
     <td><a href="https://blog.csdn.net/Eric___Young?spm=1011.2124.3001.5343">CSDN</a></td>
   </tr>
+    </tr>
+    <tr>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">李云龙</span></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">中国科大研究生，课程测评 </td>
+    <td><a href="https://blog.csdn.net/li_kin?type=blog">CSDN</a></td>
+  </tr>
 </tbody>
 </table> 
 
