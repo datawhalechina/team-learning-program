@@ -81,6 +81,20 @@
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">中国科学技术大学研究生，课程测评 </td>
     <td><a href="https://blog.csdn.net/li_kin?type=blog">CSDN</a></td>
   </tr>
+</tr>
+    </tr>
+    <tr>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">叶前坤（荞麦）</span></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">中国传媒大学研究生，课程测评 </td>
+    <td><a href="https://purebuckwheat.github.io/">github</a></td>
+  </tr>
+  </tr>
+    </tr>
+    <tr>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">武润琦</span></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">悉尼大学研究生，课程测评 </td>
+    <td><a href="https://github.com/Allonsy-ops">github</a></td>
+  </tr>
 </tbody>
 </table> 
 
