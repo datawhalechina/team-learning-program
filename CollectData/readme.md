@@ -55,7 +55,7 @@
 
 感谢以下成员对项目推进作出的贡献（排名不分先后）：
 
-<table align="center" style="width:80%;">
+<table align="center" style="width:100%;">
   <caption><b>内容贡献者名单</b></caption>
 <thead>
   <tr>
