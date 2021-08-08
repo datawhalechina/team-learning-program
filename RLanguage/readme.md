@@ -1,3 +1,10 @@
+# R语言数据分析组队学习 {-}
+
+欢迎来到由DataWhale主办的R语言数据分析组队学习课程。
+
+请前往 https://rlearning.netlify.app/ 开始学习吧。
+
+
 ## 贡献者信息
 
 | 姓名   | 介绍                            | 个人主页                        |
@@ -5,28 +12,29 @@
 | 张晋 |  Datawhale成员，算法竞赛爱好者 | https://blog.csdn.net/weixin_44585839/ |
 | 杨佳达 | 数据挖掘师，Datawhale成员，目前在国内某第三方数据服务公司做数据分析挖掘及数据产品 | https://github.com/yangjiada |
 | 牧小熊 | 华中农业大学研究生，Datawhale成员，Datawhale优秀原创作者 | https://www.zhihu.com/people/muxiaoxiong                           |
-| 杨杨卓然 | 英俊潇洒富得流油的统计博士                                | https://yangzhuoranyang.com  |
+| 杨杨卓然 | 混吃等死统计休学穷酸书生                                | https://yangzhuoranyang.com  |
 | 姚昱君 | 悉尼大学，Datawhale成员     | https://blog.csdn.net/Yao_June |
 
 
-## 课程简介
+
+## 课程简介 {-}
 
 - 课程设计成员：**张晋**、杨佳达、牧小熊、杨杨卓然、姚昱君
-- 学习周期：11天，每天平均花费时间1小时-3小时不等，根据个人学习接受能力强弱有所浮动。
+- 学习周期：16天，每天平均花费时间1小时-3小时不等，根据个人学习接受能力强弱有所浮动。
 - 学习形式：理论学习 + 练习
 - 人群定位：对数据科学有基本了解，希望学习R语言的同学。
 - 先修内容：无
 - 难度系数：⭐⭐
 
-## 课程大纲
+## 课程大纲 {-}
 
-**Task00：熟悉规则与R语言入门（1天）**【 [预览](https://rpubs.com/June_Yao/task00_introduction) 】
-- 组队、修改群昵称。
-- 熟悉打卡规则。
+**Task00：熟悉规则与R语言入门（1天）**
+
 - 安装
 - 环境配置
 
-**Task01 数据结构与数据集 （2天）**【 [预览](https://rpubs.com/June_Yao/task01_data_structure) 】
+**Task01 数据结构与数据集 （3天）**
+
 - 编码基础
 - 数据类型
 - 特殊数据类型
@@ -34,21 +42,24 @@
 - 加载数据 (csv, rds, excel, Rdata)
 - 实例
 
-**Task02 数据清洗与准备 （2天）**【 [预览](https://rpubs.com/June_Yao/task02_data_preparation) 】
+**Task02 数据清洗与准备 （3天）**
+
 - 重复值处理
 - 缺失值识别与处理
 - 异常值识别与处理
 - 特征处理
 - 规范化与偏态数据
 
-**Task03 基本统计分析 （2天）**【 [预览](https://rpubs.com/June_Yao/task03_statistics) 】
+**Task03 基本统计分析 （3天）**
+
 - 多种方法获取描述性统计量
 - 分组计算描述性统计
 - 频数表和列联表
 - 相关
 - 方差分析
 
-**Task04  数据可视化（2天）**【 [预览](https://rpubs.com/June_Yao/task04_visualization) 】
+**Task04  数据可视化（3天）**
+
 - ggplot2包介绍
 - 散点图
 - 直方图
@@ -57,11 +68,15 @@
 - 折线图
 - ggplot2扩展包主题
 
-**Task05  模型（2天）**【 [预览](https://rpubs.com/June_Yao/task05_model) 】
+**Task05  模型（3天）**
+
 - 回归模型
 - 分类模型
 
-关于Datawhale： Datawhale是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注Datawhale：
+## 关于 Datawhale {-} 
+
+
+Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以 “For the learner，和学习者一起成长” 为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale  用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：
 
 ![logo.png](https://camo.githubusercontent.com/8578ee173c78b587d5058439bbd0b98fa39c173def229a8c3d957e62aac0b649/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f323032303039313330313032323639382e706e67237069635f63656e746572)
 
