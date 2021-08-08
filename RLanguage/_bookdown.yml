@@ -1,0 +1,13 @@
+book_filename: RLearning
+delete_merged_file: FALSE
+
+language:
+  label:
+    fig: "图 "
+    tab: "表 "
+  ui:
+    edit: "编辑"
+    chapter_name: ["第 ", " 章"]
+    
+view: https://github.com/FinYang/RLearning-book/blob/main/%s
+

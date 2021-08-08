@@ -1,0 +1,2655 @@
+---
+title: 'R语言数据分析组队学习'
+author: "张晋、杨佳达、牧小熊、杨杨卓然、姚昱君"
+site: bookdown::bookdown_site
+documentclass: book
+link-citations: yes
+knit: (function(inputFile, ...) {
+  bookdown::render_book(inputFile, output_format = "all", ...) })
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning=FALSE, 
+                      message=FALSE,
+                      collapse=FALSE, 
+                      eval = TRUE, 
+                      cache = TRUE)
+
+Sys.setlocale(locale = "Chinese")
+```
+
+
+# 欢迎！ {#welcome .unnumbered}
+
+欢迎来到由DataWhale主办的R语言数据分析组队学习课程。
+
+
+## 贡献者信息 {-}
+
+<!-- | 姓名   | 介绍                            | 个人主页                        | -->
+<!-- | ------ | ------------------------------- | ------------------------------- | -->
+<!-- | 张晋 |  Datawhale成员，算法竞赛爱好者 | https://blog.csdn.net/weixin_44585839/ | -->
+<!-- | 杨佳达 | 数据挖掘师，Datawhale成员，目前在国内某第三方数据服务公司做数据分析挖掘及数据产品 | https://github.com/yangjiada | -->
+<!-- | 牧小熊 | 华中农业大学研究生，Datawhale成员，Datawhale优秀原创作者 | https://www.zhihu.com/people/muxiaoxiong| -->
+<!-- | 杨杨卓然 | 混吃等死统计休学穷酸书生                                | https://yangzhuoranyang.com  | -->
+<!-- | 姚昱君 | 悉尼大学，Datawhale成员     | https://blog.csdn.net/Yao_June | -->
+
+```{r, echo = FALSE, eval = TRUE}
+library(tidyverse)
+do.call(tibble::tribble, c(
+  ~姓名, ~介绍, ~个人主页, 
+  "张晋", "Datawhale成员，算法竞赛爱好者", "https://blog.csdn.net/weixin_44585839/" ,
+  
+  "杨佳达", "数据挖掘师，Datawhale成员，目前在国内某第三方数据服务公司做数据分析挖掘及数据产品", "https://github.com/yangjiada", 
+  
+  "牧小熊", "华中农业大学研究生，Datawhale成员，Datawhale优秀原创作者", "https://www.zhihu.com/people/muxiaoxiong",
+  
+  "杨杨卓然", "混吃等死统计休学穷酸书生", "https://yangzhuoranyang.com", 
+  "姚昱君", "悉尼大学，Datawhale成员", "https://blog.csdn.net/Yao_June"))  %>% 
+  knitr::kable()
+
+```
+
+
+## 课程简介 {-}
+
+- 课程设计成员：**张晋**、杨佳达、牧小熊、杨杨卓然、姚昱君
+- 学习周期：16天，每天平均花费时间1小时-3小时不等，根据个人学习接受能力强弱有所浮动。
+- 学习形式：理论学习 + 练习
+- 人群定位：对数据科学有基本了解，希望学习R语言的同学。
+- 先修内容：无
+- 难度系数：⭐⭐
+
+## 课程大纲 {-}
+
+**Task00：熟悉规则与R语言入门（1天）**
+
+- 安装
+- 环境配置
+
+**Task01 数据结构与数据集 （3天）**
+
+- 编码基础
+- 数据类型
+- 特殊数据类型
+- table like 数据类型
+- 加载数据 (csv, rds, excel, Rdata)
+- 实例
+
+**Task02 数据清洗与准备 （3天）**
+
+- 重复值处理
+- 缺失值识别与处理
+- 异常值识别与处理
+- 特征处理
+- 规范化与偏态数据
+
+**Task03 基本统计分析 （3天）**
+
+- 多种方法获取描述性统计量
+- 分组计算描述性统计
+- 频数表和列联表
+- 相关
+- 方差分析
+
+**Task04  数据可视化（3天）**
+
+- ggplot2包介绍
+- 散点图
+- 直方图
+- 柱状图
+- 饼状图
+- 折线图
+- ggplot2扩展包主题
+
+**Task05  模型（3天）**
+
+- 回归模型
+- 分类模型
+
+## 关于 Datawhale {-} 
+
+
+Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以 “For the learner，和学习者一起成长” 为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale  用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：
+
+```{r, echo = FALSE}
+
+insert_logo <- function(){
+  knitr::include_graphics("image/logo.png")
+}
+insert_logo()
+```
+
+
+
+
+<!--chapter:end:index.Rmd-->
+
+# (PART) 准备工作 {-}
+
+# 熟悉规则与R语言入门 {#task-00 .unnumbered}
+
+![](./image/task00_intro_structure.jpg){width=100%}
+
+## 安装
+
+### R
+
+* R 语言是一门用于统计计算与绘图的编程语言和开源软件([The R Foundation](https://www.r-project.org/))。
+* R 语言是当今应用最多的统计软件之一。
+* 截止到这份文档编写时，在 CRAN ([the Comprehensive R Archive Network](https://cran.r-project.org/)) 上总共发行了`r format(ifelse((nn <- nrow(available.packages(contrib.url("https://cran.rstudio.com/", "both")))) < 17619, 17619, nn), scientisfic = FALSE)`个R语言程辑包。
+* 除了 CRAN 以外，R 语言的程辑包作者也在其他线上代码托管与研发协作平台发布了数不尽的作品。这样的平台包括 [GitHub](https://github.com/)、[GitLab](https://about.gitlab.com)、[Gitee](https://gitee.com/) 等。
+
+你可以从 CRAN 的网站上下载 R：https://cloud.r-project.org/。
+你也可以在[这里](https://cran.r-project.org/mirrors.html)选择任意一个镜像网站来下载 R.
+
+### RStudio
+
+[RStudio](https://rstudio.com/products/rstudio/) 是针对 R 语言设计的集成开发环境。如果没有 RStudio 的话，R 本身只提供一个简单的文本编辑器。如果把R语言本身比喻成飞机的话，那么 RStudio 便是飞机场：你不需要它就可以飞，但是有了它会极大增加效率。它包括一个控制台、语法突出显示的编辑器、直接执行代码的支持，以及用于绘图、历史记录、调试和工作区管理的工具。
+
+你可以从其官网下载开源版本：https://rstudio.com/products/rstudio/ 
+
+在本文档中，我们会介绍 RStudio 的用户界面和部分功能，帮助你尽快上手使用 RStudio 的数据分析。
+
+### R语言程辑包（R Package）
+
+R 语言程辑包是 R 语言必不可少的部分。R语言能有他今天在统计学里的位置正是归功于其程辑包在统计计算方面的发展。一个程辑包为用户提供函数（function）、数据（data）或者插件（addins）。除了 R 本身自带的基础程辑包（base、utils、stats等）以外，你还可以用以下代码来从 CRAN 上下载并安装额外的程辑包：
+
+```{r, eval = FALSE}
+install.packages("tidyverse")
+```
+
+我们将会在这次组队学习中多次用到`tidyverse`。它其实是一系列程辑包的组合，主要提供数据清洗与处理的工具。
+
+#### 进阶的安装方法
+
+当你应用 R 语言的能力到一定阶段之后，你会发现自己需要安装不在 CRAN 上发布的程辑包，或者你需要最新版本的程辑包（ CRAN 上的包为了保证代码的可靠性，发布前需要经过一系列的检查与测试，这就导致 CRAN 上的版本往往不是最新的开发版本）。以安装 GitHub 上发布的程辑包为例，你可以使用以下代码：
+
+```{r, eval = FALSE}
+# 安装 remotes 包
+install.packages("remotes")
+# 使用 remotes 从 GitHub 上安装 username 名下的 repo 包
+remotes::install_github("username/repo")
+```
+
+我们需要先安装 `remotes` 包，并使用其中的 `install_github` 函数来完成操作。注意这里是从源代码安装，在本地编译。Windows 用户需要使用 Rtools 作为背后的编译工具。关于 Rtools 的安装信息见 https://cran.r-project.org/bin/windows/Rtools/
+
+#### R与其程辑包的更新
+
+在本文档编写之时，R 语言已更新到版本`r R.version$version.string`。当新的版本发布时，你可以使用 `installr` 包中的 `installr` 函数来完成R的更新（你当然也可以手动下载更新，如果不嫌麻烦的话）。代码如下：
+
+```{r, eval = FALSE}
+# 安装 installr 包
+install.packages(installr)
+# 更新 R
+installr::installr()
+```
+
+根据对话窗口中的提示完成整个安装过程即可。
+
+你也可以使用以下代码来更新R的程辑包：
+
+```{r, eval = FALSE}
+# 手动确认是否将各个更新到最新版本，或者
+update.packages()
+# 更新所有包到最新版本
+update.packages(ask = FALSE)
+```
+
+
+## 环境配置
+
+### 项目（Project）
+
+在RStudio中一个项目（Project）本质上是一个把项目相关的文件储存在一个地方的文件夹。如果使用项目相关的功能的话，你不需要担心使用的文件是否在当前的工作目录（Working Directory）。 项目功能提供了一个将不同目的的文件分隔开的方式，同时自动保存上次相应的工作进度。
+
+#### 练习 {-}
+
+为这次组队学习建立一个新的项目。
+
+每次进行组队学习的时候，不要忘记去打开这个项目。在结束工作退出R，或者切换到另一个项目的时候，为了下次打开 RStudio 的时候有一个干净的工作环境，建议不去保存“工作空间镜像” （Workspace image，即在当前进程中加载的数据、函数）。
+
+创建新的项目，可以在下拉菜单 __File__ （或者RStudio界面的右上角）找到 __New Project__ 选项。在弹出的对话框中，如果你想创建一个新的文件夹作为项目文件夹，选择 __New Directory__ ；如果你想用一个已经存在的文件夹作为项目文件夹，选择 __Existing Directory__ 。
+
+![RStudio 界面右上角的项目设置^[小提示：如果想要改变 RStudio 的主题颜色，可以通过 __Tools__ >> __Global Options..__ >> __Appearance__]](./image/task00_project.png)
+
+
+
+### 用户界面
+
+接下来让我们关注一下 RStudio 用户界面里的各种面板和标签。在这一部分有四个基础面板值得注意。
+
+![](./image/Rstudio.png)
+
+* __Console__ 控制台位于界面左侧。你可以在这里运行命令、浏览输出结果。
+* __Environment__ 位于界面右上方。环境面板会总结出当前加载的数据、定义的函数等。现在在你看来可能是空的，因为我们还没有做任何事情。
+* __Files__ 位于界面右下方。文件面板展示当前文件夹的信息。
+* __Help__ 帮助面板也位于界面右下方。在这里你可以找到相应数据或者函数的帮助信息。
+
+### R Markdown
+
+你可以控制台（Concole）直接运行命令，但是这样跑出来的指令不会被保存下来。一般来说，我们更建议将命令写在叫做 R script 的脚本中，或者写在一个叫做 R Markdown 的文件中。
+
+#### 练习 {-}
+
+创建一个脚本 R script.
+
+* __File__ >> __New File__ >> __R Script__
+
+#### 练习 {-}
+
+创建一个 R Markdown 文件。
+
+* __File__ >> __New File__ >> __R Markdown..__
+
+
+在脚本或者 R Markdown 的界面中，界面上方可以找到一个运行所有代码的按键。
+
+一个 R Markdown 文件是一个可以将代码与 _markdown_ 标准文本（一种纯文本的格式语法）结合在一起的文本文档。使用 R Markdown 文件可以很容易地生成 pdf 文件或者 html 文件，其中不止包含了你的文本，还有代码以及运行代码所生成的结果。点击界面上方的 __Knit__ 按键^[如果你想要生成 pdf 文件，你需要安装 [LaTeX](https://www.latex-project.org/)。可以看看很好地兼容了 R 的[TinyTex](https://yihui.org/tinytex/)。]即可。再也不需要复制粘贴、屏幕截图输出结果到 Word 了。R Markdown 文档的一个主要优势是可复现。只要有了同样的代码和数据，你可以获得与其他人一模一样的结果，只要生成文档就可以了。
+
+在 R Markdown 文件里写代码，需要使用特定的代码块（code chunks）来告诉 R Markdown 这部分是需要运行的代码而不只是文本。^[R Markdown 的更多语法可以看看 [R Markdown cheatsheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)。]
+
+````markdown
+`r ''````{r}
+
+# 在这里写你的代码
+# 使用三个反引号和 {r} 起始，三个反引号结束来构建代码块
+# 在代码块里使用井号 # 写评论（纯文本） 
+
+`r ''````
+
+````
+
+
+
+
+### 帮助
+
+R 能够发展到其今天的地位，很大的一个因素是他提供了相对详细的帮助文档，对初学者相对友好。一个相对完整的 R 包最低标准便是有函数的帮助文档。需要查看一个具体函数或者数据的帮助时可以用 `?fun`（等同于 `help(fun)`），该函数 `fun` 的帮助文档便会出现在之前提到过的帮助面板里。这个是已经知道需要什么函数了之后查找具体函数的用法的方式，如果你不记得具体的函数名字，可以使用两个问号加关键字来搜索：`??keyword`。
+
+其次R包会有一个或多个 vignette。vignette 文档的目的主要是当使用者不知道用什么函数，对这个包不了解的时候提供一份入门简介一样的东西，一般会对常用的函数做出说明和演示，以及一些理论的阐述。这个包如果是哪一篇论文的副产品，vignette 甚至有可能是这篇论文。根据包的大小不同，vignette 的数量也不一样。如果是针对于一个问题写出的精炼的小包的话会只有一个 vignette 。如果包的用途比较广泛或者作者想说的话比较多，会针对每个问题有一个单独的 vignette。浏览所有已安装的 vignette 用 `browseVignettes()` ，查看具体包的用`browseVignettes("packagename")`。以上两个是通过 CRAN 发行的包的标配。
+
+如果这个包没有在 CRAN 上发行，只在 GitHub 上，或者 GitHub 上有开发版本的话，一般会有一个 `README.md` 的文档。这个文档相对于 vignette 来说更加简短，一般都只写明如何安装，以及最主要的命令的演示，没有太多的说明。文档最后有可能会说明这个包用的是什么许可证。如果有这么一个文件的话，就可以很快速的知道这个包最主要的命令是什么。这个文档就需要到相对应的R包的资源库搜索了。
+
+```{r, eval = FALSE}
+## 总结
+# 查看具体函数的帮助文档
+?fun
+help(fun)
+# 在帮助文档中搜索关键词
+??keyword
+# 浏览所有已安装的vignette
+browseVignettes()
+# 查看具体包的vignette
+browseVignettes("packagename")
+```
+
+
+## Happy Coding!
+
+这次的R语言数据分析组队学习的入门篇便到这里了。接下里请移步组队学习的正篇第一部分：数据结构与数据集。
+
+玩得开心！
+
+## 本章作者 {-}
+
+__Fin__
+
+> https://yangzhuoranyang.com
+
+## 关于Datawhale {-}
+
+Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：
+
+```{r, echo = FALSE}
+insert_logo()
+```
+
+
+
+
+
+
+<!--chapter:end:Task00_Introduction.Rmd-->
+
+# (PART) 开始干活 {-}
+
+# 数据结构与数据集 {#task-01}
+
+![](./image/task01_data_structure.jpg){width=100%}
+
+## 准备工作
+
+这节组队学习的目的主要是帮助你上手R的基本编程逻辑，了解一些R编程的基本概念，包括各个数据类型和数据集的读取与保存。
+
+在开始我们的学习之前，不要忘记在 R Studio 中切换到组队学习专属的项目，打开一个 R script 文件或者 R Markdown 文件（详见入门篇）。
+
+## 编码基础
+
+首先我们来了解一些基本的编码操作。在 R Studio 中想要运行代码可以在控制台 Console 中键入代码后点击回车。这样运行的代码会被保存在当前项目的 `.Rhistory` 文件中，也可以在 R Studio 界面右上角的 History 面板中找到，但是不会被明确地保存下来作为一个脚本文件。一般只有在我们想要运行一些简单的指令或者计算的时候才会采取这种方式。更常见的是将代码写在脚本文件中，选中相应的代码后点击界面上方的Run或者快捷键（`Ctrl` + `Enter`）来运行。
+
+### 算术
+
+你可以直接运行计算命令。计算符号包括加`+`、减`-`、乘`*`、除`/`、求幂`^`以及求余数`%%`等。值得一提的是开平方根有他自己单独的函数`sqrt`。
+
+```{r}
+1 + 1
+1 - 1
+1 * 2
+1 / 2
+3 %% 2
+2^(1 / 2)
+sqrt(2)
+```
+
+### 赋值
+
+在 R 里，我们可以为一个“东西”取一个名字，这个“东西”可以是一个值、一个向量、或者一个函数等，这样我们就可以之后再获取存储在这个名字下面的信息。
+
+```{r}
+# 将数字42赋予名叫x的变量
+x <- 42
+# 在R中运行一个物体的名字
+# R将会打印出（print）该物体的值
+x
+```
+
+在 R 中基础赋值的符号有三种：
+
+1. 一个向左的箭头`<-`表示将箭头右方的值取名叫做箭头左侧的名字，或者将箭头右侧的值存储在箭头左侧的名字里；
+2. 一个向右的箭头`->`表示将箭头左侧的值储存在箭头右侧的名字里；
+3. 一个等号`=`表示将箭头右侧的值存储在箭头左侧的名字里（同1）。
+
+在早期的键盘中有一个单独的按键就是向左的箭头，虽然后来的键盘不再设立这个按键，但是使用箭头的编程习惯流传了下来。赋值符号的选择取决于个人习惯，但是我们大多数情况下都推荐使用箭头（尤其是向左的箭头）作为赋值的符号。这是R语言于其他语言不同的地方，有以下原因：
+
+1. 箭头明确了赋值方向，这是等号做不到的； 
+2. 等号用在顶层环境中的时候是赋值，用在函数中则是设参（或者叫做在函数层面赋值）。这种二义性不小心区分则可能会引发错误。而等号即使用在函数中也是赋值；
+3. 箭头可以做到多次赋值（`a <- b <- 42`）甚至是不同方向上多次赋值（`a <- 42 -> b`）（尽量避免！）；
+4. 虽然这次组队学习中不会学到，但是更高级的赋值工具包括 `<<-` 和 `->>` 对应向左或向右的箭头；
+5. 同时使用`=`与`==`（判断是否相等）会降低可读性（`a <- 1 == 2` vs `a = 1 == 2`）。
+
+总结，__凡是赋值都用`<-`__，凡是设参（之后会说到）都用`=`。
+
+在 R Studio 中可以使用快捷键`Alt` + `-`来输入`<-`，这样就不用每次都点两次键啦。这样还有一个好处，就是 R Studio 会自动识别当前的输入语言，从而选择最佳的赋值符号。大多数情况下这也就是说他会输入R的`<-`，如果你在 R Studio 里用 Python 的话就会自动变成`=`啦。
+
+原来作用于单纯数字上的算术运算现在即可用变量名称代替具体的数值。
+```{r}
+y <- 21
+x + y
+x <- x + y
+```
+
+
+
+
+
+
+
+
+### 函数
+
+R是一个非纯函数式编程（Functional Programming）的语言，与你平时可能所熟悉的面向对象程序设计（Object-Oriented Programming）的编程语言（比如 Python）不一样。这意味着在R中，相对于以类（Class）与对象（Object）的思路思考问题，我们要更多地定义函数（Function）以及考虑函数的输入与输出来进行运算。（如果你不知道我在这里说什么，请忽略这段话。）
+
+在R中，所有的运算都是通过函数来达成的。我们可以用和之前一样的赋值方法（`<-`）来将一个函数存储在一个名字下。请看以下示例：
+
+```{r}
+addone <- function(x = 0) {
+  x + 1
+}
+```
+
+这里我创建了一个名为`addone`的函数，这个函数的作用就是将输入值在函数内部存储在名为`x`的参数里，在名为`x`的值上加一，再返回结果。如果没有输入值的话，`x`的默认值是`x = 0`。
+
+```{r}
+# 作用在数字上
+addone(42)
+# 作用在变量上
+y <- 42
+addone(y)
+```
+
+如你可见，调用函数的方法就是在函数的名字后边加小括号，再在小括号中输入参数（arguments）。当函数有多个可选参数的时候，建议输入参数的时候使用等号`=`明确函数名称。这便是之前提到过的等号的设参用法。
+
+```{r}
+addone(x = 42)
+```
+
+如果你没有使用小括号而是直接在控制台中运行函数的名字的话，像以前一样，R会直接打印出这个函数的内容，即源代码：
+```{r}
+addone
+```
+
+当你完成了一个复杂的计算，不要忘记把结果储存在一个名字下，否则结果不会保存下来，只会在控制台中一闪而过。
+```{r}
+y <- 42
+y_plusone <- addone(y)
+```
+
+### 循环（loop）
+
+使用代码很重要的一个原因是可以重复进行多次相同或有规律的操作，也就是循环了。
+
+R 中的循环函数包括`for`，`while`，和`repeat`。在这里我们简单用一个例子来介绍一下最灵活的`for`循环：
+
+```{r}
+x <- 0
+for(i in 1:3){
+  x <- x + i
+  print(x)
+}
+```
+
+在最开始的时候，我们让`x`等于0。在接下来进行的循环操作中，紧跟在`for`之后的小括号里给出了每个回合当中会变化的参数，叫做`i`。`i`后边的`in`之后给出的是参数`i`在回合中的可能取值，也就是从1到3的正整数。最后大括号中给出每个回合的操作，在`x`上加上`i`的值，重新取名为`x`，再打印出来。
+
+整个流程下来：
+
+第一个回合`x`一开始是0，在第一个回合中`i`是1，经过计算赋值`x`变成了1，打印后进入第二个回合；  
+第二个回合`x`一开始是1，在第二个回合中`i`是2，经过计算赋值`x`变成了3，打印后进入第二个回合；  
+第三个回合`x`一开始是3，在第三个回合中`i`是3，经过计算赋值`x`变成了6，打印后结束循环。
+
+
+
+### 管道（pipe）
+
+如果我们想要对一个对象进行多个函数的操作，比如说想要使用我们刚刚定义的`addone`函数，还有新定义的`addtwo`，`addthree`，我们可以按照普通调用函数的方法一个套一个：
+
+```{r}
+addone <- function(x) x+1
+addtwo <- function(x) x+2
+addthree <- function(x) x+3
+
+x <- 0
+addthree(addtwo(addone(x)))
+```
+
+在这种常规的方法下，函数运行的顺序，和我们读函数的顺序，都是从内到外的。比如在上边的操作中，我们先用了`addone`给0加1，又用了`addtwo`，最后用了`addthree`。这样的坏处也是显而易见的，即可读性很差。想象一下你要对一个数据列表连续使用十几个函数，每个函数里都有其自己不同的参数，这么一系列操作如果用这个常规方法的话必然会使代码变成一个很难读的庞然大物。
+
+`magrittr`包提供了另一种使用函数的办法，即使用`%>%`这个符号函数进行方法链（method chain）的操作。你可以把这个符号叫做管道。如果我们用管道来重写之前的一连串操作，代码会变成：
+
+```{r}
+# tidyverse也包含了管道符号
+library(tidyverse)
+
+x %>% 
+  addone() %>% 
+  addtwo() %>% 
+  addthree()
+```
+
+这个符号的具体含义简单来说是“将上一步运行的结果放在下一步运行的函数的第一个参数的位置上”。在这个例子中，`x`被当作`addone`的第一个参数被加一。`addone`的运行结果被当成下一步`addtwo`的第一个参数被加二，其运行结果最后被当成`addthree`的第一个参数被加三，最终得到结果。
+
+经过了管道的改写之后，函数的可读性得到了大幅上升。从常规的“从内到外”读法，变成了“从上到下，从左到右”。虽然需要运行额外R包，但是由于符合阅读习惯和数据清洗流程的特点，管道在数据分析的领域被普遍使用。
+
+关于管道符号的具体使用规则详见`` ?`%>%` ``。
+
+## 数据类型
+
+### 基础数据类型
+
+在R中有五种基础数据类型，包括三个数值型、一个逻辑型和一个字符型。
+
+#### 数值型
+
+数值型数据包括三种，分别是默认的实数数值型数据（double）、整数类型（integer）和复数类型（complex）：
+```{r}
+# numeric
+a <- 132.2345
+# Inf
+# integer
+b <- 132L
+# complex
+c <- 2 + 3i
+```
+
+实数数值型数据每个值占用8个字节（bytes），是最常见的数值型数据。如果没有做特别处理，我们平时见到的数字都是这个类型的——单纯的数字罢了。
+
+整数类型，正如它的名字一样，只包含整数而没有小数部分。我们可以在整数末尾加上一个大写的L来表示这个数字是一个整数类型的数据。如果没有加大写的L的话，虽然只输入了一个整数，但是这个整数是实数数值类型的整数，而不是整数类型。他们的区别在于实数数值类型的整数和和非整数一样都占用8个字节，而整数类型只占用4个字节。平时用起来区别不大，但是如果数据量比较大且都是整数的话推荐使用整数类型来节约空间。
+
+复数类型便是包含复数部分的数值类型了。只要在实数部分后边加上虚数部分并且用小写字母i来代表虚数单位，这个数值便是复数类型。鉴于数据分析领域基本不会涉及复数，我们在这次组队学习不去讨论复数类型。
+
+判断一个数值是什么类型，可以用`typeof()`:
+
+```{r}
+typeof(a)
+typeof(b)
+typeof(c)
+```
+
+#### 逻辑型
+
+逻辑型（logical）数据只包括两个值，`TRUE`（`T`） 和 `FALSE`（`F`）:
+
+```{r}
+TRUE
+T
+FALSE
+F
+```
+尽管一个字母的缩写和全拼效果是一样的，但是一个好的编程习惯是始终使用大写全拼的`TRUE`和`FALSE`。这样可以增加可读性，也会减小因为命名产生的使用错误。比如，有些时候涉及到时间序列时，一些用户喜欢将最大时序上限命名为`T`，这个时候就不能用`T`来代表`TRUE`了。
+
+说到逻辑型数据，就不得不说到逻辑算符。这里我们只考虑三个，分别是“和”（and）`&`、“或”（or）`|`、“否”（not）`!`。
+
+```{r}
+TRUE & FALSE
+TRUE | FALSE
+!TRUE
+```
+
+
+
+#### 字符型
+
+字符型数据（character）可以总结为“任何带引号的值”。它可以是一个字母、一个单词、一句话、或者任何用引号框起来的数值或逻辑。
+
+```{r}
+string_a <- "A"
+string_b <- "letter"
+string_c <- "This is a sentence."
+string_d <- "42"
+string_e <- "TRUE"
+```
+
+在输入的时候，即使是数字或者逻辑型的`TRUE`和`FALSE`，只要加上了引号，他们就变成了字符型的数据，而不再带有数值型或逻辑型的特性。要注意区分。
+
+```{r}
+typeof(42)
+typeof("42")
+typeof(TRUE)
+typeof("TRUE")
+```
+字符型是最“自由”的数据类型，因为它的内容可以是任何字符，任何其他的数据类型也可以转化为字符型数据。比如你可以把一个数值型数据加上引号来当作字符型数据来解读。但是反过来却不可以：你没有办法把一个字符当作数字来解读。数据之间的转化我们会在第3.2.2节讲到。
+
+在R中，单引号（`'`）和双引号（`"`）是等效的，但是我们推荐大多数情况下使用双引号，只有在引号内有双引号的时候使用单引号去引双引号（比如`' This is an "example". '`）。这主要是为了帮助其他语言（C, C++, Java等）的用户区分单双引号的细微区别。在C语言里，单双引号不是等效的。R语言中的（单）双引号大致是与C语言中的双引号等效的。
+
+
+### 向量（vector）
+
+这里说到的向量主要指基础向量类型（atomic vector）。
+向量是由一组相同类型的值组成的一维序列。根据值的类型不同，我们会有不同类型的向量。
+相对应之前的数值、逻辑和字符型的基础数据类型，这里我们也有数值、逻辑和字符型的向量类型。
+
+```{r}
+vec_num <- c(1, 2, 3)
+vec_log <- c(TRUE, FALSE, TRUE)
+vec_cha <- c("A", "B", "middle school")
+```
+
+使用函数`c()`来构建向量。可以进行向量上的运算，而不用一个一个值地单独去计算。
+
+```{r}
+vec_A <- c(1, 2, 3)
+vec_B <- c(3, 5, 6)
+vec_A + vec_B # 等同于 c(1 + 3, 2 + 5, 3 + 6)
+
+!vec_log
+```
+
+也有相应的作用于向量上的函数，可以计算相应的统计量。比如求和的`sum`、求方差的`var`、平均值的`mean`等：
+
+```{r}
+sum(vec_A)
+var(vec_A)
+mean(vec_A)
+```
+
+
+#### 因子（factor）
+
+除了之前提到的基础数据类型组成的向量外，还有一类重要的的向量类型便是因子，可以使用函数`factor`和`c`组合来创建。
+
+```{r}
+vec_fac <- factor(c("male", "female", "male", "female", "female"))
+vec_fac
+```
+
+从表面上看，一个因子向量和字符向量很相似，都是一系列带引号的字符组成的。它与字符向量的主要区别在于因子向量的独特值（levels）是有限个数的。因子向量的所有元素都是由这些有限个数的独特值组成的。比如在以上的例子中，虽然`vec_fac`由五个元素组成，但是只包括了两个独特值“male”和“female”。
+
+```{r}
+# 查看因子向量的独特值
+levels(vec_fac)
+```
+
+你也可以用函数`ordered`或者`factor`里的`ordered = TRUE`参数（argument）创造一个有内在顺序的因子向量，内在顺序可以用`levels`参数来手动设定：
+
+```{r}
+educ <- ordered(
+  c("kindergarten", "primary school", "middle school", 
+    "primary school", "middle school", "kindergarten"),
+  levels = c("kindergarten", "primary school", "middle school")
+)
+# 等同于
+educ <- factor(
+  c("kindergarten", "primary school", "middle school", 
+    "primary school", "middle school", "kindergarten"),
+  ordered = TRUE, 
+  levels = c("kindergarten", "primary school", "middle school")
+)
+
+educ
+```
+
+实质上，R 把因子向量当作整数型数值向量来对待。这也就意味着用因子向量替代字符向量可以剩下很多字节。
+
+#### 数值之间的转换 {#transform}
+
+不同的向量/数据类型之间是可以互相转换的。相互转换的可行性取决于数据类型的复杂程度（或者说自由程度）。按照自由程度将已经提到的几种向量以从高到低的排序可得
+
+> 字符>数值>逻辑
+
+在数值型内的排序从自由度高到低为
+
+> 复数>实数>整数
+
+越靠近字符的类型越“自由”，自由度低的类型可以（随意）转化为同层或自由度更高的类型。字符型向量是最自由的：它可以包含任何原始值，其他任何类型都可以转化为它。我们以一个最受限制的逻辑向量为例，在这里展示如何根据这个排序使用几个常见的类型转换函数：
+
+```{r}
+vec_loc <- c(TRUE, FALSE, TRUE)
+# 从逻辑型到数值型
+vec_num <- as.numeric(vec_loc)
+vec_num
+# 从数值型到字符型
+vec_cha <- as.character(vec_num)
+vec_cha
+# 从逻辑型到字符型
+vec_cha2 <- as.character(vec_loc)
+vec_cha2
+
+## 倒序
+# 从字符型到数值型
+as.numeric(vec_cha)
+# 从字符型到逻辑型
+as.logical(vec_cha2)
+# 从数值型到逻辑型
+as.logical(vec_num)
+```
+这里我们可以看到逻辑型的`TRUE`和`FALSE`实际上对应数值型的1和0。
+
+从一个低自由的类型可以随便转化到高自由的类型，但是反过来，从一个高自由的类型要转化到一个低自由的类型必须要符合一些特定值。比如：
+
+1. 从字符型转化到数值型的时候，字符的值一定要符合数字的格式；
+2. 从数值型转化到逻辑型，0会转化为`FALSE`，其他数值会转化为`TRUE`；
+3. 从字符型转化到逻辑型，字符的值只能是`TRUE`和`FALSE`。
+
+如果不符合这个规则的话，会得到`NA`。`NA`是“Not Available”的缩写，即所谓的缺失值。缺失值的处理在下一篇《数据清洗与准备》会讲到。
+
+```{r}
+# 产生缺失值
+as.logical(c("some", "random", "strings"))
+```
+
+
+因子型是一个相对特殊的类型，它可以和数值型与字符型相互转换。
+
+```{r}
+vec_fac <- factor(c("male", "female", "male", "female", "female"))
+# 从因子型到数值型
+vec_num <- as.numeric(vec_fac)
+vec_num
+# 从因子型到字符型
+vec_cha <- as.character(vec_fac)
+vec_cha
+
+# 从字符型到因子型
+as.factor(vec_cha)
+# 从整数型到字符型
+as.factor(vec_num)
+
+```
+正如之前所说，R内部将因子变量当作整数变量来处理，这也就是为什么一个看上去像是字符的东西可以被变成数值。
+需要注意的是，把因子型转化为其他类型的时候会丢失一定的信息：
+
+1. 因子向量变成字符向量会丢失独特值的信息；
+2. 因子向量变成数值型的时候会丢失字面信息，只会保留独特值的编码，即根据独特值排序的正整数。
+
+
+
+#### 向量命名
+
+除了向量自己的名字，我们也可以给向量里的每个元素一个名字。
+
+```{r}
+# 先命名向量
+# 再命名向量的元素
+vec <- c(1, 2, 3)
+names(vec) <- c("A", "B", "C")
+vec
+
+# 或者
+# 创造向量的时候命名向量的元素
+vec <- c(A = 1, B = 2, C = 3)
+vec
+```
+
+
+
+#### 访问向量的子集
+
+三种截取子集的符号：`[`、`[[` 和 `$`（其中`$`不能用在基础向量上）。
+
+六种截取向量子集的方法：
+
+1. 正整数：根据元素的序号提取元素；
+2. 负整数：根据元素的序号去除元素；
+3. 和向量长度一样的逻辑向量：将逻辑向量的元素与向量元素一一对应，`TRUE` 选择该元素，`FALSE`去除该元素；
+4. Nothing：选择原向量；
+5. 零（0）：什么都不选择；
+5. 字符向量：选择根据元素名字选择元素。
+
+使用`[` 作为选取符号的示例：
+
+```{r}
+vec <- c(a = 1.2, b = 5.6, c = 8.4, d = 9.5)
+# 1. 正整数
+vec[c(1,3)]
+# 2. 负整数
+vec[c(-1,-3)]
+# 3. 逻辑向量
+vec[c(TRUE, FALSE, FALSE, TRUE)]
+# 4. Nothing
+vec[]
+# 5. 零
+vec[0]
+# 6. 字符向量
+vec[c("a", "c")]
+```
+
+`[[` 在向量的场景里只能选择一个元素，而不是像`[` 一样选择一个子集：
+
+```{r, error = TRUE}
+# 可以
+vec[[1]]
+vec[1]
+vec[c(1, 3)]
+# 不可以
+vec[[c(1, 3)]]
+```
+正是因为这个原因，我们提倡在只选择一个元素的时候多使用`[[`而不是`[`。这样在函数产生预期外的行为，选择多余一个元素的时候可以及时被错误信息提醒。
+
+
+
+### 特殊数据类型
+
+#### 日期（date）
+
+R中有蕴含日期的特殊类型`Date`，有日期-时间类型的`POSIXct`和`POSIXlt`。但在这一节我主要想介绍一下专注于日期处理的包`lubridate`。
+
+```{r}
+library(lubridate)
+```
+
+日期的本质实质上只是数字罢了，但是日期也有特殊的计算方式，特殊的进制。比如一个月有可能有30天或31一天，多少天进一个月也需要相应变化。`lubridate`包中的年月日`ymd`函数就是用来帮助解决这个问题的：
+
+```{r}
+sevenseven <- ymd("2021-07-07") 
+
+sevenseven
+typeof(sevenseven)
+class(sevenseven)
+```
+注意这里打印出来的日期是符合阅读习惯的年月日，但是属于`Date`的class，又是`double`的类别，也就意味着可以把这个日期当作一个单纯的数来计算。比如七月七日加上一天就是七月八日：
+
+```{r}
+sevenseven + 1
+```
+
+七月七日加上一个月就是八月七日：
+
+```{r}
+sevenseven + months(1)
+```
+
+年月日`ymd`函数所做的只是把输入的字符串自动识别并输出日期格式的数值，只要输入的字符串符合“年月日”的类似格式顺序。如果字符串不是年月日的格式，也没关系，`lubridate`也提供相应的 月年日`myd`，日月年`dmy`，月日年`mdy`，日年月`dym`，甚至是 年季`yq` 的函数。
+
+`lubridate`的更多用法详见[`lubridate`主页](https://lubridate.tidyverse.org/)。
+
+#### 时间序列（ts）
+
+时间序列作为一种有自相关性质的特殊数据类型，在R中也是可以分开处理的。制造时间序列的函数叫做`ts`，也就是 time series 的缩写：
+
+```{r}
+xts <- ts(rnorm(12), start = c(2021, 1), frequency = 4)
+xts
+```
+在这里创造的序列便拥有了时间序列的性质。`ts`函数的`start`参数设定了时间序列开始的时间，`frequency`参数设定了时间序列的周期性。在上面的例子中，我们创造了一个从2021年第一季度开始的，具有季节性的时间序列，跨度三年。我们也有相应的函数可以提取这些时间序列的信息：
+
+```{r}
+# 起始日期
+start(xts)
+# 结束日期
+end(xts)
+# 周期性
+frequency(xts)
+```
+
+使用时间序列的好处在于我们可以用一些很简单的命令来使用时间序列的模型，比如使用`forecast`包来用一个 ARIMA 模型对澳大利亚燃气月生产量进行预测：
+
+```{r}
+library(forecast)
+gas %>% 
+  auto.arima() %>% 
+  forecast(36) %>% 
+  autoplot()
+```
+
+关于时间序列的分析与预测的更多信息可见[`tidyverts`系列包](https://tidyverts.org/)， [`forecast`包](https://pkg.robjhyndman.com/forecast/)等。
+
+## 多维数据类型
+
+之前我们讨论的数据类型都是一个序列（向量），都是一维的数据。在这章里我们会学习二维甚至多于二维的数据类型。
+
+### 矩阵（matrix）
+
+在R中的矩阵和数学概念上的矩阵很相似。在数学概念里，矩阵是一个按照长方阵列排列的数字集合，它有着固定的行数和列数。在R里，矩阵是一个按照长方阵列排列的、有着固定行数和列数的、包含同一类型数据的集合。你可以使用函数`matrix`来创建一个矩阵：
+
+```{r}
+matrix(1:9, nrow = 3)
+```
+
+在这里，第一个参数是矩阵中数据的具体内容。`1:9` 是 `c(1, 2, 3, 4, 5, 6, 7, 8, 9)` 的一个缩写，用于创建间隔为1的整数序列。
+
+第二个参数告诉R这个矩阵应该有多少行。你也可以使用`ncol`来告诉R这个矩阵有多少列。默认状态下，R会把数值按照从上到下、从左到右的顺序填充在这个固定行数列数的矩阵里。如果你想让R先从左到右填充（横向按照行填充），则需要将`byrow`参数设置为`TRUE`：
+
+```{r}
+matrix(1:9, ncol = 3, byrow = TRUE)
+```
+
+R中的矩阵不局限于数值型矩阵，它只要求包含的数据从属于同一类型：如果是数值型，那每一个格子里都是数值型；如果是字符型，所有值都是字符型数据。
+
+```{r}
+mat_month <- matrix(month.name, nrow = 4, byrow = TRUE)
+mat_month
+```
+
+#### 矩阵命名
+
+对于一个矩阵来说，主要的命名集中于行名`rownames`和列名`colnames`：
+
+```{r}
+# 你可以用这两个函数去更改行名和列名
+rownames(mat_month) <- c("Quarter1", "Quarter2", "Quarter3", "Quarter4")
+colnames(mat_month) <- c("Month1", "Month2", "Month3")
+
+mat_month
+
+# 也可以用这两个函数去获取行名和列名
+rownames(mat_month)  
+colnames(mat_month) 
+
+# 或者用一个函数获取所有维度的名称
+dimnames(mat_month)
+```
+
+
+
+#### 访问矩阵子集
+
+和在向量里一样，访问矩阵的子集也可以用`[`或者`[[`。区别在于矩阵中我们有两个维度，所以需要同时给定两个维度的坐标：
+
+```{r}
+# 访问矩阵中第1行第2列格子的元素
+mat_month[[1, 2]]
+
+# 在逗号前不输入数字的时候
+# 根据列号截取整列
+mat_month[, 2]
+
+# 在逗号后不输入数字的时候
+# 根据行号截取整行
+mat_month[1, ]
+
+# 如果有行名和列名的话
+# 也可以用字符串来截取特定范围
+mat_month[["Quarter1", "Month3"]]
+
+```
+
+
+
+### 列表（list）
+
+列表是R中比较基础的数据类型中最灵活的类型。它和向量或者矩阵不一样，在一个列表中可以储存各种不同的基本数据类型。你既可以存三个数字，也可以把数值型、字符型、逻辑型混合：
+
+```{r}
+list(1, 2, 3)
+list(1, "lol", TRUE)
+```
+
+列表甚至可以储存列表本身，也就意味着你可以一层套一层地设置列表。夹杂其他各种类型，就可以创造一个庞然大物：
+
+```{r}
+stuff <- list(
+  list(
+    1:12, 
+    "To be or not to be", 
+    c(TRUE, FALSE)), 
+  42, 
+  list(
+    list(
+      ymd("2021-07-07"), 
+      "remembrance"),
+    2L+3i) 
+)
+stuff
+```
+
+#### 访问子列表
+
+
+列表同样可以用中括号来访问子列表。单个中括号`[`和两个中括号`[[`的区分在列表中特别重要。简单来说，单个中括号返回的列表元素类型还是列表，双中括号返回的列表元素是它本身的类型。想要返回多个子列表，就只能用单括号了，因为元素本身的类型不允许多个类型在一个序列中保存。
+
+```{r}
+# 返回前两个子列表
+stuff[1:2]
+
+# 返回第一个子列表中的第二个子列表
+stuff[[1]][[2]]
+
+```
+
+
+#### 列表命名
+
+列表的维度，或者说层数可是比矩阵多多了，这也就意味着，列表中可以命名的地方多多了。
+
+```{r}
+# 给列表的顶层三个列表命名
+names(stuff) <- c("I", "II", "III")
+
+# 给列表的第一个列表里的三个子列表命名
+names(stuff[[1]]) <- c("I", "II", "III")
+```
+
+
+
+如果列表有名字，自然可以用包含名字的字符串获取子列表。
+```{r}
+# 访问名为“I”的列表中名为“II”的子列表
+stuff[["I"]][["II"]]
+
+```
+
+之前我们一直没有使用过美元符号`$`来获取子集，列表提供了一个最佳的展示场景，以下这行代码可以起到于上一行代码一样的效果，而不用加各种括号和引号：
+
+```{r}
+stuff$I$II
+```
+
+
+
+
+### 数据表（data frame 与 tibble）
+
+
+数据表将是进行数据分析的时候接触的最多的数据类型了。一个数据表（data frame）的本质是一个列表（list），但是采取了矩阵（matrix）的展示形式：
+
+```{r}
+df <- data.frame(x = 1:12, y = month.abb, z = month.name)
+df
+```
+
+数据表的每一列是一个子列表。将几个长度相同的子列表并排放在一起，就组成了一个长方形的矩阵形式。这种特殊的处理使得数据表包含了两种数据形式的优势。列与列之间可以使用不同的基础数据类型，也就是说一列的数据是数值型的数据，下一列数据可以是字符型的数据。长方形的形状保证了列与列之间的数值是一一对应的，每一行都是一个观察量。这很符合日常会遇到的数据的形式。
+
+`tibble`是`tidyverse`系列包中的`tibble`包提供的一种数据形式。使用`tibble`比较明显的好处是，当你把`tibble`打印在控制台里的时候，它有一个更干净直观的打印方式。与 data frame 试图打印所有的行、一股脑把所有信息扔给你不同，`tibble` 默认只会打印前几行给你一个数据长什么样的感觉，还会告诉你每一列的数据是什么类型的：
+
+```{r}
+tb <- tibble(a = 1:100, b = 101:200)
+tb
+```
+
+除了看起来好看以外，`tibble`在原始数据表的基础上保留了有用的功能，去除了多余的功能。它干得更少，比如它不会自发修改变量类型或变量名字，也不会做部分匹配；同时它抱怨得更多，比如当一个变量不存在的时候就会触发错误信息。这样用户就能及早发现错误，不会等到代码堆成小`r emo::ji("poop")`山。
+
+#### 访问数据表内容
+
+既然看上去像矩阵，听起来像列表，那就应该可以用适用于矩阵和列表的方法访问数据表元素。事实上也的确是这样：
+
+```{r}
+# 访问数据表名为x的列
+df[["x"]]
+df$x
+
+# 访问第一行第二个数值
+df[1, 2]
+
+
+# 访问tibble第2列
+tb[, 2]
+
+# 访问tibble第1行第2列的数值
+tb[1, 2]
+
+```
+```{r, eval = FALSE}
+tb$a
+#太长了还是不显示了吧
+```
+
+
+tibble 的另一个特性是其访问的子列表也是`tibble`类型的数据表，即使是用单引号返回一个格子的元素。
+
+
+关于`tibble`更多信息，详见[`tibble`主页](https://tibble.tidyverse.org/)。
+
+## 读写数据
+
+这一章我们主要讨论根据不同数据保存方式区分的读写数据的方法。
+
+### 内置数据集
+
+R本身和一些R包都会有内置的数据集。使用`data`命令来查看、使用可用数据集。
+
+```{r, eval = FALSE}
+# 查看R本身自带的数据集
+data()
+
+# 查看某一R包自带的数据集
+data(package = "dplyr")
+```
+
+
+```{r}
+# 载入AirPassengers数据集
+data("AirPassengers")
+
+glimpse(AirPassengers)
+
+```
+
+### 表格类型数据（csv, excel)
+
+h1n1 流感问卷数据储存在名为 “h1n1_flu.csv” 的文件中，我们会在下一篇《数据清洗与准备》中用到。假设 “h1n1_flu" 有不同的储存类型，我们列举一些读写数据表类型数据的方法。
+
+```{r, eval = FALSE}
+
+# 读取csv文件
+library(readr)
+h1n1_flu <- read_csv("h1n1_flu.csv")
+# 保存csv文件
+write_csv(h1n1_flu, "h1n1_flu.csv")
+
+
+# 读取excel文件
+library(readxl)
+# 自动识别文件后缀
+h1n1_flu <- read_excel("h1n1_flu.xls")
+# 读取xls文件
+h1n1_flu <- read_xls("h1n1_flu.xls")
+# 读取xlsx文件
+h1n1_flu <- read_xlsx("h1n1_flu.xlsx")
+```
+
+不建议在R中直接编辑 excel 文件，csv 文件应该满足日常所需了。如果有编辑 excel 文件的需求，可以看看`openxlsx`包。
+
+
+### R的专属类型数据（RData, rds）
+
+有一些数据存储方式是R中独有的。我们在这里讨论两类。一类是 rds 文件，一类是 RData 文件。
+
+1. rds 文件储存一个R中的对象。这个对象不一定是四四方方的数据表，而可以是任何形式，包括复杂的列表等。因为他储存的是一个对象，所以读取的时候也是读取出来一个对象，需要被保存在一个名字下。
+1. RData 储存的是一个或多个、任意结构的、带有自己名字的对象。读取的时候会将储存的对象直接载入当前的环境中，使用的是对象自己的名字，所以不需要再额外起名字。
+
+
+```{r, eval = FALSE}
+# 读取
+h1n1_flu <- read_rds("h1n1_flu.rds")
+# 存储
+write_rds(h1n1_flu, "h1n1_flu.rds")
+
+# 读取
+load("h1n1_flu.RData")
+# 存储
+save(h1n1_flu, file = "h1n1_flu.RData")
+```
+
+
+### 其他软件（SPSS, Stata, SAS）
+
+R也可以直接读取其他软件的数据类型。这里列举使用`haven`包读写 SPSS 的 sav 和 zsav、 Stata 的 dta、SAS 的 sas7bdat 和 sas7bcat。
+
+```{r, eval = FALSE}
+library(haven)
+
+# SPSS
+read_spss()
+write_spss()
+
+# Stata
+read_dta() 
+write_dta() 
+
+# SAS
+read_sas()
+write_sas()
+
+
+
+```
+
+
+## 练习题
+
+### 了解数据集
+
+请使用之前读取的`h1n1_flu`完成以下任务。
+
+#### 常用数据探查函数
+
+请尝试使用以下常用的数据探查函数，挑出两个你最喜欢的描述他们的功能。别忘了可以用`?fun`查看帮助文档。
+
+```{r, eval = FALSE}
+glimpse(h1n1_flu)
+str(h1n1_flu)
+head(h1n1_flu)
+tail(h1n1_flu)
+View(h1n1_flu)
+summary(h1n1_flu)
+nrow(h1n1_flu)
+length(h1n1_flu$sex)
+class(h1n1_flu$sex)
+summary(h1n1_flu)
+table(h1n1_flu$sex)
+```
+
+
+#### 分组计算统计量
+
+
+```{r, include = FALSE}
+h1n1_flu <- read_csv("./datasets/h1n1_flu.csv")
+library(tidyverse)
+```
+
+
+```{r, echo=TRUE, eval = FALSE}
+h1n1_flu %>% 
+  group_by(sex, employment_status) %>% 
+  summarise(n())
+```
+```{r, echo=FALSE}
+h1n1_flu %>% 
+  group_by(sex, employment_status) %>% 
+  dplyr::summarise(n())
+```
+
+请问上边这几行代码在计算什么？你可不可以使用同样的方法计算一些其他的统计量？别忘了看看帮助文档`?summarise`。
+
+
+### 创造数据集
+
+我们说过数据表的本质是将列表排列在一起，所以数据表就会有列表的性质。而我们又知道列表可以包含任何类型的数据，无论是单个的数值或者是向量、矩阵等。
+
+1. 请你创造一个数据表，其中的某一列变量的每一个格子包含的不再是常规的单个数值或者字符串，而是一个向量或者矩阵等多维的数据类型；
+1. 请你描述一个可以在数据分析时运用此类特性的使用场景。
+
+
+
+## 本章作者 {-}
+
+__Fin__
+
+> https://yangzhuoranyang.com
+
+## 关于Datawhale {-}
+
+Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：
+
+```{r, echo = FALSE}
+insert_logo()
+```
+
+
+
+
+<!--chapter:end:Task01_Data_Structure.Rmd-->
+
+
+# 数据清洗与准备 {#task-02}
+
+![](./image/task02_structure.jpg){width=100%}
+
+Task 02共计6个知识点，预计需学习5~8小时，请安排好学习任务。
+
+## 环境配置 {-}
+```{r, message=FALSE}
+library(mlbench) # 将会使用到包中的BostonHousing数据集
+library(funModeling) # 探索性数据分析工具包，本节内容中将会使用到它的status()函数，打印整体数据质量
+library(tidyverse) # 数据转化工具包，本节内容中将会使用它包含的dplyr中的管道函数 %>%
+library(VIM) # 缺失值可视化工具包，本节内容中将会使用到它的aggr()函数
+library(mice) # 缺失值处理工具包，本节内容会使用它来进行多重插补
+library(Rlof) # 用于LOF异常值检测方法，本节内容将会使用到它的lof()函数
+library(fastDummies) # 用于生成dummy的包，本节内容将会使用到它的dummy_cols()函数
+library(sjmisc) # 用于生成dummy的包，本节内容将会使用到它的to_dummy()函数
+library(MASS) # 基于此包进行box-cox转换
+library(dlookr) # 本节内容将会使用到它的transform()函数
+```
+
+## 案例数据 {-}
+
+本节内容将会使用到两个数据集。
+
+### 数据集1 h1n1流感问卷数据集 {-}
+
+#### 数据说明 {-}
+
+目前提供的数据集来自关于h1n1流感调查问卷的部分内容，可以从这个网站上看到具体字段的详细说明：https://www.drivendata.org/competitions/66/flu-shot-learning/page/211/
+
+数据集包含26,707个受访者数据，共有32个特征+1个标签（是否接种h1n1疫苗）。
+ 
+#### 加载并查看部分数据 {-}
+
+首先加载数据，了解数据集大小。
+
+```{r}
+h1n1_data <- read.csv("./datasets/h1n1_flu.csv", header = TRUE)
+dim(h1n1_data)
+```
+
+注：为了简化本章的示例，我们在这32个特征中，筛选出了10个特征，作为一个子集，来学习如何使用R做数据清洗与准备。如有兴趣，可以把下面这块筛选去掉，自己用完整数据集做一次探索。
+
+```{r }
+h1n1_data <- h1n1_data[, c(1, 3, 11, 12, 15, 16, 19, 20, 22, 23, 33)]
+head(h1n1_data)
+```
+
+### 数据集2 波士顿房价数据集 {-}
+
+#### 数据说明 {-}
+数据集来自`mlbench`包，请提前装好。数据字段说明可从网址查看：https://blog.csdn.net/weixin_46027193/article/details/112238597
+
+数据集包含506条房价信息，共有13个特征+1个预测字段（房屋价格）。
+
+#### 加载并查看部分数据 {-}
+```{r }
+data(BostonHousing)
+dim(BostonHousing)
+head(BostonHousing)
+```
+
+## 重复值处理
+
+在某些情况下，我们需要对数据进行去重处理。`unique()`函数可以对数据进行整体去重，`distinct()`函数可以针对某些列去重。
+
+```{r }
+# 整体去重
+h1n1_data_de_dup1 <- unique(h1n1_data)
+
+# 指定根据列respondent_id,h1n1_knowledge去重，并保留所有列
+h1n1_data_de_dup2 <- distinct(h1n1_data, respondent_id, h1n1_knowledge, .keep_all = T)
+```
+
+
+## 缺失值识别与处理
+
+现实环境中，由于数据来源及搜集过程，可能有各种不规范，导致数据往往会存在缺失。缺失值识别与处理，无论是在统计还是数据管理中，往往是数据清洗的第一步。
+
+### 缺失值识别
+
+#### 常用识别方法
+
+在R语言中，惯用会把缺失值表示为NA，一般可使用`is.na(a)`，`!complete.cases(a)`来识别`a`是否为缺失值。
+```{r }
+# 假设定义的一个变量中存在缺失值
+y <- c(1, 2, 3, NA)
+
+# 用is.na在识别是否为缺失值
+is.na(y)
+
+# 用!complete.cases()在识别是否为缺失值
+!complete.cases(y)
+```
+
+#### 缺失值统计
+
+统计缺失值总数。
+```{r }
+# 数据集中总缺失数据量
+sum(is.na(h1n1_data))
+
+# 数据集中某一列缺失数据量
+sum(is.na(h1n1_data["h1n1_knowledge"]))
+```
+
+如果想按行或按列统计，可以写函数。
+
+```{r }
+pMiss <- function(x) {
+  sum(is.na(x)) / length(x) * 100
+}
+apply(h1n1_data, 2, pMiss) # 按列统计缺失比率%
+# apply(h1n1_data,1,pMiss) #按行统计缺失比率%
+```
+
+或调用一些现成的包。比如，我们可以使用`funModeling`包中的`status()`函数，直接观测案例数据中包含的0值，缺失值（NA），在每个特征中的分布情况。以h1n1 flu数据集为例：
+
+```{r }
+data_quality <- status(h1n1_data)
+data_quality %>% mutate(across(where(is.numeric), ~ round(., 3))) # 保留4位小数
+```
+
+结合案例数据h1n1 flu来看，存在缺失值的有5个特征字段。
+
+```{r}
+missing_Value <- data_quality[which(data_quality$p_na > 0), ]
+missing_Value$variable
+```
+#### 缺失值机制与分析
+
+统计学家通常将缺失数据分为3类，为了更好的处理缺失值，我们可以基于缺失值机制来识别以下3种缺失模式：
+
+* MCAR（完全随机缺失）：如果数据的缺失与任何值（观察或缺失）之间没有关系，则为MCAR。
+* MAR（随机缺失）：考虑MAR与MCAR有何不同，如果缺失和观测值之间存在系统关系，则为MAR。例如-男性比女性更容易告诉自己的体重，因此体重就是MAR。“ Weight”变量的缺失取决于变量"Sex"的观测值。
+* MNAR（非随机缺失）：若缺失数据不属于MCAR和MAR，数据的缺失依赖于不完全变量本身，则数据为非随机缺失。例如，抑郁程度高的人更不容易填写抑郁调查问卷。
+
+MNAR是最复杂的情况，处理 MNAR的策略是找到更多有关缺失原因的数据，或者执行假设分析，查看结果在各种情况下的敏感程度。大部分处理缺失数据的方法都假定数据是MCAR或MAR，此时，可以忽略缺失数据的生成机制，在替换或删除缺失数据后，直接对感兴趣的关系进行建模。
+
+以下介绍几种可视化分析缺失数据关联的方法：
+
+我们用`VIM`包里的`aggr()`函数，直观看一下具体的缺失情况。
+```{r }
+aggr(h1n1_data, cex.axis = .6, oma = c(9, 5, 5, 1)) # cex.axis调整轴字体大小，oma调整外边框大小
+```
+
+通过用`VIM`包里的矩阵图`matrixplot()`函数，可以检查某些变量的缺失值模式是否与其他变量的真实值有关联。矩阵图中，观测数据以黑白色阶显示（颜色越深，数值越高），缺失值会被标记为红色。我们对某一个存在缺失值的变量进行排序，来找寻含缺失值变量与其他变量的关系。
+
+在此案例中，我们按照`health_insurance`进行分组排序。可以看到是否有慢性病`chronic_med_condition`的缺失，与`opinion_h1n1_vacc_effective`的缺失相对较集中。除此之外，也可以看到有慢性病的人年龄普遍较大。
+
+```{r }
+# 先简单处理一下一些类别变量的顺序
+h1n1_data_matplt <- h1n1_data
+h1n1_data_matplt$age_group <- factor(h1n1_data_matplt$age_group)
+h1n1_data_matplt$education <- factor(h1n1_data_matplt$education, levels = c("", "< 12 Years", "12 Years", "Some College", "College Graduate"))
+h1n1_data_matplt$sex <- factor(h1n1_data_matplt$sex)
+h1n1_data_matplt$income_poverty <- factor(h1n1_data_matplt$income_poverty, levels = c("18 - 34 Years", "<= $75,000, Above Poverty", "> $75,000"))
+# levels(h1n1_data_matplt$age_group) # 查看顺序
+
+# 矩阵图可视化
+par(mar = c(9, 4.1, 2.1, 2.1)) # x轴标签太长，调用par()函数调整外边框的大小
+matrixplot(h1n1_data_matplt, sortby = "chronic_med_condition", cex.axis = 0.7) # cex.axis为调整坐标轴字体大小
+```
+
+用相关性探索缺失值。首先生成一个影子矩阵，用指示变量替代数据集中的数据（1表示缺失，0表示存在）。
+
+```{r }
+shadow_mat <- as.data.frame(abs(is.na(h1n1_data[, -1])))
+head(shadow_mat)
+```
+
+```{r }
+# 可提取含缺失值的变量
+shadow_mat <- shadow_mat[which(apply(shadow_mat, 2, sum) > 0)]
+
+# 计算相关系数
+cor(shadow_mat)
+
+# 相关系数热力图
+heatmap(cor(shadow_mat))
+```
+
+根据缺失相关性矩阵，`opinion_h1n1_vacc_effective ` 与 `chronic_med_condition` 缺失相关性较大。
+
+综上，在案例中，变量之间的存在部分相关性，考虑为MAR。
+
+其他数据缺失关系分析，可参考附录`数据的预处理基础`。
+
+### 缺失值处理
+
+缺失值一般有三种方式：
+
+* 将缺失值作为变量值使用。比如在民意调查中，当选民不投票时，可以将缺失值处理为"无法确定"。
+* 删除数据。主要有删除样本值和删除特征值。但可能会损失掉一些有用信息。
+* 插补法。如均值/中位数/同类均值插补（数值变量），众数插补（类别变量），手动插补(根据主观理解)，多重插补等。
+
+以下我们主要介绍删除法和插补法：
+
+#### 删除法
+
+行删除，可以直接用`complete.cases()`或`na.omit()`来过滤掉数据集中所有缺失行。
+```{r }
+h1n1_data_row_del1 <- h1n1_data[!complete.cases(h1n1_data), ]
+h1n1_data_row_del2 <- na.omit(h1n1_data)
+```
+
+列删除，一般对于缺失率极高又没有太大作用的特征值，我们直接删除，如可以用`dataset[,-5]`去掉第五列，或` subset(dataset, select = -c(col1, col2))`去掉列col1和列col2。
+
+比如，我们把`health_insurance`变量删除。
+
+```{r }
+h1n1_data_col_del1 <- subset(h1n1_data, select = -c(health_insurance))
+```
+
+#### 简单插补法
+
+注意在空值插补的时候，要区分类别变量与数值变量，均值插补不适用于类别变量。我们这里随机选择了一个变量演示`impute()`函数用法，在实际插补的时候，请大家根据情况进行选择。
+
+```{r }
+h1n1_data_sim_imp <- h1n1_data
+h1n1_data_sim_imp$h1n1_knowledge <- impute(h1n1_data_sim_imp$h1n1_knowledge, 1) # 填充特定值
+h1n1_data_sim_imp$h1n1_knowledge <- impute(h1n1_data_sim_imp$h1n1_knowledge, median) # 插补中位数
+h1n1_data_sim_imp$h1n1_knowledge <- impute(h1n1_data_sim_imp$h1n1_knowledge, mean) # 插补均值
+```
+
+#### 拟合插补法
+
+利用有监督的机器学习方法，比如回归、最邻近、随机森林、支持向量机等模型，对缺失值作预测。
+
+
+#### 多重插补法
+
+多重插补（MI）是一种基于重复模拟的处理缺失值的方法。其思想来源于贝叶斯估计，认为待插补的值是随机的，它的值来自于已观测到的值。具体实践上通常是估计出待插补的值，然后再加上不同的噪声，形成多组可选插补值（通常是3到10个）。根据某种选择依据，选取最合适的插补值。与单个插补（例如均值）相比，创建多个插补可解决缺失值的不确定性。 R中可利用`Amelia`、`mice`和`mi`包来执行这些操作。
+
+本节中，我们将用案例介绍mice包（通过链式方程进行的多元插补）提供的方法。使用mice生成m个完整的插补数据集。然后利用`with-pool`的方法来评估选择哪一个数据集。首先使用`with()`函数依次对每个完整数据集应用统计模型如lm，glm等，用`summary()`输出数据集检验，看某数据集是否合格。接下来`pool()`函数把5个回归模型汇总，用`summary()`输出汇总数据集检验，查看整体插补方法是否合格。检验结果分析可参考附录`mice检验结果解释`
+
+![](./image/task02_mice.jpg){width=60%}
+
+```{r }
+# 先处理下数据，把数据集中一些类别变量转换回来
+
+# imp是一个包含m个插补数据集的列表对象，同时还含有完成插补过程的信息。
+# 参数m的默认值为5，这里我们将m设为4，生成4个无缺失数据集
+# 参数method, 对于每个变量的拟合，可以指定所用的拟合方法,method传入的参数可以是一个具体方法，也可以为不同列指定具体方法，具体方法选择可参考附录mice使用文档。这里我们使用默认值。
+imp <- mice(h1n1_data, m = 4, seed = 122, printFlag = FALSE)
+
+# 查看变量h1n1_knowledge在几个插补数据集中的插补结果
+# imp$imp$h1n1_knowledge
+
+# 查看每个变量所用的插补方法
+# imp$method
+
+# 设定应用于m个插补数据集的统计分析方法。方法包括做线性回归模型的lm()函数、做广义线性模型的glm()函数、做广义可加模型的gam()，做负二项模型的nbrm()函数
+fit <- with(imp, lm(h1n1_vaccine ~ h1n1_knowledge + doctor_recc_h1n1 + chronic_med_condition + health_insurance + opinion_h1n1_vacc_effective))
+
+# 输出每个数据集检验
+print.data.frame(summary(fit), digits = 4)
+
+# 包含m个统计分析平均结果的列表对象
+pooled <- pool(fit)
+
+# 这是一个总体评估结果
+pooled
+
+# 这里修改action的参数（范围1-m），选择一个数据集作为我们已填充完成的数据集
+h1n1_data_complete <- complete(imp, action = 2)
+```
+
+
+## 异常值识别与处理
+
+### 异常值识别
+
+本节的异常值指离群点。为了让数据统计或数据建模更加准确，我们通常会识别并对处理一些离群点。有些模型会对异常值较敏感，参考附录`什么样的模型对缺失值更敏感?`。
+总的来说，有几种常用方法，包括可视化图形分布识别（箱线图）、z-score识别、局部异常因子法（LOF法）、聚类法等。
+
+我们这里用波士顿房价数据集来演示一下异常值识别的处理过程。
+
+### 可视化图形分布
+
+首先是可视化图形分布识别，将数值型变量筛选出来，用boxlpot看看分布。
+
+```{r }
+# 提取数值字段
+nums <- unlist(lapply(BostonHousing, is.numeric))
+nums_data <- BostonHousing[, nums]
+
+# 数据变形
+nums_data.new <- nums_data %>%
+  as.data.frame() %>%
+  mutate(Cell = rownames(.)) %>%
+  gather(., key = colname, value = "value", -Cell)
+
+# 用ggplot画出箱线图
+ggplot(data = nums_data.new, aes(x = colname, y = value)) +
+  geom_boxplot(aes(1)) +
+  facet_wrap(~colname, scales = "free") +
+  theme_grey() +
+  labs(title = "Outlier Detection On Numeric Data By Boxplot", x = "Numeric Columns", y = "") +
+  theme(legend.position = "top") +
+  theme_bw()
+```
+
+通过可视化分布，可以选择剔除一些不合理的离群值，比如在数据集中将dis>10.0的数据剔除。
+
+### z-score
+
+z-score是一种一维或低维特征空间中参数异常检测方法。它假定数据是高斯分布，异常值是分布尾部的数据点，因此远离数据的平均值。一般将z-score低于-3或高于3的数据看成是异常值。
+
+```{r }
+# 定义一个识别异常点的函数，x是输入数据（matrix或df）,zs是异常临界值，z-score超过zs的被识别为异常点
+outliers <- function(x, zs) {
+  temp <- abs(apply(x, 1, scale))
+  return(x[temp > zs])
+}
+# 打印出z-score<3的值
+outliers(nums_data, 3)
+```
+
+### 局部异常因子法
+
+局部异常因子法(LOF)，是一种无监督的离群检测方法，是基于密度的离群点检测方法中一个比较有代表性的算法。适用于在中等高维数据集上执行异常值检测。
+
+```{r }
+# k是计算局部异常因子所需要判断异常点周围的点的个数
+outlier_score <- lof(data = nums_data, k = 5)
+
+# 绘制异常值得分的直方分布图
+hist(outlier_score, col = "#8ac6d1")
+
+# 排序，挑出得分排前五的数据（找到索引）作为异常值
+names(outlier_score) <- 1:nrow(nums_data)
+sort(outlier_score, decreasing = TRUE)[1:5]
+```
+
+### 异常值处理
+
+首先需要确定是否是真的异常值，有些值虽然离群，但其实并不是异常值，处理掉反而会影响后续任务的准确性。 如果确定需要处理，可以参考缺失值的处理方式进行处理。
+
+## 特征编码
+
+为什么要进行特征编码？我们拿到的原始数据中，一般会有一些类别变量，但是在统计或机器学习中，我们通常需要把类别变量转化为数值型变量，才能应用于一些方法中。
+
+### 独热编码/哑编码
+
+One-hot encoding 和 dummy,是将类别变量扩充为多个只显示1，0的变量，每个变量代表原类别变量中的一个类。 注意他们之间的区别：https://www.cnblogs.com/lianyingteng/p/7792693.html
+
+* 优点：解决了分类器不好处理分类数据的问题，在一定程度上也起到了扩充特征的作用。它的值只有0和1，不同的类型存储在垂直的空间。   
+* 缺点：当类别的数量很多时，特征空间会变得非常大，容易造成维度灾难。（为避免维度灾难，后续可以考虑降维处理）
+
+R里面有很多现成的转化编码的包，我们这里使用了`dummy_cols()`函数做演示，可以看到原来的类别类型字段，已经扩充为多个0，1编码的字段。
+
+```{r }
+h1n1_data_dummy <- dummy_cols(subset(h1n1_data_complete, select = c(age_group)), select_columns = c("age_group"))
+head(h1n1_data_dummy)
+```
+
+### 标签编码
+
+标签编码(Label Encoder)是将类别变量转换成连续的数值型变量，通常对有序的变量进行标签编码，既保留了顺序信息，也节约了空间（不会扩充变量）
+
+R里有一个特殊的结构factor（factor是有序的分类变量），我们这里可以利用factor来做标签编码。首先根据实际情况设置factor的类别顺序，然后直接用`as.numeric()`转化为数字。
+
+```{r }
+h1n1_data_complete_lab_encoder <- h1n1_data_complete
+h1n1_data_complete_lab_encoder$income_poverty_lab_encoder <- as.numeric(factor(h1n1_data_complete_lab_encoder$income_poverty, levels = c("Below Poverty", "<= $75,000, Above Poverty", "> $75,000")))
+head(subset(h1n1_data_complete_lab_encoder, select = c(income_poverty, income_poverty_lab_encoder)))
+```
+
+### 手动编码
+
+比如，当某一个特征中有很多类别，我们认为某些类别可以合为一类，可以用`case_when()`函数手动处理。
+
+```{r }
+h1n1_data_manual <- subset(h1n1_data_complete, select = c(age_group))
+h1n1_data_manual$age_group_manual <- case_when(
+  h1n1_data_manual$age_group %in% c("18 - 34 Years") ~ 1,
+  h1n1_data_manual$age_group %in% c("35 - 44 Years", "45 - 54 Years", "55 - 64 Years") ~ 2,
+  h1n1_data_manual$age_group %in% c("65+ Years") ~ 3
+)
+head(h1n1_data_manual)
+```
+
+### 日期特征转换
+
+参考附录`R语言日期时间处理`
+
+
+## 规范化与偏态数据
+
+为什么要数据规范化？简单来说是为了去除数据量纲和数据大小的差异，确保数据是在同一量纲或者同一数量级下进行比较，一般用在机器学习算法之前。数据规范化又可以使用0-1规范化，Z-score等方法。
+为什么要处理偏态数据？。很多模型会假设数据或参数服从正态分布。例如线性回归(linear regression)，它假设误差服从正态分布。
+
+提示：注意在测试数据与训练数据分布差别很大的情况下，对测试数据运用一些规范化方法时，可能因为数据分布不匹配而带来误差。
+
+这里我们使用波士顿房价数据集来做演示。可以看到图中数据的偏态分布及量纲差别。
+
+```{r }
+BostonHousing %>%
+  keep(is.numeric) %>%
+  gather() %>%
+  ggplot(aes(value)) +
+  facet_wrap(~key, scales = "free") +
+  geom_density(color = "#348498", fill = "#8ac6d1") +
+  theme_bw()
+```
+
+### 0-1规范化
+
+0-1规范化是将原始数据缩放到[0,1]区间内，一般方法是最小最大规范的方法，公式如下：
+
+![](./image/task02_0-1norm.png){width=20%}
+
+这里用循环计算出每一列的最大最小值，再根据公式求出缩放后的数据。
+
+```{r }
+nums_data_norm1 <- nums_data
+for (col in names(nums_data_norm1))
+{
+  xmin <- min(nums_data_norm1[col])
+  xmax <- max(nums_data_norm1[col])
+  nums_data_norm1[col] <- (nums_data_norm1[col] - xmin) / (xmax - xmin)
+}
+
+head(nums_data_norm1)
+```
+
+转换完再看一下分布，已经缩放到0-1之间了。
+
+```{r }
+nums_data_norm1 %>%
+  keep(is.numeric) %>%
+  gather() %>%
+  ggplot(aes(value)) +
+  facet_wrap(~key, scales = "free") +
+  geom_density(color = "#348498", fill = "#8ac6d1") +
+  theme_bw()
+```
+
+
+此外可以用dlookr包里的`transform()`函数。
+```{r }
+nums_data_norm2 <- nums_data
+nums_data_norm2$crim <- dlookr::transform(nums_data$crim, method = "minmax")
+```
+
+### Z-score标准化
+
+Z-score标准化是原数据减去期望再除以标准差，将数据按比例缩放，使其落入到一个小的区间内，标准化后的数据可正可负，但是一般绝对值不会太大。
+
+![](./image/task02_z-score.png){width=15%}
+
+R里面可以用`scale()`函数来计算z-score。也可以dlookr包里的中`transform()`函数。
+
+```{r }
+nums_data_zscore <- nums_data
+nums_data_zscore <- scale(nums_data_zscore)
+head(nums_data_zscore)
+```
+
+转换完再看一下分布，数据缩放后在0周围的一个小区间了。
+
+```{r }
+data.frame(nums_data_zscore) %>%
+  keep(is.numeric) %>%
+  gather() %>%
+  ggplot(aes(value)) +
+  facet_wrap(~key, scales = "free") +
+  geom_density(color = "#348498", fill = "#8ac6d1") +
+  theme_bw()
+```
+
+### 对数转换(log transform)
+
+使用对数转换也是一种常见的处理偏斜特征的方法，但要注意原数据中不能含有负值。此外为了避免0值，我们通常使用log1p，公式为`lg(x+1)`。可以直接用dlookr包里的`transform()`函数，一般结合mutate函数一起使用。
+
+```{r }
+# 直接公式转换
+nums_data_log1p1 <- log(nums_data + 1)
+
+# 用transform()函数
+nums_data_log1p2 <- nums_data
+nums_data_log1p2$b <- dlookr::transform(nums_data_log1p2$b, method = "log+1")
+```
+
+转换完再看一下分布，大多变量转换后接近正态分布了。但是这里要特别注意离散数据。
+
+```{r }
+nums_data_log1p1 %>%
+  keep(is.numeric) %>%
+  gather() %>%
+  ggplot(aes(value)) +
+  facet_wrap(~key, scales = "free") +
+  geom_density(color = "#348498", fill = "#8ac6d1") +
+  theme_bw()
+```
+
+### Box-Cox
+
+Box-Cox变换是Box和Cox在1964年提出的一种广义幂变换方法，在变换后可以一定程度上减小不可观测的误差和预测变量的相关性，在机器学习中经常用来处理偏态分布。其一个显著优点是通过求变换参数来确定变换形式，而这个过程完全基于数据本身而无须任何先验信息，这无疑比凭经验或通过尝试而选用对数、平方根等变换方式要客观和精确。计算公式如下：
+
+![](./image/task02_boxcox.png){width=40%}
+
+示例参考附录`基于R语言进行Box-Cox变换`
+
+
+## 小拓展
+
+R语言中，mutate 类似于SQL中，根据表的现有变量，生成新变量。使用mutate集中处理变量转换，代码显示较整洁。
+
+```{r }
+h1n1_data_de <- h1n1_data_complete %>%
+  to_dummy(education, suffix = "label") %>%
+  bind_cols(h1n1_data_complete) %>%
+  mutate(
+    # 标签编码(label encoder)
+    sex = as.factor(as.numeric(factor(sex))),
+    income_poverty = (as.numeric(factor(
+      income_poverty,
+      levels = c(
+        "Below Poverty",
+        "<= $75,000, Above Poverty",
+        "> $75,000"
+      )
+    ))),
+    # 手动编码
+    age_group = as.factor(
+      case_when(
+        age_group %in% c("18 - 34 Years") ~ 1,
+        age_group %in% c("35 - 44 Years", "45 - 54 Years", "55 - 64 Years") ~ 2,
+        age_group %in% c("65+ Years") ~ 3
+      )
+    ),
+    # 标准化
+    across(
+      c(
+        "h1n1_knowledge",
+        "doctor_recc_h1n1",
+        "chronic_med_condition",
+        "opinion_h1n1_vacc_effective",
+        "age_group",
+        "income_poverty"
+      ),
+      ~ scale(as.numeric(.x))
+    )
+  ) %>%
+  dplyr::select(-one_of("education", "education_"))
+
+head(h1n1_data_de)
+```
+
+注意在机器学习中，尽量在数据集划分后，分别在训练集与验证集、测试集上进行数据清洗，避免数据泄露。R中的数据集划分方法参考附录`R中数据集分割`。
+
+## 思考与练习
+
+看完了本节数据清洗与准备，尝试着选取一个完整的数据集（从本节中选取或使用自己的数据集），来做一次清洗吧！
+
+
+## 附录：参考资料 {-}
+
+### 理论资料 {-}
+
+**数据的预处理基础：** 如何处理缺失值 https://cloud.tencent.com/developer/article/1626004
+
+**多重插补法：** 处理缺失值之多重插补（Multiple Imputation）https://zhuanlan.zhihu.com/p/36436260
+
+**异常值检测：** R语言--异常值检测 https://blog.csdn.net/kicilove/article/details/76260350
+
+**异常值检测之LOF：** 异常检测算法之局部异常因子算法-Local Outlier Factor(LOF) https://blog.csdn.net/BigData_Mining/article/details/102914342
+
+**规范化：** 规范化、标准化、归一化、正则化 https://blog.csdn.net/u014381464/article/details/81101551
+
+**什么样的模型对缺失值更敏感？：** https://blog.csdn.net/zhang15953709913/article/details/88717220
+
+
+### R语言函数用法示例 {-}
+
+`funModeling`用法示例：https://cran.r-project.org/web/packages/funModeling/vignettes/funModeling_quickstart.html
+
+`tidyverse`官方文档：https://www.tidyverse.org/
+
+`VIM`教学网页：https://www.datacamp.com/community/tutorials/visualize-data-vim-package
+
+`mice`使用文档(Multivariate Imputation by Chained Equations)：https://cran.r-project.org/web/packages/mice/mice.pdf
+
+`mice`使用中文解释：https://blog.csdn.net/sinat_26917383/article/details/51265213
+
+`mice`检验结果解释：http://blog.fens.me/r-na-mice/
+
+`caret`包数据预处理：https://www.cnblogs.com/Hyacinth-Yuan/p/8284612.html
+
+R语言日期时间处理：https://zhuanlan.zhihu.com/p/83984803
+
+基于R语言进行Box-Cox变换：https://ask.hellobi.com/blog/R_shequ/18371
+
+R中数据集分割：https://zhuanlan.zhihu.com/p/45163182
+
+
+## 本章作者 {-}
+
+
+__June__
+
+> 悉尼大学研究生，Datawhale成员  
+> https://blog.csdn.net/Yao_June
+
+
+## 关于Datawhale {-}
+
+Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：
+
+```{r, echo = FALSE}
+insert_logo()
+```
+
+<!--chapter:end:Task02_Data_Preparation.Rmd-->
+
+# 基本统计分析 {#task-03}
+
+![](./image/task03_structure.png){width=100%}
+
+
+## 准备工作 {-}
+
+如果没有相关的包，则使用`install.packages('package_name')`进行安装以下包。
+```{r}
+library(pastecs)
+library(psych)
+library(ggm)
+```
+
+读取数据，使用H1N1流感数据集和波士顿房价数据集。
+```{r}
+flu <- read.table("./datasets/h1n1_flu.csv", header = TRUE, sep = ",")
+housing <- read.csv("./datasets/BostonHousing.csv", header = TRUE)
+```
+
+## 多种方法获取描述性统计量
+
+### 基础方法
+
+通过summary计算数值型变量的最大值、最小值、分位数以及均值，类别变量计算频数统计。
+```{r}
+summary(flu[c("household_children", "sex")])
+```
+```{r}
+summary(flu[c("h1n1_concern", "h1n1_knowledge")])
+```
+
+
+通过 sapply() 计算描述性统计量，先定义统计函数，在进行聚合计算。
+```{r}
+mystats <- function(x, na.omit = FALSE) {
+  if (na.omit) {
+    x <- x[!is.na(x)]
+  }
+  m <- mean(x)
+  n <- length(x)
+  s <- sd(x)
+  skew <- sum((x - m)^3 / s^3) / n
+  kurt <- sum((x - m)^4 / s^4) / n - 3
+  return(c(n = n, mean = m, stdev = s, skew = skew, kurtosis = kurt))
+}
+
+sapply(flu[c("h1n1_concern", "h1n1_knowledge")], mystats)
+```
+
+### 拓展包方法
+
+通过pastecs包中的 stat.desc()函数计算描述性统计量，可以得到中位数、平均数、平均数的标准误、平均数置信度为95%的置信区间、方差、标准差以及变异系数。
+```{r}
+stat.desc(flu[c("household_children", "sex")])
+```
+通过psych包中的describe()计算描述性统计量。
+```{r}
+describe(flu[c("household_children", "sex")])
+```
+
+## 分组计算描述性统计
+
+### 基础方法
+
+#### 使用aggregate()分组获取描述性统计 {-}
+
+1. 分组计算不同性别收入贫困计数。
+2. 是否属于查尔斯河的房价中位数平均值。
+```{r}
+aggregate(flu[c("income_poverty")], by = list(sex = flu$sex), length)
+aggregate(housing$medv, by = list(medv = housing$chas), FUN = mean)
+```
+
+#### 使用 by() 分组计算描述性统计量 {-}
+```{r}
+by(flu[c("income_poverty", "sex")], flu$sex, length)
+```
+
+## 频数表和列联表 
+```{r}
+table(flu$sex)
+```
+
+## 相关
+
+### 相关的类型
+
+#### Pearson、Spearman和Kendall相关 {-}
+
+R可以计算多种相关系数，包括Pearson相关系数、Spearman相关系数、Kendall相关系数、偏相关系数、多分格（polychoric）相关系数和多系列（polyserial）相关系数。
+1. 计算房价数据的相关系数，默认是Pearson相关系数。
+```{r}
+cor(housing)
+```
+
+2. 指定计算Spearman相关系数
+```{r}
+cor(housing, method = "spearman")
+```
+
+3. 城镇人均犯罪率与房价的相关系数
+```{r}
+x <- housing
+y <- housing[c("medv")]
+cor(x, y)
+```
+
+#### 偏相关 {-}
+
+偏相关是指在控制一个或多个定量变量时，另外两个定量变量之间的相互关系。使用ggm 包中的 pcor() 函数计算偏相关系数。
+
+### 相关性的显著性检验
+
+```{r}
+cor.test(housing[, c("crim")], housing[, c("medv")])
+```
+
+## 方差分析
+方差分析（ANOVA）又称“变异数分析”或“F检验”，用于两个及两个以上样本均数差别的显著性检验。
+
+### 单因素方差分析
+从输出结果的F检验值来看，p<0.05比较显著，说明是否在查尔斯河对房价有影响。
+```{r}
+fit <- aov(housing$medv ~ housing$chas)
+summary(fit)
+```
+
+### 多因素方差分析
+构建多因素方差分析，查看因子对房价的影响是否显著。
+```{r}
+fit <- aov(housing$medv ~ housing$crim * housing$b)
+summary(fit)
+```
+
+
+## 本章作者 {-}
+
+__杨佳达__
+
+> 数据挖掘师，Datawhale成员，目前在国内某第三方数据服务公司做数据分析挖掘及数据产品  
+> https://github.com/yangjiada
+
+## 关于Datawhale {-}
+
+Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：
+
+```{r, echo = FALSE}
+insert_logo()
+```
+
+<!--chapter:end:Task03_Statistics.rmd-->
+
+
+# 数据可视化 {#task-04}
+
+
+![](./image/task04_structure.png){width=60%}
+
+## ggplot2包介绍 {-}
+
+ggplot2包由Hadley Wickham编写，提供了一种基于Wilkinson所述图形语法的图形系统。ggplot2包的目标是提供一个全面的、基于语法的、连贯一致的图形生成系统，允许用户创建新颖的、有创新性的数据可视化图形。
+
+总的来说有以下几点：
+
+- ggplot2的核心理念是将绘图与数据分离，数据相关的绘图与数据无关的绘图分离
+- ggplot2保有命令式作图的调整函数，使其更具灵活性
+- ggplot2将常见的统计变换融入到了绘图中。
+- ggplot2是按图层作图
+
+ggplot2图像的三个基本构成：数据、图形属性映射、几何对象
+
+按照ggplot2的绘图理念，Plot(图)= data(数据集)+ Aesthetics(美学映射)+ Geometry(几何对象)。
+
+例如：
+
+```{r example}
+# ggplot(data,aes(x=x,y=y))+geom_point()
+```
+
+- 数据：用于绘制图形的数据
+- 映射：aes()函数是ggplot2中的映射函数, 所谓的映射即为数据集中的数据关联到相应的图形属性过程中一种对应关系, 图形的颜色，形状，分组等都可以通过通过数据集中的变量映射。
+- 几何对象：我们在图中实际看到的图形元素，如点、线、多边形等。
+
+ggplot2绘图代码如同数据公式一般，只需要套相应的公式即可绘制出丰富的图形，后续的讲解也会按照此方法。
+
+ggplot2参考链接：
+
+- https://ggplot2.tidyverse.org/reference/
+- https://ggplot2-book.org/
+
+ggplot2的安装方法
+
+```{r cars}
+# install.packages("ggplot2")
+```
+
+## 环境配置
+``` {r}
+library(ggplot2) # 画图工具ggplot2
+library(ggpubr) # 将多个图形拼接
+library(plyr) # 数据处理包
+```
+
+在本讲中会用到ggpubr中的ggrrange这个多图拼接工具，详细使用方法参见：
+http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/
+
+### 案例数据 {-}
+本节内容将会使用到两个数据集
+
+**1.1h1n1流感问卷数据集**
+
+h1n1流感问卷数据集是关于h1n1流感问卷调查的一个数据，属于外部数据
+数据集包含26,707个受访者数据，共有32个特征+1个标签（是否接种h1n1疫苗）
+
+读取相关的数据集
+```{r }
+h1n1_data <- read.csv("./datasets/h1n1_flu.csv", header = TRUE)
+```
+
+**1.2波士顿房价数据集**
+
+波士顿房价数据集属于R语言自带数据集，也可以通过外部读取
+
+读取相关的数据集
+```{r boston}
+boston_data <- read.csv("./datasets/BostonHousing.csv", header = TRUE)
+```
+
+
+## 散点图
+
+散点图是指在数理统计回归分析中，数据点在直角坐标系平面上的分布图，散点图表示因变量随自变量而变化的大致趋势，由此趋势可以选择合适的函数进行经验分布的拟合，进而找到变量之间的函数关系。
+
+散点图的优势：
+
+- 数据用图表来展示，显然比较直观，在工作汇报等场合能起到事半功倍的效果，让听者更容易接受，理解你所处理的数据。
+- 散点图更偏向于研究型图表，能让我们发现变量之间隐藏的关系为我们决策作出重要的引导作用。
+- 散点图核心的价值在于发现变量之间的关系，包括线性与非线性之间的关系。
+
+
+```{r plot1}
+# 读取数据
+boston_data <- read.csv("./datasets/BostonHousing.csv", header = TRUE)
+# 绘制简单的散点图 x轴选择的是lstat ,y轴选择的是medv
+ggplot(data = boston_data, aes(x = lstat, y = medv)) +
+  geom_point()
+```
+
+上图选择的是lstat为x轴，medv为y轴绘制的散点图，x轴表示弱势群体人口所占比例，y轴表示房屋的平均价格，通过图上的数据可以看到，弱势人群的比例增加会影响房价，这2个变量呈现一定的负相关。
+
+ggplot2可以修改散点图的性状和大小,R语言中存储了一些相关的形状
+![](./image/task04_fig1.png){width=50%}
+
+size参数修改点的大小，color参数修改点的颜色
+```{r plot2}
+# 使用第17号形状
+p1 <- ggplot(data = boston_data, aes(x = lstat, y = medv)) +
+  geom_point(shape = 17)
+# size参数修改点的大小，color参数修改点的颜色
+p2 <- ggplot(data = boston_data, aes(x = lstat, y = medv)) +
+  geom_point(size = 3, color = "red")
+ggarrange(p1, p2, nrow = 1)
+```
+
+
+可将数据集的其它属性映射到散点图的颜色属性中
+```{r plot4}
+p3 <- ggplot(data = boston_data, aes(x = lstat, y = medv, colour = factor(rad))) +
+  geom_point()
+p4 <- ggplot(data = boston_data, aes(x = lstat, y = medv, colour = rad)) +
+  geom_point()
+ggarrange(p3, p4, nrow = 1)
+```
+
+ggplot2关于散点图的相关做法有很详细的介绍，相关参考链接：https://ggplot2.tidyverse.org/reference/geom_point.html
+
+## 直方图
+
+直方图是一种统计报告图，由一系列高度不等的纵向条纹或线段表示数据分布的情况。 一般用横轴表示数据类型，纵轴表示分布情况。
+直方图可以很好的查看数据的分布情况，是常用的数据可视化展示图形。
+
+我们对rad变量进行直方图分析
+```{r plot6}
+ggplot(data = boston_data, aes(x = rad)) +
+  geom_histogram()
+```
+
+可以看到ggplot2可以自动对数据进行直方图的统计
+
+我们给直方图填充颜色，同时改变直方图类型color表示直方图的边框，fill表示直方图中的填充颜色，ggplot2支持RGB颜色表的配色方案，linetype表示直方图线的类型
+
+RGB颜色表可以参考：http://www.mgzxzs.com/sytool/se.htm
+
+```{r plot7}
+p5 <- ggplot(data = boston_data, aes(x = rad)) +
+  geom_histogram(color = "black", fill = "#69b3a2")
+p6 <- ggplot(data = boston_data, aes(x = rad)) +
+  geom_histogram(color = "black", fill = "#69b3a2", linetype = "dashed")
+ggarrange(p5, p6, nrow = 1)
+```
+
+ggplot2也支持在直方图上添加平均线和密度图
+
+```{r plot8}
+p7 <- p5 + geom_vline(aes(xintercept = mean(rad)), color = "blue", linetype = "dashed", size = 1)
+p8 <- ggplot(data = boston_data, aes(x = rad)) +
+  geom_histogram(color = "black", fill = "#69b3a2", aes(y = ..density..)) +
+  geom_density(alpha = .2, fill = "#FF6666")
+ggarrange(p7, p8, nrow = 1)
+```
+
+ggplot2关于直方图的相关做法有很详细的介绍，相关参考链接：https://ggplot2.tidyverse.org/reference/geom_histogram.html
+
+## 柱状图
+柱状图是一种常用的数据可视化图形，根据翻译的不同，柱状图又叫长条图、柱状统计图、条状图、棒形图
+柱状图图用来比较两个或以上的价值（不同时间或者不同条件），只有一个变量，通常利用于较小的数据集分析。长条图亦可横向排列，或用多维方式表达。需要注意的是柱状图与直方图是不同的数据可视化方法，不要弄混淆了。
+
+对h1n1数据集中填写人的受教育情况进行可视化展示,使用pylr包中的count对edcation进行计数统计
+
+```{r plot9}
+data <- count(h1n1_data["race"])
+p <- ggplot(data, aes(x = race, y = freq)) +
+  geom_bar(stat = "identity")
+# 也可以进行水平放置
+p1 <- p + coord_flip()
+ggarrange(p, p1)
+```
+
+可以看到左边的柱状图文字有点挡住了，我们把文字旋转45°
+
+```{r plot9a}
+data <- count(h1n1_data["race"])
+ggplot(data, aes(x = race, y = freq)) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+对柱状图的样式进行修改
+
+```{r plot10}
+# 更改条的宽度和颜色：
+# 更改条的宽度
+p2 <- ggplot(data, aes(x = race, y = freq)) +
+  geom_bar(stat = "identity", width = 0.5) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# 改变颜色
+p3 <- ggplot(data, aes(x = race, y = freq)) +
+  geom_bar(stat = "identity", color = "blue", fill = "white") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# 最小主题+蓝色填充颜色
+p4 <- ggplot(data, aes(x = race, y = freq)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# 选择要显示的项目
+p5 <- p + scale_x_discrete(limits = c("White", "Black")) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggarrange(p2, p3, p4, p5)
+```
+
+对柱状图进行标签显示
+```{r plot11}
+p6 <- ggplot(data = data, aes(x = race, y = freq)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_text(aes(label = freq), vjust = -0.3, size = 3.5) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# 条形内部标签
+p7 <- ggplot(data = data, aes(x = race, y = freq)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_text(aes(label = freq), vjust = 1.6, color = "white", size = 3.5) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggarrange(p6, p7, nrow = 1)
+```
+
+如果觉得柱状图的顺序不是你想要的，可以对柱状图的顺序进行修改
+```{r plot12}
+data <- within(data, {
+  race <- factor(race, levels = c("White", "Black", "Hispanic", "Other or Multiple"))
+})
+ggplot(data, aes(x = race, y = freq)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+ggplot2关于柱状图的相关做法有很详细的介绍，相关参考链接：
+https://ggplot2.tidyverse.org/reference/geom_bar.html
+
+## 饼状图
+
+饼状图作为常用的数据可视化图形之一，广泛的使用在各个领域，能够很清楚展示数据的所占的百分比。
+ggplot2并没有类似于geom_pie()这样的函数实现饼图的绘制，但ggplot2有一个理念，就是通过极坐标变换绘制饼图
+
+饼图在ggplot2中就是通过极坐标变换获得，在绘制饼图之前需要绘制堆叠的条形图，通过将条形图进行极坐标变换后，就能实现饼图绘制了。
+
+对h1n1问卷表中race数据进行数据展示
+```{r plot13}
+data <- count(h1n1_data["race"])
+ggplot(data = data, aes(x = "", y = freq, fill = race)) +
+  geom_bar(stat = "identity")
+```
+
+堆叠的条形图绘制完后，接下来就需要进行极坐标变换了，ggplot2中coord_polar()函数可以非常方便的实现极坐标变换。
+```{r plot14}
+ggplot(data = data, aes(x = "", y = freq, fill = race)) +
+  geom_bar(stat = "identity") +
+  coord_polar(theta = "y")
+```
+
+看起来像饼图了，但是饼图周围还有多余的数字，如何清除呢？
+这里的标签其实就是坐标轴的标签，可以通过labs()函数将其清除。
+
+```{r plot15}
+ggplot(data = data, aes(x = "", y = freq, fill = race)) +
+  geom_bar(stat = "identity") +
+  coord_polar(theta = "y") +
+  labs(x = "", y = "", title = "") +
+  theme(axis.text = element_blank())
+```
+
+接下来就是显示各个所占的比例
+第一种方法，将百分比直接显示在图例中，这种方式适合分类较多的情况。
+
+```{r }
+label_value <- paste("(", round(data$freq / sum(data$freq) * 100, 1), "%)", sep = "")
+label_value
+```
+将计算的百分比和race匹配
+
+```{r }
+label <- paste(data$race, label_value, sep = "")
+label
+```
+
+接下来就是将这些百分比标签放到图例中
+```{r }
+ggplot(data = data, aes(x = "", y = freq, fill = race)) +
+  geom_bar(stat = "identity") +
+  coord_polar(theta = "y") +
+  labs(x = "", y = "", title = "") +
+  theme(axis.text = element_blank()) +
+  scale_fill_discrete(labels = label)
+```
+
+看起来就很不错~
+
+第二种方法，直接将百分比放到各自的饼区中。
+
+首先是去掉饼图中的图例
+```{r }
+ggplot(data = data, aes(x = "", y = freq, fill = race)) +
+  geom_bar(stat = "identity") +
+  coord_polar(theta = "y") +
+  labs(x = "", y = "", title = "") +
+  theme(axis.text = element_blank()) +
+  theme(legend.position = "none")
+```
+
+将标签放置在饼图中
+```{r }
+ggplot(data = data, aes(x = "", y = freq, fill = race)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar(theta = "y") +
+  labs(x = "", y = "", title = "") +
+  theme(axis.text = element_blank(), legend.position = "none") +
+  geom_text(aes(label = label), size = 3, position = position_stack(vjust = 0.5))
+```
+
+## 折线图
+折线图作为反映数据变化的趋势是常用的数据可视化图形之一，在ggplot2中通过geom_line()这个函数进行绘制。
+
+对波士顿房价中rad进行可视化展示，使用pylr包中的count对edcation进行计数统计
+
+```{r }
+data <- count(boston_data["rad"])
+data
+```
+
+把rad为24的数据去除掉
+```{r }
+data <- data[1:8, ]
+ggplot(data, aes(x = rad, y = freq)) +
+  geom_line()
+```
+
+有时候我们需要在折线图上显示对应x轴的点数据，从而可以更加清晰的辨别原始数据,这特别适合数据比较稀疏的情况
+```{r }
+ggplot(data, aes(x = rad, y = freq)) +
+  geom_line() +
+  geom_point(size = 4)
+```
+
+
+我们调整横坐标的显示刻度
+```{r }
+ggplot(data, aes(x = rad, y = freq)) +
+  geom_line() +
+  geom_point(size = 4) +
+  scale_x_continuous(breaks = c(1:8))
+```
+
+也可以修改线的类型和颜色
+```{r }
+ggplot(data, aes(x = rad, y = freq)) +
+  geom_line(linetype = "dashed", color = "red") +
+  geom_point(size = 4) +
+  scale_x_continuous(breaks = c(1:8))
+```
+
+ggplt2关于折线图的相关做法的参考链接：
+https://ggplot2.tidyverse.org/reference/geom_abline.html
+
+
+## ggplot2扩展包主题
+R语言中的ggplot2包里面的风格固定，在需要特殊的图形时，需要更改甚至自定义设置主题。
+ggplot2内置了8种风格的主题
+
+|主题函数|效果|
+|---|---|
+|theme_bw()|网格白色主题|
+|theme_classic()|经典主题|
+|theme_dark()|	暗色主题，可用于对比|
+|theme_gray()|默认主题|
+|theme_light()|浅色坐标带网格|
+|theme_linedraw()|黑色网格线|
+|theme_minimal()|极简主题|
+|theme_void()|空白主题|
+
+
+我们来试一试不同的主题
+
+```{r}
+p <- ggplot(data = boston_data, aes(x = lstat, y = medv, colour = rad)) +
+  geom_point()
+p1 <- p + theme_bw() + labs(title = "网格白色主题") + theme(legend.position = "none")
+p2 <- p + theme_classic() + labs(title = "经典主题") + theme(legend.position = "none")
+p3 <- p + theme_dark() + labs(title = "暗色主题") + theme(legend.position = "none")
+p4 <- p + theme_gray() + labs(title = "默认主题") + theme(legend.position = "none")
+p5 <- p + theme_light() + labs(title = "浅色坐标带网格") + theme(legend.position = "none")
+p6 <- p + theme_linedraw() + labs(title = "黑色网格线") + theme(legend.position = "none")
+p7 <- p + theme_minimal() + labs(title = "极简主题") + theme(legend.position = "none")
+p8 <- p + theme_void() + labs(title = "空白主题") + theme(legend.position = "none")
+
+ggarrange(p1, p2, p3, p4, p5, p6, p7, p8, ncol = 4, nrow = 2, heights = 1.2)
+```
+
+除了ggplot2自带的主题外，还有许多拓展主题包，比如：ggthemes、ggthemr
+ggthemes在cran上发布，因此推荐使用这个
+ggthemr 色彩很好看，因此推荐这个
+
+ggthemes相关链接：https://github.com/jrnold/ggthemes
+
+ggthemr相关链接：https://github.com/Mikata-Project/ggthemr
+
+因为ggthemr没有上cran，因此需要通过github安装
+```{r}
+# devtools::install_github('Mikata-Project/ggthemr')
+```
+
+使用方法也是非常简单，这里用我比较喜欢的greyscale主题方案
+```{r}
+library(ggthemr)
+ggthemr("greyscale")
+p3 <- ggplot(data = boston_data, aes(x = lstat, y = medv, colour = factor(rad))) +
+  geom_point()
+p4 <- ggplot(data = boston_data, aes(x = lstat, y = medv, colour = rad)) +
+  geom_point()
+ggarrange(p3, p4, nrow = 1)
+```
+
+试一试light这个主题，配色非常的温柔
+```{r}
+library(ggthemr)
+ggthemr("light")
+p3 <- ggplot(data = boston_data, aes(x = lstat, y = medv, colour = factor(rad))) +
+  geom_point()
+p4 <- ggplot(data = boston_data, aes(x = lstat, y = medv, colour = rad)) +
+  geom_point()
+ggarrange(p3, p4, nrow = 1)
+```
+
+实战部分：
+对提供的数据集我们可以试一试ggthemr中的不同主题，同时对波士顿房价进行其它的数据可视化的探索。
+
+ggplot2是一个非常经典的数据可视化R包，内容非常丰富，由于篇幅的原因没办法将ggplot2中的各种方法全部讲述，因此选择了几个常见的图形进行相关的讲解，以期达到抛砖引玉的效果。如果对ggplot2感兴趣的同学，可以去官网进行更加详细的学习，也非常期待大家的数据可视化作品~
+
+## 本章作者 {-}
+
+
+__牧小熊__
+
+> 华中农业大学研究生，Datawhale成员, Datawhale优秀原创作者  
+> 知乎：https://www.zhihu.com/people/muxiaoxiong
+
+## 关于Datawhale {-}
+
+Datawhale是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注Datawhale：
+
+```{r, echo = FALSE}
+insert_logo()
+```
+
+<!--chapter:end:Task04_Visualization.Rmd-->
+
+# 模型 {#task-05}
+
+
+![](./image/task05_structure.png){width=100%}
+
+Task05共计3个知识点，预计需学习2-3小时，请安排好学习任务。
+
+## 前言
+为了帮助大家更好的使用R语言进行建模分析，本章节将借助波士顿房价数据集来展示常见的模型。本章节学习的目的是帮助大家了解模型的适用范围以及如何建模，不会对模型的底层原理进行深入的研究。并且迫于时间和精力有限，本章节仅介绍部分模型的实现。
+
+- 回归模型： 回归模型是一种有监督的、预测性的建模技术，它研究的是因变量和自变量之间的关系。
+
+- 分类模型： 分类模型也是一种有监督的机器学习模型。与回归模型不同的是，其标签(因变量)通常是有限个数的定类变量。最常见的是二分类模型。
+
+
+我们主要使用波士顿房价数据集来实现各种模型。因此我们使用2021作为种子值生成70%的数据作为训练集，其余数据作为测试集。下面展示来各个数据集的大小。
+
+```{r }
+# 导入BostonHousing数据
+library(mlbench)
+data(BostonHousing)
+
+# 设置种子值，方便复现
+set.seed(2021)
+
+# 生成训练集的索引，用来划分训练集和测试集
+train_index <- sample(dim(BostonHousing)[1], 0.7 * dim(BostonHousing)[1])
+BostonHousingTrain <- BostonHousing[train_index, ]
+BostonHousingTest <- BostonHousing[-train_index, ]
+
+# 查看数据集的size
+dim(BostonHousing)
+dim(BostonHousingTrain)
+dim(BostonHousingTest)
+
+# 查看数据集包含的变量名称
+names(BostonHousing)
+```
+
+##回归模型
+回归模型有很多主要有Linear Regression、Logistic Regression、Polynomial Regression、Stepwise Regression、Ridge Regression、Lasso Regression、ElasticNet等。
+
+本部分主要介绍有Linear Regression、以及Stepwise Regression三种回归模型的实现。
+
+### Linear Regression
+
+多元线性回归是一种最为基础的回归模型，其使用多个自变量和一个因变量利用OLS完成模型训练。下面我们将使用`medv`作为因变量，剩余变量作为自变量构建模型。
+
+多元线性回归模型使用`lm()`命令, 其中`medv~.`是回归公式，`data=BostonHousingTrain`是回归数据。对回归公式的构建进行一些补充，`~`左侧表示因变量，`~`右侧表示自变量，多个自变量使用`+`依次叠加。这里右侧使用了`.`，该符号的含义是除左侧变量外所有的变量。因此，`medv~.`等价于`medv~crim + zn + indus + chas + nox + rm + age + dis + rad + tax + ptratio + b + medv`。
+
+```{r }
+# 构建模型，medv~.表示回归方程
+lr_model <- lm(medv ~ ., data = BostonHousingTrain)
+
+# summary输出模型汇总
+summary(lr_model)
+```
+运用plot命令对模型进行诊断，各图含义参考 https://www.cnblogs.com/lafengdatascientist/p/5554167.html
+
+```{r }
+plot(lr_model)
+```
+
+`predict`命令能够基于已经训练好的模型进行预测。
+```{r }
+# 根据模型对新数据进行预测
+BostonHousingTest$lr_pred <- predict(lr_model, newdata = BostonHousingTest)
+```
+
+### Stepwise Regression
+利用逐步回归分析可以对模型中的变量进行优化。R语言中的`step()`命令,是以AIC信息统计量为准则，通过选择最小的AIC信息统计量来达到提出或添加变量的目的。
+
+对于逐步回归，一般有前向、后向、双向等逐步方式。本部分将基于已经实现的`lr_model`进行双向逐步回归。前向和后向回归只需要更改`step()`命令行中的`direstion`参数即可。具体内容参照 https://blog.csdn.net/qq_38204302/article/details/86567356
+
+```{r }
+# both逐步回归
+step_model <- step(lr_model, direction = "both")
+summary(step_model)
+```
+
+对于分类模型还有较为常用的Lasso Regression 和 Ridge Regression，我们将会在进阶教程中来更加具体的讲解模型知识。
+
+## 分类模型
+
+在进行分类模型前，我们需要构建分类标签。我们使用`medv`的中位数进行划分，其中1表示高房价，0表示低房价。通过这样的转化将原本的数值型变量转化为二元标签。并使用相同的种子值划分测试集和训练集。
+
+```{r }
+# 将连续变量转化成二分类变量
+BostonHousing$medv <- as.factor(ifelse(BostonHousing$medv > median(BostonHousing$medv), 1, 0))
+# 查看两种变量类别的数量
+summary(BostonHousing$medv)
+
+# 使用相同的种子值，复现训练集合测试集的划分
+set.seed(2021)
+train_index <- sample(dim(BostonHousing)[1], 0.7 * dim(BostonHousing)[1])
+BostonHousingTrain <- BostonHousing[train_index, ]
+BostonHousingTest <- BostonHousing[-train_index, ]
+```
+
+同时引入两个计算函数，用来计算AUC指标值。
+```{r }
+# 引入auc计算函数
+library("ROCR")
+calcAUC <- function(predcol, outcol) {
+  perf <- performance(prediction(predcol, outcol == 1), "auc")
+  as.numeric(perf@y.values)
+}
+```
+
+
+### Logistics Regression
+
+逻辑回归是一种广义的线性回归分析模型，利用sigmode将线性回归结果转化成概率的形式。下面展示了利用`glm()`构建逻辑回归的过程。通过计算，训练集上的auc取值为0.9554211，测试集上的auc取值为0.9506969，说明模型效果整体不错。
+
+```{r }
+# 逻辑回归模型构建
+lr_model <- glm(medv ~ ., data = BostonHousingTrain, family = binomial(link = "logit"))
+summary(lr_model)
+
+# 分别对训练集和测试集进行预测
+lr_pred_train <- predict(lr_model, newdata = BostonHousingTrain, type = "response")
+lr_pred_test <- predict(lr_model, newdata = BostonHousingTest, type = "response")
+
+# 计算训练集和测试集的auc
+calcAUC(lr_pred_train, BostonHousingTrain$medv)
+calcAUC(lr_pred_test, BostonHousingTest$medv)
+```
+
+
+### KNN
+
+KNN模型是一种简单易懂、可以用于分类和回归的模型。其中 K 表示在新样本点附近(距离)选取 K 个样本数据，通过在 K 个样本进行投票来判断新增样本的类型。
+
+KNN模型较难的一点是确定超参数K，目前有一些指标和经验方法帮助确定最优K的取值。这部分内容会在后续进行讲解，这里使用k=25进行建模。KNN模型在测试集上的auc值为0.8686411，相比于逻辑回归效果较差。
+
+```{r }
+# 导入knn模型的包
+library(kknn)
+
+# 构建knn模型
+knn <- kknn(medv ~ ., BostonHousingTrain, BostonHousingTest, k = 25)
+
+# 预测并计算测试集上的auc取值
+knn_pred_test <- predict(knn, newdata = BostonHousingTest)
+calcAUC(as.numeric(knn_pred_test), BostonHousingTest$medv)
+```
+
+
+### Decision Tree
+
+决策树是一种基于树模型进行划分的分类模型，通过一系列if then决策规则的集合，将特征空间划分成有限个不相交的子区域，对于落在相同子区域的样本，决策树模型给出相同的预测值。下面构建了决策树的分类模型
+
+```{r }
+# 导入包
+library(tree)
+
+# 构建决策树模型函数，medv~.是决策树公式，用来表明变量。
+# summary输出模型汇总信息
+dt_model <- tree(medv ~ ., BostonHousingTrain)
+summary(dt_model)
+
+# plot可以对树模型进行绘制，但可能会出现书分支过多的情况。
+plot(dt_model)
+text(dt_model)
+```
+
+在构建决策树模型的基础上，分别对训练集和测试集进行预测并计算auc取值。该模型在训练集上的auc取值为0.9281874，在测试集上的auc取值为0.8789199。训练集和测试集间存在抖动，说明该模型可能出现过拟合。我们需要引入剪枝的操作来降低模型的过拟合，这部分供同学们自学。
+
+```{r }
+# 预测
+dt_pred_train <- predict(dt_model, newdata = BostonHousingTrain, type = "class")
+dt_pred_test <- predict(dt_model, newdata = BostonHousingTest, type = "class")
+
+# 计算auc取值
+calcAUC(as.numeric(dt_pred_train), BostonHousingTrain$medv)
+calcAUC(as.numeric(dt_pred_test), BostonHousingTest$medv)
+```
+
+
+### Random Forest
+
+随机森林是一个包含多个决策树的分类器，可以用于分类和回归问题。在解决分类问题是，其输出的类别是由个别树输出的类别的众数而定。相比于单树模型，随机森林具有更好地泛化能力。
+
+使用`randomForest()`构建模型的过程中，可以通过`ntree`设定随机森林中包含的决策树数量。由于随机森林是对样本和变量的随机，因此可以通过`important`展示变量的重要性排序。通过模型预测，随机森林模型在训练集上的auc为0.9615975，在测试集上的auc为0.9247387。
+
+```{r }
+# 导入随机森林包
+library(randomForest)
+
+# 随机森林模型
+rf_model <- randomForest(medv ~ ., BostonHousingTrain, ntree = 100, nodesize = 10, importance = T)
+# 展示模型变量的重要性
+importance(rf_model)
+
+# 预测
+rf_pred_train <- predict(rf_model, newdata = BostonHousingTrain, type = "class")
+rf_pred_test <- predict(rf_model, newdata = BostonHousingTest, type = "class")
+
+# 计算auc取值
+calcAUC(as.numeric(rf_pred_train), BostonHousingTrain$medv)
+calcAUC(as.numeric(rf_pred_test), BostonHousingTest$medv)
+```
+
+## 思考与练习 {-}
+
+本章节仅对模型进行简单介绍，更多详细、复杂的模型将在后面的进阶课程中展开。
+
+学习完本章节，希望你能够尝试一些模型调优工作。如决策树剪枝，如尝试搜索KNN模型中最佳K取值等。
+
+
+## 本章作者 {-}
+
+__张晋__
+
+> Datawhale成员，算法竞赛爱好者  
+> https://blog.csdn.net/weixin_44585839/
+
+## 关于Datawhale {-}
+
+Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：
+
+```{r, echo = FALSE}
+insert_logo()
+```
+
+<!--chapter:end:Task05_Model.Rmd-->
+
