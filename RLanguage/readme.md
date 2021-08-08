@@ -12,7 +12,7 @@
 | 张晋 |  Datawhale成员，算法竞赛爱好者 | https://blog.csdn.net/weixin_44585839/ |
 | 杨佳达 | 数据挖掘师，Datawhale成员，目前在国内某第三方数据服务公司做数据分析挖掘及数据产品 | https://github.com/yangjiada |
 | 牧小熊 | 华中农业大学研究生，Datawhale成员，Datawhale优秀原创作者 | https://www.zhihu.com/people/muxiaoxiong                           |
-| 杨杨卓然 | 混吃等死统计休学穷酸书生                                | https://yangzhuoranyang.com  |
+| 杨杨卓然 | 统计学工作者   | https://yangzhuoranyang.com  |
 | 姚昱君 | 悉尼大学，Datawhale成员     | https://blog.csdn.net/Yao_June |
 
 
