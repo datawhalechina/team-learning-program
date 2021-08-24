@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 2 章 数据清洗与准备 | R语言数据分析组队学习</title>
+  <meta name="description" content="第 2 章 数据清洗与准备 | R语言数据分析组队学习" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 2 章 数据清洗与准备 | R语言数据分析组队学习" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 2 章 数据清洗与准备 | R语言数据分析组队学习" />
+  
+  
+  
+
+<meta name="author" content="张晋、杨佳达、牧小熊、杨杨卓然、姚昱君" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="task-01.html"/>
+<link rel="next" href="task-03.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R语言数据分析组队学习</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎！</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#贡献者信息"><i class="fa fa-check"></i>贡献者信息</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程简介"><i class="fa fa-check"></i>课程简介</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程大纲"><i class="fa fa-check"></i>课程大纲</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#关于-datawhale"><i class="fa fa-check"></i>关于 Datawhale</a></li>
+</ul></li>
+<li class="part"><span><b>I 准备工作</b></span></li>
+<li class="chapter" data-level="" data-path="task-00.html"><a href="task-00.html"><i class="fa fa-check"></i>熟悉规则与R语言入门</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="task-00.html"><a href="task-00.html#安装"><i class="fa fa-check"></i><b>0.1</b> 安装</a>
+<ul>
+<li class="chapter" data-level="0.1.1" data-path="task-00.html"><a href="task-00.html#r"><i class="fa fa-check"></i><b>0.1.1</b> R</a></li>
+<li class="chapter" data-level="0.1.2" data-path="task-00.html"><a href="task-00.html#rstudio"><i class="fa fa-check"></i><b>0.1.2</b> RStudio</a></li>
+<li class="chapter" data-level="0.1.3" data-path="task-00.html"><a href="task-00.html#r语言程辑包r-package"><i class="fa fa-check"></i><b>0.1.3</b> R语言程辑包（R Package）</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path="task-00.html"><a href="task-00.html#环境配置"><i class="fa fa-check"></i><b>0.2</b> 环境配置</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="task-00.html"><a href="task-00.html#项目project"><i class="fa fa-check"></i><b>0.2.1</b> 项目（Project）</a></li>
+<li class="chapter" data-level="0.2.2" data-path="task-00.html"><a href="task-00.html#用户界面"><i class="fa fa-check"></i><b>0.2.2</b> 用户界面</a></li>
+<li class="chapter" data-level="0.2.3" data-path="task-00.html"><a href="task-00.html#r-markdown"><i class="fa fa-check"></i><b>0.2.3</b> R Markdown</a></li>
+<li class="chapter" data-level="0.2.4" data-path="task-00.html"><a href="task-00.html#帮助"><i class="fa fa-check"></i><b>0.2.4</b> 帮助</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="task-00.html"><a href="task-00.html#happy-coding"><i class="fa fa-check"></i><b>0.3</b> Happy Coding!</a></li>
+<li class="chapter" data-level="" data-path="task-00.html"><a href="task-00.html#本章作者"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-00.html"><a href="task-00.html#关于datawhale"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="part"><span><b>II 开始干活</b></span></li>
+<li class="chapter" data-level="1" data-path="task-01.html"><a href="task-01.html"><i class="fa fa-check"></i><b>1</b> 数据结构与数据集</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="task-01.html"><a href="task-01.html#准备工作"><i class="fa fa-check"></i><b>1.1</b> 准备工作</a></li>
+<li class="chapter" data-level="1.2" data-path="task-01.html"><a href="task-01.html#编码基础"><i class="fa fa-check"></i><b>1.2</b> 编码基础</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="task-01.html"><a href="task-01.html#算术"><i class="fa fa-check"></i><b>1.2.1</b> 算术</a></li>
+<li class="chapter" data-level="1.2.2" data-path="task-01.html"><a href="task-01.html#赋值"><i class="fa fa-check"></i><b>1.2.2</b> 赋值</a></li>
+<li class="chapter" data-level="1.2.3" data-path="task-01.html"><a href="task-01.html#函数"><i class="fa fa-check"></i><b>1.2.3</b> 函数</a></li>
+<li class="chapter" data-level="1.2.4" data-path="task-01.html"><a href="task-01.html#循环loop"><i class="fa fa-check"></i><b>1.2.4</b> 循环（loop）</a></li>
+<li class="chapter" data-level="1.2.5" data-path="task-01.html"><a href="task-01.html#管道pipe"><i class="fa fa-check"></i><b>1.2.5</b> 管道（pipe）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="task-01.html"><a href="task-01.html#数据类型"><i class="fa fa-check"></i><b>1.3</b> 数据类型</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="task-01.html"><a href="task-01.html#基础数据类型"><i class="fa fa-check"></i><b>1.3.1</b> 基础数据类型</a></li>
+<li class="chapter" data-level="1.3.2" data-path="task-01.html"><a href="task-01.html#向量vector"><i class="fa fa-check"></i><b>1.3.2</b> 向量（vector）</a></li>
+<li class="chapter" data-level="1.3.3" data-path="task-01.html"><a href="task-01.html#特殊数据类型"><i class="fa fa-check"></i><b>1.3.3</b> 特殊数据类型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="task-01.html"><a href="task-01.html#多维数据类型"><i class="fa fa-check"></i><b>1.4</b> 多维数据类型</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="task-01.html"><a href="task-01.html#矩阵matrix"><i class="fa fa-check"></i><b>1.4.1</b> 矩阵（matrix）</a></li>
+<li class="chapter" data-level="1.4.2" data-path="task-01.html"><a href="task-01.html#列表list"><i class="fa fa-check"></i><b>1.4.2</b> 列表（list）</a></li>
+<li class="chapter" data-level="1.4.3" data-path="task-01.html"><a href="task-01.html#数据表data-frame-与-tibble"><i class="fa fa-check"></i><b>1.4.3</b> 数据表（data frame 与 tibble）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="task-01.html"><a href="task-01.html#读写数据"><i class="fa fa-check"></i><b>1.5</b> 读写数据</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="task-01.html"><a href="task-01.html#内置数据集"><i class="fa fa-check"></i><b>1.5.1</b> 内置数据集</a></li>
+<li class="chapter" data-level="1.5.2" data-path="task-01.html"><a href="task-01.html#表格类型数据csv-excel"><i class="fa fa-check"></i><b>1.5.2</b> 表格类型数据（csv, excel)</a></li>
+<li class="chapter" data-level="1.5.3" data-path="task-01.html"><a href="task-01.html#r的专属类型数据rdata-rds"><i class="fa fa-check"></i><b>1.5.3</b> R的专属类型数据（RData, rds）</a></li>
+<li class="chapter" data-level="1.5.4" data-path="task-01.html"><a href="task-01.html#其他软件spss-stata-sas"><i class="fa fa-check"></i><b>1.5.4</b> 其他软件（SPSS, Stata, SAS）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="task-01.html"><a href="task-01.html#练习题"><i class="fa fa-check"></i><b>1.6</b> 练习题</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="task-01.html"><a href="task-01.html#了解数据集"><i class="fa fa-check"></i><b>1.6.1</b> 了解数据集</a></li>
+<li class="chapter" data-level="1.6.2" data-path="task-01.html"><a href="task-01.html#创造数据集"><i class="fa fa-check"></i><b>1.6.2</b> 创造数据集</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-01.html"><a href="task-01.html#本章作者-1"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-01.html"><a href="task-01.html#关于datawhale-1"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="task-02.html"><a href="task-02.html"><i class="fa fa-check"></i><b>2</b> 数据清洗与准备</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#环境配置-1"><i class="fa fa-check"></i>环境配置</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#案例数据"><i class="fa fa-check"></i>案例数据</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#数据集1-h1n1流感问卷数据集"><i class="fa fa-check"></i>数据集1 h1n1流感问卷数据集</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#数据集2-波士顿房价数据集"><i class="fa fa-check"></i>数据集2 波士顿房价数据集</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1" data-path="task-02.html"><a href="task-02.html#重复值处理"><i class="fa fa-check"></i><b>2.1</b> 重复值处理</a></li>
+<li class="chapter" data-level="2.2" data-path="task-02.html"><a href="task-02.html#缺失值识别与处理"><i class="fa fa-check"></i><b>2.2</b> 缺失值识别与处理</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="task-02.html"><a href="task-02.html#缺失值识别"><i class="fa fa-check"></i><b>2.2.1</b> 缺失值识别</a></li>
+<li class="chapter" data-level="2.2.2" data-path="task-02.html"><a href="task-02.html#缺失值处理"><i class="fa fa-check"></i><b>2.2.2</b> 缺失值处理</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="task-02.html"><a href="task-02.html#异常值识别与处理"><i class="fa fa-check"></i><b>2.3</b> 异常值识别与处理</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="task-02.html"><a href="task-02.html#异常值识别"><i class="fa fa-check"></i><b>2.3.1</b> 异常值识别</a></li>
+<li class="chapter" data-level="2.3.2" data-path="task-02.html"><a href="task-02.html#可视化图形分布"><i class="fa fa-check"></i><b>2.3.2</b> 可视化图形分布</a></li>
+<li class="chapter" data-level="2.3.3" data-path="task-02.html"><a href="task-02.html#z-score"><i class="fa fa-check"></i><b>2.3.3</b> z-score</a></li>
+<li class="chapter" data-level="2.3.4" data-path="task-02.html"><a href="task-02.html#局部异常因子法"><i class="fa fa-check"></i><b>2.3.4</b> 局部异常因子法</a></li>
+<li class="chapter" data-level="2.3.5" data-path="task-02.html"><a href="task-02.html#异常值处理"><i class="fa fa-check"></i><b>2.3.5</b> 异常值处理</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="task-02.html"><a href="task-02.html#特征编码"><i class="fa fa-check"></i><b>2.4</b> 特征编码</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="task-02.html"><a href="task-02.html#独热编码哑编码"><i class="fa fa-check"></i><b>2.4.1</b> 独热编码/哑编码</a></li>
+<li class="chapter" data-level="2.4.2" data-path="task-02.html"><a href="task-02.html#标签编码"><i class="fa fa-check"></i><b>2.4.2</b> 标签编码</a></li>
+<li class="chapter" data-level="2.4.3" data-path="task-02.html"><a href="task-02.html#手动编码"><i class="fa fa-check"></i><b>2.4.3</b> 手动编码</a></li>
+<li class="chapter" data-level="2.4.4" data-path="task-02.html"><a href="task-02.html#日期特征转换"><i class="fa fa-check"></i><b>2.4.4</b> 日期特征转换</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="task-02.html"><a href="task-02.html#规范化与偏态数据"><i class="fa fa-check"></i><b>2.5</b> 规范化与偏态数据</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="task-02.html"><a href="task-02.html#规范化"><i class="fa fa-check"></i><b>2.5.1</b> 0-1规范化</a></li>
+<li class="chapter" data-level="2.5.2" data-path="task-02.html"><a href="task-02.html#z-score标准化"><i class="fa fa-check"></i><b>2.5.2</b> Z-score标准化</a></li>
+<li class="chapter" data-level="2.5.3" data-path="task-02.html"><a href="task-02.html#对数转换log-transform"><i class="fa fa-check"></i><b>2.5.3</b> 对数转换(log transform)</a></li>
+<li class="chapter" data-level="2.5.4" data-path="task-02.html"><a href="task-02.html#box-cox"><i class="fa fa-check"></i><b>2.5.4</b> Box-Cox</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="task-02.html"><a href="task-02.html#小拓展"><i class="fa fa-check"></i><b>2.6</b> 小拓展</a></li>
+<li class="chapter" data-level="2.7" data-path="task-02.html"><a href="task-02.html#思考与练习"><i class="fa fa-check"></i><b>2.7</b> 思考与练习</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#附录参考资料"><i class="fa fa-check"></i>附录：参考资料</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#理论资料"><i class="fa fa-check"></i>理论资料</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#r语言函数用法示例"><i class="fa fa-check"></i>R语言函数用法示例</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#本章作者-2"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#关于datawhale-2"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="task-03.html"><a href="task-03.html"><i class="fa fa-check"></i><b>3</b> 基本统计分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-03.html"><a href="task-03.html#准备工作-1"><i class="fa fa-check"></i>准备工作</a></li>
+<li class="chapter" data-level="3.1" data-path="task-03.html"><a href="task-03.html#多种方法获取描述性统计量"><i class="fa fa-check"></i><b>3.1</b> 多种方法获取描述性统计量</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="task-03.html"><a href="task-03.html#基础方法"><i class="fa fa-check"></i><b>3.1.1</b> 基础方法</a></li>
+<li class="chapter" data-level="3.1.2" data-path="task-03.html"><a href="task-03.html#拓展包方法"><i class="fa fa-check"></i><b>3.1.2</b> 拓展包方法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="task-03.html"><a href="task-03.html#分组计算描述性统计"><i class="fa fa-check"></i><b>3.2</b> 分组计算描述性统计</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="task-03.html"><a href="task-03.html#基础方法-1"><i class="fa fa-check"></i><b>3.2.1</b> 基础方法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="task-03.html"><a href="task-03.html#频数表和列联表"><i class="fa fa-check"></i><b>3.3</b> 频数表和列联表</a></li>
+<li class="chapter" data-level="3.4" data-path="task-03.html"><a href="task-03.html#相关"><i class="fa fa-check"></i><b>3.4</b> 相关</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="task-03.html"><a href="task-03.html#相关的类型"><i class="fa fa-check"></i><b>3.4.1</b> 相关的类型</a></li>
+<li class="chapter" data-level="3.4.2" data-path="task-03.html"><a href="task-03.html#相关性的显著性检验"><i class="fa fa-check"></i><b>3.4.2</b> 相关性的显著性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="task-03.html"><a href="task-03.html#方差分析"><i class="fa fa-check"></i><b>3.5</b> 方差分析</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="task-03.html"><a href="task-03.html#单因素方差分析"><i class="fa fa-check"></i><b>3.5.1</b> 单因素方差分析</a></li>
+<li class="chapter" data-level="3.5.2" data-path="task-03.html"><a href="task-03.html#多因素方差分析"><i class="fa fa-check"></i><b>3.5.2</b> 多因素方差分析</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-03.html"><a href="task-03.html#本章作者-3"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-03.html"><a href="task-03.html#关于datawhale-3"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="task-04.html"><a href="task-04.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#ggplot2包介绍"><i class="fa fa-check"></i>ggplot2包介绍</a></li>
+<li class="chapter" data-level="4.1" data-path="task-04.html"><a href="task-04.html#环境配置-2"><i class="fa fa-check"></i><b>4.1</b> 环境配置</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#案例数据-1"><i class="fa fa-check"></i>案例数据</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="task-04.html"><a href="task-04.html#散点图"><i class="fa fa-check"></i><b>4.2</b> 散点图</a></li>
+<li class="chapter" data-level="4.3" data-path="task-04.html"><a href="task-04.html#直方图"><i class="fa fa-check"></i><b>4.3</b> 直方图</a></li>
+<li class="chapter" data-level="4.4" data-path="task-04.html"><a href="task-04.html#柱状图"><i class="fa fa-check"></i><b>4.4</b> 柱状图</a></li>
+<li class="chapter" data-level="4.5" data-path="task-04.html"><a href="task-04.html#饼状图"><i class="fa fa-check"></i><b>4.5</b> 饼状图</a></li>
+<li class="chapter" data-level="4.6" data-path="task-04.html"><a href="task-04.html#折线图"><i class="fa fa-check"></i><b>4.6</b> 折线图</a></li>
+<li class="chapter" data-level="4.7" data-path="task-04.html"><a href="task-04.html#ggplot2扩展包主题"><i class="fa fa-check"></i><b>4.7</b> ggplot2扩展包主题</a></li>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#本章作者-4"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#关于datawhale-4"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="task-05.html"><a href="task-05.html"><i class="fa fa-check"></i><b>5</b> 模型</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="task-05.html"><a href="task-05.html#前言"><i class="fa fa-check"></i><b>5.1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="task-05.html"><a href="task-05.html#linear-regression"><i class="fa fa-check"></i><b>5.1.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="5.1.2" data-path="task-05.html"><a href="task-05.html#stepwise-regression"><i class="fa fa-check"></i><b>5.1.2</b> Stepwise Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="task-05.html"><a href="task-05.html#分类模型"><i class="fa fa-check"></i><b>5.2</b> 分类模型</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="task-05.html"><a href="task-05.html#logistics-regression"><i class="fa fa-check"></i><b>5.2.1</b> Logistics Regression</a></li>
+<li class="chapter" data-level="5.2.2" data-path="task-05.html"><a href="task-05.html#knn"><i class="fa fa-check"></i><b>5.2.2</b> KNN</a></li>
+<li class="chapter" data-level="5.2.3" data-path="task-05.html"><a href="task-05.html#decision-tree"><i class="fa fa-check"></i><b>5.2.3</b> Decision Tree</a></li>
+<li class="chapter" data-level="5.2.4" data-path="task-05.html"><a href="task-05.html#random-forest"><i class="fa fa-check"></i><b>5.2.4</b> Random Forest</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-05.html"><a href="task-05.html#思考与练习-1"><i class="fa fa-check"></i>思考与练习</a></li>
+<li class="chapter" data-level="" data-path="task-05.html"><a href="task-05.html#本章作者-5"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-05.html"><a href="task-05.html#关于datawhale-5"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言数据分析组队学习</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="task-02" class="section level1" number="2">
+<h1><span class="header-section-number">第 2 章</span> 数据清洗与准备</h1>
+<p><img src="image/task02_structure.jpg" style="width:100.0%" /></p>
+<p>Task 02共计6个知识点，预计需学习5~8小时，请安排好学习任务。</p>
+<div id="环境配置-1" class="section level2 unnumbered">
+<h2>环境配置</h2>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="task-02.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench) <span class="co"># 将会使用到包中的BostonHousing数据集</span></span>
+<span id="cb216-2"><a href="task-02.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(funModeling) <span class="co"># 探索性数据分析工具包，本节内容中将会使用到它的status()函数，打印整体数据质量</span></span>
+<span id="cb216-3"><a href="task-02.html#cb216-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># 数据转化工具包，本节内容中将会使用它包含的dplyr中的管道函数 %&gt;%</span></span>
+<span id="cb216-4"><a href="task-02.html#cb216-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VIM) <span class="co"># 缺失值可视化工具包，本节内容中将会使用到它的aggr()函数</span></span>
+<span id="cb216-5"><a href="task-02.html#cb216-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mice) <span class="co"># 缺失值处理工具包，本节内容会使用它来进行多重插补</span></span>
+<span id="cb216-6"><a href="task-02.html#cb216-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rlof) <span class="co"># 用于LOF异常值检测方法，本节内容将会使用到它的lof()函数</span></span>
+<span id="cb216-7"><a href="task-02.html#cb216-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fastDummies) <span class="co"># 用于生成dummy的包，本节内容将会使用到它的dummy_cols()函数</span></span>
+<span id="cb216-8"><a href="task-02.html#cb216-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc) <span class="co"># 用于生成dummy的包，本节内容将会使用到它的to_dummy()函数</span></span>
+<span id="cb216-9"><a href="task-02.html#cb216-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) <span class="co"># 基于此包进行box-cox转换</span></span>
+<span id="cb216-10"><a href="task-02.html#cb216-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dlookr) <span class="co"># 本节内容将会使用到它的transform()函数</span></span></code></pre></div>
+</div>
+<div id="案例数据" class="section level2 unnumbered">
+<h2>案例数据</h2>
+<p>本节内容将会使用到两个数据集。</p>
+<div id="数据集1-h1n1流感问卷数据集" class="section level3 unnumbered">
+<h3>数据集1 h1n1流感问卷数据集</h3>
+<div id="数据说明" class="section level4 unnumbered">
+<h4>数据说明</h4>
+<p>目前提供的数据集来自关于h1n1流感调查问卷的部分内容，可以从这个网站上看到具体字段的详细说明：<a href="https://www.drivendata.org/competitions/66/flu-shot-learning/page/211/" class="uri">https://www.drivendata.org/competitions/66/flu-shot-learning/page/211/</a></p>
+<p>数据集包含26,707个受访者数据，共有32个特征+1个标签（是否接种h1n1疫苗）。</p>
+</div>
+<div id="加载并查看部分数据" class="section level4 unnumbered">
+<h4>加载并查看部分数据</h4>
+<p>首先加载数据，了解数据集大小。</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="task-02.html#cb217-1" aria-hidden="true" tabindex="-1"></a>h1n1_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./datasets/h1n1_flu.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb217-2"><a href="task-02.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(h1n1_data)</span></code></pre></div>
+<pre><code>## [1] 26707    33</code></pre>
+<p>注：为了简化本章的示例，我们在这32个特征中，筛选出了10个特征，作为一个子集，来学习如何使用R做数据清洗与准备。如有兴趣，可以把下面这块筛选去掉，自己用完整数据集做一次探索。</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="task-02.html#cb219-1" aria-hidden="true" tabindex="-1"></a>h1n1_data <span class="ot">&lt;-</span> h1n1_data[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">33</span>)]</span>
+<span id="cb219-2"><a href="task-02.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(h1n1_data)</span></code></pre></div>
+<pre><code>##   respondent_id h1n1_knowledge doctor_recc_h1n1 chronic_med_condition
+## 1             0              0                0                     0
+## 2             1              2                0                     0
+## 3             2              1               NA                     1
+## 4             3              1                0                     1
+## 5             4              1                0                     0
+## 6             5              1                0                     0
+##   health_insurance opinion_h1n1_vacc_effective     age_group        education
+## 1                1                           3 55 - 64 Years       &lt; 12 Years
+## 2                1                           5 35 - 44 Years         12 Years
+## 3               NA                           3 18 - 34 Years College Graduate
+## 4               NA                           3     65+ Years         12 Years
+## 5               NA                           3 45 - 54 Years     Some College
+## 6               NA                           5     65+ Years         12 Years
+##      sex            income_poverty h1n1_vaccine
+## 1 Female             Below Poverty            0
+## 2   Male             Below Poverty            0
+## 3   Male &lt;= $75,000, Above Poverty            0
+## 4 Female             Below Poverty            0
+## 5 Female &lt;= $75,000, Above Poverty            0
+## 6   Male &lt;= $75,000, Above Poverty            0</code></pre>
+</div>
+</div>
+<div id="数据集2-波士顿房价数据集" class="section level3 unnumbered">
+<h3>数据集2 波士顿房价数据集</h3>
+<div id="数据说明-1" class="section level4 unnumbered">
+<h4>数据说明</h4>
+<p>数据集来自<code>mlbench</code>包，请提前装好。数据字段说明可从网址查看：<a href="https://blog.csdn.net/weixin_46027193/article/details/112238597" class="uri">https://blog.csdn.net/weixin_46027193/article/details/112238597</a></p>
+<p>数据集包含506条房价信息，共有13个特征+1个预测字段（房屋价格）。</p>
+</div>
+<div id="加载并查看部分数据-1" class="section level4 unnumbered">
+<h4>加载并查看部分数据</h4>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="task-02.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(BostonHousing)</span>
+<span id="cb221-2"><a href="task-02.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(BostonHousing)</span></code></pre></div>
+<pre><code>## [1] 506  14</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="task-02.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BostonHousing)</span></code></pre></div>
+<pre><code>##      crim zn indus chas   nox    rm  age    dis rad tax ptratio      b lstat
+## 1 0.00632 18  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90  4.98
+## 2 0.02731  0  7.07    0 0.469 6.421 78.9 4.9671   2 242    17.8 396.90  9.14
+## 3 0.02729  0  7.07    0 0.469 7.185 61.1 4.9671   2 242    17.8 392.83  4.03
+## 4 0.03237  0  2.18    0 0.458 6.998 45.8 6.0622   3 222    18.7 394.63  2.94
+## 5 0.06905  0  2.18    0 0.458 7.147 54.2 6.0622   3 222    18.7 396.90  5.33
+## 6 0.02985  0  2.18    0 0.458 6.430 58.7 6.0622   3 222    18.7 394.12  5.21
+##   medv
+## 1 24.0
+## 2 21.6
+## 3 34.7
+## 4 33.4
+## 5 36.2
+## 6 28.7</code></pre>
+</div>
+</div>
+</div>
+<div id="重复值处理" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 重复值处理</h2>
+<p>在某些情况下，我们需要对数据进行去重处理。<code>unique()</code>函数可以对数据进行整体去重，<code>distinct()</code>函数可以针对某些列去重。</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="task-02.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 整体去重</span></span>
+<span id="cb225-2"><a href="task-02.html#cb225-2" aria-hidden="true" tabindex="-1"></a>h1n1_data_de_dup1 <span class="ot">&lt;-</span> <span class="fu">unique</span>(h1n1_data)</span>
+<span id="cb225-3"><a href="task-02.html#cb225-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb225-4"><a href="task-02.html#cb225-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定根据列respondent_id,h1n1_knowledge去重，并保留所有列</span></span>
+<span id="cb225-5"><a href="task-02.html#cb225-5" aria-hidden="true" tabindex="-1"></a>h1n1_data_de_dup2 <span class="ot">&lt;-</span> <span class="fu">distinct</span>(h1n1_data, respondent_id, h1n1_knowledge, <span class="at">.keep_all =</span> T)</span></code></pre></div>
+</div>
+<div id="缺失值识别与处理" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> 缺失值识别与处理</h2>
+<p>现实环境中，由于数据来源及搜集过程，可能有各种不规范，导致数据往往会存在缺失。缺失值识别与处理，无论是在统计还是数据管理中，往往是数据清洗的第一步。</p>
+<div id="缺失值识别" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> 缺失值识别</h3>
+<div id="常用识别方法" class="section level4" number="2.2.1.1">
+<h4><span class="header-section-number">2.2.1.1</span> 常用识别方法</h4>
+<p>在R语言中，惯用会把缺失值表示为NA，一般可使用<code>is.na(a)</code>，<code>!complete.cases(a)</code>来识别<code>a</code>是否为缺失值。</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="task-02.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设定义的一个变量中存在缺失值</span></span>
+<span id="cb226-2"><a href="task-02.html#cb226-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>)</span>
+<span id="cb226-3"><a href="task-02.html#cb226-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb226-4"><a href="task-02.html#cb226-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 用is.na在识别是否为缺失值</span></span>
+<span id="cb226-5"><a href="task-02.html#cb226-5" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(y)</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="task-02.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 用!complete.cases()在识别是否为缺失值</span></span>
+<span id="cb228-2"><a href="task-02.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">complete.cases</span>(y)</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
+</div>
+<div id="缺失值统计" class="section level4" number="2.2.1.2">
+<h4><span class="header-section-number">2.2.1.2</span> 缺失值统计</h4>
+<p>统计缺失值总数。</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="task-02.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据集中总缺失数据量</span></span>
+<span id="cb230-2"><a href="task-02.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(h1n1_data))</span></code></pre></div>
+<pre><code>## [1] 15912</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="task-02.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据集中某一列缺失数据量</span></span>
+<span id="cb232-2"><a href="task-02.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(h1n1_data[<span class="st">&quot;h1n1_knowledge&quot;</span>]))</span></code></pre></div>
+<pre><code>## [1] 116</code></pre>
+<p>如果想按行或按列统计，可以写函数。</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="task-02.html#cb234-1" aria-hidden="true" tabindex="-1"></a>pMiss <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb234-2"><a href="task-02.html#cb234-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">is.na</span>(x)) <span class="sc">/</span> <span class="fu">length</span>(x) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb234-3"><a href="task-02.html#cb234-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb234-4"><a href="task-02.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(h1n1_data, <span class="dv">2</span>, pMiss) <span class="co"># 按列统计缺失比率%</span></span></code></pre></div>
+<pre><code>##               respondent_id              h1n1_knowledge 
+##                   0.0000000                   0.4343431 
+##            doctor_recc_h1n1       chronic_med_condition 
+##                   8.0877673                   3.6357509 
+##            health_insurance opinion_h1n1_vacc_effective 
+##                  45.9579885                   1.4640356 
+##                   age_group                   education 
+##                   0.0000000                   0.0000000 
+##                         sex              income_poverty 
+##                   0.0000000                   0.0000000 
+##                h1n1_vaccine 
+##                   0.0000000</code></pre>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="task-02.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply(h1n1_data,1,pMiss) #按行统计缺失比率%</span></span></code></pre></div>
+<p>或调用一些现成的包。比如，我们可以使用<code>funModeling</code>包中的<code>status()</code>函数，直接观测案例数据中包含的0值，缺失值（NA），在每个特征中的分布情况。以h1n1 flu数据集为例：</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="task-02.html#cb237-1" aria-hidden="true" tabindex="-1"></a>data_quality <span class="ot">&lt;-</span> <span class="fu">status</span>(h1n1_data)</span>
+<span id="cb237-2"><a href="task-02.html#cb237-2" aria-hidden="true" tabindex="-1"></a>data_quality <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(., <span class="dv">3</span>))) <span class="co"># 保留4位小数</span></span></code></pre></div>
+<pre><code>##                                                variable q_zeros p_zeros  q_na
+## respondent_id                             respondent_id       1   0.000     0
+## h1n1_knowledge                           h1n1_knowledge    2506   0.094   116
+## doctor_recc_h1n1                       doctor_recc_h1n1   19139   0.717  2160
+## chronic_med_condition             chronic_med_condition   18446   0.691   971
+## health_insurance                       health_insurance    1736   0.065 12274
+## opinion_h1n1_vacc_effective opinion_h1n1_vacc_effective       0   0.000   391
+## age_group                                     age_group       0   0.000     0
+## education                                     education       0   0.000     0
+## sex                                                 sex       0   0.000     0
+## income_poverty                           income_poverty       0   0.000     0
+## h1n1_vaccine                               h1n1_vaccine   21033   0.788     0
+##                              p_na q_inf p_inf      type unique
+## respondent_id               0.000     0     0   integer  26707
+## h1n1_knowledge              0.004     0     0   numeric      3
+## doctor_recc_h1n1            0.081     0     0   numeric      2
+## chronic_med_condition       0.036     0     0   numeric      2
+## health_insurance            0.460     0     0   numeric      2
+## opinion_h1n1_vacc_effective 0.015     0     0   numeric      5
+## age_group                   0.000     0     0 character      5
+## education                   0.000     0     0 character      5
+## sex                         0.000     0     0 character      2
+## income_poverty              0.000     0     0 character      4
+## h1n1_vaccine                0.000     0     0   integer      2</code></pre>
+<p>结合案例数据h1n1 flu来看，存在缺失值的有5个特征字段。</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="task-02.html#cb239-1" aria-hidden="true" tabindex="-1"></a>missing_Value <span class="ot">&lt;-</span> data_quality[<span class="fu">which</span>(data_quality<span class="sc">$</span>p_na <span class="sc">&gt;</span> <span class="dv">0</span>), ]</span>
+<span id="cb239-2"><a href="task-02.html#cb239-2" aria-hidden="true" tabindex="-1"></a>missing_Value<span class="sc">$</span>variable</span></code></pre></div>
+<pre><code>## [1] &quot;h1n1_knowledge&quot;              &quot;doctor_recc_h1n1&quot;           
+## [3] &quot;chronic_med_condition&quot;       &quot;health_insurance&quot;           
+## [5] &quot;opinion_h1n1_vacc_effective&quot;</code></pre>
+</div>
+<div id="缺失值机制与分析" class="section level4" number="2.2.1.3">
+<h4><span class="header-section-number">2.2.1.3</span> 缺失值机制与分析</h4>
+<p>统计学家通常将缺失数据分为3类，为了更好的处理缺失值，我们可以基于缺失值机制来识别以下3种缺失模式：</p>
+<ul>
+<li>MCAR（完全随机缺失）：如果数据的缺失与任何值（观察或缺失）之间没有关系，则为MCAR。</li>
+<li>MAR（随机缺失）：考虑MAR与MCAR有何不同，如果缺失和观测值之间存在系统关系，则为MAR。例如-男性比女性更容易告诉自己的体重，因此体重就是MAR。“ Weight”变量的缺失取决于变量“Sex”的观测值。</li>
+<li>MNAR（非随机缺失）：若缺失数据不属于MCAR和MAR，数据的缺失依赖于不完全变量本身，则数据为非随机缺失。例如，抑郁程度高的人更不容易填写抑郁调查问卷。</li>
+</ul>
+<p>MNAR是最复杂的情况，处理 MNAR的策略是找到更多有关缺失原因的数据，或者执行假设分析，查看结果在各种情况下的敏感程度。大部分处理缺失数据的方法都假定数据是MCAR或MAR，此时，可以忽略缺失数据的生成机制，在替换或删除缺失数据后，直接对感兴趣的关系进行建模。</p>
+<p>以下介绍几种可视化分析缺失数据关联的方法：</p>
+<p>我们用<code>VIM</code>包里的<code>aggr()</code>函数，直观看一下具体的缺失情况。</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="task-02.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggr</span>(h1n1_data, <span class="at">cex.axis =</span> .<span class="dv">6</span>, <span class="at">oma =</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>)) <span class="co"># cex.axis调整轴字体大小，oma调整外边框大小</span></span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<p>通过用<code>VIM</code>包里的矩阵图<code>matrixplot()</code>函数，可以检查某些变量的缺失值模式是否与其他变量的真实值有关联。矩阵图中，观测数据以黑白色阶显示（颜色越深，数值越高），缺失值会被标记为红色。我们对某一个存在缺失值的变量进行排序，来找寻含缺失值变量与其他变量的关系。</p>
+<p>在此案例中，我们按照<code>health_insurance</code>进行分组排序。可以看到是否有慢性病<code>chronic_med_condition</code>的缺失，与<code>opinion_h1n1_vacc_effective</code>的缺失相对较集中。除此之外，也可以看到有慢性病的人年龄普遍较大。</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="task-02.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 先简单处理一下一些类别变量的顺序</span></span>
+<span id="cb242-2"><a href="task-02.html#cb242-2" aria-hidden="true" tabindex="-1"></a>h1n1_data_matplt <span class="ot">&lt;-</span> h1n1_data</span>
+<span id="cb242-3"><a href="task-02.html#cb242-3" aria-hidden="true" tabindex="-1"></a>h1n1_data_matplt<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(h1n1_data_matplt<span class="sc">$</span>age_group)</span>
+<span id="cb242-4"><a href="task-02.html#cb242-4" aria-hidden="true" tabindex="-1"></a>h1n1_data_matplt<span class="sc">$</span>education <span class="ot">&lt;-</span> <span class="fu">factor</span>(h1n1_data_matplt<span class="sc">$</span>education, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&lt; 12 Years&quot;</span>, <span class="st">&quot;12 Years&quot;</span>, <span class="st">&quot;Some College&quot;</span>, <span class="st">&quot;College Graduate&quot;</span>))</span>
+<span id="cb242-5"><a href="task-02.html#cb242-5" aria-hidden="true" tabindex="-1"></a>h1n1_data_matplt<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(h1n1_data_matplt<span class="sc">$</span>sex)</span>
+<span id="cb242-6"><a href="task-02.html#cb242-6" aria-hidden="true" tabindex="-1"></a>h1n1_data_matplt<span class="sc">$</span>income_poverty <span class="ot">&lt;-</span> <span class="fu">factor</span>(h1n1_data_matplt<span class="sc">$</span>income_poverty, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;18 - 34 Years&quot;</span>, <span class="st">&quot;&lt;= $75,000, Above Poverty&quot;</span>, <span class="st">&quot;&gt; $75,000&quot;</span>))</span>
+<span id="cb242-7"><a href="task-02.html#cb242-7" aria-hidden="true" tabindex="-1"></a><span class="co"># levels(h1n1_data_matplt$age_group) # 查看顺序</span></span>
+<span id="cb242-8"><a href="task-02.html#cb242-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb242-9"><a href="task-02.html#cb242-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 矩阵图可视化</span></span>
+<span id="cb242-10"><a href="task-02.html#cb242-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>, <span class="fl">2.1</span>)) <span class="co"># x轴标签太长，调用par()函数调整外边框的大小</span></span>
+<span id="cb242-11"><a href="task-02.html#cb242-11" aria-hidden="true" tabindex="-1"></a><span class="fu">matrixplot</span>(h1n1_data_matplt, <span class="at">sortby =</span> <span class="st">&quot;chronic_med_condition&quot;</span>, <span class="at">cex.axis =</span> <span class="fl">0.7</span>) <span class="co"># cex.axis为调整坐标轴字体大小</span></span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<p>用相关性探索缺失值。首先生成一个影子矩阵，用指示变量替代数据集中的数据（1表示缺失，0表示存在）。</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="task-02.html#cb243-1" aria-hidden="true" tabindex="-1"></a>shadow_mat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">abs</span>(<span class="fu">is.na</span>(h1n1_data[, <span class="sc">-</span><span class="dv">1</span>])))</span>
+<span id="cb243-2"><a href="task-02.html#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(shadow_mat)</span></code></pre></div>
+<pre><code>##   h1n1_knowledge doctor_recc_h1n1 chronic_med_condition health_insurance
+## 1              0                0                     0                0
+## 2              0                0                     0                0
+## 3              0                1                     0                1
+## 4              0                0                     0                1
+## 5              0                0                     0                1
+## 6              0                0                     0                1
+##   opinion_h1n1_vacc_effective age_group education sex income_poverty
+## 1                           0         0         0   0              0
+## 2                           0         0         0   0              0
+## 3                           0         0         0   0              0
+## 4                           0         0         0   0              0
+## 5                           0         0         0   0              0
+## 6                           0         0         0   0              0
+##   h1n1_vaccine
+## 1            0
+## 2            0
+## 3            0
+## 4            0
+## 5            0
+## 6            0</code></pre>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="task-02.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 可提取含缺失值的变量</span></span>
+<span id="cb245-2"><a href="task-02.html#cb245-2" aria-hidden="true" tabindex="-1"></a>shadow_mat <span class="ot">&lt;-</span> shadow_mat[<span class="fu">which</span>(<span class="fu">apply</span>(shadow_mat, <span class="dv">2</span>, sum) <span class="sc">&gt;</span> <span class="dv">0</span>)]</span>
+<span id="cb245-3"><a href="task-02.html#cb245-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb245-4"><a href="task-02.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算相关系数</span></span>
+<span id="cb245-5"><a href="task-02.html#cb245-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(shadow_mat)</span></code></pre></div>
+<pre><code>##                             h1n1_knowledge doctor_recc_h1n1
+## h1n1_knowledge                  1.00000000       0.00546769
+## doctor_recc_h1n1                0.00546769       1.00000000
+## chronic_med_condition           0.02367388       0.09572429
+## health_insurance               -0.01292316       0.22136525
+## opinion_h1n1_vacc_effective     0.01565202       0.14793032
+##                             chronic_med_condition health_insurance
+## h1n1_knowledge                         0.02367388      -0.01292316
+## doctor_recc_h1n1                       0.09572429       0.22136525
+## chronic_med_condition                  1.00000000       0.15724626
+## health_insurance                       0.15724626       1.00000000
+## opinion_h1n1_vacc_effective            0.47431031       0.10403005
+##                             opinion_h1n1_vacc_effective
+## h1n1_knowledge                               0.01565202
+## doctor_recc_h1n1                             0.14793032
+## chronic_med_condition                        0.47431031
+## health_insurance                             0.10403005
+## opinion_h1n1_vacc_effective                  1.00000000</code></pre>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="task-02.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 相关系数热力图</span></span>
+<span id="cb247-2"><a href="task-02.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(<span class="fu">cor</span>(shadow_mat))</span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p>根据缺失相关性矩阵，<code>opinion_h1n1_vacc_effective</code> 与 <code>chronic_med_condition</code> 缺失相关性较大。</p>
+<p>综上，在案例中，变量之间的存在部分相关性，考虑为MAR。</p>
+<p>其他数据缺失关系分析，可参考附录<code>数据的预处理基础</code>。</p>
+</div>
+</div>
+<div id="缺失值处理" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> 缺失值处理</h3>
+<p>缺失值一般有三种方式：</p>
+<ul>
+<li>将缺失值作为变量值使用。比如在民意调查中，当选民不投票时，可以将缺失值处理为“无法确定”。</li>
+<li>删除数据。主要有删除样本值和删除特征值。但可能会损失掉一些有用信息。</li>
+<li>插补法。如均值/中位数/同类均值插补（数值变量），众数插补（类别变量），手动插补(根据主观理解)，多重插补等。</li>
+</ul>
+<p>以下我们主要介绍删除法和插补法：</p>
+<div id="删除法" class="section level4" number="2.2.2.1">
+<h4><span class="header-section-number">2.2.2.1</span> 删除法</h4>
+<p>行删除，可以直接用<code>complete.cases()</code>或<code>na.omit()</code>来过滤掉数据集中所有缺失行。</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="task-02.html#cb248-1" aria-hidden="true" tabindex="-1"></a>h1n1_data_row_del1 <span class="ot">&lt;-</span> h1n1_data[<span class="sc">!</span><span class="fu">complete.cases</span>(h1n1_data), ]</span>
+<span id="cb248-2"><a href="task-02.html#cb248-2" aria-hidden="true" tabindex="-1"></a>h1n1_data_row_del2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(h1n1_data)</span></code></pre></div>
+<p>列删除，一般对于缺失率极高又没有太大作用的特征值，我们直接删除，如可以用<code>dataset[,-5]</code>去掉第五列，或<code>subset(dataset, select = -c(col1, col2))</code>去掉列col1和列col2。</p>
+<p>比如，我们把<code>health_insurance</code>变量删除。</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="task-02.html#cb249-1" aria-hidden="true" tabindex="-1"></a>h1n1_data_col_del1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(h1n1_data, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(health_insurance))</span></code></pre></div>
+</div>
+<div id="简单插补法" class="section level4" number="2.2.2.2">
+<h4><span class="header-section-number">2.2.2.2</span> 简单插补法</h4>
+<p>注意在空值插补的时候，要区分类别变量与数值变量，均值插补不适用于类别变量。我们这里随机选择了一个变量演示<code>impute()</code>函数用法，在实际插补的时候，请大家根据情况进行选择。</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="task-02.html#cb250-1" aria-hidden="true" tabindex="-1"></a>h1n1_data_sim_imp <span class="ot">&lt;-</span> h1n1_data</span>
+<span id="cb250-2"><a href="task-02.html#cb250-2" aria-hidden="true" tabindex="-1"></a>h1n1_data_sim_imp<span class="sc">$</span>h1n1_knowledge <span class="ot">&lt;-</span> <span class="fu">impute</span>(h1n1_data_sim_imp<span class="sc">$</span>h1n1_knowledge, <span class="dv">1</span>) <span class="co"># 填充特定值</span></span>
+<span id="cb250-3"><a href="task-02.html#cb250-3" aria-hidden="true" tabindex="-1"></a>h1n1_data_sim_imp<span class="sc">$</span>h1n1_knowledge <span class="ot">&lt;-</span> <span class="fu">impute</span>(h1n1_data_sim_imp<span class="sc">$</span>h1n1_knowledge, median) <span class="co"># 插补中位数</span></span>
+<span id="cb250-4"><a href="task-02.html#cb250-4" aria-hidden="true" tabindex="-1"></a>h1n1_data_sim_imp<span class="sc">$</span>h1n1_knowledge <span class="ot">&lt;-</span> <span class="fu">impute</span>(h1n1_data_sim_imp<span class="sc">$</span>h1n1_knowledge, mean) <span class="co"># 插补均值</span></span></code></pre></div>
+</div>
+<div id="拟合插补法" class="section level4" number="2.2.2.3">
+<h4><span class="header-section-number">2.2.2.3</span> 拟合插补法</h4>
+<p>利用有监督的机器学习方法，比如回归、最邻近、随机森林、支持向量机等模型，对缺失值作预测。</p>
+</div>
+<div id="多重插补法" class="section level4" number="2.2.2.4">
+<h4><span class="header-section-number">2.2.2.4</span> 多重插补法</h4>
+<p>多重插补（MI）是一种基于重复模拟的处理缺失值的方法。其思想来源于贝叶斯估计，认为待插补的值是随机的，它的值来自于已观测到的值。具体实践上通常是估计出待插补的值，然后再加上不同的噪声，形成多组可选插补值（通常是3到10个）。根据某种选择依据，选取最合适的插补值。与单个插补（例如均值）相比，创建多个插补可解决缺失值的不确定性。 R中可利用<code>Amelia</code>、<code>mice</code>和<code>mi</code>包来执行这些操作。</p>
+<p>本节中，我们将用案例介绍mice包（通过链式方程进行的多元插补）提供的方法。使用mice生成m个完整的插补数据集。然后利用<code>with-pool</code>的方法来评估选择哪一个数据集。首先使用<code>with()</code>函数依次对每个完整数据集应用统计模型如lm，glm等，用<code>summary()</code>输出数据集检验，看某数据集是否合格。接下来<code>pool()</code>函数把5个回归模型汇总，用<code>summary()</code>输出汇总数据集检验，查看整体插补方法是否合格。检验结果分析可参考附录<code>mice检验结果解释</code></p>
+<p><img src="image/task02_mice.JPG" style="width:60.0%" /></p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="task-02.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 先处理下数据，把数据集中一些类别变量转换回来</span></span>
+<span id="cb251-2"><a href="task-02.html#cb251-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-3"><a href="task-02.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="co"># imp是一个包含m个插补数据集的列表对象，同时还含有完成插补过程的信息。</span></span>
+<span id="cb251-4"><a href="task-02.html#cb251-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 参数m的默认值为5，这里我们将m设为4，生成4个无缺失数据集</span></span>
+<span id="cb251-5"><a href="task-02.html#cb251-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 参数method, 对于每个变量的拟合，可以指定所用的拟合方法,method传入的参数可以是一个具体方法，也可以为不同列指定具体方法，具体方法选择可参考附录mice使用文档。这里我们使用默认值。</span></span>
+<span id="cb251-6"><a href="task-02.html#cb251-6" aria-hidden="true" tabindex="-1"></a>imp <span class="ot">&lt;-</span> <span class="fu">mice</span>(h1n1_data, <span class="at">m =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">122</span>, <span class="at">printFlag =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb251-7"><a href="task-02.html#cb251-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-8"><a href="task-02.html#cb251-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看变量h1n1_knowledge在几个插补数据集中的插补结果</span></span>
+<span id="cb251-9"><a href="task-02.html#cb251-9" aria-hidden="true" tabindex="-1"></a><span class="co"># imp$imp$h1n1_knowledge</span></span>
+<span id="cb251-10"><a href="task-02.html#cb251-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-11"><a href="task-02.html#cb251-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看每个变量所用的插补方法</span></span>
+<span id="cb251-12"><a href="task-02.html#cb251-12" aria-hidden="true" tabindex="-1"></a><span class="co"># imp$method</span></span>
+<span id="cb251-13"><a href="task-02.html#cb251-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-14"><a href="task-02.html#cb251-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 设定应用于m个插补数据集的统计分析方法。方法包括做线性回归模型的lm()函数、做广义线性模型的glm()函数、做广义可加模型的gam()，做负二项模型的nbrm()函数</span></span>
+<span id="cb251-15"><a href="task-02.html#cb251-15" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">with</span>(imp, <span class="fu">lm</span>(h1n1_vaccine <span class="sc">~</span> h1n1_knowledge <span class="sc">+</span> doctor_recc_h1n1 <span class="sc">+</span> chronic_med_condition <span class="sc">+</span> health_insurance <span class="sc">+</span> opinion_h1n1_vacc_effective))</span>
+<span id="cb251-16"><a href="task-02.html#cb251-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-17"><a href="task-02.html#cb251-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 输出每个数据集检验</span></span>
+<span id="cb251-18"><a href="task-02.html#cb251-18" aria-hidden="true" tabindex="-1"></a><span class="fu">print.data.frame</span>(<span class="fu">summary</span>(fit), <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>##                           term estimate std.error statistic    p.value  nobs
+## 1                  (Intercept) -0.30492  0.010809   -28.209 1.557e-172 26707
+## 2               h1n1_knowledge  0.03645  0.003661     9.956  2.596e-23 26707
+## 3             doctor_recc_h1n1  0.34604  0.005568    62.147  0.000e+00 26707
+## 4        chronic_med_condition  0.03033  0.005015     6.048  1.485e-09 26707
+## 5             health_insurance  0.07826  0.006754    11.587  5.706e-31 26707
+## 6  opinion_h1n1_vacc_effective  0.08317  0.002245    37.054 4.116e-293 26707
+## 7                  (Intercept) -0.30718  0.010901   -28.179 3.509e-172 26707
+## 8               h1n1_knowledge  0.03689  0.003683    10.016  1.429e-23 26707
+## 9             doctor_recc_h1n1  0.33876  0.005563    60.893  0.000e+00 26707
+## 10       chronic_med_condition  0.02972  0.005031     5.907  3.521e-09 26707
+## 11            health_insurance  0.07776  0.006957    11.178  6.028e-29 26707
+## 12 opinion_h1n1_vacc_effective  0.08385  0.002258    37.128 2.986e-294 26707
+## 13                 (Intercept) -0.30981  0.010830   -28.607 2.603e-177 26707
+## 14              h1n1_knowledge  0.03666  0.003679     9.965  2.386e-23 26707
+## 15            doctor_recc_h1n1  0.33489  0.005557    60.262  0.000e+00 26707
+## 16       chronic_med_condition  0.02948  0.005035     5.855  4.814e-09 26707
+## 17            health_insurance  0.08090  0.006742    12.000  4.334e-33 26707
+## 18 opinion_h1n1_vacc_effective  0.08415  0.002258    37.272 1.851e-296 26707
+## 19                 (Intercept) -0.30608  0.010910   -28.055 1.047e-170 26707
+## 20              h1n1_knowledge  0.03702  0.003685    10.046  1.056e-23 26707
+## 21            doctor_recc_h1n1  0.33370  0.005564    59.970  0.000e+00 26707
+## 22       chronic_med_condition  0.02969  0.005040     5.891  3.877e-09 26707
+## 23            health_insurance  0.07557  0.006896    10.959  6.877e-28 26707
+## 24 opinion_h1n1_vacc_effective  0.08423  0.002259    37.278 1.490e-296 26707</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="task-02.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 包含m个统计分析平均结果的列表对象</span></span>
+<span id="cb253-2"><a href="task-02.html#cb253-2" aria-hidden="true" tabindex="-1"></a>pooled <span class="ot">&lt;-</span> <span class="fu">pool</span>(fit)</span>
+<span id="cb253-3"><a href="task-02.html#cb253-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb253-4"><a href="task-02.html#cb253-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 这是一个总体评估结果</span></span>
+<span id="cb253-5"><a href="task-02.html#cb253-5" aria-hidden="true" tabindex="-1"></a>pooled</span></code></pre></div>
+<pre><code>## Class: mipo    m = 4 
+##                          term m    estimate         ubar            b
+## 1                 (Intercept) 4 -0.30699871 1.179991e-04 4.368721e-06
+## 2              h1n1_knowledge 4  0.03675472 1.352049e-05 6.410610e-08
+## 3            doctor_recc_h1n1 4  0.33834805 3.094965e-05 3.095473e-05
+## 4       chronic_med_condition 4  0.02980518 2.530162e-05 1.342220e-07
+## 5            health_insurance 4  0.07812323 4.675346e-05 4.779575e-06
+## 6 opinion_h1n1_vacc_effective 4  0.08385005 5.085296e-06 2.294296e-07
+##              t dfcom           df         riv      lambda         fmi
+## 1 1.234600e-04 26701  1446.448456 0.046279160 0.044232134 0.045550936
+## 2 1.360062e-05 26701 20305.470346 0.005926755 0.005891836 0.005989737
+## 3 6.964306e-05 26701     9.710629 1.250205046 0.555596055 0.625522404
+## 4 2.546940e-05 26701 19168.975299 0.006631097 0.006587415 0.006691047
+## 5 5.272792e-05 26701   231.386715 0.127786668 0.113307482 0.120873547
+## 6 5.372083e-06 26701  1010.568516 0.056395341 0.053384693 0.055252579</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="task-02.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 这里修改action的参数（范围1-m），选择一个数据集作为我们已填充完成的数据集</span></span>
+<span id="cb255-2"><a href="task-02.html#cb255-2" aria-hidden="true" tabindex="-1"></a>h1n1_data_complete <span class="ot">&lt;-</span> <span class="fu">complete</span>(imp, <span class="at">action =</span> <span class="dv">2</span>)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="异常值识别与处理" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> 异常值识别与处理</h2>
+<div id="异常值识别" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> 异常值识别</h3>
+<p>本节的异常值指离群点。为了让数据统计或数据建模更加准确，我们通常会识别并对处理一些离群点。有些模型会对异常值较敏感，参考附录<code>什么样的模型对缺失值更敏感?</code>。
+总的来说，有几种常用方法，包括可视化图形分布识别（箱线图）、z-score识别、局部异常因子法（LOF法）、聚类法等。</p>
+<p>我们这里用波士顿房价数据集来演示一下异常值识别的处理过程。</p>
+</div>
+<div id="可视化图形分布" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 可视化图形分布</h3>
+<p>首先是可视化图形分布识别，将数值型变量筛选出来，用boxlpot看看分布。</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="task-02.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取数值字段</span></span>
+<span id="cb256-2"><a href="task-02.html#cb256-2" aria-hidden="true" tabindex="-1"></a>nums <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(BostonHousing, is.numeric))</span>
+<span id="cb256-3"><a href="task-02.html#cb256-3" aria-hidden="true" tabindex="-1"></a>nums_data <span class="ot">&lt;-</span> BostonHousing[, nums]</span>
+<span id="cb256-4"><a href="task-02.html#cb256-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb256-5"><a href="task-02.html#cb256-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据变形</span></span>
+<span id="cb256-6"><a href="task-02.html#cb256-6" aria-hidden="true" tabindex="-1"></a>nums_data.new <span class="ot">&lt;-</span> nums_data <span class="sc">%&gt;%</span></span>
+<span id="cb256-7"><a href="task-02.html#cb256-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb256-8"><a href="task-02.html#cb256-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Cell =</span> <span class="fu">rownames</span>(.)) <span class="sc">%&gt;%</span></span>
+<span id="cb256-9"><a href="task-02.html#cb256-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(., <span class="at">key =</span> colname, <span class="at">value =</span> <span class="st">&quot;value&quot;</span>, <span class="sc">-</span>Cell)</span>
+<span id="cb256-10"><a href="task-02.html#cb256-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb256-11"><a href="task-02.html#cb256-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 用ggplot画出箱线图</span></span>
+<span id="cb256-12"><a href="task-02.html#cb256-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nums_data.new, <span class="fu">aes</span>(<span class="at">x =</span> colname, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb256-13"><a href="task-02.html#cb256-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb256-14"><a href="task-02.html#cb256-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>colname, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb256-15"><a href="task-02.html#cb256-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_grey</span>() <span class="sc">+</span></span>
+<span id="cb256-16"><a href="task-02.html#cb256-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Outlier Detection On Numeric Data By Boxplot&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Numeric Columns&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb256-17"><a href="task-02.html#cb256-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span></span>
+<span id="cb256-18"><a href="task-02.html#cb256-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<p>通过可视化分布，可以选择剔除一些不合理的离群值，比如在数据集中将dis&gt;10.0的数据剔除。</p>
+</div>
+<div id="z-score" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> z-score</h3>
+<p>z-score是一种一维或低维特征空间中参数异常检测方法。它假定数据是高斯分布，异常值是分布尾部的数据点，因此远离数据的平均值。一般将z-score低于-3或高于3的数据看成是异常值。</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="task-02.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义一个识别异常点的函数，x是输入数据（matrix或df）,zs是异常临界值，z-score超过zs的被识别为异常点</span></span>
+<span id="cb257-2"><a href="task-02.html#cb257-2" aria-hidden="true" tabindex="-1"></a>outliers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, zs) {</span>
+<span id="cb257-3"><a href="task-02.html#cb257-3" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">apply</span>(x, <span class="dv">1</span>, scale))</span>
+<span id="cb257-4"><a href="task-02.html#cb257-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x[temp <span class="sc">&gt;</span> zs])</span>
+<span id="cb257-5"><a href="task-02.html#cb257-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb257-6"><a href="task-02.html#cb257-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 打印出z-score&lt;3的值</span></span>
+<span id="cb257-7"><a href="task-02.html#cb257-7" aria-hidden="true" tabindex="-1"></a><span class="fu">outliers</span>(nums_data, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##  [1]   7.380   0.700   0.573   5.889  17.400  20.200 392.400 396.900 396.900
+## [10] 393.680 396.900 368.570 396.900 377.730 375.330 396.900 391.980 100.630
+## [19] 388.520 255.230 374.680 392.680 395.770  12.430  11.280  27.710  10.210
+## [28]   6.860   9.880   9.620   4.210  13.000  25.410  16.900  29.550   6.360
+## [37]   4.850   4.700   4.610  13.270   2.960  24.560  19.370  14.100  14.330
+## [46]  22.800  33.400</code></pre>
+</div>
+<div id="局部异常因子法" class="section level3" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> 局部异常因子法</h3>
+<p>局部异常因子法(LOF)，是一种无监督的离群检测方法，是基于密度的离群点检测方法中一个比较有代表性的算法。适用于在中等高维数据集上执行异常值检测。</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="task-02.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># k是计算局部异常因子所需要判断异常点周围的点的个数</span></span>
+<span id="cb259-2"><a href="task-02.html#cb259-2" aria-hidden="true" tabindex="-1"></a>outlier_score <span class="ot">&lt;-</span> <span class="fu">lof</span>(<span class="at">data =</span> nums_data, <span class="at">k =</span> <span class="dv">5</span>)</span>
+<span id="cb259-3"><a href="task-02.html#cb259-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb259-4"><a href="task-02.html#cb259-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制异常值得分的直方分布图</span></span>
+<span id="cb259-5"><a href="task-02.html#cb259-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(outlier_score, <span class="at">col =</span> <span class="st">&quot;#8ac6d1&quot;</span>)</span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="task-02.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 排序，挑出得分排前五的数据（找到索引）作为异常值</span></span>
+<span id="cb260-2"><a href="task-02.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(outlier_score) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(nums_data)</span>
+<span id="cb260-3"><a href="task-02.html#cb260-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(outlier_score, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<pre><code>##      489      493      381      492      406 
+## 5.133201 4.534088 4.529170 3.732775 3.559666</code></pre>
+</div>
+<div id="异常值处理" class="section level3" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> 异常值处理</h3>
+<p>首先需要确定是否是真的异常值，有些值虽然离群，但其实并不是异常值，处理掉反而会影响后续任务的准确性。 如果确定需要处理，可以参考缺失值的处理方式进行处理。</p>
+</div>
+</div>
+<div id="特征编码" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> 特征编码</h2>
+<p>为什么要进行特征编码？我们拿到的原始数据中，一般会有一些类别变量，但是在统计或机器学习中，我们通常需要把类别变量转化为数值型变量，才能应用于一些方法中。</p>
+<div id="独热编码哑编码" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> 独热编码/哑编码</h3>
+<p>One-hot encoding 和 dummy,是将类别变量扩充为多个只显示1，0的变量，每个变量代表原类别变量中的一个类。 注意他们之间的区别：<a href="https://www.cnblogs.com/lianyingteng/p/7792693.html" class="uri">https://www.cnblogs.com/lianyingteng/p/7792693.html</a></p>
+<ul>
+<li>优点：解决了分类器不好处理分类数据的问题，在一定程度上也起到了扩充特征的作用。它的值只有0和1，不同的类型存储在垂直的空间。<br />
+</li>
+<li>缺点：当类别的数量很多时，特征空间会变得非常大，容易造成维度灾难。（为避免维度灾难，后续可以考虑降维处理）</li>
+</ul>
+<p>R里面有很多现成的转化编码的包，我们这里使用了<code>dummy_cols()</code>函数做演示，可以看到原来的类别类型字段，已经扩充为多个0，1编码的字段。</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="task-02.html#cb262-1" aria-hidden="true" tabindex="-1"></a>h1n1_data_dummy <span class="ot">&lt;-</span> <span class="fu">dummy_cols</span>(<span class="fu">subset</span>(h1n1_data_complete, <span class="at">select =</span> <span class="fu">c</span>(age_group)), <span class="at">select_columns =</span> <span class="fu">c</span>(<span class="st">&quot;age_group&quot;</span>))</span>
+<span id="cb262-2"><a href="task-02.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(h1n1_data_dummy)</span></code></pre></div>
+<pre><code>##       age_group age_group_18 - 34 Years age_group_35 - 44 Years
+## 1 55 - 64 Years                       0                       0
+## 2 35 - 44 Years                       0                       1
+## 3 18 - 34 Years                       1                       0
+## 4     65+ Years                       0                       0
+## 5 45 - 54 Years                       0                       0
+## 6     65+ Years                       0                       0
+##   age_group_45 - 54 Years age_group_55 - 64 Years age_group_65+ Years
+## 1                       0                       1                   0
+## 2                       0                       0                   0
+## 3                       0                       0                   0
+## 4                       0                       0                   1
+## 5                       1                       0                   0
+## 6                       0                       0                   1</code></pre>
+</div>
+<div id="标签编码" class="section level3" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> 标签编码</h3>
+<p>标签编码(Label Encoder)是将类别变量转换成连续的数值型变量，通常对有序的变量进行标签编码，既保留了顺序信息，也节约了空间（不会扩充变量）</p>
+<p>R里有一个特殊的结构factor（factor是有序的分类变量），我们这里可以利用factor来做标签编码。首先根据实际情况设置factor的类别顺序，然后直接用<code>as.numeric()</code>转化为数字。</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="task-02.html#cb264-1" aria-hidden="true" tabindex="-1"></a>h1n1_data_complete_lab_encoder <span class="ot">&lt;-</span> h1n1_data_complete</span>
+<span id="cb264-2"><a href="task-02.html#cb264-2" aria-hidden="true" tabindex="-1"></a>h1n1_data_complete_lab_encoder<span class="sc">$</span>income_poverty_lab_encoder <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">factor</span>(h1n1_data_complete_lab_encoder<span class="sc">$</span>income_poverty, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Below Poverty&quot;</span>, <span class="st">&quot;&lt;= $75,000, Above Poverty&quot;</span>, <span class="st">&quot;&gt; $75,000&quot;</span>)))</span>
+<span id="cb264-3"><a href="task-02.html#cb264-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">subset</span>(h1n1_data_complete_lab_encoder, <span class="at">select =</span> <span class="fu">c</span>(income_poverty, income_poverty_lab_encoder)))</span></code></pre></div>
+<pre><code>##              income_poverty income_poverty_lab_encoder
+## 1             Below Poverty                          1
+## 2             Below Poverty                          1
+## 3 &lt;= $75,000, Above Poverty                          2
+## 4             Below Poverty                          1
+## 5 &lt;= $75,000, Above Poverty                          2
+## 6 &lt;= $75,000, Above Poverty                          2</code></pre>
+</div>
+<div id="手动编码" class="section level3" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> 手动编码</h3>
+<p>比如，当某一个特征中有很多类别，我们认为某些类别可以合为一类，可以用<code>case_when()</code>函数手动处理。</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="task-02.html#cb266-1" aria-hidden="true" tabindex="-1"></a>h1n1_data_manual <span class="ot">&lt;-</span> <span class="fu">subset</span>(h1n1_data_complete, <span class="at">select =</span> <span class="fu">c</span>(age_group))</span>
+<span id="cb266-2"><a href="task-02.html#cb266-2" aria-hidden="true" tabindex="-1"></a>h1n1_data_manual<span class="sc">$</span>age_group_manual <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb266-3"><a href="task-02.html#cb266-3" aria-hidden="true" tabindex="-1"></a>  h1n1_data_manual<span class="sc">$</span>age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;18 - 34 Years&quot;</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb266-4"><a href="task-02.html#cb266-4" aria-hidden="true" tabindex="-1"></a>  h1n1_data_manual<span class="sc">$</span>age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;35 - 44 Years&quot;</span>, <span class="st">&quot;45 - 54 Years&quot;</span>, <span class="st">&quot;55 - 64 Years&quot;</span>) <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb266-5"><a href="task-02.html#cb266-5" aria-hidden="true" tabindex="-1"></a>  h1n1_data_manual<span class="sc">$</span>age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65+ Years&quot;</span>) <span class="sc">~</span> <span class="dv">3</span></span>
+<span id="cb266-6"><a href="task-02.html#cb266-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb266-7"><a href="task-02.html#cb266-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(h1n1_data_manual)</span></code></pre></div>
+<pre><code>##       age_group age_group_manual
+## 1 55 - 64 Years                2
+## 2 35 - 44 Years                2
+## 3 18 - 34 Years                1
+## 4     65+ Years                3
+## 5 45 - 54 Years                2
+## 6     65+ Years                3</code></pre>
+</div>
+<div id="日期特征转换" class="section level3" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> 日期特征转换</h3>
+<p>参考附录<code>R语言日期时间处理</code></p>
+</div>
+</div>
+<div id="规范化与偏态数据" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> 规范化与偏态数据</h2>
+<p>为什么要数据规范化？简单来说是为了去除数据量纲和数据大小的差异，确保数据是在同一量纲或者同一数量级下进行比较，一般用在机器学习算法之前。数据规范化又可以使用0-1规范化，Z-score等方法。
+为什么要处理偏态数据？。很多模型会假设数据或参数服从正态分布。例如线性回归(linear regression)，它假设误差服从正态分布。</p>
+<p>提示：注意在测试数据与训练数据分布差别很大的情况下，对测试数据运用一些规范化方法时，可能因为数据分布不匹配而带来误差。</p>
+<p>这里我们使用波士顿房价数据集来做演示。可以看到图中数据的偏态分布及量纲差别。</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="task-02.html#cb268-1" aria-hidden="true" tabindex="-1"></a>BostonHousing <span class="sc">%&gt;%</span></span>
+<span id="cb268-2"><a href="task-02.html#cb268-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb268-3"><a href="task-02.html#cb268-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb268-4"><a href="task-02.html#cb268-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb268-5"><a href="task-02.html#cb268-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>key, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb268-6"><a href="task-02.html#cb268-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">&quot;#348498&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#8ac6d1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb268-7"><a href="task-02.html#cb268-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<div id="规范化" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> 0-1规范化</h3>
+<p>0-1规范化是将原始数据缩放到[0,1]区间内，一般方法是最小最大规范的方法，公式如下：</p>
+<p><img src="image/task02_0-1norm.png" style="width:20.0%" /></p>
+<p>这里用循环计算出每一列的最大最小值，再根据公式求出缩放后的数据。</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="task-02.html#cb269-1" aria-hidden="true" tabindex="-1"></a>nums_data_norm1 <span class="ot">&lt;-</span> nums_data</span>
+<span id="cb269-2"><a href="task-02.html#cb269-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> <span class="fu">names</span>(nums_data_norm1))</span>
+<span id="cb269-3"><a href="task-02.html#cb269-3" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb269-4"><a href="task-02.html#cb269-4" aria-hidden="true" tabindex="-1"></a>  xmin <span class="ot">&lt;-</span> <span class="fu">min</span>(nums_data_norm1[col])</span>
+<span id="cb269-5"><a href="task-02.html#cb269-5" aria-hidden="true" tabindex="-1"></a>  xmax <span class="ot">&lt;-</span> <span class="fu">max</span>(nums_data_norm1[col])</span>
+<span id="cb269-6"><a href="task-02.html#cb269-6" aria-hidden="true" tabindex="-1"></a>  nums_data_norm1[col] <span class="ot">&lt;-</span> (nums_data_norm1[col] <span class="sc">-</span> xmin) <span class="sc">/</span> (xmax <span class="sc">-</span> xmin)</span>
+<span id="cb269-7"><a href="task-02.html#cb269-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb269-8"><a href="task-02.html#cb269-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-9"><a href="task-02.html#cb269-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nums_data_norm1)</span></code></pre></div>
+<pre><code>##           crim   zn      indus       nox        rm       age       dis
+## 1 0.0000000000 0.18 0.06781525 0.3148148 0.5775053 0.6416066 0.2692031
+## 2 0.0002359225 0.00 0.24230205 0.1728395 0.5479977 0.7826982 0.3489620
+## 3 0.0002356977 0.00 0.24230205 0.1728395 0.6943859 0.5993821 0.3489620
+## 4 0.0002927957 0.00 0.06304985 0.1502058 0.6585553 0.4418126 0.4485446
+## 5 0.0007050701 0.00 0.06304985 0.1502058 0.6871048 0.5283213 0.4485446
+## 6 0.0002644715 0.00 0.06304985 0.1502058 0.5497222 0.5746653 0.4485446
+##          rad        tax   ptratio         b      lstat      medv
+## 1 0.00000000 0.20801527 0.2872340 1.0000000 0.08967991 0.4222222
+## 2 0.04347826 0.10496183 0.5531915 1.0000000 0.20447020 0.3688889
+## 3 0.04347826 0.10496183 0.5531915 0.9897373 0.06346578 0.6600000
+## 4 0.08695652 0.06679389 0.6489362 0.9942761 0.03338852 0.6311111
+## 5 0.08695652 0.06679389 0.6489362 1.0000000 0.09933775 0.6933333
+## 6 0.08695652 0.06679389 0.6489362 0.9929901 0.09602649 0.5266667</code></pre>
+<p>转换完再看一下分布，已经缩放到0-1之间了。</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="task-02.html#cb271-1" aria-hidden="true" tabindex="-1"></a>nums_data_norm1 <span class="sc">%&gt;%</span></span>
+<span id="cb271-2"><a href="task-02.html#cb271-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb271-3"><a href="task-02.html#cb271-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb271-4"><a href="task-02.html#cb271-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb271-5"><a href="task-02.html#cb271-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>key, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb271-6"><a href="task-02.html#cb271-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">&quot;#348498&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#8ac6d1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb271-7"><a href="task-02.html#cb271-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<p>此外可以用dlookr包里的<code>transform()</code>函数。</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="task-02.html#cb272-1" aria-hidden="true" tabindex="-1"></a>nums_data_norm2 <span class="ot">&lt;-</span> nums_data</span>
+<span id="cb272-2"><a href="task-02.html#cb272-2" aria-hidden="true" tabindex="-1"></a>nums_data_norm2<span class="sc">$</span>crim <span class="ot">&lt;-</span> dlookr<span class="sc">::</span><span class="fu">transform</span>(nums_data<span class="sc">$</span>crim, <span class="at">method =</span> <span class="st">&quot;minmax&quot;</span>)</span></code></pre></div>
+</div>
+<div id="z-score标准化" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Z-score标准化</h3>
+<p>Z-score标准化是原数据减去期望再除以标准差，将数据按比例缩放，使其落入到一个小的区间内，标准化后的数据可正可负，但是一般绝对值不会太大。</p>
+<p><img src="image/task02_z-score.png" style="width:15.0%" /></p>
+<p>R里面可以用<code>scale()</code>函数来计算z-score。也可以dlookr包里的中<code>transform()</code>函数。</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="task-02.html#cb273-1" aria-hidden="true" tabindex="-1"></a>nums_data_zscore <span class="ot">&lt;-</span> nums_data</span>
+<span id="cb273-2"><a href="task-02.html#cb273-2" aria-hidden="true" tabindex="-1"></a>nums_data_zscore <span class="ot">&lt;-</span> <span class="fu">scale</span>(nums_data_zscore)</span>
+<span id="cb273-3"><a href="task-02.html#cb273-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nums_data_zscore)</span></code></pre></div>
+<pre><code>##         crim         zn      indus        nox        rm        age      dis
+## 1 -0.4193669  0.2845483 -1.2866362 -0.1440749 0.4132629 -0.1198948 0.140075
+## 2 -0.4169267 -0.4872402 -0.5927944 -0.7395304 0.1940824  0.3668034 0.556609
+## 3 -0.4169290 -0.4872402 -0.5927944 -0.7395304 1.2814456 -0.2655490 0.556609
+## 4 -0.4163384 -0.4872402 -1.3055857 -0.8344581 1.0152978 -0.8090878 1.076671
+## 5 -0.4120741 -0.4872402 -1.3055857 -0.8344581 1.2273620 -0.5106743 1.076671
+## 6 -0.4166314 -0.4872402 -1.3055857 -0.8344581 0.2068916 -0.3508100 1.076671
+##          rad        tax    ptratio         b      lstat       medv
+## 1 -0.9818712 -0.6659492 -1.4575580 0.4406159 -1.0744990  0.1595278
+## 2 -0.8670245 -0.9863534 -0.3027945 0.4406159 -0.4919525 -0.1014239
+## 3 -0.8670245 -0.9863534 -0.3027945 0.3960351 -1.2075324  1.3229375
+## 4 -0.7521778 -1.1050216  0.1129203 0.4157514 -1.3601708  1.1815886
+## 5 -0.7521778 -1.1050216  0.1129203 0.4406159 -1.0254866  1.4860323
+## 6 -0.7521778 -1.1050216  0.1129203 0.4101651 -1.0422909  0.6705582</code></pre>
+<p>转换完再看一下分布，数据缩放后在0周围的一个小区间了。</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="task-02.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(nums_data_zscore) <span class="sc">%&gt;%</span></span>
+<span id="cb275-2"><a href="task-02.html#cb275-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb275-3"><a href="task-02.html#cb275-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb275-4"><a href="task-02.html#cb275-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb275-5"><a href="task-02.html#cb275-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>key, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb275-6"><a href="task-02.html#cb275-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">&quot;#348498&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#8ac6d1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb275-7"><a href="task-02.html#cb275-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+</div>
+<div id="对数转换log-transform" class="section level3" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> 对数转换(log transform)</h3>
+<p>使用对数转换也是一种常见的处理偏斜特征的方法，但要注意原数据中不能含有负值。此外为了避免0值，我们通常使用log1p，公式为<code>lg(x+1)</code>。可以直接用dlookr包里的<code>transform()</code>函数，一般结合mutate函数一起使用。</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="task-02.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 直接公式转换</span></span>
+<span id="cb276-2"><a href="task-02.html#cb276-2" aria-hidden="true" tabindex="-1"></a>nums_data_log1p1 <span class="ot">&lt;-</span> <span class="fu">log</span>(nums_data <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb276-3"><a href="task-02.html#cb276-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb276-4"><a href="task-02.html#cb276-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 用transform()函数</span></span>
+<span id="cb276-5"><a href="task-02.html#cb276-5" aria-hidden="true" tabindex="-1"></a>nums_data_log1p2 <span class="ot">&lt;-</span> nums_data</span>
+<span id="cb276-6"><a href="task-02.html#cb276-6" aria-hidden="true" tabindex="-1"></a>nums_data_log1p2<span class="sc">$</span>b <span class="ot">&lt;-</span> dlookr<span class="sc">::</span><span class="fu">transform</span>(nums_data_log1p2<span class="sc">$</span>b, <span class="at">method =</span> <span class="st">&quot;log+1&quot;</span>)</span></code></pre></div>
+<p>转换完再看一下分布，大多变量转换后接近正态分布了。但是这里要特别注意离散数据。</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="task-02.html#cb277-1" aria-hidden="true" tabindex="-1"></a>nums_data_log1p1 <span class="sc">%&gt;%</span></span>
+<span id="cb277-2"><a href="task-02.html#cb277-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb277-3"><a href="task-02.html#cb277-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb277-4"><a href="task-02.html#cb277-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb277-5"><a href="task-02.html#cb277-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>key, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb277-6"><a href="task-02.html#cb277-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">&quot;#348498&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#8ac6d1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb277-7"><a href="task-02.html#cb277-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+</div>
+<div id="box-cox" class="section level3" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Box-Cox</h3>
+<p>Box-Cox变换是Box和Cox在1964年提出的一种广义幂变换方法，在变换后可以一定程度上减小不可观测的误差和预测变量的相关性，在机器学习中经常用来处理偏态分布。其一个显著优点是通过求变换参数来确定变换形式，而这个过程完全基于数据本身而无须任何先验信息，这无疑比凭经验或通过尝试而选用对数、平方根等变换方式要客观和精确。计算公式如下：</p>
+<p><img src="image/task02_boxcox.png" style="width:40.0%" /></p>
+<p>示例参考附录<code>基于R语言进行Box-Cox变换</code></p>
+</div>
+</div>
+<div id="小拓展" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> 小拓展</h2>
+<p>R语言中，mutate 类似于SQL中，根据表的现有变量，生成新变量。使用mutate集中处理变量转换，代码显示较整洁。</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="task-02.html#cb278-1" aria-hidden="true" tabindex="-1"></a>h1n1_data_de <span class="ot">&lt;-</span> h1n1_data_complete <span class="sc">%&gt;%</span></span>
+<span id="cb278-2"><a href="task-02.html#cb278-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">to_dummy</span>(education, <span class="at">suffix =</span> <span class="st">&quot;label&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb278-3"><a href="task-02.html#cb278-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(h1n1_data_complete) <span class="sc">%&gt;%</span></span>
+<span id="cb278-4"><a href="task-02.html#cb278-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb278-5"><a href="task-02.html#cb278-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 标签编码(label encoder)</span></span>
+<span id="cb278-6"><a href="task-02.html#cb278-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">as.factor</span>(<span class="fu">as.numeric</span>(<span class="fu">factor</span>(sex))),</span>
+<span id="cb278-7"><a href="task-02.html#cb278-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">income_poverty =</span> (<span class="fu">as.numeric</span>(<span class="fu">factor</span>(</span>
+<span id="cb278-8"><a href="task-02.html#cb278-8" aria-hidden="true" tabindex="-1"></a>      income_poverty,</span>
+<span id="cb278-9"><a href="task-02.html#cb278-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb278-10"><a href="task-02.html#cb278-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Below Poverty&quot;</span>,</span>
+<span id="cb278-11"><a href="task-02.html#cb278-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;&lt;= $75,000, Above Poverty&quot;</span>,</span>
+<span id="cb278-12"><a href="task-02.html#cb278-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;&gt; $75,000&quot;</span></span>
+<span id="cb278-13"><a href="task-02.html#cb278-13" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb278-14"><a href="task-02.html#cb278-14" aria-hidden="true" tabindex="-1"></a>    ))),</span>
+<span id="cb278-15"><a href="task-02.html#cb278-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 手动编码</span></span>
+<span id="cb278-16"><a href="task-02.html#cb278-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">as.factor</span>(</span>
+<span id="cb278-17"><a href="task-02.html#cb278-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb278-18"><a href="task-02.html#cb278-18" aria-hidden="true" tabindex="-1"></a>        age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;18 - 34 Years&quot;</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb278-19"><a href="task-02.html#cb278-19" aria-hidden="true" tabindex="-1"></a>        age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;35 - 44 Years&quot;</span>, <span class="st">&quot;45 - 54 Years&quot;</span>, <span class="st">&quot;55 - 64 Years&quot;</span>) <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb278-20"><a href="task-02.html#cb278-20" aria-hidden="true" tabindex="-1"></a>        age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;65+ Years&quot;</span>) <span class="sc">~</span> <span class="dv">3</span></span>
+<span id="cb278-21"><a href="task-02.html#cb278-21" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb278-22"><a href="task-02.html#cb278-22" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb278-23"><a href="task-02.html#cb278-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 标准化</span></span>
+<span id="cb278-24"><a href="task-02.html#cb278-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb278-25"><a href="task-02.html#cb278-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(</span>
+<span id="cb278-26"><a href="task-02.html#cb278-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;h1n1_knowledge&quot;</span>,</span>
+<span id="cb278-27"><a href="task-02.html#cb278-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;doctor_recc_h1n1&quot;</span>,</span>
+<span id="cb278-28"><a href="task-02.html#cb278-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;chronic_med_condition&quot;</span>,</span>
+<span id="cb278-29"><a href="task-02.html#cb278-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;opinion_h1n1_vacc_effective&quot;</span>,</span>
+<span id="cb278-30"><a href="task-02.html#cb278-30" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;age_group&quot;</span>,</span>
+<span id="cb278-31"><a href="task-02.html#cb278-31" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;income_poverty&quot;</span></span>
+<span id="cb278-32"><a href="task-02.html#cb278-32" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb278-33"><a href="task-02.html#cb278-33" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">scale</span>(<span class="fu">as.numeric</span>(.x))</span>
+<span id="cb278-34"><a href="task-02.html#cb278-34" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb278-35"><a href="task-02.html#cb278-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb278-36"><a href="task-02.html#cb278-36" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">one_of</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;education_&quot;</span>))</span>
+<span id="cb278-37"><a href="task-02.html#cb278-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb278-38"><a href="task-02.html#cb278-38" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(h1n1_data_de)</span></code></pre></div>
+<pre><code>##   education_&lt; 12 Years education_12 Years education_College Graduate
+## 1                    1                  0                          0
+## 2                    0                  1                          0
+## 3                    0                  0                          1
+## 4                    0                  1                          0
+## 5                    0                  0                          0
+## 6                    0                  1                          0
+##   education_Some College respondent_id h1n1_knowledge doctor_recc_h1n1
+## 1                      0             0     -2.0416901       -0.5258839
+## 2                      0             1      1.1935904       -0.5258839
+## 3                      0             2     -0.4240499       -0.5258839
+## 4                      0             3     -0.4240499       -0.5258839
+## 5                      1             4     -0.4240499       -0.5258839
+## 6                      0             5     -0.4240499       -0.5258839
+##   chronic_med_condition health_insurance opinion_h1n1_vacc_effective
+## 1            -0.6284091                1                  -0.8439071
+## 2            -0.6284091                1                   1.1407906
+## 3             1.5912605                1                  -0.8439071
+## 4             1.5912605                1                  -0.8439071
+## 5            -0.6284091                0                  -0.8439071
+## 6            -0.6284091                1                   1.1407906
+##     age_group sex income_poverty h1n1_vaccine
+## 1 -0.09109418   1     -1.8905904            0
+## 2 -0.09109418   2     -1.8905904            0
+## 3 -1.58547517   2     -0.2945789            0
+## 4  1.40328681   1     -1.8905904            0
+## 5 -0.09109418   1     -0.2945789            0
+## 6  1.40328681   2     -0.2945789            0</code></pre>
+<p>注意在机器学习中，尽量在数据集划分后，分别在训练集与验证集、测试集上进行数据清洗，避免数据泄露。R中的数据集划分方法参考附录<code>R中数据集分割</code>。</p>
+</div>
+<div id="思考与练习" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> 思考与练习</h2>
+<p>看完了本节数据清洗与准备，尝试着选取一个完整的数据集（从本节中选取或使用自己的数据集），来做一次清洗吧！</p>
+</div>
+<div id="附录参考资料" class="section level2 unnumbered">
+<h2>附录：参考资料</h2>
+<div id="理论资料" class="section level3 unnumbered">
+<h3>理论资料</h3>
+<p><strong>数据的预处理基础：</strong> 如何处理缺失值 <a href="https://cloud.tencent.com/developer/article/1626004" class="uri">https://cloud.tencent.com/developer/article/1626004</a></p>
+<p><strong>多重插补法：</strong> 处理缺失值之多重插补（Multiple Imputation）<a href="https://zhuanlan.zhihu.com/p/36436260" class="uri">https://zhuanlan.zhihu.com/p/36436260</a></p>
+<p><strong>异常值检测：</strong> R语言–异常值检测 <a href="https://blog.csdn.net/kicilove/article/details/76260350" class="uri">https://blog.csdn.net/kicilove/article/details/76260350</a></p>
+<p><strong>异常值检测之LOF：</strong> 异常检测算法之局部异常因子算法-Local Outlier Factor(LOF) <a href="https://blog.csdn.net/BigData_Mining/article/details/102914342" class="uri">https://blog.csdn.net/BigData_Mining/article/details/102914342</a></p>
+<p><strong>规范化：</strong> 规范化、标准化、归一化、正则化 <a href="https://blog.csdn.net/u014381464/article/details/81101551" class="uri">https://blog.csdn.net/u014381464/article/details/81101551</a></p>
+<p><strong>什么样的模型对缺失值更敏感？：</strong> <a href="https://blog.csdn.net/zhang15953709913/article/details/88717220" class="uri">https://blog.csdn.net/zhang15953709913/article/details/88717220</a></p>
+</div>
+<div id="r语言函数用法示例" class="section level3 unnumbered">
+<h3>R语言函数用法示例</h3>
+<p><code>funModeling</code>用法示例：<a href="https://cran.r-project.org/web/packages/funModeling/vignettes/funModeling_quickstart.html" class="uri">https://cran.r-project.org/web/packages/funModeling/vignettes/funModeling_quickstart.html</a></p>
+<p><code>tidyverse</code>官方文档：<a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a></p>
+<p><code>VIM</code>教学网页：<a href="https://www.datacamp.com/community/tutorials/visualize-data-vim-package" class="uri">https://www.datacamp.com/community/tutorials/visualize-data-vim-package</a></p>
+<p><code>mice</code>使用文档(Multivariate Imputation by Chained Equations)：<a href="https://cran.r-project.org/web/packages/mice/mice.pdf" class="uri">https://cran.r-project.org/web/packages/mice/mice.pdf</a></p>
+<p><code>mice</code>使用中文解释：<a href="https://blog.csdn.net/sinat_26917383/article/details/51265213" class="uri">https://blog.csdn.net/sinat_26917383/article/details/51265213</a></p>
+<p><code>mice</code>检验结果解释：<a href="http://blog.fens.me/r-na-mice/" class="uri">http://blog.fens.me/r-na-mice/</a></p>
+<p><code>caret</code>包数据预处理：<a href="https://www.cnblogs.com/Hyacinth-Yuan/p/8284612.html" class="uri">https://www.cnblogs.com/Hyacinth-Yuan/p/8284612.html</a></p>
+<p>R语言日期时间处理：<a href="https://zhuanlan.zhihu.com/p/83984803" class="uri">https://zhuanlan.zhihu.com/p/83984803</a></p>
+<p>基于R语言进行Box-Cox变换：<a href="https://ask.hellobi.com/blog/R_shequ/18371" class="uri">https://ask.hellobi.com/blog/R_shequ/18371</a></p>
+<p>R中数据集分割：<a href="https://zhuanlan.zhihu.com/p/45163182" class="uri">https://zhuanlan.zhihu.com/p/45163182</a></p>
+</div>
+</div>
+<div id="本章作者-2" class="section level2 unnumbered">
+<h2>本章作者</h2>
+<p><strong>June</strong></p>
+<blockquote>
+<p>悉尼大学研究生，Datawhale成员<br />
+<a href="https://blog.csdn.net/Yao_June" class="uri">https://blog.csdn.net/Yao_June</a></p>
+</blockquote>
+</div>
+<div id="关于datawhale-2" class="section level2 unnumbered">
+<h2>关于Datawhale</h2>
+<p>Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：</p>
+<p><img src="image/logo.png" width="129" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="task-01.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="task-03.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": true,
+"weibo": true,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper", "whatsapp"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/FinYang/RLearning-book/blob/main/Task02_Data_Preparation.Rmd",
+"text": null
+},
+"download": ["RLearning.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

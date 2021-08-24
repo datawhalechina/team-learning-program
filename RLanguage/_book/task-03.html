@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 3 章 基本统计分析 | R语言数据分析组队学习</title>
+  <meta name="description" content="第 3 章 基本统计分析 | R语言数据分析组队学习" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 3 章 基本统计分析 | R语言数据分析组队学习" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 3 章 基本统计分析 | R语言数据分析组队学习" />
+  
+  
+  
+
+<meta name="author" content="张晋、杨佳达、牧小熊、杨杨卓然、姚昱君" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="task-02.html"/>
+<link rel="next" href="task-04.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R语言数据分析组队学习</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎！</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#贡献者信息"><i class="fa fa-check"></i>贡献者信息</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程简介"><i class="fa fa-check"></i>课程简介</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程大纲"><i class="fa fa-check"></i>课程大纲</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#关于-datawhale"><i class="fa fa-check"></i>关于 Datawhale</a></li>
+</ul></li>
+<li class="part"><span><b>I 准备工作</b></span></li>
+<li class="chapter" data-level="" data-path="task-00.html"><a href="task-00.html"><i class="fa fa-check"></i>熟悉规则与R语言入门</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="task-00.html"><a href="task-00.html#安装"><i class="fa fa-check"></i><b>0.1</b> 安装</a>
+<ul>
+<li class="chapter" data-level="0.1.1" data-path="task-00.html"><a href="task-00.html#r"><i class="fa fa-check"></i><b>0.1.1</b> R</a></li>
+<li class="chapter" data-level="0.1.2" data-path="task-00.html"><a href="task-00.html#rstudio"><i class="fa fa-check"></i><b>0.1.2</b> RStudio</a></li>
+<li class="chapter" data-level="0.1.3" data-path="task-00.html"><a href="task-00.html#r语言程辑包r-package"><i class="fa fa-check"></i><b>0.1.3</b> R语言程辑包（R Package）</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path="task-00.html"><a href="task-00.html#环境配置"><i class="fa fa-check"></i><b>0.2</b> 环境配置</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="task-00.html"><a href="task-00.html#项目project"><i class="fa fa-check"></i><b>0.2.1</b> 项目（Project）</a></li>
+<li class="chapter" data-level="0.2.2" data-path="task-00.html"><a href="task-00.html#用户界面"><i class="fa fa-check"></i><b>0.2.2</b> 用户界面</a></li>
+<li class="chapter" data-level="0.2.3" data-path="task-00.html"><a href="task-00.html#r-markdown"><i class="fa fa-check"></i><b>0.2.3</b> R Markdown</a></li>
+<li class="chapter" data-level="0.2.4" data-path="task-00.html"><a href="task-00.html#帮助"><i class="fa fa-check"></i><b>0.2.4</b> 帮助</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="task-00.html"><a href="task-00.html#happy-coding"><i class="fa fa-check"></i><b>0.3</b> Happy Coding!</a></li>
+<li class="chapter" data-level="" data-path="task-00.html"><a href="task-00.html#本章作者"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-00.html"><a href="task-00.html#关于datawhale"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="part"><span><b>II 开始干活</b></span></li>
+<li class="chapter" data-level="1" data-path="task-01.html"><a href="task-01.html"><i class="fa fa-check"></i><b>1</b> 数据结构与数据集</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="task-01.html"><a href="task-01.html#准备工作"><i class="fa fa-check"></i><b>1.1</b> 准备工作</a></li>
+<li class="chapter" data-level="1.2" data-path="task-01.html"><a href="task-01.html#编码基础"><i class="fa fa-check"></i><b>1.2</b> 编码基础</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="task-01.html"><a href="task-01.html#算术"><i class="fa fa-check"></i><b>1.2.1</b> 算术</a></li>
+<li class="chapter" data-level="1.2.2" data-path="task-01.html"><a href="task-01.html#赋值"><i class="fa fa-check"></i><b>1.2.2</b> 赋值</a></li>
+<li class="chapter" data-level="1.2.3" data-path="task-01.html"><a href="task-01.html#函数"><i class="fa fa-check"></i><b>1.2.3</b> 函数</a></li>
+<li class="chapter" data-level="1.2.4" data-path="task-01.html"><a href="task-01.html#循环loop"><i class="fa fa-check"></i><b>1.2.4</b> 循环（loop）</a></li>
+<li class="chapter" data-level="1.2.5" data-path="task-01.html"><a href="task-01.html#管道pipe"><i class="fa fa-check"></i><b>1.2.5</b> 管道（pipe）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="task-01.html"><a href="task-01.html#数据类型"><i class="fa fa-check"></i><b>1.3</b> 数据类型</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="task-01.html"><a href="task-01.html#基础数据类型"><i class="fa fa-check"></i><b>1.3.1</b> 基础数据类型</a></li>
+<li class="chapter" data-level="1.3.2" data-path="task-01.html"><a href="task-01.html#向量vector"><i class="fa fa-check"></i><b>1.3.2</b> 向量（vector）</a></li>
+<li class="chapter" data-level="1.3.3" data-path="task-01.html"><a href="task-01.html#特殊数据类型"><i class="fa fa-check"></i><b>1.3.3</b> 特殊数据类型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="task-01.html"><a href="task-01.html#多维数据类型"><i class="fa fa-check"></i><b>1.4</b> 多维数据类型</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="task-01.html"><a href="task-01.html#矩阵matrix"><i class="fa fa-check"></i><b>1.4.1</b> 矩阵（matrix）</a></li>
+<li class="chapter" data-level="1.4.2" data-path="task-01.html"><a href="task-01.html#列表list"><i class="fa fa-check"></i><b>1.4.2</b> 列表（list）</a></li>
+<li class="chapter" data-level="1.4.3" data-path="task-01.html"><a href="task-01.html#数据表data-frame-与-tibble"><i class="fa fa-check"></i><b>1.4.3</b> 数据表（data frame 与 tibble）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="task-01.html"><a href="task-01.html#读写数据"><i class="fa fa-check"></i><b>1.5</b> 读写数据</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="task-01.html"><a href="task-01.html#内置数据集"><i class="fa fa-check"></i><b>1.5.1</b> 内置数据集</a></li>
+<li class="chapter" data-level="1.5.2" data-path="task-01.html"><a href="task-01.html#表格类型数据csv-excel"><i class="fa fa-check"></i><b>1.5.2</b> 表格类型数据（csv, excel)</a></li>
+<li class="chapter" data-level="1.5.3" data-path="task-01.html"><a href="task-01.html#r的专属类型数据rdata-rds"><i class="fa fa-check"></i><b>1.5.3</b> R的专属类型数据（RData, rds）</a></li>
+<li class="chapter" data-level="1.5.4" data-path="task-01.html"><a href="task-01.html#其他软件spss-stata-sas"><i class="fa fa-check"></i><b>1.5.4</b> 其他软件（SPSS, Stata, SAS）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="task-01.html"><a href="task-01.html#练习题"><i class="fa fa-check"></i><b>1.6</b> 练习题</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="task-01.html"><a href="task-01.html#了解数据集"><i class="fa fa-check"></i><b>1.6.1</b> 了解数据集</a></li>
+<li class="chapter" data-level="1.6.2" data-path="task-01.html"><a href="task-01.html#创造数据集"><i class="fa fa-check"></i><b>1.6.2</b> 创造数据集</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-01.html"><a href="task-01.html#本章作者-1"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-01.html"><a href="task-01.html#关于datawhale-1"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="task-02.html"><a href="task-02.html"><i class="fa fa-check"></i><b>2</b> 数据清洗与准备</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#环境配置-1"><i class="fa fa-check"></i>环境配置</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#案例数据"><i class="fa fa-check"></i>案例数据</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#数据集1-h1n1流感问卷数据集"><i class="fa fa-check"></i>数据集1 h1n1流感问卷数据集</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#数据集2-波士顿房价数据集"><i class="fa fa-check"></i>数据集2 波士顿房价数据集</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1" data-path="task-02.html"><a href="task-02.html#重复值处理"><i class="fa fa-check"></i><b>2.1</b> 重复值处理</a></li>
+<li class="chapter" data-level="2.2" data-path="task-02.html"><a href="task-02.html#缺失值识别与处理"><i class="fa fa-check"></i><b>2.2</b> 缺失值识别与处理</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="task-02.html"><a href="task-02.html#缺失值识别"><i class="fa fa-check"></i><b>2.2.1</b> 缺失值识别</a></li>
+<li class="chapter" data-level="2.2.2" data-path="task-02.html"><a href="task-02.html#缺失值处理"><i class="fa fa-check"></i><b>2.2.2</b> 缺失值处理</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="task-02.html"><a href="task-02.html#异常值识别与处理"><i class="fa fa-check"></i><b>2.3</b> 异常值识别与处理</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="task-02.html"><a href="task-02.html#异常值识别"><i class="fa fa-check"></i><b>2.3.1</b> 异常值识别</a></li>
+<li class="chapter" data-level="2.3.2" data-path="task-02.html"><a href="task-02.html#可视化图形分布"><i class="fa fa-check"></i><b>2.3.2</b> 可视化图形分布</a></li>
+<li class="chapter" data-level="2.3.3" data-path="task-02.html"><a href="task-02.html#z-score"><i class="fa fa-check"></i><b>2.3.3</b> z-score</a></li>
+<li class="chapter" data-level="2.3.4" data-path="task-02.html"><a href="task-02.html#局部异常因子法"><i class="fa fa-check"></i><b>2.3.4</b> 局部异常因子法</a></li>
+<li class="chapter" data-level="2.3.5" data-path="task-02.html"><a href="task-02.html#异常值处理"><i class="fa fa-check"></i><b>2.3.5</b> 异常值处理</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="task-02.html"><a href="task-02.html#特征编码"><i class="fa fa-check"></i><b>2.4</b> 特征编码</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="task-02.html"><a href="task-02.html#独热编码哑编码"><i class="fa fa-check"></i><b>2.4.1</b> 独热编码/哑编码</a></li>
+<li class="chapter" data-level="2.4.2" data-path="task-02.html"><a href="task-02.html#标签编码"><i class="fa fa-check"></i><b>2.4.2</b> 标签编码</a></li>
+<li class="chapter" data-level="2.4.3" data-path="task-02.html"><a href="task-02.html#手动编码"><i class="fa fa-check"></i><b>2.4.3</b> 手动编码</a></li>
+<li class="chapter" data-level="2.4.4" data-path="task-02.html"><a href="task-02.html#日期特征转换"><i class="fa fa-check"></i><b>2.4.4</b> 日期特征转换</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="task-02.html"><a href="task-02.html#规范化与偏态数据"><i class="fa fa-check"></i><b>2.5</b> 规范化与偏态数据</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="task-02.html"><a href="task-02.html#规范化"><i class="fa fa-check"></i><b>2.5.1</b> 0-1规范化</a></li>
+<li class="chapter" data-level="2.5.2" data-path="task-02.html"><a href="task-02.html#z-score标准化"><i class="fa fa-check"></i><b>2.5.2</b> Z-score标准化</a></li>
+<li class="chapter" data-level="2.5.3" data-path="task-02.html"><a href="task-02.html#对数转换log-transform"><i class="fa fa-check"></i><b>2.5.3</b> 对数转换(log transform)</a></li>
+<li class="chapter" data-level="2.5.4" data-path="task-02.html"><a href="task-02.html#box-cox"><i class="fa fa-check"></i><b>2.5.4</b> Box-Cox</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="task-02.html"><a href="task-02.html#小拓展"><i class="fa fa-check"></i><b>2.6</b> 小拓展</a></li>
+<li class="chapter" data-level="2.7" data-path="task-02.html"><a href="task-02.html#思考与练习"><i class="fa fa-check"></i><b>2.7</b> 思考与练习</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#附录参考资料"><i class="fa fa-check"></i>附录：参考资料</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#理论资料"><i class="fa fa-check"></i>理论资料</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#r语言函数用法示例"><i class="fa fa-check"></i>R语言函数用法示例</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#本章作者-2"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#关于datawhale-2"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="task-03.html"><a href="task-03.html"><i class="fa fa-check"></i><b>3</b> 基本统计分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-03.html"><a href="task-03.html#准备工作-1"><i class="fa fa-check"></i>准备工作</a></li>
+<li class="chapter" data-level="3.1" data-path="task-03.html"><a href="task-03.html#多种方法获取描述性统计量"><i class="fa fa-check"></i><b>3.1</b> 多种方法获取描述性统计量</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="task-03.html"><a href="task-03.html#基础方法"><i class="fa fa-check"></i><b>3.1.1</b> 基础方法</a></li>
+<li class="chapter" data-level="3.1.2" data-path="task-03.html"><a href="task-03.html#拓展包方法"><i class="fa fa-check"></i><b>3.1.2</b> 拓展包方法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="task-03.html"><a href="task-03.html#分组计算描述性统计"><i class="fa fa-check"></i><b>3.2</b> 分组计算描述性统计</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="task-03.html"><a href="task-03.html#基础方法-1"><i class="fa fa-check"></i><b>3.2.1</b> 基础方法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="task-03.html"><a href="task-03.html#频数表和列联表"><i class="fa fa-check"></i><b>3.3</b> 频数表和列联表</a></li>
+<li class="chapter" data-level="3.4" data-path="task-03.html"><a href="task-03.html#相关"><i class="fa fa-check"></i><b>3.4</b> 相关</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="task-03.html"><a href="task-03.html#相关的类型"><i class="fa fa-check"></i><b>3.4.1</b> 相关的类型</a></li>
+<li class="chapter" data-level="3.4.2" data-path="task-03.html"><a href="task-03.html#相关性的显著性检验"><i class="fa fa-check"></i><b>3.4.2</b> 相关性的显著性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="task-03.html"><a href="task-03.html#方差分析"><i class="fa fa-check"></i><b>3.5</b> 方差分析</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="task-03.html"><a href="task-03.html#单因素方差分析"><i class="fa fa-check"></i><b>3.5.1</b> 单因素方差分析</a></li>
+<li class="chapter" data-level="3.5.2" data-path="task-03.html"><a href="task-03.html#多因素方差分析"><i class="fa fa-check"></i><b>3.5.2</b> 多因素方差分析</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-03.html"><a href="task-03.html#本章作者-3"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-03.html"><a href="task-03.html#关于datawhale-3"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="task-04.html"><a href="task-04.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#ggplot2包介绍"><i class="fa fa-check"></i>ggplot2包介绍</a></li>
+<li class="chapter" data-level="4.1" data-path="task-04.html"><a href="task-04.html#环境配置-2"><i class="fa fa-check"></i><b>4.1</b> 环境配置</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#案例数据-1"><i class="fa fa-check"></i>案例数据</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="task-04.html"><a href="task-04.html#散点图"><i class="fa fa-check"></i><b>4.2</b> 散点图</a></li>
+<li class="chapter" data-level="4.3" data-path="task-04.html"><a href="task-04.html#直方图"><i class="fa fa-check"></i><b>4.3</b> 直方图</a></li>
+<li class="chapter" data-level="4.4" data-path="task-04.html"><a href="task-04.html#柱状图"><i class="fa fa-check"></i><b>4.4</b> 柱状图</a></li>
+<li class="chapter" data-level="4.5" data-path="task-04.html"><a href="task-04.html#饼状图"><i class="fa fa-check"></i><b>4.5</b> 饼状图</a></li>
+<li class="chapter" data-level="4.6" data-path="task-04.html"><a href="task-04.html#折线图"><i class="fa fa-check"></i><b>4.6</b> 折线图</a></li>
+<li class="chapter" data-level="4.7" data-path="task-04.html"><a href="task-04.html#ggplot2扩展包主题"><i class="fa fa-check"></i><b>4.7</b> ggplot2扩展包主题</a></li>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#本章作者-4"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#关于datawhale-4"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="task-05.html"><a href="task-05.html"><i class="fa fa-check"></i><b>5</b> 模型</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="task-05.html"><a href="task-05.html#前言"><i class="fa fa-check"></i><b>5.1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="task-05.html"><a href="task-05.html#linear-regression"><i class="fa fa-check"></i><b>5.1.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="5.1.2" data-path="task-05.html"><a href="task-05.html#stepwise-regression"><i class="fa fa-check"></i><b>5.1.2</b> Stepwise Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="task-05.html"><a href="task-05.html#分类模型"><i class="fa fa-check"></i><b>5.2</b> 分类模型</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="task-05.html"><a href="task-05.html#logistics-regression"><i class="fa fa-check"></i><b>5.2.1</b> Logistics Regression</a></li>
+<li class="chapter" data-level="5.2.2" data-path="task-05.html"><a href="task-05.html#knn"><i class="fa fa-check"></i><b>5.2.2</b> KNN</a></li>
+<li class="chapter" data-level="5.2.3" data-path="task-05.html"><a href="task-05.html#decision-tree"><i class="fa fa-check"></i><b>5.2.3</b> Decision Tree</a></li>
+<li class="chapter" data-level="5.2.4" data-path="task-05.html"><a href="task-05.html#random-forest"><i class="fa fa-check"></i><b>5.2.4</b> Random Forest</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-05.html"><a href="task-05.html#思考与练习-1"><i class="fa fa-check"></i>思考与练习</a></li>
+<li class="chapter" data-level="" data-path="task-05.html"><a href="task-05.html#本章作者-5"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-05.html"><a href="task-05.html#关于datawhale-5"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言数据分析组队学习</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="task-03" class="section level1" number="3">
+<h1><span class="header-section-number">第 3 章</span> 基本统计分析</h1>
+<p><img src="image/task03_structure.png" style="width:100.0%" /></p>
+<div id="准备工作-1" class="section level2 unnumbered">
+<h2>准备工作</h2>
+<p>如果没有相关的包，则使用<code>install.packages('package_name')</code>进行安装以下包。</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="task-03.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pastecs)</span>
+<span id="cb280-2"><a href="task-03.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb280-3"><a href="task-03.html#cb280-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggm)</span></code></pre></div>
+<p>读取数据，使用H1N1流感数据集和波士顿房价数据集。</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="task-03.html#cb281-1" aria-hidden="true" tabindex="-1"></a>flu <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;./datasets/h1n1_flu.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb281-2"><a href="task-03.html#cb281-2" aria-hidden="true" tabindex="-1"></a>housing <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./datasets/BostonHousing.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="多种方法获取描述性统计量" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 多种方法获取描述性统计量</h2>
+<div id="基础方法" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> 基础方法</h3>
+<p>通过summary计算数值型变量的最大值、最小值、分位数以及均值，类别变量计算频数统计。</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="task-03.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(flu[<span class="fu">c</span>(<span class="st">&quot;household_children&quot;</span>, <span class="st">&quot;sex&quot;</span>)])</span></code></pre></div>
+<pre><code>##  household_children     sex           
+##  Min.   :0.0000     Length:26707      
+##  1st Qu.:0.0000     Class :character  
+##  Median :0.0000     Mode  :character  
+##  Mean   :0.5346                       
+##  3rd Qu.:1.0000                       
+##  Max.   :3.0000                       
+##  NA&#39;s   :249</code></pre>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="task-03.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(flu[<span class="fu">c</span>(<span class="st">&quot;h1n1_concern&quot;</span>, <span class="st">&quot;h1n1_knowledge&quot;</span>)])</span></code></pre></div>
+<pre><code>##   h1n1_concern   h1n1_knowledge 
+##  Min.   :0.000   Min.   :0.000  
+##  1st Qu.:1.000   1st Qu.:1.000  
+##  Median :2.000   Median :1.000  
+##  Mean   :1.618   Mean   :1.263  
+##  3rd Qu.:2.000   3rd Qu.:2.000  
+##  Max.   :3.000   Max.   :2.000  
+##  NA&#39;s   :92      NA&#39;s   :116</code></pre>
+<p>通过 sapply() 计算描述性统计量，先定义统计函数，在进行聚合计算。</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="task-03.html#cb286-1" aria-hidden="true" tabindex="-1"></a>mystats <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.omit =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb286-2"><a href="task-03.html#cb286-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (na.omit) {</span>
+<span id="cb286-3"><a href="task-03.html#cb286-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x)]</span>
+<span id="cb286-4"><a href="task-03.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb286-5"><a href="task-03.html#cb286-5" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb286-6"><a href="task-03.html#cb286-6" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb286-7"><a href="task-03.html#cb286-7" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb286-8"><a href="task-03.html#cb286-8" aria-hidden="true" tabindex="-1"></a>  skew <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> m)<span class="sc">^</span><span class="dv">3</span> <span class="sc">/</span> s<span class="sc">^</span><span class="dv">3</span>) <span class="sc">/</span> n</span>
+<span id="cb286-9"><a href="task-03.html#cb286-9" aria-hidden="true" tabindex="-1"></a>  kurt <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> m)<span class="sc">^</span><span class="dv">4</span> <span class="sc">/</span> s<span class="sc">^</span><span class="dv">4</span>) <span class="sc">/</span> n <span class="sc">-</span> <span class="dv">3</span></span>
+<span id="cb286-10"><a href="task-03.html#cb286-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(<span class="at">n =</span> n, <span class="at">mean =</span> m, <span class="at">stdev =</span> s, <span class="at">skew =</span> skew, <span class="at">kurtosis =</span> kurt))</span>
+<span id="cb286-11"><a href="task-03.html#cb286-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb286-12"><a href="task-03.html#cb286-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb286-13"><a href="task-03.html#cb286-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(flu[<span class="fu">c</span>(<span class="st">&quot;h1n1_concern&quot;</span>, <span class="st">&quot;h1n1_knowledge&quot;</span>)], mystats)</span></code></pre></div>
+<pre><code>##          h1n1_concern h1n1_knowledge
+## n               26707          26707
+## mean               NA             NA
+## stdev              NA             NA
+## skew               NA             NA
+## kurtosis           NA             NA</code></pre>
+</div>
+<div id="拓展包方法" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> 拓展包方法</h3>
+<p>通过pastecs包中的 stat.desc()函数计算描述性统计量，可以得到中位数、平均数、平均数的标准误、平均数置信度为95%的置信区间、方差、标准差以及变异系数。</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="task-03.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stat.desc</span>(flu[<span class="fu">c</span>(<span class="st">&quot;household_children&quot;</span>, <span class="st">&quot;sex&quot;</span>)])</span></code></pre></div>
+<pre><code>##              household_children sex
+## nbr.val            2.645800e+04  NA
+## nbr.null           1.867200e+04  NA
+## nbr.na             2.490000e+02  NA
+## min                0.000000e+00  NA
+## max                3.000000e+00  NA
+## range              3.000000e+00  NA
+## sum                1.414400e+04  NA
+## median             0.000000e+00  NA
+## mean               5.345831e-01  NA
+## SE.mean            5.706247e-03  NA
+## CI.mean.0.95       1.118455e-02  NA
+## var                8.615057e-01  NA
+## std.dev            9.281733e-01  NA
+## coef.var           1.736256e+00  NA</code></pre>
+<p>通过psych包中的describe()计算描述性统计量。</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="task-03.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(flu[<span class="fu">c</span>(<span class="st">&quot;household_children&quot;</span>, <span class="st">&quot;sex&quot;</span>)])</span></code></pre></div>
+<pre><code>##                    vars     n mean   sd median trimmed mad min max range skew
+## household_children    1 26458 0.53 0.93      0    0.34   0   0   3     3 1.54
+## sex*                  2 26707 1.41 0.49      1    1.38   0   1   2     1 0.38
+##                    kurtosis   se
+## household_children     1.04 0.01
+## sex*                  -1.85 0.00</code></pre>
+</div>
+</div>
+<div id="分组计算描述性统计" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 分组计算描述性统计</h2>
+<div id="基础方法-1" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> 基础方法</h3>
+<div id="使用aggregate分组获取描述性统计" class="section level4 unnumbered">
+<h4>使用aggregate()分组获取描述性统计</h4>
+<ol style="list-style-type: decimal">
+<li>分组计算不同性别收入贫困计数。</li>
+<li>是否属于查尔斯河的房价中位数平均值。</li>
+</ol>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="task-03.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(flu[<span class="fu">c</span>(<span class="st">&quot;income_poverty&quot;</span>)], <span class="at">by =</span> <span class="fu">list</span>(<span class="at">sex =</span> flu<span class="sc">$</span>sex), length)</span></code></pre></div>
+<pre><code>##      sex income_poverty
+## 1 Female          15858
+## 2   Male          10849</code></pre>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="task-03.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(housing<span class="sc">$</span>medv, <span class="at">by =</span> <span class="fu">list</span>(<span class="at">medv =</span> housing<span class="sc">$</span>chas), <span class="at">FUN =</span> mean)</span></code></pre></div>
+<pre><code>##   medv        x
+## 1    0 22.09384
+## 2    1 28.44000</code></pre>
+</div>
+<div id="使用-by-分组计算描述性统计量" class="section level4 unnumbered">
+<h4>使用 by() 分组计算描述性统计量</h4>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="task-03.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(flu[<span class="fu">c</span>(<span class="st">&quot;income_poverty&quot;</span>, <span class="st">&quot;sex&quot;</span>)], flu<span class="sc">$</span>sex, length)</span></code></pre></div>
+<pre><code>## flu$sex: Female
+## [1] 2
+## ------------------------------------------------------------ 
+## flu$sex: Male
+## [1] 2</code></pre>
+</div>
+</div>
+</div>
+<div id="频数表和列联表" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> 频数表和列联表</h2>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="task-03.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(flu<span class="sc">$</span>sex)</span></code></pre></div>
+<pre><code>## 
+## Female   Male 
+##  15858  10849</code></pre>
+</div>
+<div id="相关" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> 相关</h2>
+<div id="相关的类型" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> 相关的类型</h3>
+<div id="pearsonspearman和kendall相关" class="section level4 unnumbered">
+<h4>Pearson、Spearman和Kendall相关</h4>
+<p>R可以计算多种相关系数，包括Pearson相关系数、Spearman相关系数、Kendall相关系数、偏相关系数、多分格（polychoric）相关系数和多系列（polyserial）相关系数。
+1. 计算房价数据的相关系数，默认是Pearson相关系数。</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="task-03.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(housing)</span></code></pre></div>
+<pre><code>##                    X        crim          zn       indus         chas
+## X        1.000000000  0.40740717 -0.10339336  0.39943885 -0.003759115
+## crim     0.407407172  1.00000000 -0.20046922  0.40658341 -0.055891582
+## zn      -0.103393357 -0.20046922  1.00000000 -0.53382819 -0.042696719
+## indus    0.399438850  0.40658341 -0.53382819  1.00000000  0.062938027
+## chas    -0.003759115 -0.05589158 -0.04269672  0.06293803  1.000000000
+## nox      0.398736174  0.42097171 -0.51660371  0.76365145  0.091202807
+## rm      -0.079971150 -0.21924670  0.31199059 -0.39167585  0.091251225
+## age      0.203783510  0.35273425 -0.56953734  0.64477851  0.086517774
+## dis     -0.302210959 -0.37967009  0.66440822 -0.70802699 -0.099175780
+## rad      0.686001976  0.62550515 -0.31194783  0.59512927 -0.007368241
+## tax      0.666625924  0.58276431 -0.31456332  0.72076018 -0.035586518
+## ptratio  0.291074227  0.28994558 -0.39167855  0.38324756 -0.121515174
+## b       -0.295041232 -0.38506394  0.17552032 -0.35697654  0.048788485
+## lstat    0.258464770  0.45562148 -0.41299457  0.60379972 -0.053929298
+## medv    -0.226603643 -0.38830461  0.36044534 -0.48372516  0.175260177
+##                 nox          rm         age         dis          rad
+## X        0.39873617 -0.07997115  0.20378351 -0.30221096  0.686001976
+## crim     0.42097171 -0.21924670  0.35273425 -0.37967009  0.625505145
+## zn      -0.51660371  0.31199059 -0.56953734  0.66440822 -0.311947826
+## indus    0.76365145 -0.39167585  0.64477851 -0.70802699  0.595129275
+## chas     0.09120281  0.09125123  0.08651777 -0.09917578 -0.007368241
+## nox      1.00000000 -0.30218819  0.73147010 -0.76923011  0.611440563
+## rm      -0.30218819  1.00000000 -0.24026493  0.20524621 -0.209846668
+## age      0.73147010 -0.24026493  1.00000000 -0.74788054  0.456022452
+## dis     -0.76923011  0.20524621 -0.74788054  1.00000000 -0.494587930
+## rad      0.61144056 -0.20984667  0.45602245 -0.49458793  1.000000000
+## tax      0.66802320 -0.29204783  0.50645559 -0.53443158  0.910228189
+## ptratio  0.18893268 -0.35550149  0.26151501 -0.23247054  0.464741179
+## b       -0.38005064  0.12806864 -0.27353398  0.29151167 -0.444412816
+## lstat    0.59087892 -0.61380827  0.60233853 -0.49699583  0.488676335
+## medv    -0.42732077  0.69535995 -0.37695457  0.24992873 -0.381626231
+##                 tax    ptratio           b      lstat       medv
+## X        0.66662592  0.2910742 -0.29504123  0.2584648 -0.2266036
+## crim     0.58276431  0.2899456 -0.38506394  0.4556215 -0.3883046
+## zn      -0.31456332 -0.3916785  0.17552032 -0.4129946  0.3604453
+## indus    0.72076018  0.3832476 -0.35697654  0.6037997 -0.4837252
+## chas    -0.03558652 -0.1215152  0.04878848 -0.0539293  0.1752602
+## nox      0.66802320  0.1889327 -0.38005064  0.5908789 -0.4273208
+## rm      -0.29204783 -0.3555015  0.12806864 -0.6138083  0.6953599
+## age      0.50645559  0.2615150 -0.27353398  0.6023385 -0.3769546
+## dis     -0.53443158 -0.2324705  0.29151167 -0.4969958  0.2499287
+## rad      0.91022819  0.4647412 -0.44441282  0.4886763 -0.3816262
+## tax      1.00000000  0.4608530 -0.44180801  0.5439934 -0.4685359
+## ptratio  0.46085304  1.0000000 -0.17738330  0.3740443 -0.5077867
+## b       -0.44180801 -0.1773833  1.00000000 -0.3660869  0.3334608
+## lstat    0.54399341  0.3740443 -0.36608690  1.0000000 -0.7376627
+## medv    -0.46853593 -0.5077867  0.33346082 -0.7376627  1.0000000</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>指定计算Spearman相关系数</li>
+</ol>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="task-03.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(housing, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>##                    X        crim         zn       indus         chas
+## X        1.000000000  0.46103705 -0.1605047  0.32462127 -0.003759115
+## crim     0.461037054  1.00000000 -0.5716602  0.73552374  0.041536888
+## zn      -0.160504702 -0.57166021  1.0000000 -0.64281060 -0.041936998
+## indus    0.324621271  0.73552374 -0.6428106  1.00000000  0.089841379
+## chas    -0.003759115  0.04153689 -0.0419370  0.08984138  1.000000000
+## nox      0.432491886  0.82146466 -0.6348284  0.79118913  0.068426283
+## rm      -0.035641354 -0.30911647  0.3610737 -0.41530129  0.058812916
+## age      0.208323439  0.70413998 -0.5444226  0.67948671  0.067791779
+## dis     -0.373498683 -0.74498614  0.6146265 -0.75707970 -0.080248080
+## rad      0.588480705  0.72780697 -0.2787672  0.45550745  0.024578885
+## tax      0.536928176  0.72904490 -0.3713945  0.66436139 -0.044485772
+## ptratio  0.297897432  0.46528319 -0.4484754  0.43371046 -0.136064621
+## b       -0.154474321 -0.36055532  0.1631351 -0.28583984 -0.039810497
+## lstat    0.257542491  0.63476026 -0.4900739  0.63874741 -0.050574829
+## medv    -0.273633481 -0.55889095  0.4381790 -0.57825539  0.140612154
+##                 nox          rm         age         dis         rad         tax
+## X        0.43249189 -0.03564135  0.20832344 -0.37349868  0.58848071  0.53692818
+## crim     0.82146466 -0.30911647  0.70413998 -0.74498614  0.72780697  0.72904490
+## zn      -0.63482840  0.36107373 -0.54442256  0.61462654 -0.27876717 -0.37139450
+## indus    0.79118913 -0.41530129  0.67948671 -0.75707970  0.45550745  0.66436139
+## chas     0.06842628  0.05881292  0.06779178 -0.08024808  0.02457888 -0.04448577
+## nox      1.00000000 -0.31034391  0.79515291 -0.88001486  0.58642870  0.64952656
+## rm      -0.31034391  1.00000000 -0.27808202  0.26316822 -0.10749220 -0.27189846
+## age      0.79515291 -0.27808202  1.00000000 -0.80160979  0.41798261  0.52636644
+## dis     -0.88001486  0.26316822 -0.80160979  1.00000000 -0.49580647 -0.57433641
+## rad      0.58642870 -0.10749220  0.41798261 -0.49580647  1.00000000  0.70487572
+## tax      0.64952656 -0.27189846  0.52636644 -0.57433641  0.70487572  1.00000000
+## ptratio  0.39130908 -0.31292257  0.35538428 -0.32204056  0.31832966  0.45334546
+## b       -0.29666158  0.05366004 -0.22802200  0.24959532 -0.28253261 -0.32984308
+## lstat    0.63682829 -0.64083156  0.65707079 -0.56426219  0.39432245  0.53442319
+## medv    -0.56260883  0.63357643 -0.54756169  0.44585685 -0.34677626 -0.56241063
+##             ptratio           b       lstat       medv
+## X        0.29789743 -0.15447432  0.25754249 -0.2736335
+## crim     0.46528319 -0.36055532  0.63476026 -0.5588909
+## zn      -0.44847543  0.16313510 -0.49007389  0.4381790
+## indus    0.43371046 -0.28583984  0.63874741 -0.5782554
+## chas    -0.13606462 -0.03981050 -0.05057483  0.1406122
+## nox      0.39130908 -0.29666158  0.63682829 -0.5626088
+## rm      -0.31292257  0.05366004 -0.64083156  0.6335764
+## age      0.35538428 -0.22802200  0.65707079 -0.5475617
+## dis     -0.32204056  0.24959532 -0.56426219  0.4458569
+## rad      0.31832966 -0.28253261  0.39432245 -0.3467763
+## tax      0.45334546 -0.32984308  0.53442319 -0.5624106
+## ptratio  1.00000000 -0.07202734  0.46725885 -0.5559047
+## b       -0.07202734  1.00000000 -0.21056185  0.1856641
+## lstat    0.46725885 -0.21056185  1.00000000 -0.8529141
+## medv    -0.55590468  0.18566412 -0.85291414  1.0000000</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>城镇人均犯罪率与房价的相关系数</li>
+</ol>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="task-03.html#cb304-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> housing</span>
+<span id="cb304-2"><a href="task-03.html#cb304-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> housing[<span class="fu">c</span>(<span class="st">&quot;medv&quot;</span>)]</span>
+<span id="cb304-3"><a href="task-03.html#cb304-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y)</span></code></pre></div>
+<pre><code>##               medv
+## X       -0.2266036
+## crim    -0.3883046
+## zn       0.3604453
+## indus   -0.4837252
+## chas     0.1752602
+## nox     -0.4273208
+## rm       0.6953599
+## age     -0.3769546
+## dis      0.2499287
+## rad     -0.3816262
+## tax     -0.4685359
+## ptratio -0.5077867
+## b        0.3334608
+## lstat   -0.7376627
+## medv     1.0000000</code></pre>
+</div>
+<div id="偏相关" class="section level4 unnumbered">
+<h4>偏相关</h4>
+<p>偏相关是指在控制一个或多个定量变量时，另外两个定量变量之间的相互关系。使用ggm 包中的 pcor() 函数计算偏相关系数。</p>
+</div>
+</div>
+<div id="相关性的显著性检验" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> 相关性的显著性检验</h3>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="task-03.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(housing[, <span class="fu">c</span>(<span class="st">&quot;crim&quot;</span>)], housing[, <span class="fu">c</span>(<span class="st">&quot;medv&quot;</span>)])</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  housing[, c(&quot;crim&quot;)] and housing[, c(&quot;medv&quot;)]
+## t = -9.4597, df = 504, p-value &lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.4599064 -0.3116859
+## sample estimates:
+##        cor 
+## -0.3883046</code></pre>
+</div>
+</div>
+<div id="方差分析" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> 方差分析</h2>
+<p>方差分析（ANOVA）又称“变异数分析”或“F检验”，用于两个及两个以上样本均数差别的显著性检验。</p>
+<div id="单因素方差分析" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> 单因素方差分析</h3>
+<p>从输出结果的F检验值来看，p&lt;0.05比较显著，说明是否在查尔斯河对房价有影响。</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="task-03.html#cb308-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">aov</span>(housing<span class="sc">$</span>medv <span class="sc">~</span> housing<span class="sc">$</span>chas)</span>
+<span id="cb308-2"><a href="task-03.html#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<pre><code>##               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## housing$chas   1   1312  1312.1   15.97 7.39e-05 ***
+## Residuals    504  41404    82.2                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="多因素方差分析" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> 多因素方差分析</h3>
+<p>构建多因素方差分析，查看因子对房价的影响是否显著。</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="task-03.html#cb310-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">aov</span>(housing<span class="sc">$</span>medv <span class="sc">~</span> housing<span class="sc">$</span>crim <span class="sc">*</span> housing<span class="sc">$</span>b)</span>
+<span id="cb310-2"><a href="task-03.html#cb310-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<pre><code>##                         Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## housing$crim             1   6441    6441   96.05  &lt; 2e-16 ***
+## housing$b                1   1697    1697   25.30 6.83e-07 ***
+## housing$crim:housing$b   1    917     917   13.68 0.000241 ***
+## Residuals              502  33662      67                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+</div>
+<div id="本章作者-3" class="section level2 unnumbered">
+<h2>本章作者</h2>
+<p><strong>杨佳达</strong></p>
+<blockquote>
+<p>数据挖掘师，Datawhale成员，目前在国内某第三方数据服务公司做数据分析挖掘及数据产品<br />
+<a href="https://github.com/yangjiada" class="uri">https://github.com/yangjiada</a></p>
+</blockquote>
+</div>
+<div id="关于datawhale-3" class="section level2 unnumbered">
+<h2>关于Datawhale</h2>
+<p>Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：</p>
+<p><img src="image/logo.png" width="129" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="task-02.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="task-04.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": true,
+"weibo": true,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper", "whatsapp"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/FinYang/RLearning-book/blob/main/Task03_Statistics.rmd",
+"text": null
+},
+"download": ["RLearning.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

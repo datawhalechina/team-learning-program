@@ -1,0 +1,224 @@
+# 模型 {#task-05}
+
+
+![](./image/task05_structure.png){width=100%}
+
+Task05共计3个知识点，预计需学习2-3小时，请安排好学习任务。
+
+## 前言
+为了帮助大家更好的使用R语言进行建模分析，本章节将借助波士顿房价数据集来展示常见的模型。本章节学习的目的是帮助大家了解模型的适用范围以及如何建模，不会对模型的底层原理进行深入的研究。并且迫于时间和精力有限，本章节仅介绍部分模型的实现。
+
+- 回归模型： 回归模型是一种有监督的、预测性的建模技术，它研究的是因变量和自变量之间的关系。
+
+- 分类模型： 分类模型也是一种有监督的机器学习模型。与回归模型不同的是，其标签(因变量)通常是有限个数的定类变量。最常见的是二分类模型。
+
+
+我们主要使用波士顿房价数据集来实现各种模型。因此我们使用2021作为种子值生成70%的数据作为训练集，其余数据作为测试集。下面展示来各个数据集的大小。
+
+```{r }
+# 导入BostonHousing数据
+library(mlbench)
+data(BostonHousing)
+
+# 设置种子值，方便复现
+set.seed(2021)
+
+# 生成训练集的索引，用来划分训练集和测试集
+train_index <- sample(dim(BostonHousing)[1], 0.7 * dim(BostonHousing)[1])
+BostonHousingTrain <- BostonHousing[train_index, ]
+BostonHousingTest <- BostonHousing[-train_index, ]
+
+# 查看数据集的size
+dim(BostonHousing)
+dim(BostonHousingTrain)
+dim(BostonHousingTest)
+
+# 查看数据集包含的变量名称
+names(BostonHousing)
+```
+
+##回归模型
+回归模型有很多主要有Linear Regression、Logistic Regression、Polynomial Regression、Stepwise Regression、Ridge Regression、Lasso Regression、ElasticNet等。
+
+本部分主要介绍有Linear Regression、以及Stepwise Regression三种回归模型的实现。
+
+### Linear Regression
+
+多元线性回归是一种最为基础的回归模型，其使用多个自变量和一个因变量利用OLS完成模型训练。下面我们将使用`medv`作为因变量，剩余变量作为自变量构建模型。
+
+多元线性回归模型使用`lm()`命令, 其中`medv~.`是回归公式，`data=BostonHousingTrain`是回归数据。对回归公式的构建进行一些补充，`~`左侧表示因变量，`~`右侧表示自变量，多个自变量使用`+`依次叠加。这里右侧使用了`.`，该符号的含义是除左侧变量外所有的变量。因此，`medv~.`等价于`medv~crim + zn + indus + chas + nox + rm + age + dis + rad + tax + ptratio + b + medv`。
+
+```{r }
+# 构建模型，medv~.表示回归方程
+lr_model <- lm(medv ~ ., data = BostonHousingTrain)
+
+# summary输出模型汇总
+summary(lr_model)
+```
+运用plot命令对模型进行诊断，各图含义参考 https://www.cnblogs.com/lafengdatascientist/p/5554167.html
+
+```{r }
+plot(lr_model)
+```
+
+`predict`命令能够基于已经训练好的模型进行预测。
+```{r }
+# 根据模型对新数据进行预测
+BostonHousingTest$lr_pred <- predict(lr_model, newdata = BostonHousingTest)
+```
+
+### Stepwise Regression
+利用逐步回归分析可以对模型中的变量进行优化。R语言中的`step()`命令,是以AIC信息统计量为准则，通过选择最小的AIC信息统计量来达到提出或添加变量的目的。
+
+对于逐步回归，一般有前向、后向、双向等逐步方式。本部分将基于已经实现的`lr_model`进行双向逐步回归。前向和后向回归只需要更改`step()`命令行中的`direstion`参数即可。具体内容参照 https://blog.csdn.net/qq_38204302/article/details/86567356
+
+```{r }
+# both逐步回归
+step_model <- step(lr_model, direction = "both")
+summary(step_model)
+```
+
+对于分类模型还有较为常用的Lasso Regression 和 Ridge Regression，我们将会在进阶教程中来更加具体的讲解模型知识。
+
+## 分类模型
+
+在进行分类模型前，我们需要构建分类标签。我们使用`medv`的中位数进行划分，其中1表示高房价，0表示低房价。通过这样的转化将原本的数值型变量转化为二元标签。并使用相同的种子值划分测试集和训练集。
+
+```{r }
+# 将连续变量转化成二分类变量
+BostonHousing$medv <- as.factor(ifelse(BostonHousing$medv > median(BostonHousing$medv), 1, 0))
+# 查看两种变量类别的数量
+summary(BostonHousing$medv)
+
+# 使用相同的种子值，复现训练集合测试集的划分
+set.seed(2021)
+train_index <- sample(dim(BostonHousing)[1], 0.7 * dim(BostonHousing)[1])
+BostonHousingTrain <- BostonHousing[train_index, ]
+BostonHousingTest <- BostonHousing[-train_index, ]
+```
+
+同时引入两个计算函数，用来计算AUC指标值。
+```{r }
+# 引入auc计算函数
+library("ROCR")
+calcAUC <- function(predcol, outcol) {
+  perf <- performance(prediction(predcol, outcol == 1), "auc")
+  as.numeric(perf@y.values)
+}
+```
+
+
+### Logistics Regression
+
+逻辑回归是一种广义的线性回归分析模型，利用sigmode将线性回归结果转化成概率的形式。下面展示了利用`glm()`构建逻辑回归的过程。通过计算，训练集上的auc取值为0.9554211，测试集上的auc取值为0.9506969，说明模型效果整体不错。
+
+```{r }
+# 逻辑回归模型构建
+lr_model <- glm(medv ~ ., data = BostonHousingTrain, family = binomial(link = "logit"))
+summary(lr_model)
+
+# 分别对训练集和测试集进行预测
+lr_pred_train <- predict(lr_model, newdata = BostonHousingTrain, type = "response")
+lr_pred_test <- predict(lr_model, newdata = BostonHousingTest, type = "response")
+
+# 计算训练集和测试集的auc
+calcAUC(lr_pred_train, BostonHousingTrain$medv)
+calcAUC(lr_pred_test, BostonHousingTest$medv)
+```
+
+
+### KNN
+
+KNN模型是一种简单易懂、可以用于分类和回归的模型。其中 K 表示在新样本点附近(距离)选取 K 个样本数据，通过在 K 个样本进行投票来判断新增样本的类型。
+
+KNN模型较难的一点是确定超参数K，目前有一些指标和经验方法帮助确定最优K的取值。这部分内容会在后续进行讲解，这里使用k=25进行建模。KNN模型在测试集上的auc值为0.8686411，相比于逻辑回归效果较差。
+
+```{r }
+# 导入knn模型的包
+library(kknn)
+
+# 构建knn模型
+knn <- kknn(medv ~ ., BostonHousingTrain, BostonHousingTest, k = 25)
+
+# 预测并计算测试集上的auc取值
+knn_pred_test <- predict(knn, newdata = BostonHousingTest)
+calcAUC(as.numeric(knn_pred_test), BostonHousingTest$medv)
+```
+
+
+### Decision Tree
+
+决策树是一种基于树模型进行划分的分类模型，通过一系列if then决策规则的集合，将特征空间划分成有限个不相交的子区域，对于落在相同子区域的样本，决策树模型给出相同的预测值。下面构建了决策树的分类模型
+
+```{r }
+# 导入包
+library(tree)
+
+# 构建决策树模型函数，medv~.是决策树公式，用来表明变量。
+# summary输出模型汇总信息
+dt_model <- tree(medv ~ ., BostonHousingTrain)
+summary(dt_model)
+
+# plot可以对树模型进行绘制，但可能会出现书分支过多的情况。
+plot(dt_model)
+text(dt_model)
+```
+
+在构建决策树模型的基础上，分别对训练集和测试集进行预测并计算auc取值。该模型在训练集上的auc取值为0.9281874，在测试集上的auc取值为0.8789199。训练集和测试集间存在抖动，说明该模型可能出现过拟合。我们需要引入剪枝的操作来降低模型的过拟合，这部分供同学们自学。
+
+```{r }
+# 预测
+dt_pred_train <- predict(dt_model, newdata = BostonHousingTrain, type = "class")
+dt_pred_test <- predict(dt_model, newdata = BostonHousingTest, type = "class")
+
+# 计算auc取值
+calcAUC(as.numeric(dt_pred_train), BostonHousingTrain$medv)
+calcAUC(as.numeric(dt_pred_test), BostonHousingTest$medv)
+```
+
+
+### Random Forest
+
+随机森林是一个包含多个决策树的分类器，可以用于分类和回归问题。在解决分类问题是，其输出的类别是由个别树输出的类别的众数而定。相比于单树模型，随机森林具有更好地泛化能力。
+
+使用`randomForest()`构建模型的过程中，可以通过`ntree`设定随机森林中包含的决策树数量。由于随机森林是对样本和变量的随机，因此可以通过`important`展示变量的重要性排序。通过模型预测，随机森林模型在训练集上的auc为0.9615975，在测试集上的auc为0.9247387。
+
+```{r }
+# 导入随机森林包
+library(randomForest)
+
+# 随机森林模型
+rf_model <- randomForest(medv ~ ., BostonHousingTrain, ntree = 100, nodesize = 10, importance = T)
+# 展示模型变量的重要性
+importance(rf_model)
+
+# 预测
+rf_pred_train <- predict(rf_model, newdata = BostonHousingTrain, type = "class")
+rf_pred_test <- predict(rf_model, newdata = BostonHousingTest, type = "class")
+
+# 计算auc取值
+calcAUC(as.numeric(rf_pred_train), BostonHousingTrain$medv)
+calcAUC(as.numeric(rf_pred_test), BostonHousingTest$medv)
+```
+
+## 思考与练习 {-}
+
+本章节仅对模型进行简单介绍，更多详细、复杂的模型将在后面的进阶课程中展开。
+
+学习完本章节，希望你能够尝试一些模型调优工作。如决策树剪枝，如尝试搜索KNN模型中最佳K取值等。
+
+
+## 本章作者 {-}
+
+__张晋__
+
+> Datawhale成员，算法竞赛爱好者  
+> https://blog.csdn.net/weixin_44585839/
+
+## 关于Datawhale {-}
+
+Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：
+
+```{r, echo = FALSE}
+insert_logo()
+```

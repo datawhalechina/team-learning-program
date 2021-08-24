@@ -1,0 +1,27 @@
+bookdown::gitbook:
+  config:
+    toc:
+      before: |
+        <li><a href="./">R语言数据分析组队学习</a></li>
+    download: null
+    sharing:
+      facebook: no
+      github: yes
+      twitter: no
+      linkedin: yes
+      weibo: yes
+      instapaper: no
+      vk: no
+      whatsapp: no
+      all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper', 'whatsapp']
+  
+bookdown::pdf_book:
+  pandoc_args: --listings
+  latex_engine: xelatex
+  keep_tex: yes
+  toc_unnumbered: no
+  template: template.tex  
+  includes:
+    in_header: preamble.tex
+      
+     

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 5 章 模型 | R语言数据分析组队学习</title>
+  <meta name="description" content="第 5 章 模型 | R语言数据分析组队学习" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 5 章 模型 | R语言数据分析组队学习" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 5 章 模型 | R语言数据分析组队学习" />
+  
+  
+  
+
+<meta name="author" content="张晋、杨佳达、牧小熊、杨杨卓然、姚昱君" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="task-04.html"/>
+
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R语言数据分析组队学习</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎！</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#贡献者信息"><i class="fa fa-check"></i>贡献者信息</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程简介"><i class="fa fa-check"></i>课程简介</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程大纲"><i class="fa fa-check"></i>课程大纲</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#关于-datawhale"><i class="fa fa-check"></i>关于 Datawhale</a></li>
+</ul></li>
+<li class="part"><span><b>I 准备工作</b></span></li>
+<li class="chapter" data-level="" data-path="task-00.html"><a href="task-00.html"><i class="fa fa-check"></i>熟悉规则与R语言入门</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="task-00.html"><a href="task-00.html#安装"><i class="fa fa-check"></i><b>0.1</b> 安装</a>
+<ul>
+<li class="chapter" data-level="0.1.1" data-path="task-00.html"><a href="task-00.html#r"><i class="fa fa-check"></i><b>0.1.1</b> R</a></li>
+<li class="chapter" data-level="0.1.2" data-path="task-00.html"><a href="task-00.html#rstudio"><i class="fa fa-check"></i><b>0.1.2</b> RStudio</a></li>
+<li class="chapter" data-level="0.1.3" data-path="task-00.html"><a href="task-00.html#r语言程辑包r-package"><i class="fa fa-check"></i><b>0.1.3</b> R语言程辑包（R Package）</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path="task-00.html"><a href="task-00.html#环境配置"><i class="fa fa-check"></i><b>0.2</b> 环境配置</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="task-00.html"><a href="task-00.html#项目project"><i class="fa fa-check"></i><b>0.2.1</b> 项目（Project）</a></li>
+<li class="chapter" data-level="0.2.2" data-path="task-00.html"><a href="task-00.html#用户界面"><i class="fa fa-check"></i><b>0.2.2</b> 用户界面</a></li>
+<li class="chapter" data-level="0.2.3" data-path="task-00.html"><a href="task-00.html#r-markdown"><i class="fa fa-check"></i><b>0.2.3</b> R Markdown</a></li>
+<li class="chapter" data-level="0.2.4" data-path="task-00.html"><a href="task-00.html#帮助"><i class="fa fa-check"></i><b>0.2.4</b> 帮助</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="task-00.html"><a href="task-00.html#happy-coding"><i class="fa fa-check"></i><b>0.3</b> Happy Coding!</a></li>
+<li class="chapter" data-level="" data-path="task-00.html"><a href="task-00.html#本章作者"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-00.html"><a href="task-00.html#关于datawhale"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="part"><span><b>II 开始干活</b></span></li>
+<li class="chapter" data-level="1" data-path="task-01.html"><a href="task-01.html"><i class="fa fa-check"></i><b>1</b> 数据结构与数据集</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="task-01.html"><a href="task-01.html#准备工作"><i class="fa fa-check"></i><b>1.1</b> 准备工作</a></li>
+<li class="chapter" data-level="1.2" data-path="task-01.html"><a href="task-01.html#编码基础"><i class="fa fa-check"></i><b>1.2</b> 编码基础</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="task-01.html"><a href="task-01.html#算术"><i class="fa fa-check"></i><b>1.2.1</b> 算术</a></li>
+<li class="chapter" data-level="1.2.2" data-path="task-01.html"><a href="task-01.html#赋值"><i class="fa fa-check"></i><b>1.2.2</b> 赋值</a></li>
+<li class="chapter" data-level="1.2.3" data-path="task-01.html"><a href="task-01.html#函数"><i class="fa fa-check"></i><b>1.2.3</b> 函数</a></li>
+<li class="chapter" data-level="1.2.4" data-path="task-01.html"><a href="task-01.html#循环loop"><i class="fa fa-check"></i><b>1.2.4</b> 循环（loop）</a></li>
+<li class="chapter" data-level="1.2.5" data-path="task-01.html"><a href="task-01.html#管道pipe"><i class="fa fa-check"></i><b>1.2.5</b> 管道（pipe）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="task-01.html"><a href="task-01.html#数据类型"><i class="fa fa-check"></i><b>1.3</b> 数据类型</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="task-01.html"><a href="task-01.html#基础数据类型"><i class="fa fa-check"></i><b>1.3.1</b> 基础数据类型</a></li>
+<li class="chapter" data-level="1.3.2" data-path="task-01.html"><a href="task-01.html#向量vector"><i class="fa fa-check"></i><b>1.3.2</b> 向量（vector）</a></li>
+<li class="chapter" data-level="1.3.3" data-path="task-01.html"><a href="task-01.html#特殊数据类型"><i class="fa fa-check"></i><b>1.3.3</b> 特殊数据类型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="task-01.html"><a href="task-01.html#多维数据类型"><i class="fa fa-check"></i><b>1.4</b> 多维数据类型</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="task-01.html"><a href="task-01.html#矩阵matrix"><i class="fa fa-check"></i><b>1.4.1</b> 矩阵（matrix）</a></li>
+<li class="chapter" data-level="1.4.2" data-path="task-01.html"><a href="task-01.html#列表list"><i class="fa fa-check"></i><b>1.4.2</b> 列表（list）</a></li>
+<li class="chapter" data-level="1.4.3" data-path="task-01.html"><a href="task-01.html#数据表data-frame-与-tibble"><i class="fa fa-check"></i><b>1.4.3</b> 数据表（data frame 与 tibble）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="task-01.html"><a href="task-01.html#读写数据"><i class="fa fa-check"></i><b>1.5</b> 读写数据</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="task-01.html"><a href="task-01.html#内置数据集"><i class="fa fa-check"></i><b>1.5.1</b> 内置数据集</a></li>
+<li class="chapter" data-level="1.5.2" data-path="task-01.html"><a href="task-01.html#表格类型数据csv-excel"><i class="fa fa-check"></i><b>1.5.2</b> 表格类型数据（csv, excel)</a></li>
+<li class="chapter" data-level="1.5.3" data-path="task-01.html"><a href="task-01.html#r的专属类型数据rdata-rds"><i class="fa fa-check"></i><b>1.5.3</b> R的专属类型数据（RData, rds）</a></li>
+<li class="chapter" data-level="1.5.4" data-path="task-01.html"><a href="task-01.html#其他软件spss-stata-sas"><i class="fa fa-check"></i><b>1.5.4</b> 其他软件（SPSS, Stata, SAS）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="task-01.html"><a href="task-01.html#练习题"><i class="fa fa-check"></i><b>1.6</b> 练习题</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="task-01.html"><a href="task-01.html#了解数据集"><i class="fa fa-check"></i><b>1.6.1</b> 了解数据集</a></li>
+<li class="chapter" data-level="1.6.2" data-path="task-01.html"><a href="task-01.html#创造数据集"><i class="fa fa-check"></i><b>1.6.2</b> 创造数据集</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-01.html"><a href="task-01.html#本章作者-1"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-01.html"><a href="task-01.html#关于datawhale-1"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="task-02.html"><a href="task-02.html"><i class="fa fa-check"></i><b>2</b> 数据清洗与准备</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#环境配置-1"><i class="fa fa-check"></i>环境配置</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#案例数据"><i class="fa fa-check"></i>案例数据</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#数据集1-h1n1流感问卷数据集"><i class="fa fa-check"></i>数据集1 h1n1流感问卷数据集</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#数据集2-波士顿房价数据集"><i class="fa fa-check"></i>数据集2 波士顿房价数据集</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1" data-path="task-02.html"><a href="task-02.html#重复值处理"><i class="fa fa-check"></i><b>2.1</b> 重复值处理</a></li>
+<li class="chapter" data-level="2.2" data-path="task-02.html"><a href="task-02.html#缺失值识别与处理"><i class="fa fa-check"></i><b>2.2</b> 缺失值识别与处理</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="task-02.html"><a href="task-02.html#缺失值识别"><i class="fa fa-check"></i><b>2.2.1</b> 缺失值识别</a></li>
+<li class="chapter" data-level="2.2.2" data-path="task-02.html"><a href="task-02.html#缺失值处理"><i class="fa fa-check"></i><b>2.2.2</b> 缺失值处理</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="task-02.html"><a href="task-02.html#异常值识别与处理"><i class="fa fa-check"></i><b>2.3</b> 异常值识别与处理</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="task-02.html"><a href="task-02.html#异常值识别"><i class="fa fa-check"></i><b>2.3.1</b> 异常值识别</a></li>
+<li class="chapter" data-level="2.3.2" data-path="task-02.html"><a href="task-02.html#可视化图形分布"><i class="fa fa-check"></i><b>2.3.2</b> 可视化图形分布</a></li>
+<li class="chapter" data-level="2.3.3" data-path="task-02.html"><a href="task-02.html#z-score"><i class="fa fa-check"></i><b>2.3.3</b> z-score</a></li>
+<li class="chapter" data-level="2.3.4" data-path="task-02.html"><a href="task-02.html#局部异常因子法"><i class="fa fa-check"></i><b>2.3.4</b> 局部异常因子法</a></li>
+<li class="chapter" data-level="2.3.5" data-path="task-02.html"><a href="task-02.html#异常值处理"><i class="fa fa-check"></i><b>2.3.5</b> 异常值处理</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="task-02.html"><a href="task-02.html#特征编码"><i class="fa fa-check"></i><b>2.4</b> 特征编码</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="task-02.html"><a href="task-02.html#独热编码哑编码"><i class="fa fa-check"></i><b>2.4.1</b> 独热编码/哑编码</a></li>
+<li class="chapter" data-level="2.4.2" data-path="task-02.html"><a href="task-02.html#标签编码"><i class="fa fa-check"></i><b>2.4.2</b> 标签编码</a></li>
+<li class="chapter" data-level="2.4.3" data-path="task-02.html"><a href="task-02.html#手动编码"><i class="fa fa-check"></i><b>2.4.3</b> 手动编码</a></li>
+<li class="chapter" data-level="2.4.4" data-path="task-02.html"><a href="task-02.html#日期特征转换"><i class="fa fa-check"></i><b>2.4.4</b> 日期特征转换</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="task-02.html"><a href="task-02.html#规范化与偏态数据"><i class="fa fa-check"></i><b>2.5</b> 规范化与偏态数据</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="task-02.html"><a href="task-02.html#规范化"><i class="fa fa-check"></i><b>2.5.1</b> 0-1规范化</a></li>
+<li class="chapter" data-level="2.5.2" data-path="task-02.html"><a href="task-02.html#z-score标准化"><i class="fa fa-check"></i><b>2.5.2</b> Z-score标准化</a></li>
+<li class="chapter" data-level="2.5.3" data-path="task-02.html"><a href="task-02.html#对数转换log-transform"><i class="fa fa-check"></i><b>2.5.3</b> 对数转换(log transform)</a></li>
+<li class="chapter" data-level="2.5.4" data-path="task-02.html"><a href="task-02.html#box-cox"><i class="fa fa-check"></i><b>2.5.4</b> Box-Cox</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="task-02.html"><a href="task-02.html#小拓展"><i class="fa fa-check"></i><b>2.6</b> 小拓展</a></li>
+<li class="chapter" data-level="2.7" data-path="task-02.html"><a href="task-02.html#思考与练习"><i class="fa fa-check"></i><b>2.7</b> 思考与练习</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#附录参考资料"><i class="fa fa-check"></i>附录：参考资料</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#理论资料"><i class="fa fa-check"></i>理论资料</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#r语言函数用法示例"><i class="fa fa-check"></i>R语言函数用法示例</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#本章作者-2"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-02.html"><a href="task-02.html#关于datawhale-2"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="task-03.html"><a href="task-03.html"><i class="fa fa-check"></i><b>3</b> 基本统计分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-03.html"><a href="task-03.html#准备工作-1"><i class="fa fa-check"></i>准备工作</a></li>
+<li class="chapter" data-level="3.1" data-path="task-03.html"><a href="task-03.html#多种方法获取描述性统计量"><i class="fa fa-check"></i><b>3.1</b> 多种方法获取描述性统计量</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="task-03.html"><a href="task-03.html#基础方法"><i class="fa fa-check"></i><b>3.1.1</b> 基础方法</a></li>
+<li class="chapter" data-level="3.1.2" data-path="task-03.html"><a href="task-03.html#拓展包方法"><i class="fa fa-check"></i><b>3.1.2</b> 拓展包方法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="task-03.html"><a href="task-03.html#分组计算描述性统计"><i class="fa fa-check"></i><b>3.2</b> 分组计算描述性统计</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="task-03.html"><a href="task-03.html#基础方法-1"><i class="fa fa-check"></i><b>3.2.1</b> 基础方法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="task-03.html"><a href="task-03.html#频数表和列联表"><i class="fa fa-check"></i><b>3.3</b> 频数表和列联表</a></li>
+<li class="chapter" data-level="3.4" data-path="task-03.html"><a href="task-03.html#相关"><i class="fa fa-check"></i><b>3.4</b> 相关</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="task-03.html"><a href="task-03.html#相关的类型"><i class="fa fa-check"></i><b>3.4.1</b> 相关的类型</a></li>
+<li class="chapter" data-level="3.4.2" data-path="task-03.html"><a href="task-03.html#相关性的显著性检验"><i class="fa fa-check"></i><b>3.4.2</b> 相关性的显著性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="task-03.html"><a href="task-03.html#方差分析"><i class="fa fa-check"></i><b>3.5</b> 方差分析</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="task-03.html"><a href="task-03.html#单因素方差分析"><i class="fa fa-check"></i><b>3.5.1</b> 单因素方差分析</a></li>
+<li class="chapter" data-level="3.5.2" data-path="task-03.html"><a href="task-03.html#多因素方差分析"><i class="fa fa-check"></i><b>3.5.2</b> 多因素方差分析</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-03.html"><a href="task-03.html#本章作者-3"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-03.html"><a href="task-03.html#关于datawhale-3"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="task-04.html"><a href="task-04.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#ggplot2包介绍"><i class="fa fa-check"></i>ggplot2包介绍</a></li>
+<li class="chapter" data-level="4.1" data-path="task-04.html"><a href="task-04.html#环境配置-2"><i class="fa fa-check"></i><b>4.1</b> 环境配置</a>
+<ul>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#案例数据-1"><i class="fa fa-check"></i>案例数据</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="task-04.html"><a href="task-04.html#散点图"><i class="fa fa-check"></i><b>4.2</b> 散点图</a></li>
+<li class="chapter" data-level="4.3" data-path="task-04.html"><a href="task-04.html#直方图"><i class="fa fa-check"></i><b>4.3</b> 直方图</a></li>
+<li class="chapter" data-level="4.4" data-path="task-04.html"><a href="task-04.html#柱状图"><i class="fa fa-check"></i><b>4.4</b> 柱状图</a></li>
+<li class="chapter" data-level="4.5" data-path="task-04.html"><a href="task-04.html#饼状图"><i class="fa fa-check"></i><b>4.5</b> 饼状图</a></li>
+<li class="chapter" data-level="4.6" data-path="task-04.html"><a href="task-04.html#折线图"><i class="fa fa-check"></i><b>4.6</b> 折线图</a></li>
+<li class="chapter" data-level="4.7" data-path="task-04.html"><a href="task-04.html#ggplot2扩展包主题"><i class="fa fa-check"></i><b>4.7</b> ggplot2扩展包主题</a></li>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#本章作者-4"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-04.html"><a href="task-04.html#关于datawhale-4"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="task-05.html"><a href="task-05.html"><i class="fa fa-check"></i><b>5</b> 模型</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="task-05.html"><a href="task-05.html#前言"><i class="fa fa-check"></i><b>5.1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="task-05.html"><a href="task-05.html#linear-regression"><i class="fa fa-check"></i><b>5.1.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="5.1.2" data-path="task-05.html"><a href="task-05.html#stepwise-regression"><i class="fa fa-check"></i><b>5.1.2</b> Stepwise Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="task-05.html"><a href="task-05.html#分类模型"><i class="fa fa-check"></i><b>5.2</b> 分类模型</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="task-05.html"><a href="task-05.html#logistics-regression"><i class="fa fa-check"></i><b>5.2.1</b> Logistics Regression</a></li>
+<li class="chapter" data-level="5.2.2" data-path="task-05.html"><a href="task-05.html#knn"><i class="fa fa-check"></i><b>5.2.2</b> KNN</a></li>
+<li class="chapter" data-level="5.2.3" data-path="task-05.html"><a href="task-05.html#decision-tree"><i class="fa fa-check"></i><b>5.2.3</b> Decision Tree</a></li>
+<li class="chapter" data-level="5.2.4" data-path="task-05.html"><a href="task-05.html#random-forest"><i class="fa fa-check"></i><b>5.2.4</b> Random Forest</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="task-05.html"><a href="task-05.html#思考与练习-1"><i class="fa fa-check"></i>思考与练习</a></li>
+<li class="chapter" data-level="" data-path="task-05.html"><a href="task-05.html#本章作者-5"><i class="fa fa-check"></i>本章作者</a></li>
+<li class="chapter" data-level="" data-path="task-05.html"><a href="task-05.html#关于datawhale-5"><i class="fa fa-check"></i>关于Datawhale</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言数据分析组队学习</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="task-05" class="section level1" number="5">
+<h1><span class="header-section-number">第 5 章</span> 模型</h1>
+<p><img src="image/task05_structure.png" style="width:100.0%" /></p>
+<p>Task05共计3个知识点，预计需学习2-3小时，请安排好学习任务。</p>
+<div id="前言" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> 前言</h2>
+<p>为了帮助大家更好的使用R语言进行建模分析，本章节将借助波士顿房价数据集来展示常见的模型。本章节学习的目的是帮助大家了解模型的适用范围以及如何建模，不会对模型的底层原理进行深入的研究。并且迫于时间和精力有限，本章节仅介绍部分模型的实现。</p>
+<ul>
+<li><p>回归模型： 回归模型是一种有监督的、预测性的建模技术，它研究的是因变量和自变量之间的关系。</p></li>
+<li><p>分类模型： 分类模型也是一种有监督的机器学习模型。与回归模型不同的是，其标签(因变量)通常是有限个数的定类变量。最常见的是二分类模型。</p></li>
+</ul>
+<p>我们主要使用波士顿房价数据集来实现各种模型。因此我们使用2021作为种子值生成70%的数据作为训练集，其余数据作为测试集。下面展示来各个数据集的大小。</p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="task-05.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 导入BostonHousing数据</span></span>
+<span id="cb348-2"><a href="task-05.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb348-3"><a href="task-05.html#cb348-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(BostonHousing)</span>
+<span id="cb348-4"><a href="task-05.html#cb348-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb348-5"><a href="task-05.html#cb348-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置种子值，方便复现</span></span>
+<span id="cb348-6"><a href="task-05.html#cb348-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2021</span>)</span>
+<span id="cb348-7"><a href="task-05.html#cb348-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb348-8"><a href="task-05.html#cb348-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 生成训练集的索引，用来划分训练集和测试集</span></span>
+<span id="cb348-9"><a href="task-05.html#cb348-9" aria-hidden="true" tabindex="-1"></a>train_index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">dim</span>(BostonHousing)[<span class="dv">1</span>], <span class="fl">0.7</span> <span class="sc">*</span> <span class="fu">dim</span>(BostonHousing)[<span class="dv">1</span>])</span>
+<span id="cb348-10"><a href="task-05.html#cb348-10" aria-hidden="true" tabindex="-1"></a>BostonHousingTrain <span class="ot">&lt;-</span> BostonHousing[train_index, ]</span>
+<span id="cb348-11"><a href="task-05.html#cb348-11" aria-hidden="true" tabindex="-1"></a>BostonHousingTest <span class="ot">&lt;-</span> BostonHousing[<span class="sc">-</span>train_index, ]</span>
+<span id="cb348-12"><a href="task-05.html#cb348-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb348-13"><a href="task-05.html#cb348-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看数据集的size</span></span>
+<span id="cb348-14"><a href="task-05.html#cb348-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(BostonHousing)</span></code></pre></div>
+<pre><code>## [1] 506  14</code></pre>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="task-05.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(BostonHousingTrain)</span></code></pre></div>
+<pre><code>## [1] 354  14</code></pre>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="task-05.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(BostonHousingTest)</span></code></pre></div>
+<pre><code>## [1] 152  14</code></pre>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="task-05.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看数据集包含的变量名称</span></span>
+<span id="cb354-2"><a href="task-05.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(BostonHousing)</span></code></pre></div>
+<pre><code>##  [1] &quot;crim&quot;    &quot;zn&quot;      &quot;indus&quot;   &quot;chas&quot;    &quot;nox&quot;     &quot;rm&quot;      &quot;age&quot;    
+##  [8] &quot;dis&quot;     &quot;rad&quot;     &quot;tax&quot;     &quot;ptratio&quot; &quot;b&quot;       &quot;lstat&quot;   &quot;medv&quot;</code></pre>
+<p>##回归模型
+回归模型有很多主要有Linear Regression、Logistic Regression、Polynomial Regression、Stepwise Regression、Ridge Regression、Lasso Regression、ElasticNet等。</p>
+<p>本部分主要介绍有Linear Regression、以及Stepwise Regression三种回归模型的实现。</p>
+<div id="linear-regression" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Linear Regression</h3>
+<p>多元线性回归是一种最为基础的回归模型，其使用多个自变量和一个因变量利用OLS完成模型训练。下面我们将使用<code>medv</code>作为因变量，剩余变量作为自变量构建模型。</p>
+<p>多元线性回归模型使用<code>lm()</code>命令, 其中<code>medv~.</code>是回归公式，<code>data=BostonHousingTrain</code>是回归数据。对回归公式的构建进行一些补充，<code>~</code>左侧表示因变量，<code>~</code>右侧表示自变量，多个自变量使用<code>+</code>依次叠加。这里右侧使用了<code>.</code>，该符号的含义是除左侧变量外所有的变量。因此，<code>medv~.</code>等价于<code>medv~crim + zn + indus + chas + nox + rm + age + dis + rad + tax + ptratio + b + medv</code>。</p>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="task-05.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 构建模型，medv~.表示回归方程</span></span>
+<span id="cb356-2"><a href="task-05.html#cb356-2" aria-hidden="true" tabindex="-1"></a>lr_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv <span class="sc">~</span> ., <span class="at">data =</span> BostonHousingTrain)</span>
+<span id="cb356-3"><a href="task-05.html#cb356-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb356-4"><a href="task-05.html#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="co"># summary输出模型汇总</span></span>
+<span id="cb356-5"><a href="task-05.html#cb356-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_model)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = medv ~ ., data = BostonHousingTrain)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -17.1929  -2.6567  -0.3854   1.6261  28.5425 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  28.279554   6.464743   4.374 1.62e-05 ***
+## crim         -0.066574   0.051496  -1.293 0.196958    
+## zn            0.031466   0.016525   1.904 0.057733 .  
+## indus         0.046583   0.069009   0.675 0.500115    
+## chas1         3.372501   1.065312   3.166 0.001687 ** 
+## nox         -14.103937   4.498414  -3.135 0.001866 ** 
+## rm            4.512687   0.547845   8.237 3.85e-15 ***
+## age          -0.010015   0.016016  -0.625 0.532197    
+## dis          -1.259008   0.245311  -5.132 4.82e-07 ***
+## rad           0.263841   0.077147   3.420 0.000702 ***
+## tax          -0.012026   0.004176  -2.880 0.004235 ** 
+## ptratio      -1.008997   0.160048  -6.304 8.99e-10 ***
+## b             0.014361   0.003406   4.217 3.18e-05 ***
+## lstat        -0.466948   0.062026  -7.528 4.66e-13 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.776 on 340 degrees of freedom
+## Multiple R-squared:  0.7299, Adjusted R-squared:  0.7196 
+## F-statistic: 70.67 on 13 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>运用plot命令对模型进行诊断，各图含义参考 <a href="https://www.cnblogs.com/lafengdatascientist/p/5554167.html" class="uri">https://www.cnblogs.com/lafengdatascientist/p/5554167.html</a></p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="task-05.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lr_model)</span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-140-1.png" width="672" /><img src="RLearning_files/figure-html/unnamed-chunk-140-2.png" width="672" /><img src="RLearning_files/figure-html/unnamed-chunk-140-3.png" width="672" /><img src="RLearning_files/figure-html/unnamed-chunk-140-4.png" width="672" /></p>
+<p><code>predict</code>命令能够基于已经训练好的模型进行预测。</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="task-05.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 根据模型对新数据进行预测</span></span>
+<span id="cb359-2"><a href="task-05.html#cb359-2" aria-hidden="true" tabindex="-1"></a>BostonHousingTest<span class="sc">$</span>lr_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(lr_model, <span class="at">newdata =</span> BostonHousingTest)</span></code></pre></div>
+</div>
+<div id="stepwise-regression" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Stepwise Regression</h3>
+<p>利用逐步回归分析可以对模型中的变量进行优化。R语言中的<code>step()</code>命令,是以AIC信息统计量为准则，通过选择最小的AIC信息统计量来达到提出或添加变量的目的。</p>
+<p>对于逐步回归，一般有前向、后向、双向等逐步方式。本部分将基于已经实现的<code>lr_model</code>进行双向逐步回归。前向和后向回归只需要更改<code>step()</code>命令行中的<code>direstion</code>参数即可。具体内容参照 <a href="https://blog.csdn.net/qq_38204302/article/details/86567356" class="uri">https://blog.csdn.net/qq_38204302/article/details/86567356</a></p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="task-05.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># both逐步回归</span></span>
+<span id="cb360-2"><a href="task-05.html#cb360-2" aria-hidden="true" tabindex="-1"></a>step_model <span class="ot">&lt;-</span> <span class="fu">step</span>(lr_model, <span class="at">direction =</span> <span class="st">&quot;both&quot;</span>)</span></code></pre></div>
+<pre><code>## Start:  AIC=1120.78
+## medv ~ crim + zn + indus + chas + nox + rm + age + dis + rad + 
+##     tax + ptratio + b + lstat
+## 
+##           Df Sum of Sq    RSS    AIC
+## - age      1      8.92 7765.1 1119.2
+## - indus    1     10.39 7766.6 1119.3
+## - crim     1     38.13 7794.3 1120.5
+## &lt;none&gt;                 7756.2 1120.8
+## - zn       1     82.71 7838.9 1122.5
+## - tax      1    189.16 7945.4 1127.3
+## - nox      1    224.25 7980.5 1128.9
+## - chas     1    228.62 7984.8 1129.1
+## - rad      1    266.82 8023.0 1130.8
+## - b        1    405.60 8161.8 1136.8
+## - dis      1    600.89 8357.1 1145.2
+## - ptratio  1    906.67 8662.9 1157.9
+## - lstat    1   1292.88 9049.1 1173.4
+## - rm       1   1547.84 9304.0 1183.2
+## 
+## Step:  AIC=1119.19
+## medv ~ crim + zn + indus + chas + nox + rm + dis + rad + tax + 
+##     ptratio + b + lstat
+## 
+##           Df Sum of Sq    RSS    AIC
+## - indus    1     10.22 7775.3 1117.7
+## - crim     1     39.31 7804.4 1119.0
+## &lt;none&gt;                 7765.1 1119.2
+## + age      1      8.92 7756.2 1120.8
+## - zn       1     92.34 7857.5 1121.4
+## - tax      1    193.70 7958.8 1125.9
+## - chas     1    225.98 7991.1 1127.3
+## - nox      1    261.86 8027.0 1128.9
+## - rad      1    278.77 8043.9 1129.7
+## - b        1    398.83 8164.0 1134.9
+## - dis      1    613.30 8378.4 1144.1
+## - ptratio  1    916.06 8681.2 1156.7
+## - lstat    1   1546.55 9311.7 1181.5
+## - rm       1   1571.42 9336.5 1182.4
+## 
+## Step:  AIC=1117.65
+## medv ~ crim + zn + chas + nox + rm + dis + rad + tax + ptratio + 
+##     b + lstat
+## 
+##           Df Sum of Sq    RSS    AIC
+## - crim     1     41.19 7816.5 1117.5
+## &lt;none&gt;                 7775.3 1117.7
+## + indus    1     10.22 7765.1 1119.2
+## + age      1      8.74 7766.6 1119.3
+## - zn       1     88.58 7863.9 1119.7
+## - tax      1    189.88 7965.2 1124.2
+## - chas     1    231.63 8007.0 1126.0
+## - nox      1    252.32 8027.7 1127.0
+## - rad      1    269.59 8044.9 1127.7
+## - b        1    395.78 8171.1 1133.2
+## - dis      1    706.93 8482.3 1146.5
+## - ptratio  1    906.25 8681.6 1154.7
+## - lstat    1   1537.69 9313.0 1179.5
+## - rm       1   1561.38 9336.7 1180.4
+## 
+## Step:  AIC=1117.52
+## medv ~ zn + chas + nox + rm + dis + rad + tax + ptratio + b + 
+##     lstat
+## 
+##           Df Sum of Sq    RSS    AIC
+## &lt;none&gt;                 7816.5 1117.5
+## + crim     1     41.19 7775.3 1117.7
+## + indus    1     12.10 7804.4 1119.0
+## - zn       1     76.92 7893.5 1119.0
+## + age      1      9.92 7806.6 1119.1
+## - tax      1    182.40 7998.9 1123.7
+## - rad      1    228.86 8045.4 1125.7
+## - nox      1    236.90 8053.4 1126.1
+## - chas     1    240.06 8056.6 1126.2
+## - b        1    514.43 8331.0 1138.1
+## - dis      1    673.74 8490.3 1144.8
+## - ptratio  1    893.27 8709.8 1153.8
+## - lstat    1   1589.98 9406.5 1181.1
+## - rm       1   1636.60 9453.1 1182.8</code></pre>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="task-05.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step_model)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = medv ~ zn + chas + nox + rm + dis + rad + tax + 
+##     ptratio + b + lstat, data = BostonHousingTrain)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -16.8955  -2.6773  -0.4005   1.6707  28.5842 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  27.001770   6.354437   4.249 2.77e-05 ***
+## zn            0.029797   0.016219   1.837  0.06705 .  
+## chas1         3.446516   1.061891   3.246  0.00129 ** 
+## nox         -13.578105   4.211269  -3.224  0.00138 ** 
+## rm            4.491255   0.529976   8.474 7.07e-16 ***
+## dis          -1.213451   0.223170  -5.437 1.03e-07 ***
+## rad           0.220392   0.069546   3.169  0.00167 ** 
+## tax          -0.010818   0.003824  -2.829  0.00494 ** 
+## ptratio      -0.991885   0.158427  -6.261 1.14e-09 ***
+## b             0.015446   0.003251   4.751 2.98e-06 ***
+## lstat        -0.482234   0.057733  -8.353 1.67e-15 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.774 on 343 degrees of freedom
+## Multiple R-squared:  0.7278, Adjusted R-squared:  0.7199 
+## F-statistic: 91.71 on 10 and 343 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>对于分类模型还有较为常用的Lasso Regression 和 Ridge Regression，我们将会在进阶教程中来更加具体的讲解模型知识。</p>
+</div>
+</div>
+<div id="分类模型" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> 分类模型</h2>
+<p>在进行分类模型前，我们需要构建分类标签。我们使用<code>medv</code>的中位数进行划分，其中1表示高房价，0表示低房价。通过这样的转化将原本的数值型变量转化为二元标签。并使用相同的种子值划分测试集和训练集。</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="task-05.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 将连续变量转化成二分类变量</span></span>
+<span id="cb364-2"><a href="task-05.html#cb364-2" aria-hidden="true" tabindex="-1"></a>BostonHousing<span class="sc">$</span>medv <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(BostonHousing<span class="sc">$</span>medv <span class="sc">&gt;</span> <span class="fu">median</span>(BostonHousing<span class="sc">$</span>medv), <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb364-3"><a href="task-05.html#cb364-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看两种变量类别的数量</span></span>
+<span id="cb364-4"><a href="task-05.html#cb364-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(BostonHousing<span class="sc">$</span>medv)</span></code></pre></div>
+<pre><code>##   0   1 
+## 256 250</code></pre>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="task-05.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用相同的种子值，复现训练集合测试集的划分</span></span>
+<span id="cb366-2"><a href="task-05.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2021</span>)</span>
+<span id="cb366-3"><a href="task-05.html#cb366-3" aria-hidden="true" tabindex="-1"></a>train_index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">dim</span>(BostonHousing)[<span class="dv">1</span>], <span class="fl">0.7</span> <span class="sc">*</span> <span class="fu">dim</span>(BostonHousing)[<span class="dv">1</span>])</span>
+<span id="cb366-4"><a href="task-05.html#cb366-4" aria-hidden="true" tabindex="-1"></a>BostonHousingTrain <span class="ot">&lt;-</span> BostonHousing[train_index, ]</span>
+<span id="cb366-5"><a href="task-05.html#cb366-5" aria-hidden="true" tabindex="-1"></a>BostonHousingTest <span class="ot">&lt;-</span> BostonHousing[<span class="sc">-</span>train_index, ]</span></code></pre></div>
+<p>同时引入两个计算函数，用来计算AUC指标值。</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="task-05.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 引入auc计算函数</span></span>
+<span id="cb367-2"><a href="task-05.html#cb367-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ROCR&quot;</span>)</span>
+<span id="cb367-3"><a href="task-05.html#cb367-3" aria-hidden="true" tabindex="-1"></a>calcAUC <span class="ot">&lt;-</span> <span class="cf">function</span>(predcol, outcol) {</span>
+<span id="cb367-4"><a href="task-05.html#cb367-4" aria-hidden="true" tabindex="-1"></a>  perf <span class="ot">&lt;-</span> <span class="fu">performance</span>(<span class="fu">prediction</span>(predcol, outcol <span class="sc">==</span> <span class="dv">1</span>), <span class="st">&quot;auc&quot;</span>)</span>
+<span id="cb367-5"><a href="task-05.html#cb367-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(perf<span class="sc">@</span>y.values)</span>
+<span id="cb367-6"><a href="task-05.html#cb367-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="logistics-regression" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Logistics Regression</h3>
+<p>逻辑回归是一种广义的线性回归分析模型，利用sigmode将线性回归结果转化成概率的形式。下面展示了利用<code>glm()</code>构建逻辑回归的过程。通过计算，训练集上的auc取值为0.9554211，测试集上的auc取值为0.9506969，说明模型效果整体不错。</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="task-05.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 逻辑回归模型构建</span></span>
+<span id="cb368-2"><a href="task-05.html#cb368-2" aria-hidden="true" tabindex="-1"></a>lr_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(medv <span class="sc">~</span> ., <span class="at">data =</span> BostonHousingTrain, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb368-3"><a href="task-05.html#cb368-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_model)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = medv ~ ., family = binomial(link = &quot;logit&quot;), data = BostonHousingTrain)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -2.00065  -0.34945  -0.01094   0.24116   3.00080  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  4.641164   4.937497   0.940 0.347226    
+## crim        -0.053419   0.096982  -0.551 0.581760    
+## zn           0.005680   0.015218   0.373 0.708951    
+## indus        0.045677   0.048167   0.948 0.342973    
+## chas1        1.634949   0.798937   2.046 0.040717 *  
+## nox         -6.916586   3.286514  -2.105 0.035332 *  
+## rm           2.876778   0.651573   4.415 1.01e-05 ***
+## age         -0.034146   0.013493  -2.531 0.011383 *  
+## dis         -0.696695   0.209391  -3.327 0.000877 ***
+## rad          0.220168   0.074211   2.967 0.003009 ** 
+## tax         -0.009724   0.003446  -2.822 0.004769 ** 
+## ptratio     -0.611081   0.132894  -4.598 4.26e-06 ***
+## b            0.006135   0.003830   1.602 0.109159    
+## lstat       -0.267857   0.064765  -4.136 3.54e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 489.83  on 353  degrees of freedom
+## Residual deviance: 187.85  on 340  degrees of freedom
+## AIC: 215.85
+## 
+## Number of Fisher Scoring iterations: 7</code></pre>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="task-05.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 分别对训练集和测试集进行预测</span></span>
+<span id="cb370-2"><a href="task-05.html#cb370-2" aria-hidden="true" tabindex="-1"></a>lr_pred_train <span class="ot">&lt;-</span> <span class="fu">predict</span>(lr_model, <span class="at">newdata =</span> BostonHousingTrain, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb370-3"><a href="task-05.html#cb370-3" aria-hidden="true" tabindex="-1"></a>lr_pred_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(lr_model, <span class="at">newdata =</span> BostonHousingTest, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb370-4"><a href="task-05.html#cb370-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb370-5"><a href="task-05.html#cb370-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算训练集和测试集的auc</span></span>
+<span id="cb370-6"><a href="task-05.html#cb370-6" aria-hidden="true" tabindex="-1"></a><span class="fu">calcAUC</span>(lr_pred_train, BostonHousingTrain<span class="sc">$</span>medv)</span></code></pre></div>
+<pre><code>## [1] 0.9554211</code></pre>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="task-05.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">calcAUC</span>(lr_pred_test, BostonHousingTest<span class="sc">$</span>medv)</span></code></pre></div>
+<pre><code>## [1] 0.9506969</code></pre>
+</div>
+<div id="knn" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> KNN</h3>
+<p>KNN模型是一种简单易懂、可以用于分类和回归的模型。其中 K 表示在新样本点附近(距离)选取 K 个样本数据，通过在 K 个样本进行投票来判断新增样本的类型。</p>
+<p>KNN模型较难的一点是确定超参数K，目前有一些指标和经验方法帮助确定最优K的取值。这部分内容会在后续进行讲解，这里使用k=25进行建模。KNN模型在测试集上的auc值为0.8686411，相比于逻辑回归效果较差。</p>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="task-05.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 导入knn模型的包</span></span>
+<span id="cb374-2"><a href="task-05.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kknn)</span>
+<span id="cb374-3"><a href="task-05.html#cb374-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb374-4"><a href="task-05.html#cb374-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 构建knn模型</span></span>
+<span id="cb374-5"><a href="task-05.html#cb374-5" aria-hidden="true" tabindex="-1"></a>knn <span class="ot">&lt;-</span> <span class="fu">kknn</span>(medv <span class="sc">~</span> ., BostonHousingTrain, BostonHousingTest, <span class="at">k =</span> <span class="dv">25</span>)</span>
+<span id="cb374-6"><a href="task-05.html#cb374-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb374-7"><a href="task-05.html#cb374-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 预测并计算测试集上的auc取值</span></span>
+<span id="cb374-8"><a href="task-05.html#cb374-8" aria-hidden="true" tabindex="-1"></a>knn_pred_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(knn, <span class="at">newdata =</span> BostonHousingTest)</span>
+<span id="cb374-9"><a href="task-05.html#cb374-9" aria-hidden="true" tabindex="-1"></a><span class="fu">calcAUC</span>(<span class="fu">as.numeric</span>(knn_pred_test), BostonHousingTest<span class="sc">$</span>medv)</span></code></pre></div>
+<pre><code>## [1] 0.875784</code></pre>
+</div>
+<div id="decision-tree" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Decision Tree</h3>
+<p>决策树是一种基于树模型进行划分的分类模型，通过一系列if then决策规则的集合，将特征空间划分成有限个不相交的子区域，对于落在相同子区域的样本，决策树模型给出相同的预测值。下面构建了决策树的分类模型</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="task-05.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 导入包</span></span>
+<span id="cb376-2"><a href="task-05.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tree)</span>
+<span id="cb376-3"><a href="task-05.html#cb376-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-4"><a href="task-05.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 构建决策树模型函数，medv~.是决策树公式，用来表明变量。</span></span>
+<span id="cb376-5"><a href="task-05.html#cb376-5" aria-hidden="true" tabindex="-1"></a><span class="co"># summary输出模型汇总信息</span></span>
+<span id="cb376-6"><a href="task-05.html#cb376-6" aria-hidden="true" tabindex="-1"></a>dt_model <span class="ot">&lt;-</span> <span class="fu">tree</span>(medv <span class="sc">~</span> ., BostonHousingTrain)</span>
+<span id="cb376-7"><a href="task-05.html#cb376-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dt_model)</span></code></pre></div>
+<pre><code>## 
+## Classification tree:
+## tree(formula = medv ~ ., data = BostonHousingTrain)
+## Variables actually used in tree construction:
+##  [1] &quot;lstat&quot;   &quot;rm&quot;      &quot;crim&quot;    &quot;ptratio&quot; &quot;b&quot;       &quot;tax&quot;     &quot;dis&quot;    
+##  [8] &quot;age&quot;     &quot;nox&quot;     &quot;zn&quot;     
+## Number of terminal nodes:  20 
+## Residual mean deviance:  0.2984 = 99.66 / 334 
+## Misclassification error rate: 0.07062 = 25 / 354</code></pre>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="task-05.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot可以对树模型进行绘制，但可能会出现书分支过多的情况。</span></span>
+<span id="cb378-2"><a href="task-05.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dt_model)</span>
+<span id="cb378-3"><a href="task-05.html#cb378-3" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(dt_model)</span></code></pre></div>
+<p><img src="RLearning_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+<p>在构建决策树模型的基础上，分别对训练集和测试集进行预测并计算auc取值。该模型在训练集上的auc取值为0.9281874，在测试集上的auc取值为0.8789199。训练集和测试集间存在抖动，说明该模型可能出现过拟合。我们需要引入剪枝的操作来降低模型的过拟合，这部分供同学们自学。</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="task-05.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 预测</span></span>
+<span id="cb379-2"><a href="task-05.html#cb379-2" aria-hidden="true" tabindex="-1"></a>dt_pred_train <span class="ot">&lt;-</span> <span class="fu">predict</span>(dt_model, <span class="at">newdata =</span> BostonHousingTrain, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
+<span id="cb379-3"><a href="task-05.html#cb379-3" aria-hidden="true" tabindex="-1"></a>dt_pred_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(dt_model, <span class="at">newdata =</span> BostonHousingTest, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
+<span id="cb379-4"><a href="task-05.html#cb379-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb379-5"><a href="task-05.html#cb379-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算auc取值</span></span>
+<span id="cb379-6"><a href="task-05.html#cb379-6" aria-hidden="true" tabindex="-1"></a><span class="fu">calcAUC</span>(<span class="fu">as.numeric</span>(dt_pred_train), BostonHousingTrain<span class="sc">$</span>medv)</span></code></pre></div>
+<pre><code>## [1] 0.9308756</code></pre>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="task-05.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">calcAUC</span>(<span class="fu">as.numeric</span>(dt_pred_test), BostonHousingTest<span class="sc">$</span>medv)</span></code></pre></div>
+<pre><code>## [1] 0.8789199</code></pre>
+</div>
+<div id="random-forest" class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Random Forest</h3>
+<p>随机森林是一个包含多个决策树的分类器，可以用于分类和回归问题。在解决分类问题是，其输出的类别是由个别树输出的类别的众数而定。相比于单树模型，随机森林具有更好地泛化能力。</p>
+<p>使用<code>randomForest()</code>构建模型的过程中，可以通过<code>ntree</code>设定随机森林中包含的决策树数量。由于随机森林是对样本和变量的随机，因此可以通过<code>important</code>展示变量的重要性排序。通过模型预测，随机森林模型在训练集上的auc为0.9615975，在测试集上的auc为0.9247387。</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="task-05.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 导入随机森林包</span></span>
+<span id="cb383-2"><a href="task-05.html#cb383-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb383-3"><a href="task-05.html#cb383-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb383-4"><a href="task-05.html#cb383-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 随机森林模型</span></span>
+<span id="cb383-5"><a href="task-05.html#cb383-5" aria-hidden="true" tabindex="-1"></a>rf_model <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(medv <span class="sc">~</span> ., BostonHousingTrain, <span class="at">ntree =</span> <span class="dv">100</span>, <span class="at">nodesize =</span> <span class="dv">10</span>, <span class="at">importance =</span> T)</span>
+<span id="cb383-6"><a href="task-05.html#cb383-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 展示模型变量的重要性</span></span>
+<span id="cb383-7"><a href="task-05.html#cb383-7" aria-hidden="true" tabindex="-1"></a><span class="fu">importance</span>(rf_model)</span></code></pre></div>
+<pre><code>##                  0          1 MeanDecreaseAccuracy MeanDecreaseGini
+## crim     3.0460631  1.5455430            3.9486776         5.762997
+## zn       3.1035729  1.5721594            3.6238915         1.886801
+## indus    3.8338867  1.4335357            4.6616469         7.176498
+## chas     1.6703290 -1.5235785            0.7998773         1.100619
+## nox      4.6899935  4.2616418            6.3944503        16.005287
+## rm      11.0161057 10.2260377           14.5799077        24.681409
+## age      5.6799908  3.3897131            6.9069090         9.107270
+## dis      4.2225512  3.8567841            6.1001670         8.419924
+## rad      0.9290789 -0.3819842            0.8369308         1.449089
+## tax      1.1409763  7.2597262            7.5416998         8.688504
+## ptratio  3.4528462  5.8912306            6.5636512        11.890037
+## b       -0.4174669  4.4680208            3.3717663         3.990056
+## lstat   14.5324793 12.5910741           18.7108835        44.289292</code></pre>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="task-05.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 预测</span></span>
+<span id="cb385-2"><a href="task-05.html#cb385-2" aria-hidden="true" tabindex="-1"></a>rf_pred_train <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf_model, <span class="at">newdata =</span> BostonHousingTrain, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
+<span id="cb385-3"><a href="task-05.html#cb385-3" aria-hidden="true" tabindex="-1"></a>rf_pred_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf_model, <span class="at">newdata =</span> BostonHousingTest, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
+<span id="cb385-4"><a href="task-05.html#cb385-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-5"><a href="task-05.html#cb385-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算auc取值</span></span>
+<span id="cb385-6"><a href="task-05.html#cb385-6" aria-hidden="true" tabindex="-1"></a><span class="fu">calcAUC</span>(<span class="fu">as.numeric</span>(rf_pred_train), BostonHousingTrain<span class="sc">$</span>medv)</span></code></pre></div>
+<pre><code>## [1] 0.9675499</code></pre>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="task-05.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">calcAUC</span>(<span class="fu">as.numeric</span>(rf_pred_test), BostonHousingTest<span class="sc">$</span>medv)</span></code></pre></div>
+<pre><code>## [1] 0.9236934</code></pre>
+</div>
+</div>
+<div id="思考与练习-1" class="section level2 unnumbered">
+<h2>思考与练习</h2>
+<p>本章节仅对模型进行简单介绍，更多详细、复杂的模型将在后面的进阶课程中展开。</p>
+<p>学习完本章节，希望你能够尝试一些模型调优工作。如决策树剪枝，如尝试搜索KNN模型中最佳K取值等。</p>
+</div>
+<div id="本章作者-5" class="section level2 unnumbered">
+<h2>本章作者</h2>
+<p><strong>张晋</strong></p>
+<blockquote>
+<p>Datawhale成员，算法竞赛爱好者<br />
+<a href="https://blog.csdn.net/weixin_44585839/" class="uri">https://blog.csdn.net/weixin_44585839/</a></p>
+</blockquote>
+</div>
+<div id="关于datawhale-5" class="section level2 unnumbered">
+<h2>关于Datawhale</h2>
+<p>Datawhale 是一个专注于数据科学与AI领域的开源组织，汇集了众多领域院校和知名企业的优秀学习者，聚合了一群有开源精神和探索精神的团队成员。Datawhale 以“for the learner，和学习者一起成长”为愿景，鼓励真实地展现自我、开放包容、互信互助、敢于试错和勇于担当。同时 Datawhale 用开源的理念去探索开源内容、开源学习和开源方案，赋能人才培养，助力人才成长，建立起人与人，人与知识，人与企业和人与未来的联结。 本次数据挖掘路径学习，专题知识将在天池分享，详情可关注 Datawhale：</p>
+<p><img src="image/logo.png" width="129" /></p>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="task-04.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": true,
+"weibo": true,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper", "whatsapp"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/FinYang/RLearning-book/blob/main/Task05_Model.Rmd",
+"text": null
+},
+"download": ["RLearning.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
