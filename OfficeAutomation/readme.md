@@ -73,15 +73,15 @@
     </tr>
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">吴争光</span></td>
-    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">blank </td>
-    <td><a href="https://purebuckwheat.github.io/">github</a></td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">数据分析师，Datawhale成员，Task04 </td>
+    <td><a href="https://github.com/double-point">github</a></td>
   </tr>
   </tr>
     </tr>
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">隆军</span></td>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">上海交通大学博士生，Datawhale成员，Task01</td>
-    <td><a href="https://github.com/Allonsy-ops">github</a></td>
+    <td></td>
   </tr>
 </tbody>
 </table> 
