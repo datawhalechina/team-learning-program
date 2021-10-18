@@ -5,7 +5,7 @@
 - 学习周期：14天，每天平均花费时间1小时-3小时不等，根据个人学习接受能力强弱有所浮动。
 - 学习形式：理论学习 + 练习
 - 人群定位：有Python语言编程基础，对自动化办公有需求的学员。
-- 先修内容：Python编程语言
+- 先修内容：<a href="https://github.com/datawhalechina/learn-python-the-smart-way">Python编程语言</a>
 - 难度系数：⭐⭐
 
 课程大纲
