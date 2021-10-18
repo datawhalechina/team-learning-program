@@ -61,13 +61,13 @@
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">刘雯静</span></td>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">blank </td>
-    <td><a href="https://blog.csdn.net/Eric___Young?spm=1011.2124.3001.5343">CSDN</a></td>
+    <td></td>
   </tr>
     </tr>
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">张晓东</span></td>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">blank </td>
-    <td><a href="https://blog.csdn.net/li_kin?type=blog">CSDN</a></td>
+    <td></td>
   </tr>
 </tr>
     </tr>
