@@ -5,8 +5,8 @@
 - 学习周期：14天，每天平均花费时间1小时-3小时不等，根据个人学习接受能力强弱有所浮动。
 - 学习形式：理论学习 + 练习
 - 人群定位：有Python语言编程基础，对自动化办公有需求的学员。
-- 先修内容：<a href="https://github.com/datawhalechina/learn-python-the-smart-way" target="_blank">Python编程语言</a>
-- 相关课程：<a href="https://github.com/datawhalechina/team-learning-program/tree/master/CollectData" target="_blank">数据采集</a>
+- 先修内容：<a href="https://github.com/datawhalechina/learn-python-the-smart-way">Python编程语言</a>
+- 相关课程：<a href="https://github.com/datawhalechina/team-learning-program/tree/master/CollectData" >数据采集</a>
 - 难度系数：⭐⭐
 
 课程大纲
@@ -57,7 +57,7 @@
   <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">聂雄伟（牧小熊）</span></td>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">华中农业大学研究生，Datawhale成员，项目负责人，Task05 </td>
-    <td><a href="https://www.zhihu.com/people/muxiaoxiong" target="_blank">知乎</a></td>
+    <td><a href="https://www.zhihu.com/people/muxiaoxiong" >知乎</a></td>
   </tr>
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">刘雯静</span></td>
@@ -75,7 +75,7 @@
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">吴争光</span></td>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">数据分析师，Datawhale成员，Task04 </td>
-    <td><a href="https://github.com/double-point" target="_blank">github</a></td>
+    <td><a href="https://github.com/double-point">github</a></td>
   </tr>
   </tr>
     </tr>
