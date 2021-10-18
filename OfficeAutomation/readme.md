@@ -6,6 +6,7 @@
 - 学习形式：理论学习 + 练习
 - 人群定位：有Python语言编程基础，对自动化办公有需求的学员。
 - 先修内容：<a href="https://github.com/datawhalechina/learn-python-the-smart-way">Python编程语言</a>
+- 相关课程：<a href="https://github.com/datawhalechina/team-learning-program/tree/master/CollectData">数据采集</a>
 - 难度系数：⭐⭐
 
 课程大纲
