@@ -80,7 +80,7 @@
     </tr>
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">隆军</span></td>
-    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">blank </td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">上海交通大学博士生，Datawhale成员，Task01</td>
     <td><a href="https://github.com/Allonsy-ops">github</a></td>
   </tr>
 </tbody>
