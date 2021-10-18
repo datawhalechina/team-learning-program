@@ -61,7 +61,7 @@
   </tr>
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">刘雯静</span></td>
-    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">blank </td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">互联网用户数据分析研究员，Datawhale成员，Task02 </td>
     <td></td>
   </tr>
     </tr>
