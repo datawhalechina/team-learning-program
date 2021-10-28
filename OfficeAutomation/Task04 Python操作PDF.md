@@ -239,7 +239,7 @@ def extract_table_info(filepath):
         # 如果一页有一个表格，设置表格的第一行为表头，其余为数据
         table_info = page.extract_table()
         df_table = pd.DataFrame(table_info[1:], columns=table_info[0])
-        df_table.to_csv('dmeo.csv', index=False, encoding='gbk')
+        df_table.to_csv('demo.csv', index=False, encoding='gbk')
 ```
 
 上面代码可以获取到第 18 页的第一个表格内容，并且将其保存为 csv 文件存在本地
