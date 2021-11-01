@@ -94,6 +94,7 @@ res=requests.get('https://img-blog.csdnimg.cn/20210424184053989.PNG')
 # 以二进制写入的方式打开一个名为 info.jpg 的文件
 with open('datawhale.png','wb') as ff:
     # 将数据的二进制形式写入文件中
+    print('爬取图片')
     ff.write(res.content)
 ```
 
