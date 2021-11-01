@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A3E70D83-B4D6-4048-8410-25876417057B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91679BDD-1691-4D61-A272-C4D44B773B2C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/TableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "TableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C9FA5F84-1140-4D58-A691-B3C46AADD94D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69047495-103F-47F1-A1DF-3E27D81B5D53"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "numberOfSections(in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29EDA876-9EC0-4FF5-88D5-BF91EB3E3CEC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C228BDA-0E42-4D38-92D4-285FBD593227"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/TableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "updateRoomType()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D37735E3-211B-47BE-B5FA-98C8A12E7C74"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/TableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "didSelect(roomType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32A4749B-E1B7-4406-B7C2-A2FBBC64C3F4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/TableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "TableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CEA577FB-310B-4324-B115-09DDF79E87DE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/TableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "TableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "15187D10-7688-4DCE-9892-6F96A6987C63"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D7FB98B-E8DF-4AD4-A00C-129255B42090"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1ACDCD56-D6BC-482C-933E-83B9598876A3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1ACDCD56-D6BC-482C-933E-83B9598876A3 - 15734b6504716a67"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.roomType.getter : Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomType&gt;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  uuid = "1ACDCD56-D6BC-482C-933E-83B9598876A3 - 9d2e1b5f10b73673"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.roomType.setter : Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomType&gt;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "268">
+               </Location>
+               <Location
+                  uuid = "1ACDCD56-D6BC-482C-933E-83B9598876A3 - 9fa1ce3ee4fbc171"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.roomType.modify : Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomType&gt;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "1ACDCD56-D6BC-482C-933E-83B9598876A3 - 795c90fd9ce2b93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.roomType.modify : Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomType&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "1ACDCD56-D6BC-482C-933E-83B9598876A3 - bb64ba589007b523"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.init(style: __C.UITableViewStyle) -&gt; &#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "190">
+               </Location>
+               <Location
+                  uuid = "1ACDCD56-D6BC-482C-933E-83B9598876A3 - 1819ae3ecc413ded"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; &#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "1ACDCD56-D6BC-482C-933E-83B9598876A3 - d0e5a7ea2b39739"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController&gt;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "242">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0732BA9A-AF28-42B4-8B0B-BC9005DD244F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83D9CACE-9A0D-45CB-9154-25A1E2D03107"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2BD0ABA3-4C51-464C-843F-F14C438F54B7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "RoomTypeTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59DCA61C-4B91-4656-AA56-861DDE29D4BA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/TableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "didSelect(roomType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED8B0F74-6BC0-4BBC-87D8-AAFA36FD22DE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/RoomTypeTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "ED8B0F74-6BC0-4BBC-87D8-AAFA36FD22DE - a4b52756e9d42663"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.delegate.getter : Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewControllerDelegate&gt;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "91">
+               </Location>
+               <Location
+                  uuid = "ED8B0F74-6BC0-4BBC-87D8-AAFA36FD22DE - 9e6b0d4416131e77"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.delegate.setter : Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewControllerDelegate&gt;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "134">
+               </Location>
+               <Location
+                  uuid = "ED8B0F74-6BC0-4BBC-87D8-AAFA36FD22DE - 758e4e408d2f6f9e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.delegate.modify : Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewControllerDelegate&gt;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "ED8B0F74-6BC0-4BBC-87D8-AAFA36FD22DE - 854712ba961f383"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.delegate.modify : Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewControllerDelegate&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "ED8B0F74-6BC0-4BBC-87D8-AAFA36FD22DE - bb64ba589007bcce"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.init(style: __C.UITableViewStyle) -&gt; &#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "75">
+               </Location>
+               <Location
+                  uuid = "ED8B0F74-6BC0-4BBC-87D8-AAFA36FD22DE - 1819ae3ecc413400"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; &#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "222">
+               </Location>
+               <Location
+                  uuid = "ED8B0F74-6BC0-4BBC-87D8-AAFA36FD22DE - d0e5a7ea2b39ed4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;&#x8fdb;&#x9636;&#x529f;&#x80fd;.RoomTypeTableViewController&gt;"
+                  moduleName = "&#x8fdb;&#x9636;&#x529f;&#x80fd;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Downloads/code/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD/RoomTypeTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "159">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8C05A825-7E03-4A91-BD5D-82C782FCBD40"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x8fdb;&#x9636;&#x529f;&#x80fd;/TableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
