@@ -10,12 +10,12 @@ iOS开发对硬件的要求较为严格，我们建议身边有Mac/iMac相关设
 
 ## MacOS 
 
-**Task 00**：Swift基础语法入门
+**Task 00**：Swift基础语法入门（2天）
 
 - 了解Swift语言基础语法与面向协议特点
 - 学习闭包特性与基础控件
 
-**Task 01**：基础插件与功能实现
+**Task 01**：基础插件与功能实现（4天）
 
 - 学习Label、Button、Textfield等基础控件的使用
 - 学习TableView、ScrollView与Cell等的设置和启动
@@ -23,13 +23,13 @@ iOS开发对硬件的要求较为严格，我们建议身边有Mac/iMac相关设
 - 初识Cocopods，利用优秀的第三方库简化开发流程
 - 代码启动、注册页面跳转、设置app的logo与启动页面
 
-**Task 02**：项目练习
+**Task 02**：项目练习（5天）
 
 - 酒店管理系统
 - 贪吃蛇
 - 智能识别水果app
 
-**Task 03**：大作业Statistics in Time
+**Task 03**：大作业Statistics in Time（3天）
 
 - 明确app开发的一般流程
 - 通过Cocopods引入基本的第三方库对app进行优化
@@ -39,12 +39,12 @@ iOS开发对硬件的要求较为严格，我们建议身边有Mac/iMac相关设
 
 ## iPad、Linux或Windows虚拟机
 
-**Task 00**：Swift基础语法入门
+**Task 00**：Swift基础语法入门（2天）
 
 - 了解Swift语言基础语法与面向协议特点
 - 学习闭包特性与基础控件
 
-**Task 01**：基础插件与功能实现
+**Task 01**：基础插件与功能实现（4天）
 
 - 学习Label、Button、Textfield等基础控件的使用
 - 学习TableView、ScrollView与Cell等的设置和启动
@@ -52,14 +52,14 @@ iOS开发对硬件的要求较为严格，我们建议身边有Mac/iMac相关设
 - 初识Cocopods，利用优秀的第三方库简化开发流程
 - 代码启动、注册页面跳转、设置app的logo与启动页面
 
-**Task 02**：算法实现
+**Task 02**：算法实现（5天）
 
 - 三种递归问题求解
 - 搜索问题
 - 图问题
 - 动态规划与旅行商问题
 
-**Task 03**：Statistics in Time的算法探究
+**Task 03**：Statistics in Time的算法探究（3天）
 
 - 各种控件要求的数据格式与相互转换算法
 - 随机输入数据的数组传入与可视化呈现
