@@ -67,7 +67,7 @@
     </tr>
     <tr>
     <td><span style="font-weight:normal;font-style:normal;text-decoration:none">张晓东</span></td>
-    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">blank </td>
+    <td><span style="font-weight:normal;font-style:normal;text-decoration:none">数分析师，《数据分析与挖掘算法pyton实战》作者，Task03 </td>
     <td></td>
   </tr>
 </tr>
