@@ -190,7 +190,7 @@ BeautifulSoup 为我们提供了一些方法
 **find()方法**和**find_all()方法**：
 
 - **find()** 返回符合条件的**首个**数据
-- **find_all()** 返回符合条件的所有**数据
+- **find_all()** 返回符合条件的**所有**数据
 
 ```python
 import io
