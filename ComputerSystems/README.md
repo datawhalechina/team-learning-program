@@ -68,7 +68,7 @@
 | 李岳昆   [知乎](https://www.zhihu.com/people/yurk-73),[Github](https://github.com/realYurkOfGitHub) | 提供全书第一部分1-3章内容pdf、高性能计算教材翻译 |
 | 易远哲   [Github](https://github.com/Yi-Yuanzhe)             | 提供全书第一部分4-6章内容pdf                     |
 | 叶前坤   [Github](https://github.com/PureBuckwheat)          | 参考习题与lab                                |
-| chuxiaoyu  [博客](www.chuxiaoyu.cn)                          | 开源贡献，「Datawhale 开源 408 计划」统筹工作        |
+| chuxiaoyu [博客](www.chuxiaoyu.cn)                          | 开源贡献，「Datawhale 开源 408 计划」统筹工作        |
 
 特别鸣谢：蒋志政 [Github](https://github.com/gezelligheid0314) 提供了高性能计算教材部分翻译内容
 
