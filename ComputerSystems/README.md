@@ -41,21 +41,21 @@
 ## 参考资料
 1.汇编指令集
 
-- 汇编语言网站：[http://c.biancheng.net/view/3468.html](http://c.biancheng.net/view/3468.html)（C语言中文网）
+- 汇编语言网站：[http://c.biancheng.net/view/3468.html](http://c.biancheng.net/view/3468.html)
 - linux汇编语言开发指南：[https://zhuanlan.zhihu.com/p/54853591](https://zhuanlan.zhihu.com/p/54853591)
 - 汇编入门手册：[https://www.cnblogs.com/dgwblog/p/11784614.html](https://www.cnblogs.com/dgwblog/p/11784614.html)
 
-2.makefile
+2.Makefile
 - [https://zhuanlan.zhihu.com/p/350297509](https://zhuanlan.zhihu.com/p/350297509)
 
-3.csapp lab
+3.CSAPP lab
 - [https://github.com/Exely/CSAPP-Labs](https://github.com/Exely/CSAPP-Labs)
 - [http://csapp.cs.cmu.edu/3e/labs.html](http://csapp.cs.cmu.edu/3e/labs.html)
 - [CSAPP.zip](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d66aa998-f8b4-430a-8067-4ff0159cdf63/CSAPP.zip)
 - [https://hansimov.gitbook.io/csapp/labs/labs-overview](https://hansimov.gitbook.io/csapp/labs/labs-overview)
 
-4.csapp 课后习题
-- csapp 答案：https://github.com/DreamAndDead/CSAPP-3e-Solutions
+4.CSAPP 课后习题
+- CSAPP 答案：https://github.com/DreamAndDead/CSAPP-3e-Solutions
 - [https://github.com/mofaph/csapp/blob/master/exercise/00-topic.txt](https://github.com/mofaph/csapp/blob/master/exercise/00-topic.txt)
 
 5.参考视频
