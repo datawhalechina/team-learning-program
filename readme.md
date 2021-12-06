@@ -4,6 +4,7 @@
 
 主要包括：
 
+- [AlgorithmRunning](https://github.com/datawhalechina/team-learning-program/tree/master/AlgorithmRunning)
 
 - [Linux教程](https://github.com/datawhalechina/team-learning-program/tree/master/Linux)
 - [Docker教程](https://github.com/datawhalechina/team-learning-program/tree/master/Docker)
