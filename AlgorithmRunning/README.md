@@ -40,9 +40,9 @@
   - Name: 填写自己的名字, 建议自己的微信号(英文字符开头)+组队变好. 例如: xiaoran_100
   - File: file必须是上面四个题目要求文件. 例如提交: calculator.py
   - <img src="https://i.ibb.co/j9Y4NQW/main-1.png"/> 
-- 提交成功之后，点击和提交文件对应的tab，进入到测试界面
+- 提交成功之后，点击和提交文件对应的tab图片，进入到测试界面
   - <img src="https://i.ibb.co/FmswBnW/main-2.png"/> 
-
+- 点击每个图片下面的文字，进入到参考文章
 
 注: 
 1. Name建议唯一，不要修改；我们会用这个做为个人标识，并建立对应文件夹保存你提交的文件。
