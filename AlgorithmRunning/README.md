@@ -26,14 +26,14 @@
 
 |题目|时间|文件名|参考文章|
 |:---|---|:---|:---|
-|Part1-Percolation|4天|percolation.py|xxx|
-|Part2-8Puzzle|4天|puzzle.py|xxx|
-|Part3-简易计算器|3天|calculator.py|xxx|
-|Part4-科学计算器|3天|adv_calculator.py|xxx|
+|Part1-Percolation|4天|percolation.py|[Percolation](https://mp.weixin.qq.com/s/z6H1MKZYbovZsqz7_-zRUg)|
+|Part2-8Puzzle|4天|puzzle.py|[Puzzle](https://mp.weixin.qq.com/s/K_u8daOyTEChTgFk0GQlBw)|
+|Part3-简易计算器|3天|calculator.py|[简易计算器](https://mp.weixin.qq.com/s/B9LCbfOsY0dcbXdSUYqQEQ)|
+|Part4-科学计算器|3天|adv_calculator.py|[科学计算器](https://mp.weixin.qq.com/s/pWVMVmFjUSnqOXKV-wc4Gw)|
 
 
 ## 提交测试
-1. 测试网站: http://5d27-240e-390-e68-35a0-a235-2fbe-aeca-b8f7.ngrok.io/
+1. 测试网站: http://ed43-240e-390-e6b-4810-7e29-18f8-3b5c-ced4.ngrok.io/
 
 2. 提交步骤
 - 打开网站首页.
