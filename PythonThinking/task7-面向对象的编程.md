@@ -145,6 +145,64 @@ foo.K = Q
 
 这些练习的目的是过一遍真实的代码，并试着把你学过的短语和它们的用法匹配和关联起来。如果你做足了训练，你会开始看到这些匹配模式（match patterns）呼之欲出，而不再是一些你不明白的空格或字符。
 
+#### 本次的练习是编写一个属于自己的小游戏
+
+以下是利用面向对象的编程方法写的宝可梦简单文字游戏，可以按照这个模板继续续写，或者根据自己的爱好更换名字和游戏方法
+
+```python
+class Pokemon:
+    def __init__(self,name,attributes,warnum):
+        self.name = name
+        self.attributes = attributes
+        self.warnum = warnum
+    
+    def grass(self):
+        self.warnum = self.warnum - 100
+        
+    def rock(self):
+        self.warnum = self.warnum - 200
+    
+    def train(self):
+        self.warnum = self.warnum + 200
+        
+    def detail(self):
+        temp = "姓名:%s,属性:%s,战斗力:%s"%(self.name,self.attributes,self.warnum)
+        print(temp)
+        
+#开始游戏，创建角色
+Pikachu = Pokemon('皮卡丘','电',1000)
+Charizard = Pokemon('喷火龙','火',2000)
+Bulbasaur = Pokemon('妙蛙种子','草',700)
+Squirtle = Pokemon('杰尼龟','水',1300)
+
+
+#开始第一次战斗
+Pikachu.grass()            #皮卡丘在草丛中战斗
+Charizard.rock()          #喷火龙在岩石中战斗
+Bulbasaur.grass()          #妙蛙种子在草丛中战斗
+Squirtle.rock()            #杰尼龟在岩石中战斗
+
+
+print("所有神奇宝贝第一次战斗后详细情况")
+Pikachu.detail()
+Charizard.detail()
+Bulbasaur.detail()
+Squirtle.detail()
+
+#开始训练
+Pikachu.train()
+Charizard.train()
+Bulbasaur.train()
+Squirtle.train()
+print("--------------------------------")
+print("所有神奇宝贝训练后详细情况")
+Pikachu.detail()
+Charizard.detail()
+Bulbasaur.detail()
+Squirtle.detail()
+
+```
+
 
 
 
