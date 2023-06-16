@@ -140,7 +140,7 @@ Is it less or equal? False
 18  print(f"If I add {my_age}, {my_height}, and {my_weight} I get {total}.")
 ```
 
-#### 练习4
+#### 练习1
 
 &emsp;&emsp;将上述代码尝试改成自己的信息。
 
@@ -172,7 +172,7 @@ Is it less or equal? False
 22  print(w + e)
 ```
 
-#### 运行结果
+&emsp;&emsp;上述代码的运行结果：
 
 ```
 There are 10 types of people.
@@ -183,19 +183,19 @@ Isn't that joke so funny?! False
 This is the left side of...a string with a right side.
 ```
 
-#### 练习5
+#### 练习1
 
 &emsp;&emsp;复习一遍这个程序，并在每一行上面写上注释来解释它。
 
-#### 练习6
+#### 练习2
 
 &emsp;&emsp;找到所有把字符串放在字符串里面的地方，一共有 4 处。
 
-#### 练习7
+#### 练习3
 
 &emsp;&emsp;你确定有 4 处吗？你怎么知道？也许我爱撒谎呢。
 
-#### 练习8
+#### 练习4
 
 &emsp;&emsp;解释一下为什么把 w 和 e 两个字符串用 + 连起来能够弄成一个更长的字符串。
 
@@ -239,7 +239,7 @@ runoob
 ['runoob', 786, 2.23, 'john', 70.2, 123, 'john']
 ```
 
-### 练习9
+### 练习1
 
 &emsp;&emsp;搜索列表的相关知识，看看还有什么操作？
 
