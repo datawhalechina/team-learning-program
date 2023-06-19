@@ -220,39 +220,34 @@ True
 &emsp;&emsp;让我们用这些命令做一个小小的编辑器：
 
 ```python
-1   from sys import argv
-2
-3   script, filename = argv
-4
-5   print(f"We're going to erase {filename}.")
-6   print("If you don't want that, hit CTRL-C (^C).")
-7   print("If you do want that, hit RETURN.")
-8
-9   input("?")
-10
-11  print("Opening the file...")
-12  target = open(filename, 'w')
-13
-14  print("Truncating the file. Goodbye!")
-15  target.truncate()
-16
-17  print("Now I'm going to ask you for three lines.")
-18
-19  line1 = input("line 1: ")
-20  line2 = input("line 2: ")
-21  line3 = input("line 3: ")
-22
-23  print("I'm going to write these to the file.")
-24
-25  target.write(line1)
-26  target.write("\n")
-27  target.write(line2)
-28  target.write("\n")
-29  target.write(line3)
-30  target.write("\n")
-31
-32  print("And finally, we close it.")
-33  target.close()
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
+file = open('d:/b.txt',mode = 'w')    #  open('路径和文件名,模式= 'XX')这个格式是打开一个文件，如果没有会自动创建；路径可以修改为自己需要的路径，线上的编辑器需要改为线上的路径名
+file.write('你好，\n 世界。')
+file.close()
+
+target = open('d:/b.txt',mode = 'w')
+
+print("Truncating the file. Goodbye!")
+target.truncate()                   # 这行命令会把之前的输入都清空
+
+print("Now I'm going to ask you for three lines.")
+
+line1 = input("line 1: ") #  运行后输入 Mary had a little lamb
+line2 = input("line 2: ") #  运行后输入 Its fleece was white as snow
+line3 = input("line 3: ") #  运行后输入 It was also tasty
+
+print("I'm going to write these to the file.")
+
+target.write(line1)
+target.write("\n")
+target.write(line2)
+target.write("\n")
+target.write(line3)
+target.write("\n")
+
+print("And finally, we close it.")
+target.close()
 ```
 
 &emsp;&emsp;这真是一个很大的文件，可能是你输入过的最大的文件了。所以慢一点，写完检查一下，然后再运行。你也可以写一点运行一点，比如先运行 1-8 行，然后再多运行 5 行，然后再多几行，直到所有的都完成和运行了。
@@ -260,11 +255,7 @@ True
 &emsp;&emsp;事实上你应该看到两样东西，首先是你新脚本的输出结果：
 
 ```text
-$ python3.6 ex16.py test.txt We're going to erase test.txt.
-If you don't want that, hit CTRL-C (^C). If you do want that, hit RETURN.
-?
-Opening the file...
-Truncating the file.    Goodbye!
+Truncating the file. Goodbye!
 Now I'm going to ask you for three lines.
 line 1: Mary had a little lamb
 line 2: Its fleece was white as snow
