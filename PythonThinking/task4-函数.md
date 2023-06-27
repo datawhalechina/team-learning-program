@@ -12,29 +12,30 @@
 
 &emsp;&emsp;你可以通过在 Python 中使用`def`来创建一个函数。我会让你创建 4 个不同的函数，它们就像你的脚本一样运行，之后我还会展示每一个之间是如何关联的。
 
-```python
-1   # this one is like your scripts with argv
-2   def print_two(*args):
-3       arg1, arg2 = args
-4       print(f"arg1: {arg1}, arg2: {arg2}")
-5
-6   # ok, that *args is actually pointless, we can just do this
-7   def print_two_again(arg1, arg2):
-8       print(f"arg1: {arg1}, arg2: {arg2}")
-9
-10  # this just takes one argument
-11  def print_one(arg1):
-12      print(f"arg1: {arg1}")
-13
-14  # this one takes no arguments
-15  def print_none():
-16      print("I got nothin'.")
-17
-18
-19  print_two("Zed","Shaw")
-20  print_two_again("Zed","Shaw")
-21  print_one("First!")
-22  print_none()
+```{code-block} python
+:linenos:
+# this one is like your scripts with argv
+def print_two(*args):
+    arg1, arg2 = args
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# ok, that *args is actually pointless, we can just do this
+def print_two_again(arg1, arg2):
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# this just takes one argument
+def print_one(arg1):
+    print(f"arg1: {arg1}")
+
+# this one takes no arguments
+def print_none():
+    print("I got nothin'.")
+
+
+print_two("Zed","Shaw")
+print_two_again("Zed","Shaw")
+print_one("First!")
+print_none()
 ```
 
 &emsp;&emsp;让我们把第一个函数拆解一下，`print_two` 这是你从创建脚本中已经学到的最熟悉的东西：
@@ -128,31 +129,32 @@ Tips：
 
 &emsp;&emsp;有个小点你可能没注意到，我们会在之后进行强化：你函数里面的变量跟你脚本里面的变量没有关联。通过下面这个练习思考一下这个问题：
 
-```python
-1   def cheese_and_crackers(cheese_count, boxes_of_crackers):
-2       print(f"You have {cheese_count} cheeses!")
-3       print(f"You have {boxes_of_crackers} boxes of crackers!"
-4       print("Man that's enough for a party!")
-5       print("Get a blanket.\n")
-6
-7
-8   print("We can just give the function numbers directly:")
-9   cheese_and_crackers(20, 30)
-10
-11
-12  print("OR, we can use variables from our script:")
-13  amount_of_cheese = 10
-14  amount_of_crackers = 50
-15
-16  cheese_and_crackers(amount_of_cheese, amount_of_crackers)
-17
-18
-19  print("We can even do math inside too:")
-20  cheese_and_crackers(10 + 20, 5 + 6)
-21
-22
-23  print("And we can combine the two, variables and math:")
-24  cheese_and_crackers(amount_of_cheese + 100, amount_of_crackers + 1000)
+```{code-block} python
+:linenos:
+
+def cheese_and_crackers(cheese_count, boxes_of_crackers):
+    print(f"You have {cheese_count} cheeses!")
+    print(f"You have {boxes_of_crackers} boxes of crackers!"
+    print("Man that's enough for a party!")
+    print("Get a blanket.\n")
+
+
+print("We can just give the function numbers directly:")
+cheese_and_crackers(20, 30)
+
+
+print("OR, we can use variables from our script:")
+amount_of_cheese = 10
+amount_of_crackers = 50
+
+cheese_and_crackers(amount_of_cheese, amount_of_crackers)
+
+
+print("We can even do math inside too:")
+cheese_and_crackers(10 + 20, 5 + 6)
+
+print("And we can combine the two, variables and math:")
+cheese_and_crackers(amount_of_cheese + 100, amount_of_crackers + 1000)
 ```
 
 &emsp;&emsp;这个练习展示了我们可以给函数`cheese_and_crackers`赋值的几种不同的方式，可以直接给它数字，或者变量，亦或是数学运算，甚至是数学运算和变量的结合。
@@ -163,7 +165,9 @@ Tips：
 
 &emsp;&emsp;你应该研究一下这个脚本的输出结果，把它和你之前的脚本输出结果对比一下。
 
-```python
+```{code-block} python
+:linenos:
+
 We can just give the function numbers directly:
 You have 20 cheeses!
 You have 30 boxes of crackers!
@@ -223,40 +227,42 @@ Get a blanket.
 
 &emsp;&emsp;记住你的函数`checklist`，然后在做这个练习的时候注意函数是如何和文件一起工作并发挥一些作用的。
 
-```python
-1   from sys import argv
-2
-3   script, input_file = argv
-4
-5   def print_all(f):
-6       print(f.read())
-7
-8   def rewind(f):
-9       f.seek(0)
-10
-11  def print_a_line(line_count, f):
-12      print(line_count, f.readline())
-13
-14  current_file = open(input_file)
-15
-16  print("First let's print the whole file:\n")
-17
-18  print_all(current_file)
-19
-20  print("Now let's rewind, kind of like a tape.")
-21
-22  rewind(current_file)
-23
-24  print("Let's print three lines:")
-25
-26  current_line = 1
-27  print_a_line(current_line, current_file)
-28
-29  current_line = current_line + 1
-30  print_a_line(current_line, current_file)
-31
-32  current_line = current_line + 1
-33  print_a_line(current_line, current_file)
+```{code-block} python
+:linenos:
+
+from sys import argv
+
+script, input_file = argv
+
+def print_all(f):
+    print(f.read())
+
+def rewind(f):
+    f.seek(0)
+
+def print_a_line(line_count, f):
+    print(line_count, f.readline())
+
+current_file = open(input_file)
+
+print("First let's print the whole file:\n")
+
+print_all(current_file)
+
+print("Now let's rewind, kind of like a tape.")
+
+rewind(current_file)
+
+print("Let's print three lines:")
+
+current_line = 1
+print_a_line(current_line, current_file)
+
+current_line = current_line + 1
+print_a_line(current_line, current_file)
+
+current_line = current_line + 1
+print_a_line(current_line, current_file)
 ```
 
 &emsp;&emsp;着重注意我们是如何在每次运行`print_a_line`的时候把当前行的数字传递出去的。
@@ -317,40 +323,42 @@ Let's print three lines:
 
 &emsp;&emsp;你已经使用了`=`来命名变量，并给变量赋予数值或字符串。接下来我会教你如何用`=`和一个新的 Python 字符`return`来把函数中的变量设置为一个值。有一点需要密切注意，但是先输入如下代码：
 
-```python
-1   def add(a, b):
-2       print(f"ADDING {a} + {b}")
-3       return a + b
-4
-5   def subtract(a, b):
-6       print(f"SUBTRACTING {a} - {b}")
-7       return a - b
-8
-9   def multiply(a, b):
-10      print(f"MULTIPLYING {a} * {b}")
-11      return a * b
-12
-13  def divide(a, b):
-14      print(f"DIVIDING {a} / {b}")
-15      return a / b
-16
-17
-18  print("Let's do some math with just functions!")
-19
-20  age = add(30, 5)
-21  height = subtract(78, 4)
-22  weight = multiply(90, 2)
-23  iq = divide(100, 2)
-24
-25  print(f"Age: {age}, Height: {height}, Weight: {weight}, IQ: {iq}")
-26
-27
-28  # A puzzle for the extra credit, type it in anyway.
-29  print("Here is a puzzle.")
-30
-31  what = add(age, subtract(height, multiply(weight, divide(iq, 2))))
-32
-33  print("That becomes: ", what, "Can you do it by hand?")
+```{code-block} python
+:linenos:
+
+def add(a, b):
+    print(f"ADDING {a} + {b}")
+    return a + b
+
+def subtract(a, b):
+    print(f"SUBTRACTING {a} - {b}")
+    return a - b
+
+def multiply(a, b):
+    print(f"MULTIPLYING {a} * {b}")
+    return a * b
+
+def divide(a, b):
+    print(f"DIVIDING {a} / {b}")
+    return a / b
+
+
+print("Let's do some math with just functions!")
+
+age = add(30, 5)
+height = subtract(78, 4)
+weight = multiply(90, 2)
+iq = divide(100, 2)
+
+print(f"Age: {age}, Height: {height}, Weight: {weight}, IQ: {iq}")
+
+
+# A puzzle for the extra credit, type it in anyway.
+print("Here is a puzzle.")
+
+what = add(age, subtract(height, multiply(weight, divide(iq, 2))))
+
+print("That becomes: ", what, "Can you do it by hand?")
 ```
 
 &emsp;&emsp;我们现在要做我们自己的加减乘除数学运算了。我说的要密切注意的是`add`函数里面的`return a + b`，这步做的是这些事情：

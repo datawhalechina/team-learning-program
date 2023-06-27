@@ -60,68 +60,70 @@ Neato
 
 &emsp;&emsp;注意一下这个例子是如何把美国的州名和它们的缩写以及州的缩写和城市映射（mapping）起来的，记住，“映射”或者说“关联”（associate）是字典的核心理念。
 
-```python
-1   # create a mapping of state to abbreviation
-2   states = {
-3       'Oregon': 'OR',
-4       'Florida': 'FL',
-5       'California': 'CA',
-6       'New York': 'NY',
-7       'Michigan': 'MI'
-8   }
-9
-10  # create a basic set of states and some cities in them
-11  cities = {
-12      'CA': 'San Francisco',
-13      'MI': 'Detroit',
-14      'FL': 'Jacksonville'
-15  }
-16
-17  # add some more cities
-18  cities['NY'] = 'New York'
-19  cities['OR'] = 'Portland'
-20
-21  # print out some cities
-22  print('-' * 10)
-23  print("NY State has: ", cities['NY'])
-24  print("OR State has: ", cities['OR'])
-25
-26  # print some states
-27  print('-' * 10)
-28  print("Michigan's abbreviation is: ", states['Michigan'])
-29  print("Florida's abbreviation is: ", states['Florida'])
-30
-31  # do it by using the state then cities dict
-32  print('-' * 10)
-33  print("Michigan has: ", cities[states['Michigan']])
-34  print("Florida has: ", cities[states['Florida']])
-35
-36  # print every state abbreviation
-37  print('-' * 10)
-38  for state, abbrev in list(states.items()):
-39      print(f"{state} is abbreviated {abbrev}")
-40
-41  # print every city in state
-42  print('-' * 10)
-43  for abbrev, city in list(cities.items()):
-44      print(f"{abbrev} has the city {city}")
-45
-46  # now do both at the same time
-47  print('-' * 10)
-48  for state, abbrev in list(states.items()):
-49      print(f"{state} state is abbreviated {abbrev}")
-50      print(f"and has city {cities[abbrev]}")
-51
-52  print('-' * 10)
-53  # safely get a abbreviation by state that might not be there
-54  state = states.get('Texas')
-55
-56  if not state:
-57      print("Sorry, no Texas.")
-58
-59  # get a city with a default value
-60  city = cities.get('TX', 'Does Not Exist')
-61  print(f"The city for the state 'TX' is: {city}")
+```{code-block} python
+:linenos:
+
+# create a mapping of state to abbreviation
+states = {
+    'Oregon': 'OR',
+    'Florida': 'FL',
+    'California': 'CA',
+    'New York': 'NY',
+    'Michigan': 'MI'
+}
+
+# create a basic set of states and some cities in them
+cities = {
+   'CA': 'San Francisco',
+   'MI': 'Detroit',
+   'FL': 'Jacksonville'
+}
+
+# add some more cities
+cities['NY'] = 'New York'
+cities['OR'] = 'Portland'
+
+# print out some cities
+print('-' * 10)
+print("NY State has: ", cities['NY'])
+print("OR State has: ", cities['OR'])
+
+# print some states
+print('-' * 10)
+print("Michigan's abbreviation is: ", states['Michigan'])
+print("Florida's abbreviation is: ", states['Florida'])
+
+# do it by using the state then cities dict
+print('-' * 10)
+print("Michigan has: ", cities[states['Michigan']])
+print("Florida has: ", cities[states['Florida']])
+
+# print every state abbreviation
+print('-' * 10)
+for state, abbrev in list(states.items()):
+    print(f"{state} is abbreviated {abbrev}")
+
+# print every city in state
+print('-' * 10)
+for abbrev, city in list(cities.items()):
+    print(f"{abbrev} has the city {city}")
+
+# now do both at the same time
+print('-' * 10)
+for state, abbrev in list(states.items()):
+    print(f"{state} state is abbreviated {abbrev}")
+    print(f"and has city {cities[abbrev]}")
+
+print('-' * 10)
+# safely get a abbreviation by state that might not be there
+state = states.get('Texas')
+
+if not state:
+    print("Sorry, no Texas.")
+
+# get a city with a default value
+city = cities.get('TX', 'Does Not Exist')
+print(f"The city for the state 'TX' is: {city}")
 ```
 
 ### 练习1
@@ -169,27 +171,29 @@ list[2] = 1000     # 列表中是合法应用
 
 &emsp;&emsp;在这个练习中，你将试着在 Python 中运用逻辑表示。给以下每一个逻辑问题写下你认为的答案，要么是 True，要么是 False。等你把答案写下来，再在终端里运行 Python，输入每个逻辑问题，来确认你的答案是否正确。
 
-```python
-1 True and True
-2 False and True
-3 1 == 1 and 2 == 1
-4 "test" == "test"
-5 1 == 1 or 2 != 1
-6 True and 1 == 1
-7 False and 0 != 0
-8 True or 1 == 1
-9 "test" == "testing"
-10 1 != 0 and 2 == 1
-11 "test" != "testing"
-12 "test" == 1
-13 not (True and False)
-14 not (1 == 1 and 0 != 1)
-15 not (10 == 1 or 1000 == 1000)
-16 not (1 != 10 or 3 == 4)
-17 not ("testing" == "testing" and "Zed" == "Cool Guy")
-18 1 == 1 and (not ("testing" == 1 or 1 == 0))
-19 "chunky" == "bacon" and (not (3 == 4 or 3 == 3))
-20 3 == 3 and (not ("testing" == "testing" or "Python" == "Fun"))
+```{code-block} python
+:linenos:
+
+True and True
+False and True
+1 == 1 and 2 == 1
+"test" == "test"
+1 == 1 or 2 != 1
+True and 1 == 1
+False and 0 != 0
+True or 1 == 1
+"test" == "testing"
+1 != 0 and 2 == 1
+"test" != "testing"
+"test" == 1
+not (True and False)
+not (1 == 1 and 0 != 1)
+not (10 == 1 or 1000 == 1000)
+not (1 != 10 or 3 == 4)
+not ("testing" == "testing" and "Zed" == "Cool Guy")
+1 == 1 and (not ("testing" == 1 or 1 == 0))
+"chunky" == "bacon" and (not (3 == 4 or 3 == 3))
+3 == 3 and (not ("testing" == "testing" or "Python" == "Fun"))
 ```
 
 &emsp;&emsp;在你尝试给出所有答案后，这是你可能会在 Python 运行后看到的运行结果：

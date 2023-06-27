@@ -11,15 +11,17 @@ print('hallo world')
 
 &emsp;&emsp;认识注释，注释是由 # 加上相关备注，但是不会在代码中运行，可以作为帮助理解的功能。
 
-```python
-1   # A comment, this is so you can read your program later.
-2   # Anything after the # is ignored by python. 
-3
-4   print("I could have code like this.") # and the comment after 5
-6   # You can also use a comment to "disable" or comment out code
-7   # print("This won't run.") 
-8
-9   print("This will run.")
+```{code-block} python
+:linenos:
+
+# A comment, this is so you can read your program later.
+# Anything after the # is ignored by python. 
+
+print("I could have code like this.") # and the comment after 5
+# You can also use a comment to "disable" or comment out code
+# print("This won't run.") 
+
+print("This will run.")
 ```
 
 ## 2.2 数学运算
@@ -37,30 +39,32 @@ print('hallo world')
 - `>=` greater-than-equal，大于等于号
 
 
-```python
-1   print("I will now count my chickens:")
-2
-3   print("Hens", 25 + 30 / 6)
-4   print("Roosters", 100 - 25 * 3 % 4)
-5
-6   print("Now I will count the eggs:")
-7
-8   print(3 + 2 + 1 - 5 + 4 % 2 - 1 / 4 + 6)
-9
-10  print("Is it true that 3 + 2 < 5 - 7?")
-11
-12  print(3 + 2 < 5 - 7)
-13
-14  print("What is 3 + 2?", 3 + 2)
-15  print("What is 5 - 7?", 5 - 7)
-16
-17  print("Oh, that's why it's False.")
-18
-19  print("How about some more.")
-20
-21  print("Is it greater?", 5 > -2)
-22  print("Is it greater or equal?", 5 >= -2)
-23  print("Is it less or equal?", 5 <= -2)
+```{code-block} python
+:linenos:
+
+print("I will now count my chickens:")
+
+print("Hens", 25 + 30 / 6)
+print("Roosters", 100 - 25 * 3 % 4)
+
+print("Now I will count the eggs:")
+
+print(3 + 2 + 1 - 5 + 4 % 2 - 1 / 4 + 6)
+
+print("Is it true that 3 + 2 < 5 - 7?")
+
+print(3 + 2 < 5 - 7)
+
+print("What is 3 + 2?", 3 + 2)
+print("What is 5 - 7?", 5 - 7)
+
+print("Oh, that's why it's False.")
+
+print("How about some more.")
+
+print("Is it greater?", 5 > -2)
+print("Is it greater or equal?", 5 >= -2)
+print("Is it less or equal?", 5 <= -2)
 ```
 
 &emsp;&emsp;将上述代码输入到Python的运行环境中，并执行该代码，你应该会看到的结果是：
@@ -97,47 +101,50 @@ Is it less or equal? False
 
 ### 2.3.1 字符是如何引用的
 
-```python
-1   cars = 100
-2   space_in_a_car = 4.0
-3   drivers = 30
-4   passengers = 90
-5   cars_not_driven = cars - drivers
-6   cars_driven = drivers
-7   carpool_capacity = cars_driven * space_in_a_car
-8   average_passengers_per_car = passengers / cars_driven     
-9
-10
-11  print("There are", cars, "cars available.")
-12  print("There are only", drivers, "drivers available.")
-13  print("There will be", cars_not_driven, "empty cars today.")
-14  print("We can transport", carpool_capacity, "people today.")
-15  print("We have", passengers, "to carpool today.")
-16  print("We need to put about", average_passengers_per_car,
-17        "in each car.")
+```{code-block} python
+:linenos:
+
+cars = 100
+space_in_a_car = 4.0
+drivers = 30
+passengers = 90
+cars_not_driven = cars - drivers
+cars_driven = drivers
+carpool_capacity = cars_driven * space_in_a_car
+average_passengers_per_car = passengers / cars_driven     
+
+print("There are", cars, "cars available.")
+print("There are only", drivers, "drivers available.")
+print("There will be", cars_not_driven, "empty cars today.")
+print("We can transport", carpool_capacity, "people today.")
+print("We have", passengers, "to carpool today.")
+print("We need to put about", average_passengers_per_car,
+      "in each car.")
 ```
 
 &emsp;&emsp;下面我们来打印一下个人的信息：
 
-```python
-1   my_name = 'Zed A. Shaw'
-2   my_age = 35 # not a lie
-3   my_height = 74 # inches
-4   my_weight = 180 # lbs
-5   my_eyes = 'Blue'
-6   my_teeth = 'White'
-7   my_hair = 'Brown'
-8
-9   print(f"Let's talk about {my_name}.")
-10  print(f"He's {my_height} inches tall.")
-11  print(f"He's {my_weight} pounds heavy.")
-12  print("Actually that's not too heavy.")
-13  print(f"He's got {my_eyes} eyes and {my_hair} hair.")
-14  print(f"His teeth are usually {my_teeth} depending on the coffee.")
-15
-16  # this line is tricky, try to get it exactly right
-17  total = my_age + my_height + my_weight
-18  print(f"If I add {my_age}, {my_height}, and {my_weight} I get {total}.")
+```{code-block} python
+:linenos:
+
+my_name = 'Zed A. Shaw'
+my_age = 35 # not a lie
+my_height = 74 # inches
+my_weight = 180 # lbs
+my_eyes = 'Blue'
+my_teeth = 'White'
+my_hair = 'Brown'
+
+print(f"Let's talk about {my_name}.")
+print(f"He's {my_height} inches tall.")
+print(f"He's {my_weight} pounds heavy.")
+print("Actually that's not too heavy.")
+print(f"He's got {my_eyes} eyes and {my_hair} hair.")
+print(f"His teeth are usually {my_teeth} depending on the coffee.")
+
+# this line is tricky, try to get it exactly right
+total = my_age + my_height + my_weight
+print(f"If I add {my_age}, {my_height}, and {my_weight} I get {total}.")
 ```
 
 #### 练习1
@@ -147,29 +154,31 @@ Is it less or equal? False
 ### 2.3.2 输入一整段字符串、变量和格式
 
 &emsp;&emsp;程序员都喜欢使用简短的缩写来节省时间，但是那些缩写在你看来会十分晦涩难懂。所以我们得尽早开始学习阅读和书写这些东西。
-```python
-1   types_of_people = 10
-2   x = f"There are {types_of_people} types of people."
-3
-4   binary = "binary"
-5   do_not = "don't"
-6   y = f"Those who know {binary} and those who {do_not}."
-7
-8   print(x)
-9   print(y)
-10
-11  print(f"I said: {x}")
-12  print(f"I also said: '{y}'")
-13
-14  hilarious = False
-15  joke_evaluation = "Isn't that joke so funny?! {}"
-16
-17  print(joke_evaluation.format(hilarious))
-18
-19  w = "This is the left side of..."
-20  e = "a string with a right side."
-21
-22  print(w + e)
+```{code-block} python
+:linenos:
+
+types_of_people = 10
+x = f"There are {types_of_people} types of people."
+
+binary = "binary"
+do_not = "don't"
+y = f"Those who know {binary} and those who {do_not}."
+
+print(x)
+print(y)
+
+print(f"I said: {x}")
+print(f"I also said: '{y}'")
+
+hilarious = False
+joke_evaluation = "Isn't that joke so funny?! {}"
+
+print(joke_evaluation.format(hilarious))
+
+w = "This is the left side of..."
+e = "a string with a right side."
+
+print(w + e)
 ```
 
 &emsp;&emsp;上述代码的运行结果：
