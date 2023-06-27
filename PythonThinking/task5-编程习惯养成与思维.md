@@ -1,4 +1,4 @@
-# 3、编程习惯养成与思维
+# 3 编程习惯养成与思维
 
 ## 3.1 防御性编程与备注
 
@@ -26,7 +26,7 @@ while i<x:
 1. 选择一个可以计数的变量（Choose variable that "count"）
 2. 在程序外部初始化它（Initiative outside the loop）
 3. 需要设置正确的最终测试（Setup and test）
-4. 构建代码块（Conctract block）
+4. 构建代码块（Contract block）
 5. 当结束并完成后，该如何去做 （What to do when done）
 
 ### 代码效率
