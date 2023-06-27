@@ -4,28 +4,29 @@
 
 ### 5.1 类的例子
 
-```python
-1   class Song(object):   #class表示要创建类，Song是类的名称，
-2
-3       def __init__(self, lyrics):   #称为构造方法，根据类创建对象时自动执行
-4           self.lyrics = lyrics
-#根据类 Song 创建对象
-#自动执行Song类的 __init__方法
-5
-6       def sing_me_a_song(self):     #定义sing_me_a_song函数
-7           for line in self.lyrics:  #采用for循环获取每一句歌词
-8               print(line)           #打印出来
-9
-10  happy_bday = Song(["Happy birthday to you",
-11                     "I don't want to get sued",
-12                     "So I'll stop right there"])
-13
-14  bulls_on_parade = Song(["They rally around tha family",
-15                          "With pockets full of shells"])
-16
-17  happy_bday.sing_me_a_song()
-18
-19  bulls_on_parade.sing_me_a_song()
+```{code-block} python
+:linenos:
+
+class Song(object):   #class表示要创建类，Song是类的名称，
+    #根据类 Song 创建对象
+    #自动执行Song类的 __init__方法
+    def __init__(self, lyrics):   #称为构造方法，根据类创建对象时自动执行
+        self.lyrics = lyrics
+
+    def sing_me_a_song(self):     #定义sing_me_a_song函数
+        for line in self.lyrics:  #采用for循环获取每一句歌词
+            print(line)           #打印出来
+
+happy_bday = Song(["Happy birthday to you",
+                   "I don't want to get sued",
+                   "So I'll stop right there"])
+
+bulls_on_parade = Song(["They rally around tha family",
+                        "With pockets full of shells"])
+
+happy_bday.sing_me_a_song()
+
+bulls_on_parade.sing_me_a_song()
 ```
 
 &emsp;&emsp;上述代码的运行结果：

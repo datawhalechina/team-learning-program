@@ -4,36 +4,38 @@
 
 #### 4.1.1 IF语句的使用
 
-```python
-1   people = 20
-2   cats = 30
-3   dogs = 15
-4
-5
-6   if people < cats:
-7       print("Too many cats! The world is doomed!")
-8
-9   if people > cats:
-10      print("Not many cats! The world is saved!")
-11
-12  if people < dogs:
-13      print("The world is drooled on!")     
-14
-15  if people > dogs:
-16      print("The world is dry!")
-17
-18
-19  dogs += 5
-20
-21  if people >= dogs:
-22      print("People are greater than or equal to dogs.")
-23
-24  if people <= dogs:
-25      print("People are less than or equal to dogs.")
-26
-27
-28  if people == dogs:
-29      print("People are dogs.")
+```{code-block} python
+:linenos:
+
+people = 20
+cats = 30
+dogs = 15
+
+
+if people < cats:
+    print("Too many cats! The world is doomed!")
+
+if people > cats:
+    print("Not many cats! The world is saved!")
+
+if people < dogs:
+    print("The world is drooled on!")     
+
+if people > dogs:
+    print("The world is dry!")
+
+
+dogs += 5
+
+if people >= dogs:
+    print("People are greater than or equal to dogs.")
+
+if people <= dogs:
+    print("People are less than or equal to dogs.")
+
+
+if people == dogs:
+    print("People are dogs.")
 ```
 
 &emsp;&emsp;上述代码的运行结果：
@@ -100,30 +102,32 @@ People are dogs.
 
 &emsp;&emsp;把我的答案和你的比较一下，然后确保你真的理解了代码块的概念。这对你进行接下来的练习很重要。把下面的代码输入进去然后运行。
 
-```python
-1   people = 30
-2   cars = 40
-3   trucks = 15
-4
-5
-6   if cars > people:
-7       print("We should take the cars.")
-8   elif cars < people:
-9       print("We should not take the cars.")
-10  else:
-11      print("We can't decide.")
-12
-13  if trucks > cars:
-14      print("That's too many trucks.")
-15  elif trucks < cars:
-16      print("Maybe we could take the trucks.")
-17  else:
-18      print("We still can't decide.")
-19
-20  if people > trucks:
-21      print("Alright, let's just take the trucks.")
-22  else:
-23      print("Fine, let's stay home then.")
+```{code-block} python
+:linenos:
+
+people = 30
+cars = 40
+trucks = 15
+
+
+if cars > people:
+    print("We should take the cars.")
+elif cars < people:
+    print("We should not take the cars.")
+else:
+    print("We can't decide.")
+
+if trucks > cars:
+    print("That's too many trucks.")
+elif trucks < cars:
+    print("Maybe we could take the trucks.")
+else:
+    print("We still can't decide.")
+
+if people > trucks:
+    print("Alright, let's just take the trucks.")
+else:
+    print("Fine, let's stay home then.")
 ```
 
 &emsp;&emsp;上述代码的运行结果：
@@ -162,45 +166,47 @@ Alright, let's just take the trucks.
 
 &emsp;&emsp;在上个脚本中，你写出了一个简单的问问题的测试集。在这个练习中，你将问用户一些问题，并基于他们的回答做决定。写下这个脚本，然后多玩几遍，把它弄明白。
 
-```python
-1   print("""You enter a dark room with two doors.
-2   Do you go through door #1 or door #2?""")
-3
-4   door = input("> ")
-5
-6   if door == "1":
-7       print("There's a giant bear here eating a cheese cake.")
-8       print("What do you do?")
-9       print("1. Take the cake.")
-10      print("2. Scream at the bear.")     
-11
-12      bear = input("> ")
-13
-14      if bear == "1":
-15          print("The bear eats your face off. Good job!")
-16      elif bear == "2":
-17          print("The bear eats your legs off. Good job!")
-18      else:
-19          print(f"Well, doing {bear} is probably better.")
-20          print("Bear runs away.")
-21
-22  elif door == "2":
-23      print("You stare into the endless abyss at Cthulhu's retina.")
-24      print("1. Blueberries.")
-25      print("2. Yellow jacket clothespins.")
-26      print("3. Understanding revolvers yelling melodies.")
-27
-28      insanity = input("> ")
-29
-30      if insanity == "1" or insanity == "2":
-31          print("Your body survives powered by a mind of jello.")
-32          print("Good job!")
-33      else:
-34          print("The insanity rots your eyes into a pool of muck.")
-35          print("Good job!")
-36
-37  else:
-38      print("You stumble around and fall on a knife and die. Good job!")
+```{code-block} python
+:linenos:
+
+print("""You enter a dark room with two doors.
+    Do you go through door #1 or door #2?""")
+
+door = input("> ")
+
+if door == "1":
+    print("There's a giant bear here eating a cheese cake.")
+    print("What do you do?")
+    print("1. Take the cake.")
+    print("2. Scream at the bear.")     
+
+    bear = input("> ")
+
+    if bear == "1":
+        print("The bear eats your face off. Good job!")
+    elif bear == "2":
+        print("The bear eats your legs off. Good job!")
+    else:
+        print(f"Well, doing {bear} is probably better.")
+        print("Bear runs away.")
+
+elif door == "2":
+    print("You stare into the endless abyss at Cthulhu's retina.")
+    print("1. Blueberries.")
+    print("2. Yellow jacket clothespins.")
+    print("3. Understanding revolvers yelling melodies.")
+
+    insanity = input("> ")
+
+    if insanity == "1" or insanity == "2":
+        print("Your body survives powered by a mind of jello.")
+        print("Good job!")
+    else:
+        print("The insanity rots your eyes into a pool of muck.")
+        print("Good job!")
+
+else:
+    print("You stumble around and fall on a knife and die. Good job!")
 ```
 
 &emsp;&emsp;这里很关键的一点是在`if`语句里面又放了一个`if`语句。这在创建“嵌套”（nested）的时候非常有用，每一个分支指向另一个选择。
@@ -237,36 +243,38 @@ The bear eats your legs off. Good job!
 
 ### 4.2 FOR语句
 
-```python
-1   the_count = [1, 2, 3, 4, 5]
-2   fruits = ['apples', 'oranges', 'pears', 'apricots']
-3   change = [1, 'pennies', 2, 'dimes', 3, 'quarters']
-4
-5   # this first kind of for-loop goes through a list
-6   for number in the_count:
-7       print(f"This is count {number}")
-8
-9   # same as above
-10  for fruit in fruits:
-11      print(f"A fruit of type: {fruit}")
-12
-13  # also we can go through mixed lists too
-14  # notice we have to use {} since we don't know what's in it
-15  for i in change:
-16      print(f"I got {i}")
-17
-18  # we can also build lists, first start with an empty one
-19  elements = []
-20
-21  # then use the range function to do 0 to 5 counts
-22  for i in range(0, 6):
-23      print(f"Adding {i} to the list.")
-24  # append is a function that lists understand
-25      elements.append(i)
-26
-27  # now we can print them out too
-28  for i in elements:
-29      print(f"Element was: {i}")
+```{code-block} python
+:linenos:
+
+the_count = [1, 2, 3, 4, 5]
+fruits = ['apples', 'oranges', 'pears', 'apricots']
+change = [1, 'pennies', 2, 'dimes', 3, 'quarters']
+
+# this first kind of for-loop goes through a list
+for number in the_count:
+    print(f"This is count {number}")
+
+# same as above
+for fruit in fruits:
+    print(f"A fruit of type: {fruit}")
+
+# also we can go through mixed lists too
+# notice we have to use {} since we don't know what's in it
+for i in change:
+    print(f"I got {i}")
+
+# we can also build lists, first start with an empty one
+elements = []
+
+# then use the range function to do 0 to 5 counts
+for i in range(0, 6):
+    print(f"Adding {i} to the list.")
+    # append is a function that lists understand
+    elements.append(i)
+
+# now we can print them out too
+for i in elements:
+    print(f"Element was: {i}")
 ```
 
 &emsp;&emsp;上述代码的运行结果：
@@ -346,23 +354,25 @@ Element was: 5
 
 &emsp;&emsp;在这个练习中，你要通过以下三个检查来学习`while-loop`：
 
-```python
-1   i = 0
-2   numbers = []
-3
-4   while i < 6:
-5       print(f"At the top i is {i}")
-6       numbers.append(i)
-7
-8       i = i + 1
-9       print("Numbers now: ", numbers)
-10      print(f"At the bottom i is {i}")
-11
-12
-13  print("The numbers: ")
-14
-15  for num in numbers:
-16      print(num)
+```{code-block} python
+:linenos:
+
+i = 0
+numbers = []
+
+while i < 6:
+    print(f"At the top i is {i}")
+    numbers.append(i)
+
+    i = i + 1
+    print("Numbers now: ", numbers)
+    print(f"At the bottom i is {i}")
+
+
+print("The numbers: ")
+
+for num in numbers:
+    print(num)
 ```
 
 &emsp;&emsp;上述代码的运行结果：
@@ -429,84 +439,86 @@ The numbers:
 
 &emsp;&emsp;目前为止你已经了解了`if`语句，函数以及列表。现在是时候深入学习一下了。照例输入如下代码，看看你能否明白程序在做什么。
 
-```python
-1   from sys import exit
-2
-3   def gold_room():
-4       print("This room is full of gold. How much do you take?")
-5
-6       choice = input("> ")
-7       if "0" in choice or "1" in choice:
-8           how_much = int(choice)
-9       else:
-10          dead("Man, learn to type a number.")
-11
-12      if how_much < 50:
-13          print("Nice, you're not greedy, you win!")
-14          exit(0)
-15      else:
-16          dead("You greedy bastard!")
-17
-18
-19  def bear_room():
-20      print("There is a bear here.")
-21      print("The bear has a bunch of honey.")
-22      print("The fat bear is in front of another door.")
-23      print("How are you going to move the bear?")
-24      bear_moved = False
-25
-26      while True:
-27          choice = input("> ")
-28
-29          if choice == "take honey":
-30              dead("The bear looks at you then slaps your face")
-31          elif choice == "taunt bear" and not bear_moved:
-32              print("The bear has moved from the door.")
-33              print("You can go through it now.")
-34              bear_moved = True
-35          elif choice == "taunt bear" and bear_moved:
-36              dead("The bear gets pissed off and chews your leg.")
-37          elif choice == "open door" and bear_moved:
-38              gold_room()
-39          else:
-40              print("I got no idea what that means.")
-41
-42
-43  def cthulhu_room():
-44      print("Here you see the great evil Cthulhu.")
-45      print("He, it, whatever stares at you and you go insane.")
-46      print("Do you flee for your life or eat your head?")
-47
-48      choice = input("> ")
-49
-50      if "flee" in choice:
-51          start()
-52      elif "head" in choice:
-53          dead("Well that was tasty!")
-54      else:
-55          cthulhu_room()
-56
-57
-58  def dead(why):
-59      print(why, "Good job!")
-60      exit(0)
-61
-62  def start():
-63      print("You are in a dark room.")
-64      print("There is a door to your right and left.")
-65      print("Which one do you take?")
-66
-67      choice = input("> ")
-68
-69      if choice == "left":
-70          bear_room()
-71      elif choice == "right":
-72          cthulhu_room()
-73      else:
-74          dead("You stumble around the room until you starve.")
-75
-76
-77  start()
+```{code-block} python
+:linenos:
+
+from sys import exit
+
+def gold_room():
+    print("This room is full of gold. How much do you take?")
+
+    choice = input("> ")
+    if "0" in choice or "1" in choice:
+        how_much = int(choice)
+    else:
+        dead("Man, learn to type a number.")
+
+    if how_much < 50:
+        print("Nice, you're not greedy, you win!")
+        exit(0)
+    else:
+        dead("You greedy bastard!")
+
+
+def bear_room():
+    print("There is a bear here.")
+    print("The bear has a bunch of honey.")
+    print("The fat bear is in front of another door.")
+    print("How are you going to move the bear?")
+    bear_moved = False
+
+    while True:
+        choice = input("> ")
+
+        if choice == "take honey":
+            dead("The bear looks at you then slaps your face")
+        elif choice == "taunt bear" and not bear_moved:
+            print("The bear has moved from the door.")
+            print("You can go through it now.")
+            bear_moved = True
+        elif choice == "taunt bear" and bear_moved:
+            dead("The bear gets pissed off and chews your leg.")
+        elif choice == "open door" and bear_moved:
+            gold_room()
+        else:
+            print("I got no idea what that means.")
+
+
+def cthulhu_room():
+    print("Here you see the great evil Cthulhu.")
+    print("He, it, whatever stares at you and you go insane.")
+    print("Do you flee for your life or eat your head?")
+
+    choice = input("> ")
+
+    if "flee" in choice:
+        start()
+    elif "head" in choice:
+        dead("Well that was tasty!")
+    else:
+        cthulhu_room()
+
+
+def dead(why):
+    print(why, "Good job!")
+    exit(0)
+
+def start():
+    print("You are in a dark room.")
+    print("There is a door to your right and left.")
+    print("Which one do you take?")
+
+    choice = input("> ")
+
+    if choice == "left":
+        bear_room()
+    elif choice == "right":
+        cthulhu_room()
+    else:
+        dead("You stumble around the room until you starve.")
+
+
+start()
 ```
 
 &emsp;&emsp;上述代码的运行结果：
