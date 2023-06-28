@@ -6,3 +6,4 @@
 - [task5-编程习惯养成与思维](/PythonThinking/task5-%E7%BC%96%E7%A8%8B%E4%B9%A0%E6%83%AF%E5%85%BB%E6%88%90%E4%B8%8E%E6%80%9D%E7%BB%B4.md)
 - [task6-FOR、IF以及while](/PythonThinking/task6-FOR%E3%80%81IF%E4%BB%A5%E5%8F%8Awhile.md)
 - [task7-面向对象的编程](/PythonThinking/task7-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BC%96%E7%A8%8B.md)
+- [task2&3 课后练习及补充](/PythonThinking/task2%263%20%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0%E5%8F%8A%E8%A1%A5%E5%85%85.md)
